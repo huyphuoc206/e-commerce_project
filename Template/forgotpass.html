@@ -464,9 +464,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <!-- //shop locator (popup) -->
 
-<!-- modals -->
-
-<!-- //modal -->
 <!-- //top-header -->
 
 <!-- header-bottom-->
@@ -488,7 +485,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <!-- search -->
                     <div class="col-10 agileits_search">
                         <form class="form-inline" action="#" method="post">
-                            <input class="form-control mr-sm-0" type="search" placeholder="Search" aria-label="Search" required>
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
                             <button class="btn my-2 my-sm-0" type="submit" ><i class="fa fa-search"></i></button>
                         </form>
                     </div>
@@ -727,46 +724,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <a href="index.html">Home</a>
                     <i>|</i>
                 </li>
-                <li>Đăng Nhập</li>
+                <li>Quên Mật Khẩu</li>
             </ul>
         </div>
     </div>
 </div>
 <!--login-->
 <div class="container">
-  <div class="row justify-content-center">
-      <div class="modal-body col-sm-6">
-          <form action="#" method="post">
-              <div class="form-group">
-                  <label for="username" class="col-form-label">Tên đăng nhập</label>
-                  <input type="text" class="form-control" id="username" placeholder=" " name="name" required=""
-                         oninvalid="this.setCustomValidity('Hãy nhập tên đăng nhập!')"
-                         oninput="this.setCustomValidity('')">
-              </div>
-              <div class="form-group">
-                  <label for="password" class="col-form-label">Mật khẩu</label>
-                  <input type="password" class="form-control" id="password" placeholder=" " name="Password" required=""
-                         oninvalid="this.setCustomValidity('Hãy nhập mật khẩu của bạn!')"
-                         oninput="this.setCustomValidity('')">
-              </div>
-              <div class="sub-w3l">
-
-                      <p class="text-left dont-do mt-3">
-                          <a href="forgotpass.html">
-                              Bạn quên mật khẩu?</a>
-                      </p>
-
-              </div>
-              <div class="right-w3l">
-                  <input type="submit" class="form-control" value="Đăng Nhập">
-              </div>
-              <p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
-                  <a href="#" data-toggle="modal" data-target="#exampleModal2">
-                      Đăng Ký Ngay</a>
-              </p>
-          </form>
-      </div>
-  </div>
+    <div class="row justify-content-center">
+        <div class="modal-body col-sm-6">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="email" class="col-form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder=" " name="email" required=""
+                           oninvalid="this.setCustomValidity('Hãy nhập email của bạn!')"
+                           oninput="this.setCustomValidity('')">
+                </div>
+                <div class="right-w3l">
+                    <input type="submit" class="form-control" value="Gửi">
+                </div>
+                <p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
+                    <a href="#" data-toggle="modal" data-target="#exampleModal2">
+                        Đăng Ký Ngay</a>
+                </p>
+            </form>
+        </div>
+    </div>
 
 </div>
 
