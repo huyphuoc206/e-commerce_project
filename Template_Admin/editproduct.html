@@ -130,109 +130,86 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách sản phẩm</strong>
+                                <strong class="card-title">Chỉnh sửa sản phẩm</strong>
                             </div>
-                            <div class="card-header">
-                                <div class="float-right">
-                                    <a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i
-                                            class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                                    <a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal"><i
-                                            class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
-                                </div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Tên sản phẩm</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Giá (VNĐ)</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Giảm giá (%)</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>                              
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="textarea-input"
+                                                class=" form-control-label">Mô tả</label></div>
+                                        <div class="col-12 col-md-9"><textarea name="textarea-input" id="textarea-input"
+                                                rows="9" class="form-control"></textarea></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select"
+                                                class=" form-control-label">Thể loại</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="category" id="category" class="form-control">
+                                                <option value="0">Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select"
+                                                class=" form-control-label">Nhà cung cấp</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="supplier" id="supplier" class="form-control">
+                                                <option value="0">Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="file-input"
+                                                class=" form-control-label">File input</label></div>
+                                        <div class="col-12 col-md-9"><input type="file" id="file-input"
+                                                name="file-input" class="form-control-file">
+                                                <input type="file" id="file-input"
+                                                name="file-input" class="form-control-file">
+                                                <input type="file" id="file-input"
+                                                name="file-input" class="form-control-file"></div>
+                                    </div>
+                                    <!-- <div class="row form-group">
+                                        <div class="col col-md-3"><label for="file-multiple-input"
+                                                class=" form-control-label">Multiple File input</label></div>
+                                        <div class="col-12 col-md-9"><input type="file" id="file-multiple-input"
+                                                name="file-multiple-input" multiple="" class="form-control-file"></div>
+                                    </div> -->
+                                </form>
                             </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="selectAll">
-                                                    <label for="selectAll"></label>
-                                                </span>
-                                            </th>
-                                            <th class="text-center">Tên SP</th>
-                                            <th class="text-center">Hình ảnh</th>
-                                            <th class="text-center">Giá</th>
-                                            <th class="text-center">Giảm giá</th>
-                                            <th class="text-center">Mô tả</th>
-                                            <th class="text-center">Thể loại</th>
-                                            <th class="text-center">Hãng</th>
-                                            <th class="text-center">Thao tác</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
-                                                </span>
-                                            </td>
-                                            <td>Tivi LG</td>
-                                            <td class="text-center"><img src="" alt="Not found"></td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Tivi giá rẻ, full hd ...............</td>
-                                            <td class="text-center">Tivi</td>
-                                            <td class="text-center">LG</td>
-                                            <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i
-                                                        class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
-                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
-                                                        title="Xóa"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                            </td>
-                                            <td>Tivi Panasonic</td>
-                                            <td class="text-center"><img src="" alt="Not found"></td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Tivi giá rẻ, full hd ...............</td>
-                                            <td class="text-center">Tivi</td>
-                                            <td class="text-center">Panasonic</td>
-                                            <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i
-                                                        class="fa fa-pencil" aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
-                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
-                                                        title="Xóa"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                            </td>
-                                            <td>Tivi LG</td>
-                                            <td class="text-center"><img src="" alt="Not found"></td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Tivi giá rẻ, full hd ...............</td>
-                                            <td class="text-center">Tivi</td>
-                                            <td class="text-center">LG</td>
-                                            <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                        aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
-                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
-                                                        title="Xóa"></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="card-footer row justify-content-end">
+                                <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                    <i class="fa fa-dot-circle-o"></i> Sửa
+                                </button>
+                                <button type="reset" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-ban"></i> Làm mới
+                                </button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -256,9 +233,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Hình ảnh</label>
-                                <input type="file" class="form-control-file">
-                                <input type="file" class="form-control-file">
-                                <input type="file" class="form-control-file">
+                                <input type="file" class="form-control" required>
+                                <input type="file" class="form-control" required>
+                                <input type="file" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Giá</label>
@@ -271,7 +248,8 @@
 
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control" required></textarea>
+                                <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control"
+                                    required></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Thể loại</label>
