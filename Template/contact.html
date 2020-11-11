@@ -283,10 +283,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="index.html">Trang chủ</a>
 						<i>|</i>
 					</li>
-					<li>Contact Us</li>
+					<li>Liên hệ</li>
 				</ul>
 			</div>
 		</div>
@@ -308,9 +308,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="con-ic">
 							<i class="fas fa-map-marker-alt rounded-circle"></i>
 						</div>
-						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
-						<p>1PO Box 8568954 Melbourne
-							<label>Australia.</label>
+						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Địa Chỉ</h4>
+						<p>Linh Trung, Thủ Đức, Hồ Chí Minh
+<!--							<label>Việt Nam.</label>-->
 						</p>
 					</div>
 				</div>
@@ -319,9 +319,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<div class="con-ic">
 							<i class="fas fa-phone rounded-circle"></i>
 						</div>
-						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
-						<p>+(0121) 121 121
-							<label>+(0121) 121 122</label>
+						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Hotline</h4>
+						<p>0981 733 331
+<!--							<label>222 11 4444</label>-->
 						</p>
 					</div>
 				</div>
@@ -332,10 +332,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
 						<p>
-							<a href="mailto:info@example.com">info@example1.com</a>
-							<label>
-								<a href="mailto:info@example.com">info@example2.com</a>
-							</label>
+							<a href="mailto:info@example.com">ecostore@gmail.com</a>
+<!--							<label>-->
+<!--								<a href="mailto:info@example.com">info@example2.com</a>-->
+<!--							</label>-->
 						</p>
 					</div>
 				</div>
@@ -345,20 +345,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="contact-grids1 w3agile-6">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Name</label>
-							<input type="text" class="form-control" name="Name" placeholder="" required="">
+							<label class="col-form-label">Họ tên</label>
+							<input type="text" class="form-control" name="Name" placeholder="" required=""
+								   oninvalid="this.setCustomValidity('Hãy nhập họ tên!')"
+								   oninput="this.setCustomValidity('')">
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">E-mail</label>
-							<input type="email" class="form-control" name="Email" placeholder="" required="">
+							<label class="col-form-label">Email</label>
+							<input type="email" class="form-control" name="Email" placeholder="" required=""
+								   oninvalid="this.setCustomValidity('Hãy nhập địa chỉ email!')"
+								   oninput="this.setCustomValidity('')">
 						</div>
 					</div>
 					<div class="contact-me animated wow slideInUp form-group">
-						<label class="col-form-label">Message</label>
+						<label class="col-form-label">Bạn đang cần gì?</label>
 						<textarea name="Message" class="form-control" placeholder="" required=""> </textarea>
 					</div>
 					<div class="contact-form">
-						<input type="submit" value="Submit">
+						<input type="submit" value="Gửi">
 					</div>
 				</div>
 			</form>
