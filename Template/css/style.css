@@ -98,7 +98,7 @@ label {
 /*-- top-header --*/
 
 .main-top-w3l {
-    background: #16697a;
+    background: #007185;
 }
 
 .header-most-top p {
@@ -117,6 +117,7 @@ label {
 
 .header-right ul li a {
     text-decoration: none;
+    cursor: pointer;
 }
 
 .header-right ul li i {
@@ -1300,7 +1301,7 @@ h2.footer-top-head-w3l {
 /*-- copyright --*/
 
 .copy-right {
-    background: #16697a;
+    background: #007185;
 }
 
 .copy-right p {
