@@ -1131,6 +1131,7 @@ h2.footer-top-head-w3l {
     display: block;
     font-size: 14px;
     color: #bdbdbd;
+    padding-bottom: 5px;
 }
 
 .footer-grids ul li a {
@@ -1155,7 +1156,15 @@ h2.footer-top-head-w3l {
     color: #db6400;
     padding-right: 10px;
 }
-
+/*responsive payment screen 992*/
+@media (max-width: 992px) {
+    .footer-grids .col-md-4 {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
 .footer-grids.agile-secomk {
     margin-top: 34px;
 }
