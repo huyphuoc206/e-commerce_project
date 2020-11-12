@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Chỉnh sửa phương thức thanh toán</title>
+    <title>Chỉnh sửa người dùng</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,6 +28,20 @@
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+
+            $(".change-image").on("input", function () {
+                let value = $(this).val() + "";
+                console.log(value)
+                if (value.length != 0) {
+                    let path = value.substring(value.lastIndexOf("\\") + 1, value.length);
+                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/avatar/${path}")` });
+                    console.log(`url("images/avatar/${path})"`)
+                }
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -52,7 +66,7 @@
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
@@ -64,7 +78,7 @@
                     <li>
                         <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
                     </li>
                     <li>
@@ -105,42 +119,81 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Chỉnh sửa phương thức thanh toán</strong>
+                                <strong class="card-title">Chỉnh sửa người dùng</strong>
                             </div>
                             <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input"
-                                                class=" form-control-label">Tên phương thức</label></div>
+                                                class=" form-control-label">Tên tài khoản</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="text-input"
                                                 name="text-input" class="form-control"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng
-                                                thái</label></div>
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Mật khẩu</label></div>
+                                        <div class="col-12 col-md-9"><input type="password" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Họ tên</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Hình đại diện</label></div>
+                                        <div class="col-12 col-md-9"><div class="custom-input-file">
+                                            <label class="uploadPhoto">
+                                                Chọn ảnh
+                                                <input type="file" class="change-image" name="avatar" id="avatar">
+                                            </label>
+                                        </div></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Email</label></div>
+                                        <div class="col-12 col-md-9"><input type="email" id="text-input"
+                                                name="text-input" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input"
+                                                class=" form-control-label">Số điện thoại</label></div>
+                                        <div class="col-12 col-md-9"><input type="tel" class="form-control" id="phone" pattern="[0]{1}[0-9]{9}"
+                                            name="phone" required
+                                            oninvalid="this.setCustomValidity('Hãy nhập số điện thoại!')"
+                                            oninput="this.setCustomValidity('')"></div>
+                                    </div>
+                                   
+                                
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng thái
+                                                </label></div>
                                         <div class="col-12 col-md-9">
-                                            <select name="category" id="category" class="form-control">
-                                                <option value="0">Đang hoạt động</option>
-                                                <option value="1">Tạm ngưng</option>
+                                            <select name="category" id="category" class="form-control">                                            
+                                                <option value="0">Tạm khóa</option>
+                                                <option value="1">Hoạt động</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="row justify-content-center">
+                                        <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                            <i class="fa fa-dot-circle-o"></i> Lưu
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Làm mới
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
-                            <div class="card-footer row justify-content-end">
-                                <button type="submit" class="btn btn-primary btn-sm mr-2">
-                                    <i class="fa fa-dot-circle-o"></i> Lưu
-                                </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Làm mới
-                                </button>
-                            </div>
+                            
 
                         </div>
                     </div>
                 </div>
             </div><!-- .animated -->
-        </div><!-- .content -->   
+        </div><!-- .content -->
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->

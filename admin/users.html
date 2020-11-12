@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quản lý phương thức thanh toán</title>
+    <title>Quản lý người dùng</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,6 +52,19 @@
                 }
             });
         });
+
+        $(document).ready(function () {
+
+            $(".change-image").on("input", function () {
+                let value = $(this).val() + "";
+                console.log(value)
+                if (value.length != 0) {
+                    let path = value.substring(value.lastIndexOf("\\") + 1, value.length);
+                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/avatar/${path}")` });
+                    console.log(`url("images/avatar/${path})"`)
+                }
+            })
+        })
     </script>
 </head>
 
@@ -89,13 +102,13 @@
                     <li>
                         <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
                     </li>
                     <li>
                         <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
                     </li>
                 </ul>
@@ -131,13 +144,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách phương thức thanh toán</strong>
+                                <strong class="card-title">Danh sách người dùng</strong>
                             </div>
                             <div class="card-header">
                                 <div class="float-right">
-                                    <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
+                                    <a href="#addUserModal" class="btn btn-success" data-toggle="modal"><i
                                             class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                                    <a href="#deletePaymentModal" class="btn btn-danger" data-toggle="modal"><i
+                                    <a href="#deleteUserModal" class="btn btn-danger" data-toggle="modal"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                                 </div>
                             </div>
@@ -151,7 +164,13 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th class="text-center">Tên phương thức</th>
+                                            <th class="text-center">Tên tài khoản</th>
+                                            <th class="text-center">Mật khẩu</th>
+                                            <th class="text-center">Hình đại diện</th>
+                                            <th class="text-center">Họ tên</th>
+                                            <th class="text-center">Email</th>
+                                            <th class="text-center">Số điện thoại</th>
+                                            <th class="text-center">Vai trò</th>
                                             <th class="text-center">Trạng thái</th>
                                             <th class="text-center">Thao tác</th>
                                         </tr>
@@ -164,14 +183,20 @@
                                                     <label for="checkbox1"></label>
                                                 </span>
                                             </td>
-                                            <td>Thanh toán tiền mặt</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
-                                            </td>
+                                            <td>admin</td>
+                                            <td>123</td>
+                                            <td class="text-center"><img src="images/avatar/1.jpg" class="td-img"
+                                                    alt="Not found"></td>
+                                            <td>Huy Phước</td>
+                                            <td>huyphuoc206@gmail.com</td>
+                                            <td class="text-center">0919990334</td>
+                                            <td>Quản trị</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="edituser.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteUserModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -183,14 +208,20 @@
                                                     <label for="checkbox2"></label>
                                                 </span>
                                             </td>
-                                            <td>Ví Airpay</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
-                                            </td>
+                                            <td>admin2</td>
+                                            <td>123</td>
+                                            <td class="text-center"><img src="images/avatar/2.jpg" class="td-img"
+                                                    alt="Not found"></td>
+                                            <td>Thanh Tôn</td>
+                                            <td>thanhton@gmail.com</td>
+                                            <td class="text-center">0919849334</td>
+                                            <td>Quản trị</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="edituser.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteUserModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -202,14 +233,20 @@
                                                     <label for="checkbox3"></label>
                                                 </span>
                                             </td>
-                                            <td>Thẻ tín dụng/ghi nợ</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
-                                            </td>
+                                            <td>admin2</td>
+                                            <td>123</td>
+                                            <td class="text-center"><img src="images/avatar/3.jpg" class="td-img"
+                                                    alt="Not found"></td>
+                                            <td>Minh Nhật</td>
+                                            <td>minhnhat@gmail.com</td>
+                                            <td class="text-center">0918237834</td>
+                                            <td>Quản trị</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="edituser.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteUserModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -217,18 +254,25 @@
                                         <tr>
                                             <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
+                                                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
+                                                    <label for="checkbox4"></label>
                                                 </span>
                                             </td>
-                                            <td>Ví Momo</td>
-                                            <td class="text-center"><span class="status text-danger">&bull;</span> Tạm ngưng</td> 
-                                            </td>
+                                            <td>php</td>
+                                            <td>123</td>
+                                            <td class="text-center"><img src="images/avatar/4.jpg" class="td-img"
+                                                    alt="Not found"></td>
+                                            <td>Phạm Huy Phước</td>
+                                            <td>hp@gmail.com</td>
+                                            <td class="text-center">0918237834</td>
+                                            <td>Người dùng</td>
+                                            <td class="text-center"><span class="status text-danger">&bull;</span> Tạm
+                                                khóa</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="edituser.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteUserModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -244,24 +288,55 @@
 
 
         <!-- Add Modal HTML -->
-        <div id="addSupplierModal" class="modal fade">
+        <div id="addUserModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Thêm phương thức thanh toán</h4>
+                            <h4 class="modal-title">Thêm người dùng</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Tên phương thức</label>
+                                <label>Tên tài khoản</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Trạng thái</label>
-                                <select name="supplier" id="supplier" class="form-control">
-                                    <option value="1">Đang hoạt động</option>
-                                    <option value="2">Tạm ngưng</option>
+                                <label>Mật khẩu</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Họ tên</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="row form-group">
+                                <label for="avatar" class="col-sm-3 form-control-label">Hình
+                                    đại diện</label>
+                                <div class="col-sm-3">
+                                    <div class="custom-input-file">
+                                        <label class="uploadPhoto">
+                                            Chọn ảnh
+                                            <input type="file" class="change-image" name="avatar" id="avatar">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="col-form-label">Số điện thoại</label>
+                                <input type="tel" class="form-control" id="phone" pattern="[0]{1}[0-9]{9}"
+                                    name="phone" required
+                                    oninvalid="this.setCustomValidity('Hãy nhập số điện thoại!')"
+                                    oninput="this.setCustomValidity('')">
+                            </div>
+                            <div class="form-group">
+                                <label>Vai trò</label>
+                                <select name="category" id="category" class="form-control">
+                                    <option value="0">Quản trị</option>
+                                    <option value="1">Khách hàng</option>
                                 </select>
                             </div>
                         </div>
@@ -274,16 +349,16 @@
             </div>
         </div>
         <!-- Delete Modal HTML -->
-        <div id="deletePaymentModal" class="modal fade">
+        <div id="deleteUserModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Xóa sản phẩm </h4>
+                            <h4 class="modal-title">Xóa người dùng</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn chắc chắn muốn xóa những thể loại này?</p>
+                            <p>Bạn chắc chắn muốn xóa những người dùng này?</p>
                             <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                         </div>
                         <div class="modal-footer">
@@ -301,22 +376,22 @@
     <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
     <script>
-        (function ($) {
-            "use strict";
+            (function ($) {
+                "use strict";
 
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
+                jQuery('#vmap').vectorMap({
+                    map: 'world_en',
+                    backgroundColor: null,
+                    color: '#ffffff',
+                    hoverOpacity: 0.7,
+                    selectedColor: '#1de9b6',
+                    enableZoom: true,
+                    showTooltip: true,
+                    values: sample_data,
+                    scaleColors: ['#1de9b6', '#03a9f5'],
+                    normalizeFunction: 'polynomial'
+                });
+            })(jQuery);
     </script>
 
 </body>
