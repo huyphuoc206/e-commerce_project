@@ -30,16 +30,10 @@
 
     <script>
         $(document).ready(function () {
-
-            $(".change-image").on("input", function () {
-                let value = $(this).val() + "";
-                console.log(value)
-                if (value.length != 0) {
-                    let path = value.substring(value.lastIndexOf("\\") + 1, value.length);
-                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/avatar/${path}")` });
-                    console.log(`url("images/avatar/${path})"`)
-                }
-            })
+            $('input.change-avatar:file').change(function (event) {
+                var tmppath = URL.createObjectURL(event.target.files[0]);
+                $(this).closest('.custom-input-file').css({ backgroundImage: `url("${tmppath}")` });
+            });
         })
     </script>
 </head>
@@ -64,29 +58,29 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse ju">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thông tin </a>
                     </li>
                     <li>
-                        <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
+                        <a href="products.html"> <i class="menu-icon fa fa-product-hunt"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
-                        <a href="categories.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý thể loại </a>
+                        <a href="categories.html"> <i class="menu-icon fa fa-list"></i>Quản lý thể loại </a>
                     </li>
                     <li>
-                        <a href="suppliers.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý hãng sản xuất </a>
+                        <a href="suppliers.html"> <i class="menu-icon fa fa-building-o"></i>Quản lý hãng sản xuất </a>
                     </li>
                     <li>
-                        <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
+                        <a href="comments.html"> <i class="menu-icon fa fa-comment"></i>Quản lý bình luận </a>
                     </li>
                     <li class="active">
-                        <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
-                    </li>
+                        <a href="users.html"> <i class="menu-icon fa fa-user"></i>Quản lý người dùng </a>
+                    </li>         
                     <li>
-                        <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
-                    </li>
+                        <a href="orders.html"> <i class="menu-icon fa fa-shopping-cart"></i>Quản lý đơn hàng </a>
+                    </li>  
                     <li>
-                        <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
-                    </li>
+                        <a href="payments.html"> <i class="menu-icon fa fa-credit-card"></i>Quản lý PT thanh toán </a>
+                    </li>       
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -147,7 +141,7 @@
                                         <div class="col-12 col-md-9"><div class="custom-input-file">
                                             <label class="uploadPhoto">
                                                 Chọn ảnh
-                                                <input type="file" class="change-image" name="avatar" id="avatar">
+                                                <input type="file" class="change-avatar" name="avatar" id="avatar">
                                             </label>
                                         </div></div>
                                     </div>

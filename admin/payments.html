@@ -30,9 +30,6 @@
 
     <script>
         $(document).ready(function () {
-            // Activate tooltip
-            $('[data-toggle="tooltip"]').tooltip();
-
             // Select/Deselect checkboxes
             var checkbox = $('table tbody input[type="checkbox"]');
             $("#selectAll").click(function () {
@@ -75,29 +72,29 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thông tin </a>
                     </li>
                     <li>
-                        <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
+                        <a href="products.html"> <i class="menu-icon fa fa-product-hunt"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
-                        <a href="categories.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý thể loại </a>
+                        <a href="categories.html"> <i class="menu-icon fa fa-list"></i>Quản lý thể loại </a>
                     </li>
                     <li>
-                        <a href="suppliers.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý hãng sản xuất </a>
+                        <a href="suppliers.html"> <i class="menu-icon fa fa-building-o"></i>Quản lý hãng sản xuất </a>
                     </li>
                     <li>
-                        <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
+                        <a href="comments.html"> <i class="menu-icon fa fa-comment"></i>Quản lý bình luận </a>
                     </li>
                     <li>
-                        <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
-                    </li>
+                        <a href="users.html"> <i class="menu-icon fa fa-user"></i>Quản lý người dùng </a>
+                    </li>         
                     <li>
-                        <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
-                    </li>
+                        <a href="orders.html"> <i class="menu-icon fa fa-shopping-cart"></i>Quản lý đơn hàng </a>
+                    </li>  
                     <li class="active">
-                        <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
-                    </li>
+                        <a href="payments.html"> <i class="menu-icon fa fa-credit-card"></i>Quản lý PT thanh toán </a>
+                    </li>       
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -300,25 +297,6 @@
     <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
-    <script>
-        (function ($) {
-            "use strict";
-
-            jQuery('#vmap').vectorMap({
-                map: 'world_en',
-                backgroundColor: null,
-                color: '#ffffff',
-                hoverOpacity: 0.7,
-                selectedColor: '#1de9b6',
-                enableZoom: true,
-                showTooltip: true,
-                values: sample_data,
-                scaleColors: ['#1de9b6', '#03a9f5'],
-                normalizeFunction: 'polynomial'
-            });
-        })(jQuery);
-    </script>
-
 </body>
 
 </html>

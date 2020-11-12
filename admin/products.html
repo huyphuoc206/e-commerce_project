@@ -30,9 +30,6 @@
 
     <script>
         $(document).ready(function () {
-            // Activate tooltip
-            $('[data-toggle="tooltip"]').tooltip();
-
             // Select/Deselect checkboxes
             var checkbox = $('table tbody input[type="checkbox"]');
             $("#selectAll").click(function () {
@@ -52,15 +49,12 @@
                 }
             });
         });
-        $(document).ready(function () {
 
-            $(".change-image").on("input", function () {
-                let value = $(this).val() + "";
-                if (value.length != 0) {
-                    let path = value.substring(value.lastIndexOf("\\"), value.length);
-                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/product/${path}")` });
-                }
-            })
+        $(document).ready(function () {
+            $('input.change-image:file').change(function (event) {
+                var tmppath = URL.createObjectURL(event.target.files[0]);
+                $(this).closest('.custom-input-file').css({ backgroundImage: `url("${tmppath}")` });
+            });
         })
     </script>
 </head>
@@ -85,28 +79,28 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse ju">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
+                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thông tin </a>
                     </li>
                     <li class="active">
-                        <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
+                        <a href="products.html"> <i class="menu-icon fa fa-product-hunt"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
-                        <a href="categories.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý thể loại </a>
+                        <a href="categories.html"> <i class="menu-icon fa fa-list"></i>Quản lý thể loại </a>
                     </li>
                     <li>
-                        <a href="suppliers.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý hãng sản xuất </a>
+                        <a href="suppliers.html"> <i class="menu-icon fa fa-building-o"></i>Quản lý hãng sản xuất </a>
                     </li>
                     <li>
-                        <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
+                        <a href="comments.html"> <i class="menu-icon fa fa-comment"></i>Quản lý bình luận </a>
                     </li>
                     <li>
-                        <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
+                        <a href="users.html"> <i class="menu-icon fa fa-user"></i>Quản lý người dùng </a>
                     </li>
                     <li>
-                        <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
+                        <a href="orders.html"> <i class="menu-icon fa fa-shopping-cart"></i>Quản lý đơn hàng </a>
                     </li>
                     <li>
-                        <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
+                        <a href="payments.html"> <i class="menu-icon fa fa-credit-card"></i>Quản lý PT thanh toán </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -179,7 +173,8 @@
                                                 </span>
                                             </td>
                                             <td>Máy giặt ABC</td>
-                                            <td class="text-center"><img src="images/product/m8.jpg" class="td-img" alt="Not found">
+                                            <td class="text-center"><img src="images/product/m8.jpg" class="td-img"
+                                                    alt="Not found">
                                             </td>
                                             <td class="text-center">8000000</td>
                                             <td class="text-center">20%</td>
@@ -203,7 +198,8 @@
                                                 </span>
                                             </td>
                                             <td>Tivi ABC</td>
-                                            <td class="text-center"><img src="images/product/m4.jpg" class="td-img" alt="Not found">
+                                            <td class="text-center"><img src="images/product/m4.jpg" class="td-img"
+                                                    alt="Not found">
                                             </td>
                                             <td class="text-center">8000000</td>
                                             <td class="text-center">20%</td>
@@ -227,7 +223,208 @@
                                                 </span>
                                             </td>
                                             <td>Loa ABC</td>
-                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img" alt="Not found">
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
+                                            </td>
+                                            <td class="text-center">8000000</td>
+                                            <td class="text-center">20%</td>
+                                            <td>Loa xịn</td>
+                                            <td class="text-center">Loa</td>
+                                            <td class="text-center">Bose</td>
+                                            <td class="text-center">
+                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Loa ABC</td>
+                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
+                                                    alt="Not found">
                                             </td>
                                             <td class="text-center">8000000</td>
                                             <td class="text-center">20%</td>
@@ -306,7 +503,7 @@
                                     <div class="custom-input-file">
                                         <label class="uploadPhoto">
                                             Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
+                                            <input type="file" class="change-image" name="image">
                                         </label>
                                     </div>
                                 </div>
@@ -314,7 +511,7 @@
                                     <div class="custom-input-file">
                                         <label class="uploadPhoto">
                                             Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
+                                            <input type="file" class="change-image" name="image">
                                         </label>
                                     </div>
                                 </div>
@@ -322,7 +519,7 @@
                                     <div class="custom-input-file">
                                         <label class="uploadPhoto">
                                             Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
+                                            <input type="file" class="change-image" name="image">
                                         </label>
                                     </div>
                                 </div>
