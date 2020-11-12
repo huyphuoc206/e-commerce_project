@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quản lý thể loại</title>
+    <title>Quản lý bình luận</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -80,13 +80,13 @@
                     <li>
                         <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="categories.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý thể loại </a>
                     </li>
                     <li>
                         <a href="suppliers.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý hãng sản xuất </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="comments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý bình luận </a>
                     </li>
                     <li>
@@ -131,13 +131,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách thể loại</strong>
+                                <strong class="card-title">Danh sách bình luận</strong>
                             </div>
                             <div class="card-header">
                                 <div class="float-right">
-                                    <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><i
-                                            class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                                    <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><i
+                                    <a href="#deleteCommentModal" class="btn btn-danger" data-toggle="modal"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                                 </div>
                             </div>
@@ -151,8 +149,9 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th class="text-center">Tên thể loại</th>
-                                            <th class="text-center">Mã thể loại</th>
+                                            <th class="text-center">Tên người dùng</th>
+                                            <th class="text-center">Tên sản phẩm</th>
+                                            <th class="text-center">Nội dung</th>
                                             <th class="text-center">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -164,14 +163,13 @@
                                                     <label for="checkbox1"></label>
                                                 </span>
                                             </td>
-                                            <td>Máy lạnh</td>
-                                            <td class="text-center">may-lanh
+                                            <td>Huy Phước</td>
+                                            <td>Tivi LG 4K
+                                            </td>
+                                            <td>Sản phẩm xịn sò, chất lượng.
                                             </td>
                                             <td class="text-center">
-                                                <a href="editcategory.html" class="edit"><i class="fa fa-pencil"
-                                                        aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteCategoryModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteCommentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -183,14 +181,13 @@
                                                     <label for="checkbox2"></label>
                                                 </span>
                                             </td>
-                                            <td>Tivi</td>
-                                            <td class="text-center">tivi
+                                            <td>Minh Nhật</td>
+                                            <td>Máy giặt Panasonic
+                                            </td>
+                                            <td>Giá cả hợp lý
                                             </td>
                                             <td class="text-center">
-                                                <a href="editcategory.html" class="edit"><i class="fa fa-pencil"
-                                                        aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteCategoryModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteCommentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -202,14 +199,13 @@
                                                     <label for="checkbox3"></label>
                                                 </span>
                                             </td>
-                                            <td>Máy giặt</td>
-                                            <td class="text-center">may-giat
+                                            <td>Thanh Tôn</td>
+                                            <td> Máy lạnh Panasonic
+                                            </td>
+                                            <td>10 điểm
                                             </td>
                                             <td class="text-center">
-                                                <a href="editcategory.html" class="edit"><i class="fa fa-pencil"
-                                                        aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteCategoryModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deleteCommentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -223,45 +219,17 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-
-        <!-- Add Modal HTML -->
-        <div id="addCategoryModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Thêm thể loại</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Tên thể loại</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Mã thể loại</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                            <input type="submit" class="btn btn-success" value="Thêm">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- Delete Modal HTML -->
-        <div id="deleteCategoryModal" class="modal fade">
+        <div id="deleteCommentModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Xóa sản phẩm </h4>
+                            <h4 class="modal-title">Xóa bình luận </h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn chắc chắn muốn xóa những thể loại này?</p>
+                            <p>Bạn chắc chắn muốn xóa những bình luận này?</p>
                             <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                         </div>
                         <div class="modal-footer">
