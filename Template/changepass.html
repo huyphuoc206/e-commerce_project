@@ -280,10 +280,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <ul class="w3_short">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="index.html">Trang Chủ</a>
                     <i>|</i>
                 </li>
-                <li>Đăng Ký</li>
+                <li>Đổi Mật Khẩu</li>
             </ul>
         </div>
     </div>
@@ -295,51 +295,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="modal-body col-sm-6">
             <form action="#" method="post">
                 <div class="form-group">
-                    <label for="fullname" class="col-form-label">Họ tên</label>
-                    <input type="text" class="form-control" id="fullname" placeholder=" " name="fullname" required=""
-                           oninvalid="this.setCustomValidity('Hãy nhập họ tên của bạn!')"
-                           oninput="this.setCustomValidity('')">
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="col-form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder=" " name="email" required=""
-                           oninvalid="this.setCustomValidity('Hãy nhập email của bạn!')"
-                           oninput="this.setCustomValidity('')">
+                    <label for="password" class="col-form-label">Mật khẩu cũ</label>
+                    <input type="password" class="form-control" placeholder=" " name="password" id="password"  required="">
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-form-label">Số điện thoại</label>
-                    <input type="tel" class="form-control" id="phone" pattern="[0]{1}[0-9]{9}" placeholder=" " name="phone" required=""
-                           oninvalid="this.setCustomValidity('Hãy nhập số điện thoại!')"
-                           oninput="this.setCustomValidity('')">
+                    <label for="password1" class="col-form-label">Mật khẩu mới</label>
+                    <input type="password" class="form-control" placeholder=" " name="password" id="password1"  required="">
                 </div>
                 <div class="form-group">
-                    <label for="username" class="col-form-label">Tên đăng nhập</label>
-                    <input type="text" class="form-control" id="username" placeholder=" " name="username" required="" maxlength="20"
-                           oninvalid="this.setCustomValidity('Hãy nhập tên đăng nhập của bạn!')"
-                           oninput="this.setCustomValidity('')">
-                </div>
-                <div class="form-group">
-                    <label for="password1" class="col-form-label">Mật khẩu</label>
-                    <input type="password" class="form-control" placeholder=" " name="password" id="password1" minlength="7" required=""
-                           oninvalid="this.setCustomValidity('Mật khẩu phải trên 6 ký tự!')"
-                           oninput="this.setCustomValidity('')">
-                </div>
-                <div class="form-group">
-                    <label for="password2" class="col-form-label">Nhập lại mật khẩu</label>
+                    <label for="password2" class="col-form-label">Nhập lại mật khẩu mới</label>
                     <input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required=""
                            oninvalid="this.setCustomValidity('Mật khẩu không khớp!')"
                            oninput="this.setCustomValidity('')">
                 </div>
-                <div class="sub-w3l">
-                    <div class="custom-control custom-checkbox mr-sm-2">
-                        <input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-                        <label class="custom-control-label" for="customControlAutosizing2">
-                            Tôi chấp nhận các Điều khoản & Điều kiện</label>
-                    </div>
-                </div>
                 <div class="right-w3l">
-                    <input type="submit" class="form-control" value="Đăng Ký">
+                    <input type="submit" class="form-control" value="Lưu Thay Đổi">
                 </div>
             </form>
         </div>
@@ -610,19 +580,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </script>
 <!-- //cart-js -->
 
+
 <!-- password-script -->
 <script>
     window.onload = function () {
+        document.getElementById("password").onchange = validatePassword;
         document.getElementById("password1").onchange = validatePassword;
         document.getElementById("password2").onchange = validatePassword;
+        
+       
     }
 
     function validatePassword() {
         var pass2 = document.getElementById("password2").value;
         var pass1 = document.getElementById("password1").value;
-        if (pass1 != pass2)
-            document.getElementById("password2").setCustomValidity("Mật khẩu không khớp");
-        else
+        var pass = document.getElementById("password").value;
+        if (pass1.length<=6)
+            document.getElementById("password1").setCustomValidity("Mật khẩu phải trên 6 ký tự!");
+        else if (pass1 == pass)
+            document.getElementById("password1").setCustomValidity("Mật khẩu mới trùng với mật khẩu cũ!");
+        else if (pass1 != pass)
+            document.getElementById("password1").setCustomValidity('');
+        else if (pass1 != pass2)
+            document.getElementById("password2").setCustomValidity("Mật khẩu mới không khớp!");
+        else if (pass1 == pass2)
             document.getElementById("password2").setCustomValidity('');
         //empty string means no validation error
     }
