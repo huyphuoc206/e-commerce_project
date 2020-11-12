@@ -87,6 +87,12 @@ table.table td a.edit {
 table.table td a.delete {
 	color: #F44336;
 }
+table.table td a.detail {
+	color: #077bff;
+}
+table.table td a.delete {
+	color: #F44336;
+}
 table.table td i {
 	font-size: 19px;
 }

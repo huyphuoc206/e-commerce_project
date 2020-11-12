@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quản lý phương thức thanh toán</title>
+    <title>Quản lý đơn hàng</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -92,10 +92,10 @@
                     <li>
                         <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
                     </li>
                 </ul>
@@ -131,13 +131,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách phương thức thanh toán</strong>
+                                <strong class="card-title">Danh sách đơn hàng</strong>
                             </div>
                             <div class="card-header">
                                 <div class="float-right">
-                                    <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
-                                            class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                                    <a href="#deletePaymentModal" class="btn btn-danger" data-toggle="modal"><i
+                                    <a href="#deleteOrderModal" class="btn btn-danger" data-toggle="modal"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                                 </div>
                             </div>
@@ -151,8 +149,15 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th class="text-center">Tên phương thức</th>
+                                            <th class="text-center">Mã đơn hàng</th>
+                                            <th class="text-center">Ngày tạo</th>
+                                            <th class="text-center">Tên khách hàng</th>
+                                            <th class="text-center">Số điện thoại</th>
+                                            <th class="text-center">Địa chỉ</th>
+                                            <th class="text-center">Lời nhắn</th>
+                                            <th class="text-center">Tổng trị giá</th>
                                             <th class="text-center">Trạng thái</th>
+                                            <th class="text-center">PT thanh toán</th>
                                             <th class="text-center">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -164,14 +169,24 @@
                                                     <label for="checkbox1"></label>
                                                 </span>
                                             </td>
+                                            <td class="text-center">1</td>
+                                            <td class="text-center">23/2/2020</td>
+                                            <td>Huy Phước</td>
+                                            <td class="text-center">0919990334</td>
+                                            <td>Biên Hòa Đồng Nai</td>
+                                            <td>Giao lúc 11:00 AM</td>
+                                            <td class="text-center">7.000.000đ</td>
+                                            <td class="text-center"><span class="status text-warning">&bull;</span>Đang
+                                                chờ</td>
                                             <td>Thanh toán tiền mặt</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
-                                            </td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editorder.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="orderdetails.html" class="detail"><i class="fa fa-asterisk"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chi tiết"></i></a>
+                                                <a href="#deleteOrderModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -183,14 +198,24 @@
                                                     <label for="checkbox2"></label>
                                                 </span>
                                             </td>
-                                            <td>Ví Airpay</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động</td>
-                                            </td>
+                                            <td class="text-center">2</td>
+                                            <td class="text-center">23/2/2020</td>
+                                            <td>Huy Phước</td>
+                                            <td class="text-center">0919990334</td>
+                                            <td>Biên Hòa Đồng Nai</td>
+                                            <td>Giao lúc 11:00 AM</td>
+                                            <td class="text-center">5.000.000đ</td>
+                                            <td class="text-center"><span class="status text-primary">&bull;</span>Đang
+                                                giao</td>
+                                            <td>Thanh toán tiền mặt</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editorder.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="orderdetails.html" class="detail"><i class="fa fa-asterisk"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chi tiết"></i></a>
+                                                <a href="#deleteOrderModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -202,14 +227,24 @@
                                                     <label for="checkbox3"></label>
                                                 </span>
                                             </td>
-                                            <td>Thẻ tín dụng/ghi nợ</td>
-                                            <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động</td>
-                                            </td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">23/2/2020</td>
+                                            <td>Huy Phước</td>
+                                            <td class="text-center">0919990334</td>
+                                            <td>Biên Hòa Đồng Nai</td>
+                                            <td>Giao lúc 11:00 AM</td>
+                                            <td class="text-center">5.000.000đ</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span>Thành
+                                                công</td>
+                                            <td>Thanh toán tiền mặt</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editorder.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="orderdetails.html" class="detail"><i class="fa fa-asterisk"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chi tiết"></i></a>
+                                                <a href="#deleteOrderModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -217,18 +252,28 @@
                                         <tr>
                                             <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
+                                                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
+                                                    <label for="checkbox4"></label>
                                                 </span>
                                             </td>
-                                            <td>Ví Momo</td>
-                                            <td class="text-center"><span class="status text-danger">&bull;</span>Tạm khóa</td>
-                                            </td>
+                                            <td class="text-center">4</td>
+                                            <td class="text-center">23/2/2020</td>
+                                            <td>Huy Phước</td>
+                                            <td class="text-center">0919990334</td>
+                                            <td>Biên Hòa Đồng Nai</td>
+                                            <td>Giao lúc 11:00 AM</td>
+                                            <td class="text-center">5.000.000đ</td>
+                                            <td class="text-center"><span class="status text-danger">&bull;</span>Đã
+                                                hủy</td>
+                                            <td>Thanh toán tiền mặt</td>
                                             <td class="text-center">
-                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editorder.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                <a href="orderdetails.html" class="detail"><i class="fa fa-asterisk"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chi tiết"></i></a>
+                                                <a href="#deleteOrderModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -242,48 +287,17 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-
-        <!-- Add Modal HTML -->
-        <div id="addSupplierModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h4 class="modal-title">Thêm phương thức thanh toán</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Tên phương thức</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Trạng thái</label>
-                                <select name="supplier" id="supplier" class="form-control">
-                                    <option value="1">Hoạt động</option>
-                                    <option value="2">Tạm khóa</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                            <input type="submit" class="btn btn-success" value="Thêm">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- Delete Modal HTML -->
-        <div id="deletePaymentModal" class="modal fade">
+        <div id="deleteOrderModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Xóa phương thức thanh toán </h4>
+                            <h4 class="modal-title">Xóa đơn hàng </h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn chắc chắn muốn xóa những phương thức thanh toán này?</p>
+                            <p>Bạn chắc chắn muốn xóa những đơn hàng này?</p>
                             <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                         </div>
                         <div class="modal-footer">

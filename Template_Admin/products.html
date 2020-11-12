@@ -58,7 +58,7 @@
                 let value = $(this).val() + "";
                 if (value.length != 0) {
                     let path = value.substring(value.lastIndexOf("\\"), value.length);
-                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/product/${path}` });
+                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/product/${path}")` });
                 }
             })
         })
@@ -284,19 +284,19 @@
                             <div class="form-group">
                                 <label>Thể loại</label>
                                 <select name="category" id="category" class="form-control">
-                                    <option value="0">Please select</option>
-                                    <option value="1">Option #1</option>
-                                    <option value="2">Option #2</option>
-                                    <option value="3">Option #3</option>
+                                    <option value="0">Chọn thể loại</option>
+                                    <option value="1">Ti vi</option>
+                                    <option value="2">Tủ lạnh</option>
+                                    <option value="3">Máy giặt</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Hãng</label>
                                 <select name="supplier" id="supplier" class="form-control">
-                                    <option value="0">Please select</option>
-                                    <option value="1">Option #1</option>
-                                    <option value="2">Option #2</option>
-                                    <option value="3">Option #3</option>
+                                    <option value="0">Chọn hãng</option>
+                                    <option value="1">LG</option>
+                                    <option value="2">Samsung</option>
+                                    <option value="3">Panasonic</option>
                                 </select>
                             </div>
                             <div class="row form-group">

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Chỉnh sửa phương thức thanh toán</title>
+    <title>Chỉnh sửa đơn hàng</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,7 +52,7 @@
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
@@ -67,7 +67,7 @@
                     <li>
                         <a href="users.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý người dùng </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
                     </li>
                     <li>
@@ -105,23 +105,25 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Chỉnh sửa phương thức thanh toán</strong>
+                                <strong class="card-title">Chỉnh sửa đơn hàng</strong>
                             </div>
                             <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input"
-                                                class=" form-control-label">Tên phương thức</label></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Mã
+                                                đơn hàng</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                name="text-input" class="form-control"></div>
+                                                name="text-input" class="form-control" disabled></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng
                                                 thái</label></div>
                                         <div class="col-12 col-md-9">
                                             <select name="category" id="category" class="form-control">
-                                                <option value="0">Đang hoạt động</option>
-                                                <option value="1">Tạm ngưng</option>
+                                                <option value="0">Đang chờ</option>
+                                                <option value="1">Đang giao</option>
+                                                <option value="2">Thành công</option>
+                                                <option value="3">Đã hủy</option>
                                             </select>
                                         </div>
                                     </div>
@@ -135,6 +137,8 @@
                                     </div>
                                 </form>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
