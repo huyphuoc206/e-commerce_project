@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quản lý sản phẩm</title>
+    <title>Quản lý phương thức thanh toán</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -52,16 +52,6 @@
                 }
             });
         });
-        $(document).ready(function () {
-
-            $(".change-image").on("input", function () {
-                let value = $(this).val() + "";
-                if (value.length != 0) {
-                    let path = value.substring(value.lastIndexOf("\\"), value.length);
-                    $(this).closest('.custom-input-file').css({ backgroundImage: `url("images/product/${path}` });
-                }
-            })
-        })
     </script>
 </head>
 
@@ -82,12 +72,12 @@
                 <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
             </div>
 
-            <div id="main-menu" class="main-menu collapse navbar-collapse ju">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thống kê </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="products.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý sản phẩm </a>
                     </li>
                     <li>
@@ -105,7 +95,7 @@
                     <li>
                         <a href="orders.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý đơn hàng </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="payments.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý PT thanh toán </a>
                     </li>
                 </ul>
@@ -131,8 +121,9 @@
                     </div>
                 </div>
             </div>
-        </header>
 
+        </header><!-- /header -->
+        <!-- Header-->
 
         <div class="content mt-3">
             <div class="animated fadeIn">
@@ -140,13 +131,13 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách sản phẩm</strong>
+                                <strong class="card-title">Danh sách phương thức thanh toán</strong>
                             </div>
                             <div class="card-header">
                                 <div class="float-right">
-                                    <a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i
+                                    <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
                                             class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                                    <a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal"><i
+                                    <a href="#deletePaymentModal" class="btn btn-danger" data-toggle="modal"><i
                                             class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                                 </div>
                             </div>
@@ -160,13 +151,8 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th class="text-center">Tên SP</th>
-                                            <th class="text-center">Hình ảnh</th>
-                                            <th class="text-center">Giá</th>
-                                            <th class="text-center">Giảm giá</th>
-                                            <th class="text-center">Mô tả</th>
-                                            <th class="text-center">Thể loại</th>
-                                            <th class="text-center">Hãng</th>
+                                            <th class="text-center">Tên phương thức</th>
+                                            <th class="text-center">Trạng thái</th>
                                             <th class="text-center">Thao tác</th>
                                         </tr>
                                     </thead>
@@ -178,19 +164,14 @@
                                                     <label for="checkbox1"></label>
                                                 </span>
                                             </td>
-                                            <td>Máy giặt ABC</td>
-                                            <td class="text-center"><img src="images/product/m8.jpg" class="td-img" alt="Not found">
+                                            <td>Thanh toán tiền mặt</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
                                             </td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Máy giặt giá rẻ</td>
-                                            <td class="text-center">Máy giặt</td>
-                                            <td class="text-center">Panasonic</td>
                                             <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -202,19 +183,14 @@
                                                     <label for="checkbox2"></label>
                                                 </span>
                                             </td>
-                                            <td>Tivi ABC</td>
-                                            <td class="text-center"><img src="images/product/m4.jpg" class="td-img" alt="Not found">
+                                            <td>Ví Airpay</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
                                             </td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Tivi giá rẻ</td>
-                                            <td class="text-center">Tivi</td>
-                                            <td class="text-center">LG</td>
                                             <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -226,19 +202,33 @@
                                                     <label for="checkbox3"></label>
                                                 </span>
                                             </td>
-                                            <td>Loa ABC</td>
-                                            <td class="text-center"><img src="images/product/mm2.jpg" class="td-img" alt="Not found">
+                                            <td>Thẻ tín dụng/ghi nợ</td>
+                                            <td class="text-center"><span class="status text-success">&bull;</span> Đang hoạt động</td> 
                                             </td>
-                                            <td class="text-center">8000000</td>
-                                            <td class="text-center">20%</td>
-                                            <td>Loa xịn</td>
-                                            <td class="text-center">Loa</td>
-                                            <td class="text-center">Bose</td>
                                             <td class="text-center">
-                                                <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
-                                                <a href="#deleteProductModal" class="delete" data-toggle="modal"><i
+                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
+                                                        class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
+                                                        title="Xóa"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
+                                                    <label for="checkbox3"></label>
+                                                </span>
+                                            </td>
+                                            <td>Ví Momo</td>
+                                            <td class="text-center"><span class="status text-danger">&bull;</span> Tạm ngưng</td> 
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="editpayment.html" class="edit"><i class="fa fa-pencil"
+                                                        aria-hidden="true" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"></i></a>
+                                                <a href="#deletePaymentModal" class="delete" data-toggle="modal"><i
                                                         class="fa fa-trash-o" aria-hidden="true" data-toggle="tooltip"
                                                         title="Xóa"></i></a>
                                             </td>
@@ -254,78 +244,25 @@
 
 
         <!-- Add Modal HTML -->
-        <div id="addProductModal" class="modal fade">
+        <div id="addSupplierModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Thêm sản phẩm</h4>
+                            <h4 class="modal-title">Thêm phương thức thanh toán</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Tên sản phẩm</label>
+                                <label>Tên phương thức</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Giá</label>
-                                <input type="number" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Giảm giá (%)</label>
-                                <input type="number" class="form-control" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Mô tả</label>
-                                <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control"
-                                    required></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Thể loại</label>
-                                <select name="category" id="category" class="form-control">
-                                    <option value="0">Please select</option>
-                                    <option value="1">Option #1</option>
-                                    <option value="2">Option #2</option>
-                                    <option value="3">Option #3</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Hãng</label>
+                                <label>Trạng thái</label>
                                 <select name="supplier" id="supplier" class="form-control">
-                                    <option value="0">Please select</option>
-                                    <option value="1">Option #1</option>
-                                    <option value="2">Option #2</option>
-                                    <option value="3">Option #3</option>
+                                    <option value="1">Đang hoạt động</option>
+                                    <option value="2">Tạm ngưng</option>
                                 </select>
-                            </div>
-                            <div class="row form-group">
-                                <label for="image" class="col-sm-3 form-control-label">Hình
-                                    ảnh</label>
-                                <div class="col-sm-3">
-                                    <div class="custom-input-file">
-                                        <label class="uploadPhoto">
-                                            Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="custom-input-file">
-                                        <label class="uploadPhoto">
-                                            Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="custom-input-file">
-                                        <label class="uploadPhoto">
-                                            Chọn ảnh
-                                            <input type="file" class="change-image" name="image" id="image">
-                                        </label>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -337,7 +274,7 @@
             </div>
         </div>
         <!-- Delete Modal HTML -->
-        <div id="deleteProductModal" class="modal fade">
+        <div id="deletePaymentModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form>
@@ -346,7 +283,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn chắc chắn muốn xóa những sản phẩm này?</p>
+                            <p>Bạn chắc chắn muốn xóa những thể loại này?</p>
                             <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                         </div>
                         <div class="modal-footer">
@@ -363,6 +300,25 @@
     <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+    </script>
+
 </body>
 
 </html>
