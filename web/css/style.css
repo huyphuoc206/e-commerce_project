@@ -6,6 +6,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 
 
+.td-img {
+	display: block;
+	margin: auto;
+	max-width: 150px;
+	max-height: 95px;
+	width: auto;
+	height: auto; 
+}
+
+
 /* comment */
 .comment-wrapper .panel-body {
     max-height:650px;
