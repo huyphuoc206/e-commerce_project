@@ -1,30 +1,10 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco Store</title>
-    <!-- Meta tag Keywords -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8" />
-    <meta name="keywords" content="Tech_Power Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
-    />
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-    <!-- //Meta tag Keywords -->
-
     <!-- Custom-Files -->
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap css -->
@@ -39,15 +19,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //Custom-Files -->
 
     <!-- web fonts -->
-    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-          rel="stylesheet">
-    <!-- //web fonts -->
-
+    <link
+        href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext"
+        rel="stylesheet">
+    <link
+        href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+        rel="stylesheet">
 </head>
 
 <body>
-	<!-- top-header -->
+  <!-- top-header -->
 	<div class="agile-main-top">
 		<div class="container-fluid">
 			<div class="row justify-content-end main-top-w3l py-2">
@@ -245,63 +226,78 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- //navigation -->
-
-<!-- page -->
-<div class="services-breadcrumb">
-    <div class="agile_inner_breadcrumb">
-        <div class="container">
-            <ul class="w3_short">
-                <li>
-                    <a href="index.html">Trang Chủ</a>
-                    <i>|</i>
-                </li>
-                <li>Đăng Nhập</li>
-            </ul>
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="index.html">Trang Chủ</a>
+                        <i>|</i>
+                    </li>
+                    <li>Chi tiết đơn hàng</li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!--login-->
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="modal-body col-sm-6">
-          <form action="#" method="post">
-              <div class="form-group">
-                  <label for="username" class="col-form-label">Tên đăng nhập</label>
-                  <input type="text" class="form-control" id="username" placeholder=" " name="name" required=""
-                         oninvalid="this.setCustomValidity('Hãy nhập tên đăng nhập!')"
-                         oninput="this.setCustomValidity('')">
-              </div>
-              <div class="form-group">
-                  <label for="password" class="col-form-label">Mật khẩu</label>
-                  <input type="password" class="form-control" id="password" placeholder=" " name="Password" required=""
-                         oninvalid="this.setCustomValidity('Hãy nhập mật khẩu của bạn!')"
-                         oninput="this.setCustomValidity('')">
-              </div>
-              <div class="sub-w3l">
 
-                      <p class="text-left dont-do mt-3">
-                          <a href="forgotpass.html">
-                              Bạn quên mật khẩu?</a>
-                      </p>
+    <div class="container product-sec1 px-sm-4 px-3 py-sm-5 py-3 mb-4 mt-5">
+        <article class="card">
+            <header class="card-header"> Đơn hàng của tôi / Theo dõi </header>
+            <div class="card-body">
+                <h6>Mã đơn hàng: <span>1</span></h6>
+                <article class="card mt-3">
+                    <div class="card-body row">
+                        <div class="col"> <strong>Địa chỉ:</strong> <br>Biên Hòa Đồng Nai </div>
+                        <div class="col"> <strong>Trạng thái:</strong> <br> Đang giao </div>
+                        <div class="col"> <strong>Dự kiến nhận vào:</strong> <br> 23/6/2020 </div>
+                    </div>
+                </article>
+                <div class="track">
+                    <div class="step active"> <span class="icon"> <i class="fa fa-clock"></i> </span> <span
+                            class="text">Đang chờ</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> Đang giao </span> </div>
+                    <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Thành công</span> </div>
+                </div>
+                <hr>
+                <ul class="row">
+                    <li class="col-md-4">
+                        <figure class="itemside mb-3">
+                            <div class="aside"><img src="images/m2.jpg" class="td-img"></div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">TV LG</p> <span class="text-muted">5.000.000đ </span>
+                                <p class="quantity">Số lượng: <span>1</span></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-4">
+                        <figure class="itemside mb-3">
+                            <div class="aside"><img src="images/m3.jpg" class="td-img"></div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">TV Samsung</p> <span class="text-muted">3.500.000đ
+                                </span>
+                                <p class="quantity">Số lượng: <span>1</span></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="col-md-4">
+                        <figure class="itemside mb-3">
+                            <div class="aside"><img src="images/m5.jpg" class="td-img"></div>
+                            <figcaption class="info align-self-center">
+                                <p class="title">Loa LG</p><span class="text-muted">500.000đ
+                                </span>
+                                <p class="quantity">Số lượng: <span>1</span></p>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+                <hr>
+                <a href="orderhistory.html" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Quay lại lịch sử đơn hàng</a>
+            </div>
+        </article>
+    </div>
 
-              </div>
-              <div class="right-w3l">
-                  <input type="submit" class="form-control" value="Đăng Nhập">
-              </div>
-              <p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
-                  <a href="register.html">
-                      Đăng Ký Ngay</a>
-              </p>
-          </form>
-      </div>
-  </div>
-
-</div>
-
-<!--login-->
-<!-- //page -->
-
-	<!-- footer -->
+  	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
 			<div class="container py-md-5 py-sm-4 py-3">
@@ -496,207 +492,138 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	</footer>
 	<!-- //footer -->
+    <!-- js-files -->
+    <!-- jquery -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!-- //jquery -->
 
-<!-- js-files -->
-<!-- jquery -->
-<script src="js/jquery-2.2.3.min.js"></script>
-<!-- //jquery -->
-
-<!-- nav smooth scroll -->
-<script>
-    $(document).ready(function () {
-        $(".dropdown").hover(
-            function () {
-                $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                $(this).toggleClass('open');
-            },
-            function () {
-                $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                $(this).toggleClass('open');
-            }
-        );
-    });
-</script>
-<!-- //nav smooth scroll -->
-
-<!-- popup modal (for location)-->
-<script src="js/jquery.magnific-popup.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.popup-with-zoom-anim').magnificPopup({
-            type: 'inline',
-            fixedContentPos: false,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            mainClass: 'my-mfp-zoom-in'
+    <!-- nav smooth scroll -->
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
         });
+    </script>
+    <!-- //nav smooth scroll -->
 
-    });
-</script>
-<!-- //popup modal (for location)-->
+    <!-- popup modal (for location)-->
+    <script src="js/jquery.magnific-popup.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
 
-<!-- cart-js -->
-<script src="js/minicart.js"></script>
-<script>
-    paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
+        });
+    </script>
+    <!-- //popup modal (for location)-->
 
-    paypals.minicarts.cart.on('checkout', function (evt) {
-        var items = this.items(),
-            len = items.length,
-            total = 0,
-            i;
+    <!-- cart-js -->
+    <script src="js/minicart.js"></script>
+    <script>
+        paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
-        // Count the number of each item in the cart
-        for (i = 0; i < len; i++) {
-            total += items[i].get('quantity');
+        paypals.minicarts.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            // if (total < 3) {
+            // 	alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+            // 	evt.preventDefault();
+            // }
+        });
+    </script>
+    <!-- //cart-js -->
+
+    <!-- password-script -->
+    <script>
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
         }
 
-        if (total < 3) {
-            alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-            evt.preventDefault();
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
         }
-    });
-</script>
-<!-- //cart-js -->
+    </script>
+    <!-- //password-script -->
 
-<!-- password-script -->
-<script>
-    window.onload = function () {
-        document.getElementById("password1").onchange = validatePassword;
-        document.getElementById("password2").onchange = validatePassword;
-    }
+    <!-- scroll seller -->
+    <script src="js/scroll.js"></script>
+    <!-- //scroll seller -->
 
-    function validatePassword() {
-        var pass2 = document.getElementById("password2").value;
-        var pass1 = document.getElementById("password1").value;
-        if (pass1 != pass2)
-            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-        else
-            document.getElementById("password2").setCustomValidity('');
-        //empty string means no validation error
-    }
-</script>
-<!-- //password-script -->
+    <!-- smoothscroll -->
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- //smoothscroll -->
 
-<!-- easy-responsive-tabs -->
-<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css " />
-<script src="js/easyResponsiveTabs.js"></script>
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
 
-<script>
-    $(document).ready(function () {
-        //Horizontal Tab
-        $('#parentHorizontalTab').easyResponsiveTabs({
-            type: 'default', //Types: default, vertical, accordion
-            width: 'auto', //auto or any width like 600px
-            fit: true, // 100% fit in a container
-            tabidentify: 'hor_1', // The tab groups identifier
-            activate: function (event) { // Callback function if tab is switched
-                var $tab = $(this);
-                var $info = $('#nested-tabInfo');
-                var $name = $('span', $info);
-                $name.text($tab.text());
-                $info.show();
-            }
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
         });
-    });
-</script>
-<!-- //easy-responsive-tabs -->
+    </script>
+    <!-- //end-smooth-scrolling -->
 
-<!-- credit-card -->
-<script src="js/creditly.js"></script>
-<link rel="stylesheet" href="css/creditly.css" type="text/css" media="all" />
-<script>
-    $(function () {
-        var creditly = Creditly.initialize(
-            '.creditly-wrapper .expiration-month-and-year',
-            '.creditly-wrapper .credit-card-number',
-            '.creditly-wrapper .security-code',
-            '.creditly-wrapper .card-type');
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear' 
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
 
-
-        $(".creditly-card-form .submit").click(function (e) {
-            e.preventDefault();
-            var output = creditly.validate();
-            if (output) {
-                // Your validated credit card output
-                console.log(output);
-            }
         });
-    });
-</script>
+    </script>
+    <!-- //smooth-scrolling-of-move-up -->
 
-<!-- creditly2 (for paypal) -->
-<script src="js/creditly2.js"></script>
-<script>
-    $(function () {
-        var creditly = Creditly2.initialize(
-            '.creditly-wrapper .expiration-month-and-year-2',
-            '.creditly-wrapper .credit-card-number-2',
-            '.creditly-wrapper .security-code-2',
-            '.creditly-wrapper .card-type');
-
-        $(".creditly-card-form-2 .submit").click(function (e) {
-            e.preventDefault();
-            var output = creditly.validate();
-            if (output) {
-                // Your validated credit card output
-                console.log(output);
-            }
-        });
-    });
-</script>
-
-<!-- //credit-card -->
-
-
-<!-- smoothscroll -->
-<script src="js/SmoothScroll.min.js"></script>
-<!-- //smoothscroll -->
-
-<!-- start-smooth-scrolling -->
-<script src="js/move-top.js"></script>
-<script src="js/easing.js"></script>
-<script>
-    jQuery(document).ready(function ($) {
-        $(".scroll").click(function (event) {
-            event.preventDefault();
-
-            $('html,body').animate({
-                scrollTop: $(this.hash).offset().top
-            }, 1000);
-        });
-    });
-</script>
-<!-- //end-smooth-scrolling -->
-
-<!-- smooth-scrolling-of-move-up -->
-<script>
-    $(document).ready(function () {
-        /*
-        var defaults = {
-            containerID: 'toTop', // fading element id
-            containerHoverID: 'toTopHover', // fading element hover id
-            scrollSpeed: 1200,
-            easingType: 'linear'
-        };
-        */
-        $().UItoTop({
-            easingType: 'easeOutQuart'
-        });
-
-    });
-</script>
-<!-- //smooth-scrolling-of-move-up -->
-
-<!-- for bootstrap working -->
-<script src="js/bootstrap.js"></script>
-<!-- //for bootstrap working -->
-<!-- //js-files -->
-
+    <!-- for bootstrap working -->
+    <script src="js/bootstrap.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- //js-files -->
 </body>
 
 </html>
