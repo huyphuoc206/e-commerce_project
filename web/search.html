@@ -253,10 +253,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="agileinfo-ads-display col-lg-9">
 					<div class="wrapper">
 						<!-- first section -->
+
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
 							<div class="row ml-2 mb-5">
 								<h3>Kết quả tìm kiếm cho `Tivi`: <span>12</span> kết quả</h3>
 							</div>
+							<div class="row ml-3">
+								<span class="card-title">Ưu tiên xem:</span>
+								<ul class="list-inline ml-3">
+									<li class="list-inline-item"><a class="text-uppercase priority" href="#">Hàng
+											mới</a></li>
+									<li class="list-inline-item priority"><a class="text-uppercase priority"
+											href="#">Giảm giá nhiều</a></li>
+									<li class="list-inline-item priority"><a class="text-uppercase priority"
+											href="#">Giá thấp</a></li>
+									<li class="list-inline-item priority"><a class="text-uppercase priority"
+											href="#">Giá cao</a></li>
+								</ul>
+							</div>
+							<hr>
 							<div class="row mt-5 mb-5">
 								<div class="col-md-4 product-men">
 									<div class="men-pro-item simpleCart_shelfItem">
@@ -814,33 +829,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 						<!-- discounts -->
 						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Hãng</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Sony</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">LG</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Samsung</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Panasonic</span>
-								</li>
-								<!-- <li>
+							<form action="#" method="POST">
+								<h3 class="agileits-sear-head mb-3">Nhà cung cấp</h3>
+								<ul class="row">
+									<li class="col-6">
 										<input type="checkbox" class="checked">
-										<span class="span">50% or More</span>
+										<span class="span">Sony</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">LG</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">Samsung</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">Panasonic</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">Asanzo</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">Toshiba</span>
+									</li>
+									<li class="col-6">
+										<input type="checkbox" class="checked">
+										<span class="span">TCL</span>
 									</li>
 									<li>
-										<input type="checkbox" class="checked">
-										<span class="span">60% or More</span>
-									</li> -->
-							</ul>
+								</ul>
+								<h3 class="agileits-sear-head mb-3">Khoảng giá</h3>
+								<div class="row">
+									<input type="number" id="price1" class="form-control" placeholder="Giá tối thiểu"
+										min="0">
+									<input type="number" id="price2" class="form-control" placeholder="Giá tối đa"
+										min="0">
+								</div>
+								<div class="row justify-content-center mt-2">
+									<button type="submit" class="btn btn-info pl-4 pr-4">Lọc</button>
+								</div>
+
+							</form>
+
 						</div>
 						<!-- //discounts -->
 						<!-- price -->
@@ -852,107 +886,82 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<a href="#">Dưới 1.000.000đ</a>
 									</li>
 									<li class="my-1">
-										<a href="#">1.000.000đ - 3.000.000đ</a>
+										<a href="#">1.000.000đ - 5.000.000đ</a>
 									</li>
 									<li>
-										<a href="#">3.000.000đ - 5.000.000đ</a>
+										<a href="#">5.000.000đ - 10.000.000đ</a>
 									</li>
 									<li class="my-1">
-										<a href="#">5.000.000đ - 7.000.000đ</a>
+										<a href="#">10.000.000đ - 15.000.000đ</a>
 									</li>
 									<li>
-										<a href="#">7.000.000đ - 9.000.000đ</a>
+										<a href="#">15.000.000đ - 20.000.000đ</a>
 									</li>
 									<li class="mt-1">
-										<a href="#">Trên 9.000.000đ</a>
+										<a href="#">Trên 20.000.000đ</a>
 									</li>
 								</ul>
 							</div>
 						</div>
 						<!-- //price -->
 
-
-						<!-- electronics -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Sản phẩm</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Tivi</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Tủ lạnh</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Máy giặt</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Máy lạnh</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Loa</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Máy lọc nước</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">Máy quạt</span>
-
-							</ul>
-						</div>
-						<!-- //electronics -->
-
-						<!-- arrivals -->
-						<div class="left-side border-bottom py-2">
-							<h3 class="agileits-sear-head mb-3">Sản phẩm mới</h3>
-							<ul>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">30 ngày trước</span>
-								</li>
-								<li>
-									<input type="checkbox" class="checked">
-									<span class="span">90 ngày trước</span>
-								</li>
-							</ul>
-						</div>
-						<!-- //arrivals -->
 						<!-- best seller -->
 						<div class="f-grid py-2">
-							<h3 class="agileits-sear-head mb-3">Sản phẩm nổi bật</h3>
+							<h3 class="agileits-sear-head mb-3">Nổi bật</h3>
 							<div class="box-scroll">
 								<div class="scroll">
 									<div class="row">
 										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k1.jpg" alt="" class="img-fluid">
+											<img src="images/m1.jpg" alt="" class="img-fluid">
 										</div>
 										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Samsung Galaxy On7 Prime (Gold, 4GB RAM + 64GB Memory)</a>
-											<a href="" class="price-mar mt-2">3.000.000đ</a>
-										</div>
-									</div>
-									<div class="row my-4">
-										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k2.jpg" alt="" class="img-fluid">
-										</div>
-										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Haier 195 L 4 Star Direct-Cool Single Door Refrigerator</a>
-											<a href="" class="price-mar mt-2">4.000.000đ</a>
+											<a href="">Sony Android TV 4K 43" KD-43X8000G</a>
+											<a href="" class="price-mar mt-2">9.400.000đ</a>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-sm-2 col-3 left-mar">
-											<img src="images/k3.jpg" alt="" class="img-fluid">
+											<img src="images/m5.jpg" alt="" class="img-fluid">
 										</div>
 										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
-											<a href="">Ambrane 13000 mAh Power Bank (P-1310 Premium)</a>
-											<a href="" class="price-mar mt-2">5.000.000đ</a>
+											<a href="">Loa Harman Kardon Aura Studio 3</a>
+											<a href="" class="price-mar mt-2">1.000.000đ</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-sm-2 col-3 left-mar">
+											<img src="images/m8.jpg" alt="" class="img-fluid">
+										</div>
+										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
+											<a href="">Samsung Inverter 9.5 Kg WW95J42G0BX/SV</a>
+											<a href="" class="price-mar mt-2">10.300.000đ</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-sm-2 col-3 left-mar">
+											<img src="images/m7.jpg" alt="" class="img-fluid">
+										</div>
+										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
+											<a href="">Panasonic Inverter 188 lít NR-BA229PKVN</a>
+											<a href="" class="price-mar mt-2">7.000.000đ</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-sm-2 col-3 left-mar">
+											<img src="images/mk8.jpg" alt="" class="img-fluid">
+										</div>
+										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
+											<a href="">Samsung Smart TV 4K 65" UA65TU7000</a>
+											<a href="" class="price-mar mt-2">17.900.000đ</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-sm-2 col-3 left-mar">
+											<img src="images/mk21.jpg" alt="" class="img-fluid">
+										</div>
+										<div class="col-lg-9 col-sm-10 col-9 w3_mvd">
+											<a href="">Quạt treo tường Asia L16006-XV0 55W</a>
+											<a href="" class="price-mar mt-2">700.000đ</a>
 										</div>
 									</div>
 								</div>
@@ -1285,6 +1294,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		}
 	</script>
 	<!-- //password-script -->
+
+	<!-- filter price -->
+	<script>
+		window.onload = function () {
+			document.getElementById("price1").onchange = filterPrice;
+			document.getElementById("price2").onchange = filterPrice;
+		}
+
+		function filterPrice() {
+			let price1 = document.getElementById("price1").value;
+			let price2 = document.getElementById("price2").value;
+			if (parseInt(price1) > parseInt(price2))
+				document.getElementById("price2").setCustomValidity("Giá tối thiểu phải bé hơn giá tối đa");
+			else
+				document.getElementById("price2").setCustomValidity('');
+		}
+
+	</script>
+	<!-- filter price -->
+
+	<!-- scroll seller -->
+	<script src="js/scroll.js"></script>
+	<!-- //scroll seller -->
 
 	<!-- smoothscroll -->
 	<script src="js/SmoothScroll.min.js"></script>
