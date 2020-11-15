@@ -15,6 +15,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	height: auto; 
 }
 
+.product-img {
+    display: block;
+	margin: auto;
+	max-height: 150px;
+	width: auto;
+	height: auto; 
+}
+
 /* avatar */
 .custom-input-file {
     overflow: hidden;
