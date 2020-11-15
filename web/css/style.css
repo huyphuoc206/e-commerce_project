@@ -15,6 +15,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	height: auto; 
 }
 
+/* avatar */
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #999;
+    border-radius: 50%;
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120px;
+}
+
+.uploadPhoto {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    color: #fff;    
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;    
+    background-color: rgba(0,0,0,.3);
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    margin: 0;
+    padding:0;
+    left:0;
+}
+
+.custom-input-file:hover .uploadPhoto { display: block; }
+
+/* avatar */
 /* order */
 .detail-icon {
     font-size: 20px;
@@ -166,7 +210,7 @@ ul.row-sm {
     color: #ffffff;
     background-color: #ee5435;
     border-color: #ee5435;
-    border-radius: 1px
+    border-radius: 0.25rem;
 }
 
 .card .btn-warning:hover {
