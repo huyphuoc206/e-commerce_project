@@ -871,13 +871,13 @@ h3.tittle-w3l span {
     visibility: hidden;
 }
 
-.product-men:nth-child(3) .product-new-top {
+/* .product-men:nth-child(3) .product-new-top {
     background: #FFC107;
 }
 
 .product-men:nth-child(4) .product-new-top {
     background: #219ff3;
-}
+} */
 
 .product-new-top {
     background: #ff2978;
