@@ -724,6 +724,11 @@ h3.tittle-w3l span {
     outline: none;
 }
 
+.item-info-product .snipcart-details input.button {
+    font-size: 11px;
+}
+
+
 .snipcart-details input.button {
     font-size: 13px;
     color: #fff;
