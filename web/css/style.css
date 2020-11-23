@@ -1239,7 +1239,10 @@ span.item_price {
 }
 
 .product-sec1.product-sec2 {
-    background: #db6400;
+    background-image: url('../images/bg-gs.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
 }
 
@@ -1253,7 +1256,7 @@ h3.effect-bg {
 
 p.w3l-nut-middle {
     position: absolute;
-    right: 60%;
+    right: 54%;
     bottom: 42%;
     font-size: 31px;
     font-weight: 800;
@@ -1445,7 +1448,8 @@ h2.footer-top-head-w3l {
 }
 
 .social .gp {
-    background: #DD4B39;
+    background: #d6249f;
+background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
 }
 
 .social .pin {
