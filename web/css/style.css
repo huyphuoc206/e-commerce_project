@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	margin-top: 5px;
 	line-height: 16px;
 }
-#slider-product .carousel .carousel-item .btn:hover, .carousel .carousel-item .btn:focus {
+#slider-product .carousel .carousel-item .btn:hover, #slider-product .carousel .carousel-item .btn:focus {
 	color: #fff;
 	background: #000;
 	border-color: #000;
@@ -62,17 +62,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 #slider-product .carousel .thumb-wrapper {
 	text-align: center;
 }
-#slider-product #slider-product.carousel .thumb-content {
+ #slider-product.carousel .thumb-content {
 	padding: 15px;
 }
-#slider-product .carousel-control-prev, .carousel-control-next {
+#slider-product .carousel-control-prev, #slider-product .carousel-control-next {
 	height: 100px;
 	width: 40px;
 	background: none;
 	margin: auto 0;
 	background: rgba(0, 0, 0, 0.2);
 }
-#slider-product .carousel-control-prev i, .carousel-control-next i {
+#slider-product .carousel-control-prev i, #slider-product .carousel-control-next i {
 	font-size: 30px;
 	position: absolute;
 	top: 50%;
@@ -106,7 +106,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 #slider-product .carousel .carousel-indicators {
 	bottom: -50px;
 }
-#slider-product .carousel-indicators li, .carousel-indicators li.active {
+#slider-product .carousel-indicators li, #slider-product .carousel-indicators li.active {
 	width: 10px;
 	height: 10px;
 	margin: 4px;
@@ -1218,7 +1218,7 @@ h3.tittle-w3l span {
     outline: none;
     padding: 11px 10px 10px 10px;
     font-size: 13px;
-    color: #c4c4c4;
+    color: #495057;
 }
 
 .search-hotel form input[type="submit"] {
