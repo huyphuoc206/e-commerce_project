@@ -51,7 +51,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </head>
 
-<body>
+<body class="preloading">
+	<!-- hieu ung loading -->
+	<div class="load">
+		<img src="images/loading.gif" alt="">
+	</div>
 	<!-- top-header -->
 	<div class="agile-main-top">
 		<div class="container-fluid">
@@ -1992,6 +1996,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</footer>
 	<!-- //footer -->
 	<!-- js-files -->
+	<!-- loading page -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		$(window).on('load', function(event){
+			$('body').removeClass('preloading');
+			$('.load').delay(1000).fadeOut('fast');
+		});
+	</script>
 	<!-- jquery -->
 	<script src="js/jquery-2.2.3.min.js"></script>
 	<!-- //jquery -->
