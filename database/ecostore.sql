@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2020 at 02:03 PM
+-- Generation Time: Dec 17, 2020 at 06:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -82,7 +82,10 @@ CREATE TABLE `contact` (
   `fullname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `createddate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `status` int(11) NOT NULL,
+  `createddate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `modifieddate` timestamp NULL DEFAULT NULL,
+  `modifiedby` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -298,6 +301,7 @@ CREATE TABLE `supplier` (
   `id` bigint(20) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL,
   `createddate` timestamp NULL DEFAULT NULL,
   `createdby` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `modifieddate` timestamp NULL DEFAULT NULL,
@@ -336,6 +340,8 @@ CREATE TABLE `user` (
   `avatar` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roleid` bigint(20) NOT NULL,
   `status` int(11) NOT NULL,
+  `key` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keytime` int(11) NOT NULL DEFAULT 24,
   `createddate` timestamp NULL DEFAULT NULL,
   `createdby` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `modifieddate` timestamp NULL DEFAULT NULL,
