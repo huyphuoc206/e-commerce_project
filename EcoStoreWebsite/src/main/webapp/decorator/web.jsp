@@ -2,7 +2,7 @@
 <%@include file="/common/taglib.jsp" %>
 <html>
 <head>
-    <title>Eco Store</title>
+    <title><dec:title default="Trang Chủ"></title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8"/>
