@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Quản lý trang giới thiệu</title>
+    <title>Quản lý banner</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -101,34 +101,7 @@
                     </li>  
                     <li class="active">
                         <a href="payments.html"> <i class="menu-icon fa fa-credit-card"></i>Quản lý PT thanh toán </a>
-                    </li>   
-                    <li class="active">
-                        <a href="abouts.html"> <i class="menu-icon fa fa-info"></i>Quản lý trang giới thiệu </a>
-                    </li> 
-                    <li class="active">
-                        <a href="feedback.html"> <i class="menu-icon fa fa-tasks"></i>Quản lý phản hồi </a>
-                    </li> 
-                    <li class="active">
-                        <a href="contact.html"> <i class="menu-icon fa fa-comment-o"></i>Quản lý liên hệ </a>
-                    </li> 
-                    <li class="active">
-                        <a href="information.html"> <i class="menu-icon fa fa-dashboard"></i>Quản lý thông tin cửa hàng </a>
-                    </li> 
-                    <li class="active">
-                        <a href="menu.html"> <i class="menu-icon fa fa-list"></i>Quản lý danh mục </a>
-                    </li> 
-                    <li class="active">
-                        <a href="menutype.html"> <i class="menu-icon fa fa-list-ol"></i>Quản lý loại danh mục </a>
-                    </li>
-                     <li class="active">
-                        <a href="privacypolicy.html"> <i class="menu-icon fa fa-tasks"></i>Quản lý chính sách và bảo mật </a>
-                    </li>
-                     <li class="active">
-                        <a href="slide.html"> <i class="menu-icon fa fa-image"></i>Quản lý banner </a>
-                    </li> 
-                    <li class="active">
-                        <a href="terms.html"> <i class="menu-icon fa fa-terminal"></i>Quản lý điều kiện </a>
-                    </li> 
+                    </li>       
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -162,7 +135,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Danh sách nội dung giới thiệu</strong>
+                                <strong class="card-title">Danh sách banner</strong>
                             </div>
                             <div class="card-header">
                                 <div class="float-right">
@@ -182,8 +155,10 @@
                                                     <label for="selectAll"></label>
                                                 </span>
                                             </th>
-                                            <th class="text-center">Nội dung</th>
-                                            <th class="text-center">Hình giới thiệu</th>
+                                            <th class="text-center">Tựa đề</th>
+                                            <th class="text-center">Mô tả</th>
+                                            <th class="text-center">Hình ảnh    </th>
+                                            <th class="text-center">Thứ tự hiển thị</th>                                            
                                             <th class="text-center">Trạng thái</th>
                                             <th class="text-center">Thao tác</th>
                                         </tr>
@@ -196,35 +171,20 @@
                                                     <label for="checkbox1"></label>
                                                 </span>
                                             </td>
-                                            <td>Chúng tôi là Eco Store</td>
+                                            <td>............... </td>
+                                            <td>Cam, dài, đẹp</td>
                                             <td>Hình 1</td>
+                                            <td>1</td>
                                             <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
                                             </td>
                                             <td class="text-center">
-                                                <a href="editabout.html" class="edit"><i class="fa fa-pencil"
+                                                <a href="editslide.html" class="edit"><i class="fa fa-pencil"
                                                         aria-hidden="true" data-toggle="tooltip"
                                                         title="Chỉnh sửa"></i></a>
                                                
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                            </td>
-                                            <td>Chúng tôi vẫn là Eco Store</td>
-                                            <td>Hình 2</td>
-                                            <td class="text-center"><span class="status text-danger">&bull;</span>Tạm dừng</td>
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="editabout.html" class="edit"><i class="fa fa-pencil"
-                                                        aria-hidden="true" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"></i></a>
-                                               
-                                            </td>
-                                        </tr>
+                                       
                                        
                                         </tr>
                                     </tbody>
@@ -243,27 +203,28 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Thêm nội dung giới thiệu</h4>
+                            <h4 class="modal-title">Thêm banner</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label>Nội dung</label>
+                            <div class=" row form-group">
+                                <label>Tiêu đề</label>
                                 <input type="text" class="form-control" required>
                             </div>
                             <div class="row form-group">
-                                <label for="avatar" class="col-sm-3 form-control-label">Hình
-                                    giới thiệu</label>
-                                <div class="col-sm-3">
-                                    <div class="custom-input-file">
-                                        <label class="uploadPhoto">
-                                            Chọn
-                                            <input type="file" class="change-avatar" name="avatar" id="avatar">
-                                        </label>
-                                    </div>
-                                </div>
+                                <label>Mô tả</label>
+                                <input type="text" class="form-control" required>
                             </div>
-                            <div class="form-group">
+                            <div class="row form-group">
+                                <label>Hình ảnh</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="row form-group">
+                                <label>Thứ tự</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                           
+                            <div class="row form-group">
                                 <label>Trạng thái</label>
                                 <select name="supplier" id="supplier" class="form-control">
                                     <option value="1">Hoạt động</option>
@@ -285,11 +246,11 @@
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h4 class="modal-title">Xóa nội dung giới thiệu </h4>
+                            <h4 class="modal-title">Xóa banner </h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
-                            <p>Bạn chắc chắn muốn xóa những nội dung giới thiệu này?</p>
+                            <p>Bạn chắc chắn muốn xóa những banner này?</p>
                             <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                         </div>
                         <div class="modal-footer">
