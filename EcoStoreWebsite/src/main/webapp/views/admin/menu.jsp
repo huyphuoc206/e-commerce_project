@@ -39,7 +39,7 @@
                                                 </span>
                                 </th>
                                 <th class="text-center">Tên</th>
-                                <th class="text-center">Hình danh mục</th>
+                                <th class="text-center">Đường dẫn danh mục</th>
                                 <th class="text-center">Loại danh mục</th>
 
                                 <th class="text-center">Trạng thái</th>
@@ -111,17 +111,20 @@
                         <label>Tên</label>
                         <input type="text" class="form-control" required>
                     </div>
-                    <div class="row form-group">
-                        <label for="avatar" class="col-sm-3 form-control-label">Hình
-                            danh mục</label>
-                        <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-avatar" name="avatar" id="avatar">
-                                </label>
-                            </div>
-                        </div>
+                    <div class="form-group">
+                        <label>Đường dẫn danh mục</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Đường dẫn danh mục</label>
+                        <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Loại danh mục</label>
+                        <select name="supplier" id="supplier" class="form-control">
+                            <option value="1">Menu Top</option>
+                            <option value="2">Menu Dưới</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
