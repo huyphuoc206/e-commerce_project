@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AbstractDAO implements IGenericDAO {
+public class AbstractDAO<T> implements IGenericDAO<T> {
 
     @Override
     public <T> List<T> query(String sql, IRowMapper<T> rowMapper, Object... parameters) {
