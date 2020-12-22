@@ -36,7 +36,7 @@ public abstract class AbstractModel {
         this.createdBy = createdBy;
     }
 
-    public Timestamp getModifiedDate() {
+    public Timestamp getModifiedDate(Timestamp modifieddate) {
         return modifiedDate;
     }
 
