@@ -46,26 +46,14 @@
     <div class="w3l-middlefooter-sec">
         <div class="container py-md-5 py-sm-4 py-3">
             <div class="row footer-info w3-agileits-info">
-
-
                 <div class="col-md-3 col-sm-6 footer-grids mt-sm-0 mt-4">
                     <h3 class="text-white font-weight-bold mb-3">Hỗ trợ khách hàng</h3>
                     <ul>
-                        <li class="mb-3">
-                            <a href="about.html">Về chúng tôi</a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="contact.html">Liên hệ</a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="help.html">Trợ giúp</a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="privacy.html">Chính sách bảo mật</a>
-                        </li>
-                        <li class="mb-3">
-                            <a href="terms.html">Điều khoản sử dụng</a>
-                        </li>
+                        <c:forEach var="item" items="${menuBottom}">
+                            <li class="mb-3">
+                                <a href="<c:url value='${item.link}'/>">${item.name}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <!-- footer categories -->

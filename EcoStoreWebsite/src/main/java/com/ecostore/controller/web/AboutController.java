@@ -1,7 +1,9 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.model.AboutModel;
+import com.ecostore.model.MenuModel;
 import com.ecostore.service.IAboutService;
+import com.ecostore.service.IMenuService;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -11,17 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/gioi-thieu")
 public class AboutController extends HttpServlet {
     @Inject
-    private IAboutService iAboutService;
+    private IAboutService AboutService;
+    @Inject
+    private IMenuService menuService;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        AboutModel model = iAboutService.findOneByStatus(1);
+        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1,1);
+        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
+        request.setAttribute("menuTop", menuTop);
+        request.setAttribute("menuBottom", menuBottom);
+        AboutModel model = AboutService.findOneByStatus(1);
         request.setAttribute("model", model);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/about.jsp");
         rd.forward(request, response);

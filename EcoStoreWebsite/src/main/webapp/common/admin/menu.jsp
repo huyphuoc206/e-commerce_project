@@ -15,7 +15,12 @@
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>
+                <c:forEach var="item" items="${menuLeft}">
+                    <li class="mb-3">
+                        <a href="<c:url value='${item.link}'/>"><i class="menu-icon fa fa-smile-o" aria-hidden="true"></i>${item.name}</a>
+                    </li>
+                </c:forEach>
+                <%--<li>
                     <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Thông tin </a>
                 </li>
                 <li>
@@ -65,7 +70,7 @@
                 </li>
                 <li class="active">
                     <a href="terms.html"> <i class="menu-icon fa fa-terminal"></i>Quản lý điều kiện </a>
-                </li>
+                </li>--%>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
