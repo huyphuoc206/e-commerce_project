@@ -37,14 +37,7 @@
         <!-- //tittle heading -->
         <div class="row">
             <div class="col-lg-6 welcome-left">
-                <h3>Về chúng tôi</h3>
-                <h4 class="my-sm-3 my-2">Eco Store là trong những đơn vị cung cấp các thiết bị điện gia dụng chất
-                    lượng hiện nay tại thị trường Việt Nam.
-                </h4>
-                <p>Chúng tôi làm việc với phương châm lấy uy tín của doanh nghiệp và lợi ích của khách hàng lên hàng
-                    đầu. Những sản phẩm mà Eco Store mang đến
-                    cho khách hàng luôn được đảm bảo về chất lượng.
-                </p>
+                ${model.content}
             </div>
             <div class="col-lg-6 welcome-right-top mt-lg-0 mt-sm-5 mt-4">
                 <img src="images/b3.jpg" class="img-fluid" alt=" ">
