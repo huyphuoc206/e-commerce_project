@@ -419,7 +419,7 @@
         </div>
     </div>
 
-    <!-- Comment -->
+    <!-- CommentModel -->
     <div class="container product-sec1 mb-5 pt-5 pb-5">
         <div class="row bootstrap snippets bootdeys">
             <div class="col-sm-12">
