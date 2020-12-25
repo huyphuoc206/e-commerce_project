@@ -5,6 +5,9 @@
   Time: 12:49 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-supplier"/>
+<c:url var="CategoryUrl" value="/quan-tri/nha-san-xuat"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -39,61 +42,42 @@
                                 </th>
                                 <th class="text-center">Tên hãng sản xuất</th>
                                 <th class="text-center">Mã hãng sản xuất</th>
+                                <th class="text-center">Trạng thái</th>
                                 <th class="text-center">Thao tác</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
-                                                </span>
-                                </td>
-                                <td>Samsung</td>
-                                <td class="text-center">samsung
-                                </td>
-                                <td class="text-center">
-                                    <a href="editsupplier.html" class="edit"><i class="fa fa-pencil"
-                                                                                aria-hidden="true" data-toggle="tooltip"
-                                                                                title="Chỉnh sửa"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
+                            <c:forEach var="item" items="${suppliers}">
+                                <tr>
+                                    <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
+                                                    <input type="checkbox" id="checkbox_${item.id}"value=${item.id}>
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td>LG</td>
-                                <td class="text-center">lg
-                                </td>
-                                <td class="text-center">
-                                    <a href="editsupplier.html" class="edit"><i class="fa fa-pencil"
-                                                                                aria-hidden="true" data-toggle="tooltip"
-                                                                                title="Chỉnh sửa"></i></a>
+                                    </td>
+                                    <td>${item.name}</td>
+                                    <td>${item.code}</td>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Tạm ngưng
+                                        </td>
+                                    </c:if>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/quan-tri/nha-san-xuat?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true"
+                                                data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Panasonic</td>
-                                <td class="text-center">panasonic
-                                </td>
-                                <td class="text-center">
-                                    <a href="editsupplier.html" class="edit"><i class="fa fa-pencil"
-                                                                                aria-hidden="true" data-toggle="tooltip"
-                                                                                title="Chỉnh sửa"></i></a>
 
-                                </td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -108,7 +92,7 @@
 <div id="addSupplierModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="formSubmit">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm hãng sản xuất</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -116,16 +100,24 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên hãng sản xuất</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="form-group">
                         <label>Mã hãng sản xuất</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="code" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select id="status" name="status" class="form-control" >
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Tạm ngưng</option>
+                        </select>
                     </div>
                 </div>
+
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-success" value="Thêm">
+                    <button id="addSupplier" type="submit" class="btn btn-success" >Thêm</button>
                 </div>
             </form>
         </div>
@@ -146,11 +138,73 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
+                    <button id="deleteSupplier" type="submit" class="btn btn-danger" >Xoá</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $('#addSupplier').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        addSupplier(data);
+    })
+
+    $('#deleteSupplier').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        // lay data khi check vao cac checkbox
+        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val(); // lay value cua input checked
+        }).get();
+        if (dataArray.length != 0) {
+            data['ids'] = dataArray;
+            deleteSupplier(data);
+        }
+    })
+
+    function deleteSupplier(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = "${SupplierUrl}";
+            },
+            error: function (error) {
+                window.location.href = "/quan-tri/nha-san-xuat";
+            }
+        })
+    }
+
+    function addSupplier(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                // result chinh la NewsModel ma Server tra ve
+                window.location.href = "${SupplierUrl}";
+            },
+            error: function (error) {
+                /* window.location.href = "
+
+
+
+                ${Newsurl}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+            }
+        })
+    }
+</script>
 </body>
 </html>
