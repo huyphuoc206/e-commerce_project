@@ -1,6 +1,8 @@
 package com.ecostore.controller.web;
 
+import com.ecostore.model.CategoryModel;
 import com.ecostore.model.MenuModel;
+import com.ecostore.service.ICategoryService;
 import com.ecostore.service.IMenuService;
 
 import javax.inject.Inject;
@@ -17,6 +19,8 @@ import java.util.List;
 public class HomeController extends HttpServlet {
     @Inject
     private IMenuService menuService;
+    @Inject
+    private ICategoryService categoryService;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -26,6 +30,8 @@ public class HomeController extends HttpServlet {
         List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
         request.setAttribute("menuTop",menuTop);
         request.setAttribute("menuBottom",menuBottom);
+        List<CategoryModel> categoryModels = categoryService.findAll();
+        request.setAttribute("category", categoryModels);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");
         rd.forward(request, response);
     }
