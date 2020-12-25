@@ -1,7 +1,7 @@
 package com.ecostore.controller.admin.api;
 
-import com.ecostore.model.CategoryModel;
-import com.ecostore.service.ICategoryService;
+import com.ecostore.model.InformationModel;
+import com.ecostore.service.IInformationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
@@ -12,19 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/api-admin-category")
-public class CategoryAPI extends HttpServlet {
+@WebServlet(urlPatterns = "/api-admin-information")
+public class InformationAPI extends HttpServlet {
 
     @Inject
-    private ICategoryService categoryService;
+    private IInformationService informationService;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
-        categoryModel = categoryService.insert(categoryModel);
-        mapper.writeValue(response.getOutputStream(), categoryModel);
+        InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
+        informationModel = informationService.insert(informationModel);
+        mapper.writeValue(response.getOutputStream(), informationModel);
     }
 
     @Override
@@ -32,9 +32,9 @@ public class CategoryAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
-        categoryModel = categoryService.update(categoryModel);
-        mapper.writeValue(response.getOutputStream(), categoryModel);
+        InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
+        informationModel = informationService.update(informationModel);
+        mapper.writeValue(response.getOutputStream(), informationModel);
     }
 
     @Override
@@ -42,8 +42,8 @@ public class CategoryAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
-        categoryService.delete(categoryModel.getIds());
+        InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
+        informationService.delete(informationModel.getIds());
         mapper.writeValue(response.getOutputStream(), "{}");
     }
 }

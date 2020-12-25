@@ -1,9 +1,11 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.model.CategoryModel;
+import com.ecostore.model.InformationModel;
 import com.ecostore.model.MenuModel;
 import com.ecostore.model.PrivacyPolicyModel;
 import com.ecostore.service.ICategoryService;
+import com.ecostore.service.IInformationService;
 import com.ecostore.service.IMenuService;
 import com.ecostore.service.IPrivacyPolicyService;
 
@@ -25,7 +27,8 @@ public class PrivacyPolicyController extends HttpServlet {
     private IMenuService menuService;
     @Inject
     private ICategoryService categoryService;
-
+    @Inject
+    private IInformationService informationService;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -37,8 +40,10 @@ public class PrivacyPolicyController extends HttpServlet {
         request.setAttribute("menuBottom", menuBottom);
         List<CategoryModel> categories = categoryService.findAllByStatus(1);
         PrivacyPolicyModel model = privacyPolicyService.findOneByStatus(1);
+        InformationModel information = informationService.findOneByStatus(1);
         request.setAttribute("model", model);
         request.setAttribute("categories", categories);
+        request.setAttribute("information", information);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/privacy.jsp");
         rd.forward(request, response);
     }

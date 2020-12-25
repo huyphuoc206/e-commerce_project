@@ -10,7 +10,7 @@
                 <ul class="row justify-content-end">
                     <li class="text-center border-right text-white">
                         <a href="help.html" class="text-white">
-                            <i class="fas fa-phone mr-2"></i> 1900-9090 </a>
+                            <i class="fas fa-phone mr-2"></i> ${information.phone} </a>
                     </li>
                     <li class="text-center border-right text-white">
                         <a href="login.html" class="text-white">
