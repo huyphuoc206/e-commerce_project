@@ -23,49 +23,58 @@
                                         <div class="row">
                                             <div class="col-sm-4 multi-gd-img">
                                                 <ul class="multi-column-dropdown">
+                                                <c:forEach var="item2" items="${category}">
                                                     <li>
-                                                        <a href="product.html">Tivi</a>
+                                                        <a href="<c:url value='${item2.link}'/>">${item2.name}</a>
                                                     </li>
-                                                    <li>
-                                                        <a href="product.html">Tủ lạnh</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Máy giặt</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Máy lạnh</a>
-                                                    </li>
+                                                </c:forEach>
                                                 </ul>
                                             </div>
-                                            <div class="col-sm-4 multi-gd-img">
-                                                <ul class="multi-column-dropdown">
-                                                    <li>
-                                                        <a href="product.html">Loa</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Máy lọc nước</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Máy quạt</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Điều khiển Tivi</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4 multi-gd-img">
-                                                <ul class="multi-column-dropdown">
-                                                    <li>
-                                                        <a href="product.html">Khung treo Tivi</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Cáp HDMI, Cáp tivi</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product.html">Giá đỡ máy giặt</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+<%--                                            <div class="col-sm-4 multi-gd-img">--%>
+<%--                                                <ul class="multi-column-dropdown">--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Tivi</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Tủ lạnh</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Máy giặt</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Máy lạnh</a>--%>
+<%--                                                    </li>--%>
+<%--                                                </ul>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="col-sm-4 multi-gd-img">--%>
+<%--                                                <ul class="multi-column-dropdown">--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Loa</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Máy lọc nước</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Máy quạt</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Điều khiển Tivi</a>--%>
+<%--                                                    </li>--%>
+<%--                                                </ul>--%>
+<%--                                            </div>--%>
+<%--                                            <div class="col-sm-4 multi-gd-img">--%>
+<%--                                                <ul class="multi-column-dropdown">--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Khung treo Tivi</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Cáp HDMI, Cáp tivi</a>--%>
+<%--                                                    </li>--%>
+<%--                                                    <li>--%>
+<%--                                                        <a href="product.html">Giá đỡ máy giặt</a>--%>
+<%--                                                    </li>--%>
+<%--                                                </ul>--%>
+<%--                                            </div>--%>
                                         </div>
                                     </div>
                                 </div>
