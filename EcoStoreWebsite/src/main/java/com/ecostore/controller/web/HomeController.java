@@ -28,7 +28,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1,1);
         List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
-        List<CategoryModel> categories = categoryService.findAll();
+        List<CategoryModel> categories = categoryService.findAllByStatus(1);
         request.setAttribute("menuTop",menuTop);
         request.setAttribute("menuBottom",menuBottom);
         request.setAttribute("categories", categories);

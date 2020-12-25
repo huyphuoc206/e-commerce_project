@@ -35,7 +35,7 @@ public class PrivacyPolicyController extends HttpServlet {
         List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
         request.setAttribute("menuTop", menuTop);
         request.setAttribute("menuBottom", menuBottom);
-        List<CategoryModel> categories = categoryService.findAll();
+        List<CategoryModel> categories = categoryService.findAllByStatus(1);
         PrivacyPolicyModel model = privacyPolicyService.findOneByStatus(1);
         request.setAttribute("model", model);
         request.setAttribute("categories", categories);

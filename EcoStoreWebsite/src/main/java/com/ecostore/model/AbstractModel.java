@@ -8,6 +8,15 @@ public abstract class AbstractModel {
     protected String createdBy;
     protected Timestamp modifiedDate;
     protected String modifiedBy;
+    protected long[] ids;
+
+    public long[] getIds() {
+        return ids;
+    }
+
+    public void setIds(long[] ids) {
+        this.ids = ids;
+    }
 
     public AbstractModel() {
     }
@@ -36,7 +45,7 @@ public abstract class AbstractModel {
         this.createdBy = createdBy;
     }
 
-    public Timestamp getModifiedDate(Timestamp modifieddate) {
+    public Timestamp getModifiedDate() {
         return modifiedDate;
     }
 

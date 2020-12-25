@@ -3,6 +3,15 @@ package com.ecostore.model;
 public class CategoryModel extends AbstractModel{
     private String name;
     private String code;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public CategoryModel() {
     }

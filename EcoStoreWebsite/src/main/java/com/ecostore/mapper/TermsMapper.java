@@ -23,7 +23,7 @@ public class TermsMapper implements  IRowMapper{
                 model.setCreatedBy((resultSet.getString("createdby")));
             }
             if(resultSet.getTimestamp("modifieddate") != null){
-                model.getModifiedDate((resultSet.getTimestamp("modifieddate")));
+                model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
             }
             if(resultSet.getTimestamp("modifiedby") != null){
                 model.setModifiedBy((resultSet.getString("modifiedby")));
