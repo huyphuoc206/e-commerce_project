@@ -41,6 +41,8 @@
                ${model.content  }
 
            </div>
+        </div>
+    </div>
     <!-- //terms -->
 
     <!-- middle section -->
