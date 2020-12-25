@@ -36,10 +36,10 @@ public class TermsController extends HttpServlet {
         List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
         request.setAttribute("menuTop", menuTop);
         request.setAttribute("menuBottom", menuBottom);
+        List<CategoryModel> categories = categoryService.findAll();
         TermsModel model = termsService.findOneByStatus(1);
         request.setAttribute("model", model);
-        List<CategoryModel> categoryModels = categoryService.findAll();
-        request.setAttribute("category", categoryModels);
+        request.setAttribute("categories", categories);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/terms.jsp");
         rd.forward(request, response);
     }

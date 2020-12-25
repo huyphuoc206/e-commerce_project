@@ -23,11 +23,29 @@
                                         <div class="row">
                                             <div class="col-sm-4 multi-gd-img">
                                                 <ul class="multi-column-dropdown">
-                                                <c:forEach var="item2" items="${category}">
-                                                    <li>
-                                                        <a href="<c:url value='${item2.link}'/>">${item2.name}</a>
-                                                    </li>
-                                                </c:forEach>
+                                                    <c:forEach var="item2" items="${categories}" begin="0" end="${categories.size()/3}">
+                                                        <li>
+                                                            <a href="<c:url value=''/>">${item2.name}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    <c:forEach var="item2" items="${categories}" begin="${categories.size()/3+1}" end="${categories.size()/3*2}">
+                                                        <li>
+                                                            <a href="<c:url value=''/>">${item2.name}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4 multi-gd-img">
+                                                <ul class="multi-column-dropdown">
+                                                    <c:forEach var="item2" items="${categories}" begin="${categories.size()/3*2+1}">
+                                                        <li>
+                                                            <a href="<c:url value=''/>">${item2.name}</a>
+                                                        </li>
+                                                    </c:forEach>
                                                 </ul>
                                             </div>
 <%--                                            <div class="col-sm-4 multi-gd-img">--%>

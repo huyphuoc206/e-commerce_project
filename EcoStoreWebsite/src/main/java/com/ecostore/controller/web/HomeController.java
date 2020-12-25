@@ -28,10 +28,10 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1,1);
         List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
+        List<CategoryModel> categories = categoryService.findAll();
         request.setAttribute("menuTop",menuTop);
         request.setAttribute("menuBottom",menuBottom);
-        List<CategoryModel> categoryModels = categoryService.findAll();
-        request.setAttribute("category", categoryModels);
+        request.setAttribute("categories", categories);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");
         rd.forward(request, response);
     }
