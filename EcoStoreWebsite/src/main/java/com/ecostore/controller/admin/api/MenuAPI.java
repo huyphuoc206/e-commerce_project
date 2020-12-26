@@ -1,0 +1,49 @@
+package com.ecostore.controller.admin.api;
+
+import com.ecostore.model.MenuModel;
+import com.ecostore.service.IMenuService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(urlPatterns = "/api-admin-menu")
+public class MenuAPI extends HttpServlet {
+
+    @Inject
+    private IMenuService menuServicel;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        menuModel = menuServicel.insert(menuModel);
+        mapper.writeValue(response.getOutputStream(), menuModel);
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        menuModel = menuServicel.update(menuModel);
+        mapper.writeValue(response.getOutputStream(), menuModel);
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        menuServicel.delete(menuModel.getIds());
+        mapper.writeValue(response.getOutputStream(), "{}");
+    }
+}
