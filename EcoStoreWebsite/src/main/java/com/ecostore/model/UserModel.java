@@ -8,7 +8,7 @@ public class UserModel extends AbstractModel {
     private String email;
     private String phone;
     private String avatar;
-    private RoleModel rodeid;
+    private RoleModel role;
     private int status;
     private String key;
     private int keytime;
@@ -64,12 +64,12 @@ public class UserModel extends AbstractModel {
         this.avatar = avatar;
     }
 
-    public RoleModel getRodeid() {
-        return rodeid;
+    public RoleModel getRole() {
+        return role;
     }
 
-    public void setRodeid(RoleModel rodeid) {
-        this.rodeid = rodeid;
+    public void setRole(RoleModel role) {
+        this.role = role;
     }
 
     public int getStatus() {

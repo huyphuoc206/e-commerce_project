@@ -22,9 +22,9 @@ public class CategoryAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(),CategoryModel.class);
+        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
         categoryModel = categoryService.insert(categoryModel);
-        mapper.writeValue(response.getOutputStream(),categoryModel);
+        mapper.writeValue(response.getOutputStream(), categoryModel);
     }
 
     @Override
@@ -32,9 +32,9 @@ public class CategoryAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(),CategoryModel.class);
+        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
         categoryModel = categoryService.update(categoryModel);
-        mapper.writeValue(response.getOutputStream(),categoryModel);
+        mapper.writeValue(response.getOutputStream(), categoryModel);
     }
 
     @Override
@@ -42,8 +42,8 @@ public class CategoryAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        CategoryModel categoryModel = mapper.readValue(request.getInputStream(),CategoryModel.class);
+        CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
         categoryService.delete(categoryModel.getIds());
-        mapper.writeValue(response.getOutputStream(),categoryModel);
+        mapper.writeValue(response.getOutputStream(), "{}");
     }
 }

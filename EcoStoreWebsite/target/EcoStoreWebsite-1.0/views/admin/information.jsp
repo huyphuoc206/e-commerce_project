@@ -5,6 +5,9 @@
   Time: 5:41 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-information"/>
+<c:url var="InformationURL" value="/quan-tri/thong-tin"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,9 +24,9 @@
                     </div>
                     <div class="card-header">
                         <div class="float-right">
-                            <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
+                            <a href="#addInformationModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                            <a href="#deletePaymentModal" class="btn btn-danger" data-toggle="modal"><i
+                            <a href="#deleteInformationModal" class="btn btn-danger" data-toggle="modal"><i
                                     class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                         </div>
                     </div>
@@ -48,32 +51,38 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
+                            <c:forEach var="item" items="${information}">
+                                <tr>
+                                    <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
+                                                    <input type="checkbox" id="checkbox_${item.id}" value="${item.id}">
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td>111 Đường ... Phường ... Quận ... </td>
-                                <td>ecostore@gmail.com</td>
-                                <td>0901000200</td>
-                                <td>Eco-facebook</td>
-                                <td>Eco-instagram</td>
-                                <td>Eco-twitter</td>
+                                    </td>
+                                    <td>${item.address}</td>
+                                    <td>${item.email}</td>
+                                    <td>${item.phone}</td>
+                                    <td>${item.facebookLink}</td>
+                                    <td>${item.instagramLink}</td>
+                                    <td>${item.twitterLink}</td>
 
-                                <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
-                                </td>
-                                <td class="text-center">
-                                    <a href="editinformation.html" class="edit"><i class="fa fa-pencil"
-                                                                                   aria-hidden="true" data-toggle="tooltip"
-                                                                                   title="Chỉnh sửa"></i></a>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Tạm ngưng
+                                        </td>
+                                    </c:if>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/quan-tri/thong-tin?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true" data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
 
-                                </td>
-                            </tr>
-
-
-                            </tr>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>
@@ -85,57 +94,57 @@
 
 
 <!-- Add Modal HTML -->
-<div id="addSupplierModal" class="modal fade">
+<div id="addInformationModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="formSubmit">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm thông tin cửa hàng</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <div class=" row form-group">
+                    <div class="row form-group">
                         <label>Địa chỉ</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="address" required>
                     </div>
                     <div class="row form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="email" required>
                     </div>
                     <div class="row form-group">
                         <label>Số điện thoại</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="phone" required>
                     </div>
                     <div class="row form-group">
                         <label>Facebook</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="facebookLink" required>
                     </div>
                     <div class="row form-group">
                         <label>Instagram</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="instagramLink" required>
                     </div>
                     <div class="row form-group">
                         <label>Twitter</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="twitterLink" required>
                     </div>
                     <div class="row form-group">
                         <label>Trạng thái</label>
-                        <select name="supplier" id="supplier" class="form-control">
+                        <select id="status" name="status" class="form-control">
                             <option value="1">Hoạt động</option>
-                            <option value="2">Tạm khóa</option>
+                            <option value="0">Tạm ngưng</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-success" value="Thêm">
+                    <button id="addInformation" type="submit" class="btn btn-success">Thêm</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deletePaymentModal" class="modal fade">
+<div id="deleteInformationModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <form>
@@ -144,16 +153,75 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Bạn chắc chắn muốn xóa những thông tin cửa hàng này?</p>
+                    <p>Bạn chắc chắn muốn xóa những thông tin này?</p>
                     <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
+                    <button id="deleteInformation" type="submit" class="btn btn-danger">Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $('#addInformation').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        addInformation(data);
+    })
+
+    $('#deleteInformation').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        // lay data khi check vao cac checkbox
+        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val(); // lay value cua input checked
+        }).get();
+        if (dataArray.length != 0) {
+            data['ids'] = dataArray;
+            deleteInformation(data);
+        }
+    })
+
+    function deleteInformation(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = "${InformationURL}";
+            },
+            error: function (error) {
+                window.location.href = "/quan-tri/trang-chu";
+            }
+        })
+    }
+
+    function addInformation(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                // result chinh la NewsModel ma Server tra ve
+                window.location.href = "${InformationURL}";
+            },
+            error: function (error) {
+                /* window.location.href = "
+                ${InformationURL}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+            }
+        })
+    }
+</script>
 </body>
 </html>

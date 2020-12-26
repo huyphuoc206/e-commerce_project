@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/taglib.jsp" %>
 <!-- top-header -->
 <div class="agile-main-top">
     <div class="container-fluid">
@@ -10,16 +10,46 @@
                 <ul class="row justify-content-end">
                     <li class="text-center border-right text-white">
                         <a href="help.html" class="text-white">
-                            <i class="fas fa-phone mr-2"></i> 1900-9090 </a>
+                            <i class="fas fa-phone mr-2"></i> ${information.phone} </a>
                     </li>
-                    <li class="text-center border-right text-white">
-                        <a href="login.html" class="text-white">
-                            <i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
-                    </li>
-                    <li class="text-center text-white">
-                        <a href="register.html" class="text-white">
-                            <i class="fas fa-user-plus mr-2"></i> Đăng ký </a>
-                    </li>
+                    <c:if test="${empty USERMODEL}">
+                        <li class="text-center border-right text-white">
+                            <a href="<c:url value='/dang-nhap'/>" class="text-white">
+                                <i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
+                        </li>
+                        <li class="text-center text-white">
+                            <a href="register.html" class="text-white">
+                                <i class="fas fa-user-plus mr-2"></i> Đăng ký </a>
+                        </li>
+                    </c:if>
+
+                    <c:if test="${not empty USERMODEL}">
+                        <li class="text-center border-right text-white">
+                            <div class="user-area dropdown">
+                                <a href="#" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img class="user-avatar rounded-circle" src="<c:url value='${USERMODEL.avatar}'/>">
+                                </a>
+                                <span class="mr-3">Xin chào, ${USERMODEL.fullname}</span>
+
+                                <div class="user-menu dropdown-menu">
+                                    <a class="nav-link text-dark" href="#"><i class="fa fa-user"></i> Thông tin cá nhân</a>
+
+                                    <a class="nav-link text-dark" href="#"><i class="fa fa-table"
+                                                                              aria-hidden="true"></i>
+                                        Theo dõi đơn hàng</a>
+
+                                    <a class="nav-link text-dark" href="#"><i class="fa fa-key" aria-hidden="true"></i>
+                                        Đổi
+                                        mật khẩu</a>
+
+                                    <a class="nav-link text-dark" href="<c:url value='/thoat?action=logout'/>"><i
+                                            class="fa fa-power-off"></i> Thoát</a>
+                                </div>
+                            </div>
+                        </li>
+                    </c:if>
+
                 </ul>
                 <!-- //header lists -->
             </div>
@@ -35,7 +65,7 @@
             <!-- logo -->
             <div class="col-md-3 logo_agile">
                 <h1 class="text-center">
-                    <a href="index.html" class="font-weight-bold font-italic">
+                    <a href="<c:url value='/trang-chu'/>" class="font-weight-bold font-italic">
                         <img src="images/logo2.png" alt=" " class="img-fluid">
                         Eco Store
                     </a>
@@ -61,7 +91,8 @@
                         </button>
                     </div>
 
-                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header border-bottom-0">
@@ -87,11 +118,13 @@
                                         <tbody>
                                         <tr>
                                             <td class="w-25">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" class="img-fluid img-thumbnail" alt="Sheep">
+                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                                                     class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                            <td class="qty"><input type="number" class="form-control" id="input1"
+                                                                   value="2"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -101,11 +134,13 @@
                                         </tr>
                                         <tr>
                                             <td class="w-25">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" class="img-fluid img-thumbnail" alt="Sheep">
+                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                                                     class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                            <td class="qty"><input type="number" class="form-control" id="input1"
+                                                                   value="2"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -115,11 +150,13 @@
                                         </tr>
                                         <tr>
                                             <td class="w-25">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" class="img-fluid img-thumbnail" alt="Sheep">
+                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                                                     class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                            <td class="qty"><input type="number" class="form-control" id="input1"
+                                                                   value="2"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -129,11 +166,13 @@
                                         </tr>
                                         <tr>
                                             <td class="w-25">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" class="img-fluid img-thumbnail" alt="Sheep">
+                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
+                                                     class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1" value="2"></td>
+                                            <td class="qty"><input type="number" class="form-control" id="input1"
+                                                                   value="2"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">

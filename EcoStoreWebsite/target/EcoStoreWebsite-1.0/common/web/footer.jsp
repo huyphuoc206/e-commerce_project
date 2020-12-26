@@ -61,17 +61,14 @@
                     <h3 class="text-white font-weight-bold mb-3">Thông tin liên hệ</h3>
                     <ul>
                         <li class="mb-3">
-                            <i class="fas fa-map-marker"></i>Nong Lam, Linh Trung, Thủ Đức, Hồ Chí Minh
+                            <i class="fas fa-map-marker"></i>${information.address}
                         </li>
                         <li class="mb-3">
-                            <i class="fas fa-mobile"></i>0981-733-331
-                        </li>
-                        <li class="mb-3">
-                            <i class="fas fa-phone"></i>1900-9090
+                            <i class="fas fa-phone"></i>${information.phone}
                         </li>
                         <li class="mb-3">
                             <i class="fas fa-envelope-open"></i>
-                            <a href="mailto:example@mail.com"> ecostore@gmail.com</a>
+                            <a href="mailto:${information.email}">${information.email}</a>
                         </li>
                     </ul>
                 </div>
@@ -105,17 +102,17 @@
                         <div class="social">
                             <ul>
                                 <li>
-                                    <a class="icon fb" href="#">
+                                    <a class="icon fb" href="<c:url value='${information.facebookLink}'/>" target="_blank">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="icon tw" href="#">
+                                    <a class="icon tw" href="<c:url value='${information.twitterLink}'/>" target="_blank">
                                         <i class="fab fa-twitter"></i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="icon gp" href="#">
+                                    <a class="icon gp" href="<c:url value='${information.instagramLink}'/>" target="_blank">
                                         <i class="fab fa-instagram"></i>
                                     </a>
                                 </li>
