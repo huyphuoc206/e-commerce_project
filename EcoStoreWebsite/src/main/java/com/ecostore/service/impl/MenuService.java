@@ -33,7 +33,6 @@ public class MenuService implements IMenuService {
     @Override
     public MenuModel insert(MenuModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
         Long id = menuDAO.insert(model);
         return menuDAO.findOneById(id);
     }
@@ -44,7 +43,6 @@ public class MenuService implements IMenuService {
         model.setCreatedDate(oldMenu.getCreatedDate());
         model.setCreatedBy(oldMenu.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        model.setModifiedBy("");
         menuDAO.update(model);
         return menuDAO.findOneById(model.getId());
 

@@ -1,7 +1,9 @@
 package com.ecostore.controller.admin.api;
 
 import com.ecostore.model.InformationModel;
+import com.ecostore.model.UserModel;
 import com.ecostore.service.IInformationService;
+import com.ecostore.utils.SessionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
@@ -23,6 +25,8 @@ public class InformationAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        informationModel.setCreatedBy(userModel.getUsername());
         informationModel = informationService.insert(informationModel);
         mapper.writeValue(response.getOutputStream(), informationModel);
     }
@@ -33,6 +37,8 @@ public class InformationAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        informationModel.setModifiedBy(userModel.getUsername());
         informationModel = informationService.update(informationModel);
         mapper.writeValue(response.getOutputStream(), informationModel);
     }

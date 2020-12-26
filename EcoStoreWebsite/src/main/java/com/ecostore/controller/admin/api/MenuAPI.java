@@ -1,7 +1,9 @@
 package com.ecostore.controller.admin.api;
 
 import com.ecostore.model.MenuModel;
+import com.ecostore.model.UserModel;
 import com.ecostore.service.IMenuService;
+import com.ecostore.utils.SessionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
@@ -33,6 +35,8 @@ public class MenuAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        menuModel.setCreatedBy(userModel.getUsername());
         menuModel = menuServicel.update(menuModel);
         mapper.writeValue(response.getOutputStream(), menuModel);
     }
@@ -43,6 +47,8 @@ public class MenuAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        menuModel.setModifiedBy(userModel.getUsername());
         menuServicel.delete(menuModel.getIds());
         mapper.writeValue(response.getOutputStream(), "{}");
     }

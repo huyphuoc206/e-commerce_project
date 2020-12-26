@@ -2,8 +2,10 @@ package com.ecostore.controller.admin.api;
 
 import com.ecostore.model.CategoryModel;
 import com.ecostore.model.SupplierModel;
+import com.ecostore.model.UserModel;
 import com.ecostore.service.ICategoryService;
 import com.ecostore.service.ISupplierService;
+import com.ecostore.utils.SessionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
@@ -24,6 +26,8 @@ public class SupplierAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         SupplierModel supplierModel = mapper.readValue(request.getInputStream(),SupplierModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        supplierModel.setCreatedBy(userModel.getUsername());
         supplierModel = supplierService.insert(supplierModel);
         mapper.writeValue(response.getOutputStream(),supplierModel);
     }
@@ -33,6 +37,8 @@ public class SupplierAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         SupplierModel supplierModel = mapper.readValue(request.getInputStream(),SupplierModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        supplierModel.setModifiedBy(userModel.getUsername());
         supplierModel = supplierService.update(supplierModel);
         mapper.writeValue(response.getOutputStream(),supplierModel);
     }

@@ -30,7 +30,6 @@ public class SupplierService  implements ISupplierService {
     @Override
     public SupplierModel insert(SupplierModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
         Long id = supplierDAO.insert(model);
         return supplierDAO.findOneById(id);
     }
@@ -41,7 +40,6 @@ public class SupplierService  implements ISupplierService {
         model.setCreatedDate(oldSupplier.getCreatedDate());
         model.setCreatedBy(oldSupplier.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        model.setModifiedBy("");
         supplierDAO.update(model);
         return supplierDAO.findOneById(model.getId());
     }

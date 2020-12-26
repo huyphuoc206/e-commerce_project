@@ -31,7 +31,6 @@ public class InformationService implements IInformationService {
     @Override
     public InformationModel insert(InformationModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
         Long id = informationDAO.insert(model);
         return informationDAO.findOneById(id);
     }
@@ -42,7 +41,6 @@ public class InformationService implements IInformationService {
         model.setCreatedDate(oldInformation.getCreatedDate());
         model.setCreatedBy(oldInformation.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        model.setModifiedBy("");
         informationDAO.update(model);
         return informationDAO.findOneById(model.getId());
     }

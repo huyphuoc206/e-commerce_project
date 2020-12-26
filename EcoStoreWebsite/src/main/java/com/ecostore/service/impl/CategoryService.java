@@ -29,7 +29,6 @@ public class CategoryService implements ICategoryService {
     @Override
     public CategoryModel insert(CategoryModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        model.setCreatedBy("");
         Long id = categoryDAO.insert(model);
         return categoryDAO.findOneById(id);
     }
@@ -40,7 +39,6 @@ public class CategoryService implements ICategoryService {
         model.setCreatedBy(oldCategory.getCreatedBy());
         model.setCreatedDate(oldCategory.getModifiedDate());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        model.setModifiedBy("");
         categoryDAO.update(model);
         return categoryDAO.findOneById(model.getId());
     }
