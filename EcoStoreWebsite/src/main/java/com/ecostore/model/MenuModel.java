@@ -4,7 +4,16 @@ public class MenuModel extends AbstractModel {
     private String name;
     private String link;
     private int status;
-    private MenuTypeModel menuTypeId;
+    private MenuTypeModel menuType;
+    private long menuTypeId;
+
+    public long getMenuTypeId() {
+        return menuTypeId;
+    }
+
+    public void setMenuTypeId(long menuTypeId) {
+        this.menuTypeId = menuTypeId;
+    }
 
     public MenuModel() {
     }
@@ -33,11 +42,12 @@ public class MenuModel extends AbstractModel {
         this.status = status;
     }
 
-    public MenuTypeModel getMenuTypeId() {
-        return menuTypeId;
+    public MenuTypeModel getMenuType() {
+        return menuType;
     }
 
-    public void setMenuTypeId(MenuTypeModel menuTypeId) {
-        this.menuTypeId = menuTypeId;
+    public void setMenuType(MenuTypeModel menuType) {
+        this.menuType = menuType;
     }
+
 }

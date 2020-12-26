@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-menu"/>
+<c:url var="MenuUrl" value="/quan-tri/menu"/>
 <%--
   Created by IntelliJ IDEA.
   User: LaptopUSAPro
@@ -6,6 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Quản lý danh mục</title>
@@ -47,44 +51,35 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
+                            <c:forEach var="item" items="${menus}">
+                                <tr>
+                                    <td class="text-center">
+                                                 <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox_${item.id}" value="${item.id}">
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td>ons</td>
-                                <td>Đường dẫn 1</td>
-                                <td>Trên</td>
-                                <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
-                                </td>
-                                <td class="text-center">
-                                    <a href="editmenu.html" class="edit"><i class="fa fa-pencil"
-                                                                            aria-hidden="true" data-toggle="tooltip"
-                                                                            title="Chỉnh sửa"></i></a>
+                                    </td>
+                                    <td>${item.name}</td>
+                                    <td>${item.link}</td>
+                                    <td>${item.menuType.name}</td>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Tạm ngưng
+                                        </td>
+                                    </c:if>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/quan-tri/menu?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true" data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                </td>
-                                <td>fwb</td>
-                                <td>Đường dẫn 2</td>
-                                <td>Dưới</td>
-                                <td class="text-center"><span class="status text-danger">&bull;</span>Tạm dừng</td>
-                                </td>
-                                <td class="text-center">
-                                    <a href="editmenu.html" class="edit"><i class="fa fa-pencil"
-                                                                            aria-hidden="true" data-toggle="tooltip"
-                                                                            title="Chỉnh sửa"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
-                                </td>
-                            </tr>
 
                             </tr>
                             </tbody>
@@ -101,7 +96,7 @@
 <div id="addSupplierModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="formSubmit">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm danh mục</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -109,34 +104,31 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="form-group">
                         <label>Đường dẫn danh mục</label>
-                        <input type="text" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Đường dẫn danh mục</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="link" required>
                     </div>
                     <div class="form-group">
                         <label>Loại danh mục</label>
-                        <select name="supplier" id="supplier" class="form-control">
-                            <option value="1">Menu Top</option>
-                            <option value="2">Menu Dưới</option>
+                        <select name="menuTypeId" class="form-control">
+                            <c:forEach var="item1" items="${menuTypeModels}">
+                                <option value="${item1.id}">${item1.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
-                        <select name="supplier" id="supplier" class="form-control">
+                        <select id="status" name="status" class="form-control">
                             <option value="1">Hoạt động</option>
-                            <option value="2">Tạm khóa</option>
+                            <option value="0">Tạm ngưng</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-success" value="Thêm">
+                    <button id="addMenu" type="submit" class="btn btn-success">Thêm</button>
                 </div>
             </form>
         </div>
@@ -157,11 +149,76 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
+                    <button id="deleteMenu" type="submit" class="btn btn-danger">Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $('#addMenu').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+            console.log(data['' + v.name])
+
+        });
+        addMenu(data);
+    })
+
+    function addMenu(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                // result chinh la NewsModel ma Server tra ve
+                window.location.href = "${MenuUrl}";
+            },
+            error: function (error) {
+                /* window.location.href = "
+
+                ${MenuUrl}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+            }
+        })
+    }
+
+    $('#deleteMenu').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        // lay data khi check vao cac checkbox
+        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val(); // lay value cua input checked
+        }).get();
+        if (dataArray.length != 0) {
+            data['ids'] = dataArray;
+            deleteMenu(data);
+        }
+    })
+
+    function deleteMenu(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                window.location.href = "${MenuUrl}";
+            },
+            error: function (error) {
+                window.location.href = "/quan-tri/trang-chu";
+            }
+        })
+    }
+
+
+</script>
 </body>
+
 </html>
