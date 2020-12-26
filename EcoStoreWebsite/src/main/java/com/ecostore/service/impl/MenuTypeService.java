@@ -11,7 +11,7 @@ public class MenuTypeService implements IMenuTypeService {
     @Inject
     private IMenuTypeDAO menuTypeDAO;
     @Override
-    public List<MenuTypeModel> fillAll() {
+    public List<MenuTypeModel> findAll() {
         return menuTypeDAO.findAll();
     }
 

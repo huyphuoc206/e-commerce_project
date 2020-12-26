@@ -15,4 +15,22 @@ public class TermsDAO extends AbstractDAO<TermsModel> implements ITermsDAO {
         return list.get(0);
 
     }
+
+    @Override
+    public List<TermsModel> findAll() {
+        String sql = "SELECT * FROM terms";
+        return query(sql, new TermsMapper());
+    }
+
+    @Override
+    public TermsModel findOneById(long id) {
+        String sql = "SELECT * FROM terms WHERE id = ?";
+        List<TermsModel> termsModels = query(sql, new TermsMapper(), id);
+        return termsModels.isEmpty() ? null : termsModels.get(0);
+    }
+
+    @Override
+    public Long insert(TermsModel termsModel) {
+        return null;
+    }
 }

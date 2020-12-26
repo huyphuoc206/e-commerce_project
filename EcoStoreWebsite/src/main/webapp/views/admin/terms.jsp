@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<c:url var="APIurl" value="/api-admin-terms"/>--%>
+<%--<c:url var="TermsUrl" value="/quan-tri/terms"/>--%>
 <%--
   Created by IntelliJ IDEA.
   User: LaptopUSAPro
@@ -6,6 +9,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Quản lý điều kiện</title>
