@@ -23,7 +23,7 @@ public class HomeController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3,1);
+        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
         request.setAttribute("menuLeft", menuLeft);
         RequestDispatcher rd = request.getRequestDispatcher("../views/admin/home.jsp");
         rd.forward(request, response);

@@ -18,14 +18,16 @@ import java.io.IOException;
 public class MenuAPI extends HttpServlet {
 
     @Inject
-    private IMenuService menuServicel;
+    private IMenuService menuService;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
-        menuModel = menuServicel.insert(menuModel);
+        MenuModel menuModel = mapper.readValue(request.getInputStream(), MenuModel.class);
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        menuModel.setCreatedBy(userModel.getUsername());
+        menuModel = menuService.insert(menuModel);
         mapper.writeValue(response.getOutputStream(), menuModel);
     }
 
@@ -34,10 +36,10 @@ public class MenuAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
+        MenuModel menuModel = mapper.readValue(request.getInputStream(), MenuModel.class);
         UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        menuModel.setCreatedBy(userModel.getUsername());
-        menuModel = menuServicel.update(menuModel);
+        menuModel.setModifiedBy(userModel.getUsername());
+        menuModel = menuService.update(menuModel);
         mapper.writeValue(response.getOutputStream(), menuModel);
     }
 
@@ -46,10 +48,8 @@ public class MenuAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        MenuModel menuModel = mapper.readValue(request.getInputStream(),MenuModel.class);
-        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        menuModel.setModifiedBy(userModel.getUsername());
-        menuServicel.delete(menuModel.getIds());
-        mapper.writeValue(response.getOutputStream(), "{}");
+        MenuModel menuModel = mapper.readValue(request.getInputStream(), MenuModel.class);
+        boolean result = menuService.delete(menuModel.getIds());
+        mapper.writeValue(response.getOutputStream(), result);
     }
 }

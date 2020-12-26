@@ -42,7 +42,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
     }
 
     @Override
-    public void update(String sql, Object... parameters) {
+    public boolean update(String sql, Object... parameters) {
         Connection connection = null;
         PreparedStatement statement = null;
         try {
@@ -56,6 +56,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
             if (connection != null) {
                 try {
                     connection.rollback();
+                    return false;
                 } catch (SQLException e1) {
                     e.printStackTrace();
                 }
@@ -70,6 +71,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                 e2.printStackTrace();
             }
         }
+        return true;
     }
 
     @Override

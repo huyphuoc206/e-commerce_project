@@ -8,7 +8,7 @@ import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class SupplierService  implements ISupplierService {
+public class SupplierService implements ISupplierService {
     @Inject
     ISupplierDAO supplierDAO;
 
@@ -40,14 +40,17 @@ public class SupplierService  implements ISupplierService {
         model.setCreatedDate(oldSupplier.getCreatedDate());
         model.setCreatedBy(oldSupplier.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        supplierDAO.update(model);
-        return supplierDAO.findOneById(model.getId());
+        if (supplierDAO.update(model))
+            return supplierDAO.findOneById(model.getId());
+        return null;
     }
 
     @Override
-    public void delete(long[] ids) {
-        for (long id: ids ) {
-            supplierDAO.delete(id);
+    public boolean delete(long[] ids) {
+        for (long id : ids) {
+            if (!supplierDAO.delete(id))
+                return false;
         }
+        return true;
     }
 }

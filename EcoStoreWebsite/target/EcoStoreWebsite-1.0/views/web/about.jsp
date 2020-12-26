@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/common/taglib.jsp"%>
 <html>
 <head>
     <title>Về chúng tôi</title>
@@ -17,7 +18,7 @@
         <div class="container">
             <ul class="w3_short">
                 <li>
-                    <a href="index.html">Trang chủ</a>
+                    <a href="<c:url value='/trang-chu'/>">Trang chủ</a>
                     <i>|</i>
                 </li>
                 <li>Giới thiệu</li>

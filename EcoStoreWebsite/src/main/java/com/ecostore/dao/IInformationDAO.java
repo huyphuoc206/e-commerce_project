@@ -13,7 +13,7 @@ public interface IInformationDAO {
 
     Long insert(InformationModel model);
 
-    void update(InformationModel model);
+    boolean update(InformationModel model);
 
-    void delete(long id);
+    boolean delete(long id);
 }

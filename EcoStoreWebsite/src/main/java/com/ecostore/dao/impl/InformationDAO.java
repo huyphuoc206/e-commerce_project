@@ -36,14 +36,14 @@ public class InformationDAO extends AbstractDAO<InformationModel> implements IIn
     }
 
     @Override
-    public void update(InformationModel model) {
+    public boolean update(InformationModel model) {
         String sql = "UPDATE information SET address = ?, phone = ?, email = ?, status = ?, facebooklink = ?, instagramlink = ?,twitterlink = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
-        update(sql, model.getAddress(), model.getPhone(), model.getEmail(), model.getStatus(), model.getFacebookLink(), model.getInstagramLink(), model.getTwitterLink(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
+        return update(sql, model.getAddress(), model.getPhone(), model.getEmail(), model.getStatus(), model.getFacebookLink(), model.getInstagramLink(), model.getTwitterLink(), model.getModifiedDate(), model.getModifiedBy(), model.getId());
     }
 
     @Override
-    public void delete(long id) {
+    public boolean delete(long id) {
         String sql = "DELETE FROM information WHERE id = ?";
-        update(sql, id);
+        return update(sql, id);
     }
 }

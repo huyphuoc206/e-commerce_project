@@ -1,10 +1,10 @@
 package com.ecostore.controller.admin;
 
-import com.ecostore.model.CategoryModel;
 import com.ecostore.model.InformationModel;
 import com.ecostore.model.MenuModel;
 import com.ecostore.service.IInformationService;
 import com.ecostore.service.IMenuService;
+import com.ecostore.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -33,6 +33,7 @@ public class InformationController extends HttpServlet {
             request.setAttribute("informationModel", informationModel);
             url = "../views/admin/editinformation.jsp";
         } else {
+            MessageUtil.showMessage(request);
             List<InformationModel> information = informationService.findAll();
             request.setAttribute("information", information);
             url = "../views/admin/information.jsp";

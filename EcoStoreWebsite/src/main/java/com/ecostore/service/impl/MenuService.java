@@ -43,15 +43,17 @@ public class MenuService implements IMenuService {
         model.setCreatedDate(oldMenu.getCreatedDate());
         model.setCreatedBy(oldMenu.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        menuDAO.update(model);
-        return menuDAO.findOneById(model.getId());
-
+        if (menuDAO.update(model))
+            return menuDAO.findOneById(model.getId());
+        return null;
     }
 
     @Override
-    public void delete(long[] ids) {
-        for (long id: ids) {
-            menuDAO.delete(id);
+    public boolean delete(long[] ids) {
+        for (long id : ids) {
+            if (!menuDAO.delete(id))
+                return false;
         }
+        return true;
     }
 }

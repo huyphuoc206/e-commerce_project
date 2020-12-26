@@ -13,5 +13,5 @@ public interface ISupplierService {
 
     SupplierModel update (SupplierModel supplierModel);
 
-    void delete(long[] ids);
+    boolean delete(long[] ids);
 }

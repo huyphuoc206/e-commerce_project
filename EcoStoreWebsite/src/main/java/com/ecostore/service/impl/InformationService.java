@@ -41,14 +41,17 @@ public class InformationService implements IInformationService {
         model.setCreatedDate(oldInformation.getCreatedDate());
         model.setCreatedBy(oldInformation.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        informationDAO.update(model);
-        return informationDAO.findOneById(model.getId());
+        if (informationDAO.update(model))
+            return informationDAO.findOneById(model.getId());
+        return null;
     }
 
     @Override
-    public void delete(long[] ids) {
+    public boolean delete(long[] ids) {
         for (long id : ids) {
-            informationDAO.delete(id);
+            if (!informationDAO.delete(id))
+                return false;
         }
+        return true;
     }
 }

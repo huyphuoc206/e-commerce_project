@@ -4,7 +4,7 @@ import com.ecostore.model.MenuModel;
 import com.ecostore.model.MenuTypeModel;
 import com.ecostore.service.IMenuService;
 import com.ecostore.service.IMenuTypeService;
-import com.ecostore.service.impl.MenuTypeService;
+import com.ecostore.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -22,18 +22,20 @@ public class MenuController extends HttpServlet {
     private IMenuService menuService;
     @Inject
     private IMenuTypeService menuTypeService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
         request.setAttribute("menuLeft", menuLeft);
         String url = "";
         String id = request.getParameter("id");
-        if (id != null){
+        if (id != null) {
             MenuModel menuModel = menuService.findAllById(Long.parseLong(id));
             request.setAttribute("menuModel", menuModel);
             List<MenuTypeModel> menuTypeModels = menuTypeService.fillAll();
             request.setAttribute("menuTypeModels", menuTypeModels);
             url = "../views/admin/editmenu.jsp";
         } else {
+            MessageUtil.showMessage(request);
             List<MenuModel> menus = menuService.findAll();
             request.setAttribute("menus", menus);
             List<MenuTypeModel> menuTypeModels = menuTypeService.fillAll();
@@ -42,6 +44,6 @@ public class MenuController extends HttpServlet {
         }
 
         RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request,response);
+        rd.forward(request, response);
     }
 }

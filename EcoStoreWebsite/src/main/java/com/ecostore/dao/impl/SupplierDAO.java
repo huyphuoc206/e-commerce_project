@@ -23,7 +23,7 @@ public class SupplierDAO extends AbstractDAO<SupplierModel> implements ISupplier
     @Override
     public SupplierModel findOneById(long id) {
         String sql = "SELECT * FROM supplier WHERE id = ?";
-        List<SupplierModel> supplier = query(sql , new SupplierMapper(),id);
+        List<SupplierModel> supplier = query(sql, new SupplierMapper(), id);
         if (supplier.size() == 0) return null;
         return supplier.get(0);
     }
@@ -35,14 +35,14 @@ public class SupplierDAO extends AbstractDAO<SupplierModel> implements ISupplier
     }
 
     @Override
-    public void update(SupplierModel supplierModel) {
+    public boolean update(SupplierModel supplierModel) {
         String sql = "UPDATE supplier SET name = ?, code = ?, status = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
-        update(sql, supplierModel.getName(), supplierModel.getCode(), supplierModel.getStatus(), supplierModel.getModifiedDate(), supplierModel.getModifiedBy(), supplierModel.getId());
+        return update(sql, supplierModel.getName(), supplierModel.getCode(), supplierModel.getStatus(), supplierModel.getModifiedDate(), supplierModel.getModifiedBy(), supplierModel.getId());
     }
 
     @Override
-    public void delete(long id) {
+    public boolean delete(long id) {
         String sql = "DELETE FROM supplier WHERE id = ?";
-        update(sql, id);
+        return update(sql, id);
     }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 public class CategoryService implements ICategoryService {
     @Inject
     private ICategoryDAO categoryDAO;
+
     @Override
     public List<CategoryModel> findAllByStatus(int status) {
         return categoryDAO.findAllByStatus(status);
@@ -39,14 +40,17 @@ public class CategoryService implements ICategoryService {
         model.setCreatedBy(oldCategory.getCreatedBy());
         model.setCreatedDate(oldCategory.getModifiedDate());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        categoryDAO.update(model);
-        return categoryDAO.findOneById(model.getId());
+        if (categoryDAO.update(model))
+            return categoryDAO.findOneById(model.getId());
+        return null;
     }
 
     @Override
-    public void delete(long[] ids) {
-        for (long id: ids) {
-            categoryDAO.delete(id);
+    public boolean delete(long[] ids) {
+        for (long id : ids) {
+            if (!categoryDAO.delete(id))
+                return false;
         }
+        return true;
     }
 }

@@ -49,7 +49,7 @@ public class CategoryAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         CategoryModel categoryModel = mapper.readValue(request.getInputStream(), CategoryModel.class);
-        categoryService.delete(categoryModel.getIds());
-        mapper.writeValue(response.getOutputStream(), "{}");
+        boolean result = categoryService.delete(categoryModel.getIds());
+        mapper.writeValue(response.getOutputStream(), result);
     }
 }

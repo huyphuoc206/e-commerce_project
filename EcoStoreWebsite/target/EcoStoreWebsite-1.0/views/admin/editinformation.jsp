@@ -109,12 +109,14 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
-            success: function(result) {
-                // result chinh la NewsModel ma Server tra ve
-                window.location.href = "${InformationURL}";
+            success: function (result) {
+                if(result !== null)
+                    window.location.href = "${InformationURL}?message=update_success&alert=success";
+                else
+                    window.location.href = "${InformationURL}?message=update_fail&alert=danger";
             },
-            error: function(error) {
-                /* window.location.href = "${InformationURL}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+            error: function (error) {
+                window.location.href = "${InformationURL}?message=system_error&alert=danger";
             }
         })
     }

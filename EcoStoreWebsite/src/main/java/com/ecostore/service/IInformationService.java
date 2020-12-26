@@ -15,5 +15,5 @@ public interface IInformationService {
 
     InformationModel update(InformationModel model);
 
-    void delete(long[] ids);
+    boolean delete(long[] ids);
 }

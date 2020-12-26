@@ -13,7 +13,7 @@ public interface ISupplierDAO {
 
     Long insert(SupplierModel supplierModel);
 
-    void update(SupplierModel supplierModel);
+    boolean update(SupplierModel supplierModel);
 
-    void delete(long id);
+    boolean delete(long id);
 }

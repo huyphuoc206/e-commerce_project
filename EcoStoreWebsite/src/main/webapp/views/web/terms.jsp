@@ -5,6 +5,7 @@
   Time: 1:17 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,7 +18,7 @@
             <div class="container">
                 <ul class="w3_short">
                     <li>
-                        <a href="index.html">Trang chủ</a>
+                        <a href="<c:url value='/trang-chu'/>">Trang chủ</a>
                         <i>|</i>
                     </li>
                     <li>Điều Khoản Sử Dụng </li>
@@ -38,8 +39,7 @@
                 <span>D</span>ụng </h3>
             <!-- //tittle heading -->
            <div class="content">
-               ${model.content  }
-
+               ${model.content}
            </div>
         </div>
     </div>

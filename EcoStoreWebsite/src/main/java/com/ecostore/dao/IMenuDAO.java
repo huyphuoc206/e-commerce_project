@@ -8,14 +8,15 @@ import java.util.List;
 
 public interface IMenuDAO {
     List<MenuModel> findAllByMenuTypeId(long menuTypeId, int status);
+
     List<MenuModel> findAll();
 
     MenuModel findOneById(long id);
 
     Long insert(MenuModel menuModel);
 
-    void update(MenuModel menuModel);
+    boolean update(MenuModel menuModel);
 
-    void delete(long id);
+    boolean delete(long id);
 
 }

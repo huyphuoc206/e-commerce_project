@@ -4,6 +4,7 @@ import com.ecostore.model.CategoryModel;
 import com.ecostore.model.MenuModel;
 import com.ecostore.service.ICategoryService;
 import com.ecostore.service.IMenuService;
+import com.ecostore.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -32,6 +33,7 @@ public class CategoryController extends HttpServlet {
             request.setAttribute("categoryModel", categoryModel);
             url = "../views/admin/editcategory.jsp";
         } else {
+            MessageUtil.showMessage(request);
             List<CategoryModel> categories = categoryService.findAll();
             request.setAttribute("categories", categories);
             url = "../views/admin/categories.jsp";

@@ -7,11 +7,11 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-supplier"/>
-<c:url var="CategoryUrl" value="/quan-tri/nha-san-xuat"/>
+<c:url var="SupplierURL" value="/quan-tri/nha-san-xuat"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Quản lý nhà sản xuất</title>
 </head>
 <body>
 <div class="content mt-3">
@@ -23,6 +23,9 @@
                         <strong class="card-title">Danh sách hãng sản xuất</strong>
                     </div>
                     <div class="card-header">
+                        <c:if test="${not empty message}">
+                            <div class="float-left alert alert-${alert}">${message}</div>
+                        </c:if>
                         <div class="float-right">
                             <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
@@ -177,10 +180,13 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                window.location.href = "${SupplierUrl}";
+                if(result)
+                    window.location.href = "${SupplierURL}?message=delete_success&alert=success";
+                else
+                    window.location.href = "${SupplierURL}?message=delete_fail&alert=danger";
             },
             error: function (error) {
-                window.location.href = "/quan-tri/nha-san-xuat";
+                window.location.href = "${SupplierURL}?message=system_error&alert=danger";
             }
         })
     }
@@ -193,15 +199,13 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                // result chinh la NewsModel ma Server tra ve
-                window.location.href = "${SupplierUrl}";
+                if(result !== null)
+                    window.location.href = "${SupplierURL}?message=insert_success&alert=success";
+                else
+                    window.location.href = "${SupplierURL}?message=insert_fail&alert=danger";
             },
             error: function (error) {
-                /* window.location.href = "
-
-
-
-                ${Newsurl}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+                window.location.href = "${SupplierURL}?message=system_error&alert=danger";
             }
         })
     }

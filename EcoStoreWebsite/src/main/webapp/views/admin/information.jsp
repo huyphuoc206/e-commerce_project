@@ -23,6 +23,9 @@
                         <strong class="card-title">Danh sách thông tin cửa hàng</strong>
                     </div>
                     <div class="card-header">
+                        <c:if test="${not empty message}">
+                            <div class="float-left alert alert-${alert}">${message}</div>
+                        </c:if>
                         <div class="float-right">
                             <a href="#addInformationModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
@@ -197,10 +200,13 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                window.location.href = "${InformationURL}";
+                if(result)
+                    window.location.href = "${InformationURL}?message=delete_success&alert=success";
+                else
+                    window.location.href = "${InformationURL}?message=delete_fail&alert=danger";
             },
             error: function (error) {
-                window.location.href = "/quan-tri/trang-chu";
+                window.location.href = "${InformationURL}?message=system_error&alert=danger";
             }
         })
     }
@@ -213,12 +219,13 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                // result chinh la NewsModel ma Server tra ve
-                window.location.href = "${InformationURL}";
+                if(result !== null)
+                    window.location.href = "${InformationURL}?message=insert_success&alert=success";
+                else
+                    window.location.href = "${InformationURL}?message=insert_fail&alert=danger";
             },
             error: function (error) {
-                /* window.location.href = "
-                ${InformationURL}?type=list&page=1&maxPageItems=2&message=error_system&alert=danger";*/
+                window.location.href = "${InformationURL}?message=system_error&alert=danger";
             }
         })
     }

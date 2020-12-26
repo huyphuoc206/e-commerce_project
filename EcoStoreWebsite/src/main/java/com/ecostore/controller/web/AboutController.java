@@ -29,13 +29,14 @@ public class AboutController extends HttpServlet {
     private ICategoryService categoryService;
     @Inject
     private IInformationService informationService;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1,1);
-        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
+        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1, 1);
+        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2, 1);
         request.setAttribute("menuTop", menuTop);
         request.setAttribute("menuBottom", menuBottom);
         List<CategoryModel> categories = categoryService.findAllByStatus(1);

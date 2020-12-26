@@ -14,6 +14,6 @@ public interface ICategoryService {
 
     CategoryModel update(CategoryModel model);
 
-    void delete(long[] ids);
+    boolean delete(long[] ids);
 
 }

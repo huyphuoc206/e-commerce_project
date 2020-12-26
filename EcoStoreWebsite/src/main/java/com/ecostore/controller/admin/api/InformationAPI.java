@@ -49,7 +49,7 @@ public class InformationAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         InformationModel informationModel = mapper.readValue(request.getInputStream(), InformationModel.class);
-        informationService.delete(informationModel.getIds());
-        mapper.writeValue(response.getOutputStream(), "{}");
+        boolean result = informationService.delete(informationModel.getIds());
+        mapper.writeValue(response.getOutputStream(), result);
     }
 }

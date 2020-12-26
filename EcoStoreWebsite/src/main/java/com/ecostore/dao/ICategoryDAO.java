@@ -13,7 +13,7 @@ public interface ICategoryDAO {
 
     Long insert(CategoryModel categoryModel);
 
-    void update(CategoryModel categoryModel);
+    boolean update(CategoryModel categoryModel);
 
-    void delete(long id);
+    boolean delete(long id);
 }

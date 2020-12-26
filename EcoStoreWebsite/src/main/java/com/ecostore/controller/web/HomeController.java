@@ -25,17 +25,18 @@ public class HomeController extends HttpServlet {
     private ICategoryService categoryService;
     @Inject
     private IInformationService informationService;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1,1);
-        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2,1);
+        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1, 1);
+        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2, 1);
         List<CategoryModel> categories = categoryService.findAllByStatus(1);
         InformationModel information = informationService.findOneByStatus(1);
-        request.setAttribute("menuTop",menuTop);
-        request.setAttribute("menuBottom",menuBottom);
+        request.setAttribute("menuTop", menuTop);
+        request.setAttribute("menuBottom", menuBottom);
         request.setAttribute("categories", categories);
         request.setAttribute("information", information);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");

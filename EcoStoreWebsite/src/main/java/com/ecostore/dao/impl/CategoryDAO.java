@@ -36,14 +36,14 @@ public class CategoryDAO extends AbstractDAO<CategoryModel> implements ICategory
     }
 
     @Override
-    public void update(CategoryModel categoryModel) {
+    public boolean update(CategoryModel categoryModel) {
         String sql = "UPDATE category SET name = ?, code = ?, status = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
-        update(sql, categoryModel.getName(), categoryModel.getCode(), categoryModel.getStatus(), categoryModel.getModifiedDate(), categoryModel.getModifiedBy(), categoryModel.getId());
+        return update(sql, categoryModel.getName(), categoryModel.getCode(), categoryModel.getStatus(), categoryModel.getModifiedDate(), categoryModel.getModifiedBy(), categoryModel.getId());
     }
 
     @Override
-    public void delete(long id) {
+    public boolean delete(long id) {
         String sql = "DELETE FROM category WHERE id = ?";
-        update(sql, id);
+        return update(sql, id);
     }
 }

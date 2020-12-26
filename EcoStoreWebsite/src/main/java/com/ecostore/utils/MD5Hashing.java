@@ -5,7 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MD5Hashing {
-    public static String hashingMD5(String input) {
+    public static String hash(String input) {
         String result = "";
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
