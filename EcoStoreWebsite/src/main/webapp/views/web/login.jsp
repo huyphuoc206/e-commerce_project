@@ -30,16 +30,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="modal-body col-sm-6">
-                <form action="#" method="post">
+                <c:if test="${not empty message}">
+                    <div class="alert alert-${alert}">${message}</div>
+                </c:if>
+                <form action="/dang-nhap" method="post">
                     <div class="form-group">
                         <label for="username" class="col-form-label">Tên đăng nhập</label>
-                        <input type="text" class="form-control" id="username" placeholder=" " name="name" required=""
+                        <input type="text" class="form-control" id="username" name="username" required=""
                                oninvalid="this.setCustomValidity('Hãy nhập tên đăng nhập!')"
                                oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" id="password" placeholder=" " name="Password"
+                        <input type="password" class="form-control" id="password" name="password"
                                required="" oninvalid="this.setCustomValidity('Hãy nhập mật khẩu của bạn!')"
                                oninput="this.setCustomValidity('')">
                     </div>
