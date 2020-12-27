@@ -9,7 +9,7 @@ public interface IMenuService {
 
     List<MenuModel> findAll();
 
-    MenuModel findAllById(long id);
+    MenuModel findOneById(long id);
 
     MenuModel insert(MenuModel model);
 

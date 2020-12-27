@@ -26,7 +26,7 @@ public class MenuService implements IMenuService {
     }
 
     @Override
-    public MenuModel findAllById(long id) {
+    public MenuModel findOneById(long id) {
         return menuDAO.findOneById(id);
     }
 
