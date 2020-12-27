@@ -31,6 +31,19 @@ public class TermsDAO extends AbstractDAO<TermsModel> implements ITermsDAO {
 
     @Override
     public Long insert(TermsModel termsModel) {
-        return null;
+        String sql = "INSERT INTO terms (content,status,createddate,createdby) VALUES (?,?,?,?)";
+        return insert(sql, termsModel.getContent(), termsModel.getStatus(), termsModel.getCreatedDate(), termsModel.getCreatedBy());
+    }
+
+    @Override
+    public boolean update(TermsModel termsModel) {
+        String sql = "UPDATE terms SET content = ?, status = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
+        return update(sql, termsModel.getContent(), termsModel.getStatus(), termsModel.getModifiedDate(), termsModel.getModifiedBy(), termsModel.getId());
+    }
+
+    @Override
+    public boolean delete(long id) {
+        String sql = "DELETE FROM terms WHERE id = ?";
+        return update(sql,id);
     }
 }

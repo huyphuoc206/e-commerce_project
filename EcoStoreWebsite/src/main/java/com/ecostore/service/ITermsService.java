@@ -10,4 +10,7 @@ public interface ITermsService {
     List<TermsModel> findAll();
     TermsModel findOneById(long id);
     TermsModel insert(TermsModel termsModel);
+    TermsModel update(TermsModel termsModel);
+    boolean delete(long [] ids);
+
 }
