@@ -9,4 +9,6 @@ public interface ITermsDAO {
     List<TermsModel> findAll();
     TermsModel findOneById(long id);
     Long insert(TermsModel termsModel);
+    boolean update(TermsModel termsModel);
+    boolean delete(long id);
 }
