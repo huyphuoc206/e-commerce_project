@@ -18,7 +18,7 @@
                                 <i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
                         </li>
                         <li class="text-center text-white">
-                            <a href="register.html" class="text-white">
+                            <a href="<c:url value='/dang-ky'/>" class="text-white">
                                 <i class="fas fa-user-plus mr-2"></i> Đăng ký </a>
                         </li>
                     </c:if>

@@ -2,8 +2,8 @@ package com.ecostore.mapper;
 
 import com.ecostore.model.RoleModel;
 import com.ecostore.model.UserModel;
+import com.ecostore.utils.MapperUtil;
 
-import javax.management.relation.Role;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -20,27 +20,17 @@ public class UserMapper implements IRowMapper<UserModel> {
             user.setPhone(resultSet.getString("phone"));
             user.setAvatar(resultSet.getString("avatar"));
             user.setStatus(resultSet.getInt("status"));
+            user.setRoleId(resultSet.getLong("roleid"));
             RoleModel role = new RoleModel();
-            if (resultSet.getString("code") != null) {
+            if (MapperUtil.hasColumn(resultSet, "code"))
                 role.setCode(resultSet.getString("code"));
-            }
-            if (resultSet.getString("name") != null) {
+            if (MapperUtil.hasColumn(resultSet, "name"))
                 role.setName(resultSet.getString("name"));
-            }
             user.setRole(role);
-
-            if (resultSet.getTimestamp("createddate") != null) {
-                user.setCreatedDate((resultSet.getTimestamp("createddate")));
-            }
-            if (resultSet.getTimestamp("createdby") != null) {
-                user.setCreatedBy((resultSet.getString("createdby")));
-            }
-            if (resultSet.getTimestamp("modifieddate") != null) {
-                user.setModifiedDate((resultSet.getTimestamp("modifieddate")));
-            }
-            if (resultSet.getTimestamp("modifiedby") != null) {
-                user.setModifiedBy((resultSet.getString("modifiedby")));
-            }
+            user.setCreatedDate(resultSet.getTimestamp("createddate"));
+            user.setCreatedBy(resultSet.getString("createdby"));
+            user.setModifiedDate(resultSet.getTimestamp("modifieddate"));
+            user.setModifiedBy(resultSet.getString("modifiedby"));
             return user;
         } catch (SQLException throwables) {
             return null;

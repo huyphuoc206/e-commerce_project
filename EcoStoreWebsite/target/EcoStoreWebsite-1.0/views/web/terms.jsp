@@ -39,8 +39,7 @@
                 <span>D</span>ụng </h3>
             <!-- //tittle heading -->
            <div class="content">
-               ${model.content  }
-
+               ${model.content}
            </div>
         </div>
     </div>

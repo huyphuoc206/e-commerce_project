@@ -618,7 +618,7 @@ p.dont-do a {
     transition: 0.5s all;
 }
 
-.right-w3l input[type="submit"] {
+.right-w3l input[type="submit"], .right-w3l button[type="submit"] {
     cursor: pointer;
     letter-spacing: 1px;
     padding: 10px 0;

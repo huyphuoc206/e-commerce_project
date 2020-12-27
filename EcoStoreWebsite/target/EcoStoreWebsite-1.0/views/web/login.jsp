@@ -34,7 +34,7 @@
                 <c:if test="${not empty message}">
                     <div class="alert alert-${alert}">${message}</div>
                 </c:if>
-                <form action="/dang-nhap" method="post">
+                <form action="dang-nhap" method="post">
                     <div class="form-group">
                         <label for="username" class="col-form-label">Tên đăng nhập</label>
                         <input type="text" class="form-control" id="username" name="username" required=""

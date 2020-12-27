@@ -7,8 +7,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class MailUtils {
-    public static final String USERNAME = "";
-    public static final String PASSWORD = "";
+    public static final String USERNAME = "ecostorenlu@gmail.com";
+    public static final String PASSWORD = "Nhatphuocton";
     public static final String PORT = "587";
     public static final String HOST = "smtp.gmail.com";
     public static final String STORENAME = "Eco Store";

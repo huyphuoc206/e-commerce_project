@@ -4,4 +4,6 @@ import com.ecostore.model.UserModel;
 
 public interface IUserService {
     UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status);
+
+    UserModel insert(UserModel user);
 }

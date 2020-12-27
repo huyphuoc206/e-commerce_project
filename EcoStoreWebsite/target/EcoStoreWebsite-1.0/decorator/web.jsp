@@ -41,7 +41,7 @@
             href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
             rel="stylesheet">
     <!-- //web fonts -->
-
+    <script src="<c:url value='/template/admin/vendors/jquery/dist/jquery.min.js'/>"></script>
 </head>
 <body>
 <%@ include file="/common/web/header.jsp" %>
@@ -51,7 +51,7 @@
 
 <!-- js-files -->
 <!-- loading page -->
-<script src="<c:url value='/template/web/js/jquery-3.2.1.min.js'/>"></script>
+<%--<script src="<c:url value='/template/web/js/jquery-3.2.1.min.js'/>"></script>--%>
 <script>
     $(window).on('load', function(event){
         $('body').removeClass('preloading');
@@ -59,7 +59,7 @@
     });
 </script>
 <!-- jquery -->
-<script src="<c:url value='/template/web/js/jquery-2.2.3.min.js'/>"></script>
+<%--<script src="<c:url value='/template/web/js/jquery-2.2.3.min.js'/>"></script>--%>
 <!-- //jquery -->
 
 <!-- nav smooth scroll -->
@@ -123,24 +123,6 @@
 </script>
 <!-- //cart-js -->
 
-<!-- password-script -->
-<script>
-    window.onload = function () {
-        document.getElementById("password1").onchange = validatePassword;
-        document.getElementById("password2").onchange = validatePassword;
-    }
-
-    function validatePassword() {
-        var pass2 = document.getElementById("password2").value;
-        var pass1 = document.getElementById("password1").value;
-        if (pass1 != pass2)
-            document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-        else
-            document.getElementById("password2").setCustomValidity('');
-        //empty string means no validation error
-    }
-</script>
-<!-- //password-script -->
 
 <!-- scroll seller -->
 <script src="<c:url value='/template/web/js/scroll.js'/>"></script>

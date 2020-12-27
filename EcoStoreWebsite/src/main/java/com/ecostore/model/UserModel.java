@@ -8,12 +8,22 @@ public class UserModel extends AbstractModel {
     private String email;
     private String phone;
     private String avatar;
+    private long roleId;
     private RoleModel role;
     private int status;
     private String key;
     private int keytime;
 
     public UserModel() {
+    }
+
+
+    public long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getFullname() {
