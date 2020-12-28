@@ -59,7 +59,7 @@
                                                     <label for="checkbox_${item.id}"></label>
                                                 </span>
                                     </td>
-                                    <td>${item.content}</td>
+                                    <td><span class="show-less">${item.content}</span></td>
                                     <c:if test="${item.status == 1}">
                                         <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
                                         </td>

@@ -1,3 +1,11 @@
+/*giam do dai cua td*/
+.show-less {
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
 /* hieu ung loading */
 .load {
 	width: 100%;
