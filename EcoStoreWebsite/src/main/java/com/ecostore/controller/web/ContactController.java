@@ -17,8 +17,6 @@ import java.util.List;
 @WebServlet(urlPatterns = "/lien-he")
 public class ContactController extends HttpServlet {
     @Inject
-    private IContactService contactService;
-    @Inject
     private IMenuService menuService;
     @Inject
     private ICategoryService categoryService;
@@ -36,8 +34,6 @@ public class ContactController extends HttpServlet {
         request.setAttribute("menuBottom", menuBottom);
         List<CategoryModel> categories = categoryService.findAllByStatus(1);
         InformationModel information = informationService.findOneByStatus(1);
-        ContactModel model = contactService.findOneById(1);
-        request.setAttribute("model", model);
         request.setAttribute("categories", categories);
         request.setAttribute("information", information);
         MessageUtil.showMessage(request);
