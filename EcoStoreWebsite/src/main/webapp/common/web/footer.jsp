@@ -78,22 +78,22 @@
                     <h3 class="text-white font-weight-bold mb-3">Phương thức thanh toán</h3>
                     <ul class="row">
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay2.png" alt="">
+                            <img src="<c:url value='/images/pay2.png'/>" alt="">
                         </li>
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay5.png" alt="">
+                            <img src="<c:url value='/images/pay5.png'/>" alt="">
                         </li>
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay1.png" alt="">
+                            <img src="<c:url value='/images/pay1.png'/>" alt="">
                         </li>
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay7.png" alt="">
+                            <img src="<c:url value='/images/pay7.png'/>" alt="">
                         </li>
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay8.png" alt="">
+                            <img src="<c:url value='/images/pay8.png'/>" alt="">
                         </li>
                         <li class="col-md-4 col-sm-6 col-12">
-                            <img src="images/pay9.png" alt="">
+                            <img src="<c:url value='/images/pay9.png'/>" alt="">
                         </li>
                     </ul>
                     <!-- social icons -->

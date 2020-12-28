@@ -9,8 +9,8 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="<c:url value='/images/logo.png'/>">
+    <link rel="shortcut icon" href="<c:url value='/images/logo.png'/>">
 
     <link rel="stylesheet" href="<c:url value='/template/admin/vendors/bootstrap/dist/css/bootstrap.min.css'/>">
     <link rel="stylesheet" href="<c:url value='/template/admin/vendors/font-awesome/css/font-awesome.min.css'/>">
@@ -58,7 +58,9 @@
 </head>
 <body>
     <%@ include file="/common/admin/menu.jsp" %>
-
+    <div class="load" style="display: none">
+        <img src="<c:url value='/images/loading.gif'/>">
+    </div>
     <div id="right-panel" class="right-panel">
         <%@ include file="/common/admin/header.jsp" %>
         <dec:body/>

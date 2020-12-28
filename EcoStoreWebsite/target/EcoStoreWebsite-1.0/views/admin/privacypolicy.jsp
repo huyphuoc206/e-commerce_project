@@ -156,6 +156,7 @@
     })
 
     function addPrivacyPolicy(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'POST',
@@ -163,12 +164,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${PrivacyPolicyUrl}?message=insert_success&alert=success";
                 else
                     window.location.href = "${PrivacyPolicyUrl}?message=insert_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${PrivacyPolicyUrl}?message=system_error&alert=danger";
             }
         })
@@ -188,6 +191,7 @@
     })
 
     function deletePrivacyPolicy(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'DELETE',
@@ -195,12 +199,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result)
                     window.location.href = "${PrivacyPolicyUrl}?message=delete_success&alert=success";
                 else
                     window.location.href = "${PrivacyPolicyUrl}?message=delete_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${PrivacyPolicyUrl}?message=system_error&alert=danger";
             }
         })
