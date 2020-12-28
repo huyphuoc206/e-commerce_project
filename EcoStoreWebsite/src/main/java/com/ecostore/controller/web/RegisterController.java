@@ -6,6 +6,7 @@ import com.ecostore.service.IInformationService;
 import com.ecostore.service.IMenuService;
 import com.ecostore.service.IUserService;
 import com.ecostore.utils.MessageUtil;
+import com.ecostore.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -25,6 +26,7 @@ public class RegisterController extends HttpServlet {
     private IInformationService informationService;
     @Inject
     private IUserService userService;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1, 1);
@@ -33,8 +35,13 @@ public class RegisterController extends HttpServlet {
         request.setAttribute("menuTop", menuTop);
         request.setAttribute("menuBottom", menuBottom);
         request.setAttribute("information", information);
-        MessageUtil.showMessage(request);
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/register.jsp");
-        rd.forward(request, response);
+        // Neu da dang nhap ma vao dang ky thi chuyen ve trang cap nhat thong tin
+        if (SessionUtil.getInstance().getValue(request, "USERMODEL") != null) {
+            response.sendRedirect(request.getContextPath() + "/trang-chu");
+        } else {
+            MessageUtil.showMessage(request);
+            RequestDispatcher rd = request.getRequestDispatcher("views/web/register.jsp");
+            rd.forward(request, response);
+        }
     }
 }

@@ -4,6 +4,7 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
 public class MailUtils {
@@ -29,11 +30,11 @@ public class MailUtils {
 
     public static boolean sendMail(String to, String subject, String message) {
         try {
-            Message m = new MimeMessage(getMailSession(USERNAME, PASSWORD));
+            MimeMessage m = new MimeMessage(getMailSession(USERNAME, PASSWORD));
             m.setFrom(new InternetAddress(USERNAME, STORENAME));
             m.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            m.setSubject(subject);
-            m.setText(message);
+            m.setSubject(subject, StandardCharsets.UTF_8.toString());
+            m.setText(message, StandardCharsets.UTF_8.toString());
             Transport.send(m);
             return true;
         } catch (MessagingException e) {

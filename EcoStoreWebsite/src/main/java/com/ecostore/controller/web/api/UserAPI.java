@@ -29,7 +29,6 @@ public class UserAPI extends HttpServlet {
         userModel.setRoleId(2);
         userModel.setStatus(1);
         userModel.setCreatedBy(userModel.getUsername());
-        userModel.setAvatar("");
         userModel = userService.insert(userModel);
         // dang ky thanh cong thi dang nhap va gui mail chao mung
         if (userModel != null) {
