@@ -6,7 +6,7 @@ import com.ecostore.model.ContactModel;
 import java.util.List;
 
 public interface IContactService {
-    List<ContactModel> findAllByStatis(int status);
+
     List<ContactModel> findAll();
     ContactModel findOneById(long id);
 

@@ -19,8 +19,6 @@ public class ContactController extends HttpServlet {
     @Inject
     private IContactService contactService;
     @Inject
-    private ITermsService termsService;
-    @Inject
     private IMenuService menuService;
     @Inject
     private ICategoryService categoryService;
@@ -38,11 +36,9 @@ public class ContactController extends HttpServlet {
         request.setAttribute("menuBottom", menuBottom);
         List<CategoryModel> categories = categoryService.findAllByStatus(1);
         InformationModel information = informationService.findOneByStatus(1);
-        TermsModel terms = termsService.findOneByStatus(1);
         ContactModel model = contactService.findOneById(1);
         request.setAttribute("model", model);
         request.setAttribute("categories", categories);
-        request.setAttribute("term", terms);
         request.setAttribute("information", information);
         MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/contact.jsp");

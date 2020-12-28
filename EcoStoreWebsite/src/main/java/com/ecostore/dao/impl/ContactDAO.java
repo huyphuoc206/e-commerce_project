@@ -12,11 +12,7 @@ import java.util.List;
 
 
 public class ContactDAO extends AbstractDAO<ContactDAO> implements IContactDAO {
-    @Override
-    public List<ContactModel> findAllByStatus(int status) {
-        String sql = "SELECT * FROM contact WHERE status = ?";
-        return query(sql, new ContactMapper(), status);
-    }
+
 
     @Override
     public List<ContactModel> findAll() {

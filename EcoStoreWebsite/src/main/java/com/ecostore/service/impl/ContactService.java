@@ -13,10 +13,7 @@ import java.util.List;
 public class ContactService implements IContactService {
     @Inject
     private IContactDAO contactDAO;
-    @Override
-    public List<ContactModel> findAllByStatis(int status) {
-        return contactDAO.findAllByStatus(status);
-    }
+
 
     @Override
     public List<ContactModel> findAll() {

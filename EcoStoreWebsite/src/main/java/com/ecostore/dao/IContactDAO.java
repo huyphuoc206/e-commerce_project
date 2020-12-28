@@ -5,7 +5,7 @@ import com.ecostore.model.ContactModel;
 import java.util.List;
 
 public interface IContactDAO {
-    List<ContactModel> findAllByStatus(int status);
+
     List<ContactModel> findAll();
 
     ContactModel findOneById(long id);
