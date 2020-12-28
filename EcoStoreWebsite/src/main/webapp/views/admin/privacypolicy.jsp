@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-privacy-policy"/>
+<c:url var="PrivacyPolicyUrl" value="/quan-tri/chinh-sach-bao-mat"/>
 <%--
   Created by IntelliJ IDEA.
   User: LaptopUSAPro
@@ -22,6 +25,9 @@
                         <strong class="card-title">Danh sách chính sách và bảo mật</strong>
                     </div>
                     <div class="card-header">
+                        <c:if test="${not empty message}">
+                            <div class="float-left alert alert-${alert}">${message}</div>
+                        </c:if>
                         <div class="float-right">
                             <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
@@ -45,44 +51,33 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
+                            <c:forEach var="item" items="${privacyPolicyModels}">
+                                <tr>
+                                    <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
+                                                    <input type="checkbox" id="checkbox_${item.id}" value="${item.id}">
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td>Chấp thuận ?</td>
+                                    </td>
+                                    <td>${item.content}</td>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Tạm ngưng
+                                        </td>
+                                    </c:if>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/quan-tri/chinh-sach-bao-mat?id=${item.id}'/>" class="edit"><i class="fa fa-pencil"
+                                                                                         aria-hidden="true" data-toggle="tooltip"
+                                                                                         title="Chỉnh sửa"></i></a>
 
-                                <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
-                                </td>
-                                <td class="text-center">
-                                    <a href="editprivacypolicy.html" class="edit"><i class="fa fa-pencil"
-                                                                                     aria-hidden="true" data-toggle="tooltip"
-                                                                                     title="Chỉnh sửa"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                </td>
-                                <td>Ừm?</td>
-
-                                <td class="text-center"><span class="status text-danger">&bull;</span>Tạm dừng</td>
-                                </td>
-                                <td class="text-center">
-                                    <a href="editprivacypolicy.html" class="edit"><i class="fa fa-pencil"
-                                                                                     aria-hidden="true" data-toggle="tooltip"
-                                                                                     title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -97,7 +92,7 @@
 <div id="addSupplierModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="formSubmit">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm chính sách và bảo mật</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -105,21 +100,22 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nội dung</label>
-                        <input type="text" class="form-control" required>
+                        <input name="content" type="text" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Trạng thái</label>
-                        <select name="supplier" id="supplier" class="form-control">
+                        <select name="status" class="form-control">
                             <option value="1">Hoạt động</option>
-                            <option value="2">Tạm khóa</option>
+                            <option value="0">Tạm khóa</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-success" value="Thêm">
+                    <button id="addPrivacyPolicy" type="submit" class="btn btn-success">Thêm</button>
                 </div>
+
             </form>
         </div>
     </div>
@@ -139,11 +135,78 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
+                    <button id="deletePrivacyPolicy" type="submit" class="btn btn-danger" >Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $('#addPrivacyPolicy').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+            console.log(data['' + v.name])
+
+        });
+        addPrivacyPolicy(data);
+    })
+
+    function addPrivacyPolicy(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                if(result !== null)
+                    window.location.href = "${PrivacyPolicyUrl}?message=insert_success&alert=success";
+                else
+                    window.location.href = "${PrivacyPolicyUrl}?message=insert_fail&alert=danger";
+            },
+            error: function (error) {
+                window.location.href = "${PrivacyPolicyUrl}?message=system_error&alert=danger";
+            }
+        })
+    }
+
+    $('#deletePrivacyPolicy').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        // lay data khi check vao cac checkbox
+        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val(); // lay value cua input checked
+        }).get();
+        if (dataArray.length != 0) {
+            data['ids'] = dataArray;
+            deletePrivacyPolicy(data);
+        }
+    })
+
+    function deletePrivacyPolicy(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                if(result)
+                    window.location.href = "${PrivacyPolicyUrl}?message=delete_success&alert=success";
+                else
+                    window.location.href = "${PrivacyPolicyUrl}?message=delete_fail&alert=danger";
+            },
+            error: function (error) {
+                window.location.href = "${PrivacyPolicyUrl}?message=system_error&alert=danger";
+            }
+        })
+    }
+
+
+</script>
 </body>
 </html>

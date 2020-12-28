@@ -17,12 +17,12 @@ public class PrivacyPolicyMapper implements IRowMapper<PrivacyPolicyModel> {
 
             if (resultSet.getTimestamp("createddate") != null)
                 model.setCreatedDate(resultSet.getTimestamp("createddate"));
-            if (resultSet.getTimestamp("createdby") != null)
+            if (resultSet.getString("createdby") != null)
                 model.setCreatedBy(resultSet.getString("createdby"));
             if (resultSet.getTimestamp("modifieddate") != null)
                 model.setModifiedDate(resultSet.getTimestamp("modifieddate"));
             if (resultSet.getString("modifiedby") != null)
-                model.setModifiedDate(resultSet.getTimestamp("modifiedby"));
+                model.setCreatedBy(resultSet.getString("modifiedby"));
             return model;
         } catch (SQLException throwables) {
             return null;
