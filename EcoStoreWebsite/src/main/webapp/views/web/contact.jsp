@@ -59,7 +59,7 @@
                         <i class="fas fa-phone rounded-circle"></i>
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Hotline</h4>
-                    <div class="email">
+                    <div class="phone">
                         ${information.phone}
                     </div>
                 </div>
@@ -70,9 +70,9 @@
                         <i class="fas fa-envelope-open rounded-circle"></i>
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
-                    <p>
-                        <a href="${information.email}">${information.email}</a>
-                    </p>
+                    <div class="email">
+                        ${information.email}
+                    </div>
                 </div>
             </div>
         </div>
