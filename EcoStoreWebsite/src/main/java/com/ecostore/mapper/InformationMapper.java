@@ -18,18 +18,10 @@ public class InformationMapper implements IRowMapper<InformationModel> {
             model.setFacebookLink(resultSet.getString("facebooklink"));
             model.setInstagramLink(resultSet.getString("instagramlink"));
             model.setTwitterLink(resultSet.getString("twitterlink"));
-            if(resultSet.getTimestamp("createddate") != null){
-                model.setCreatedDate((resultSet.getTimestamp("createddate")));
-            }
-            if(resultSet.getString("createdby") != null){
-                model.setCreatedBy((resultSet.getString("createdby")));
-            }
-            if(resultSet.getTimestamp("modifieddate") != null){
-                model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
-            }
-            if(resultSet.getString("modifiedby") != null){
-                model.setModifiedBy((resultSet.getString("modifiedby")));
-            }
+            model.setCreatedDate((resultSet.getTimestamp("createddate")));
+            model.setCreatedBy((resultSet.getString("createdby")));
+            model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
+            model.setModifiedBy((resultSet.getString("modifiedby")));
             return model;
         } catch (SQLException throwables) {
             return null;

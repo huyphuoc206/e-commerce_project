@@ -63,15 +63,15 @@
                                     <td>${item.email}</td>
                                     <td>${item.content}</td>
                                     <c:if test="${item.status == 0}">
-                                        <td class="text-center"><span class="status text-success">&bull;</span>Chờ xử lý
+                                        <td class="text-center"><span class="status text-warning">&bull;</span>Chờ xử lý
                                         </td>
                                     </c:if>
                                     <c:if test="${item.status == 1}">
-                                        <td class="text-center"><span class="status text-danger">&bull;</span>Đang xử lý
+                                        <td class="text-center"><span class="status text-secondary">&bull;</span>Đang xử lý
                                         </td>
                                     </c:if>
                                     <c:if test="${item.status == 2}">
-                                        <td class="text-center"><span class="status text-danger">&bull;</span>Đã xử lý
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Đã xử lý
                                         </td>
                                     </c:if>
                                     <td class="text-center">

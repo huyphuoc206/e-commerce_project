@@ -100,8 +100,8 @@
                     <label class="col-form-label">Bạn đang cần gì?</label>
                     <textarea name="content"  class="form-control" placeholder="" required=""> </textarea>
                 </div>
-                <div  class="contact-form">
-                    <button id="addContact" type="submit" >Gửi</button>
+                <div  class="contact-form right-w3l">
+                    <button id="addContact" type="submit" class="form-control">Gửi</button>
                 </div>
             </div>
         </form>
@@ -157,14 +157,16 @@
 <!-- middle section -->
 <script>
     $('#addContact').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-        });
-        addContact(data);
+        if($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addContact(data);
+        }
     })
     function addContact(data) {
         $.ajax({
@@ -175,9 +177,9 @@
             dataType: 'json',
             success: function (result) {
                 if(result !== null)
-                    window.location.href = "${ContactURL}?message=insert_success&alert=success";
+                    window.location.href = "${ContactURL}?message=contact_sent_success&alert=success";
                 else
-                    window.location.href = "${ContactURL}?message=insert_fail&alert=danger";
+                    window.location.href = "${ContactURL}?message=contact_sent_fail&alert=danger";
             },
             error: function (error) {
                 window.location.href = "${ContactURL}?message=system_error&alert=danger";

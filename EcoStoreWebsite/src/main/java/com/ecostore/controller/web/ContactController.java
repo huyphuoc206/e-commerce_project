@@ -2,6 +2,7 @@ package com.ecostore.controller.web;
 
 import com.ecostore.model.*;
 import com.ecostore.service.*;
+import com.ecostore.utils.MessageUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -43,6 +44,7 @@ public class ContactController extends HttpServlet {
         request.setAttribute("categories", categories);
         request.setAttribute("term", terms);
         request.setAttribute("information", information);
+        MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher("views/web/contact.jsp");
         rd.forward(request, response);
     }
