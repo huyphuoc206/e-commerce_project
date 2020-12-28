@@ -6,7 +6,7 @@
     <div class="header-menu">
         <div class="col-sm-12 float-right">
             <div class="user-area">
-                <img class="user-avatar rounded-circle mr-3" src="images/adin.jpg" alt="">
+                <img class="user-avatar rounded-circle" src="<c:url value='/images/avatardefault.png'/>" alt="">
                 <span class="mr-3">Xin chào, ${USERMODEL.fullname}</span>
                 <a href="<c:url value='/thoat?action=logout'/>"><i class="fa fa-power-off"></i> Thoát</a>
             </div>

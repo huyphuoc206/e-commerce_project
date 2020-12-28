@@ -24,7 +24,7 @@
                     </c:if>
 
                     <c:if test="${not empty USERMODEL}">
-                        <li class="text-center border-right text-white">
+                        <li class="text-center border-right text-white pr-3 pl-3" style="width: auto">
                             <div class="user-area dropdown">
                                 <a href="#" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
