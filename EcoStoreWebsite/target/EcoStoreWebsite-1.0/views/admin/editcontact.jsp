@@ -5,6 +5,9 @@
   Time: 5:37 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-contact"/>
+<c:url var="ContactURL" value="/quan-tri/lien-he"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,44 +23,56 @@
                         <strong class="card-title">Chỉnh sửa liên hệ</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
+                                <div class="col col-md-3"><label
+                                        class=" form-control-label">Họ và tên</label></div>
+                                <div class="col-12 col-md-9"><input type="text"
+                                                                    name="fullname" value="${contactModel.fullname}" class="form-control"></div>
 
-                                <div class="col col-md-3"><label for="text-input"
-                                                                 class=" form-control-label">Tên đầy đủ</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="text-input" class="form-control"></div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input"
-                                                                 class=" form-control-label">Email</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="text-input" class="form-control"></div>
+                                <div class="col col-md-3"><label
+                                        class=" form-control-label">Email</label></div>
+                                <div class="col-12 col-md-9"><input type="text"
+                                                                    name="email" value="${contactModel.email}" class="form-control"></div>
+
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input"
-                                                                 class=" form-control-label">Nội dung</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="text-input" class="form-control"></div>
+                                <div class="col col-md-3"><label
+                                        class=" form-control-label">Nội dung</label></div>
+                                <div class="col-12 col-md-9"><input type="text"
+                                                                    name="content" value="${contactModel.content}" class="form-control"></div>
+
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng thái
-                                </label></div>
+                                <div class="col col-md-3"><label class=" form-control-label">Trạng thái</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="category" id="category" class="form-control">
-                                        <option value="0">Tạm khóa</option>
-                                        <option value="1">Hoạt động</option>
+                                    <select id="status" name="status" class="form-control">
+                                        <c:if test="${contactModel.status == 0}">
+                                            <option value="0" selected>Chờ xử lý</option>
+                                            <option value="1">Đang xử lý</option>
+                                            <option value="2">Đã xử lý</option>
+                                        </c:if>
+                                        <c:if test="${contactModel.status == 1}">
+                                            <option value="0" >Chờ xử lý</option>
+                                            <option value="1" selected>Đang xử lý</option>
+                                            <option value="2">Đã xử lý</option>
+                                        </c:if>
+                                        <c:if test="${contactModel.status == 2}">
+                                            <option value="0" >Chờ xử lý</option>
+                                            <option value="1" >Đang xử lý</option>
+                                            <option value="2" selected>Đã xử lý</option>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                <button id="updateContact" type="button" class="btn btn-primary btn-sm mr-2">
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Làm mới
-                                </button>
                             </div>
+                            <input type="hidden" value="${contactModel.id}" id="id" name="id" />
                         </form>
                     </div>
 
@@ -67,5 +82,36 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script>
+    $('#updateContact').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function(i,v) {
+            data[''+v.name] = v.value
+        });
+        updateContact(data);
+    })
+
+    function updateContact(data) {
+        $.ajax({
+            url: '${APIurl}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                if(result !== null)
+                    window.location.href = "${ContactURL}?message=update_success&alert=success";
+                else
+                    window.location.href = "${ContactURL}?message=update_fail&alert=danger";
+            },
+            error: function (error) {
+                window.location.href = "${ContactURL}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
 </body>
 </html>

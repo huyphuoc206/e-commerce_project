@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-<<<<<<< HEAD
-Built-By: MINHNHUT
-=======
 Built-By: LaptopUSAPro
->>>>>>> createPayment
 Build-Jdk: 1.8.0_251
 
