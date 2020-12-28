@@ -97,6 +97,7 @@
     })
 
     function updateMenu(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'PUT',
@@ -104,12 +105,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${MenuUrl}?message=update_success&alert=success";
                 else
                     window.location.href = "${MenuUrl}?message=update_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${MenuUrl}?message=system_error&alert=danger";
             }
         })

@@ -193,6 +193,7 @@
     })
 
     function deleteInformation(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'DELETE',
@@ -200,18 +201,21 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result)
                     window.location.href = "${InformationURL}?message=delete_success&alert=success";
                 else
                     window.location.href = "${InformationURL}?message=delete_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${InformationURL}?message=system_error&alert=danger";
             }
         })
     }
 
     function addInformation(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'POST',
@@ -219,12 +223,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${InformationURL}?message=insert_success&alert=success";
                 else
                     window.location.href = "${InformationURL}?message=insert_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${InformationURL}?message=system_error&alert=danger";
             }
         })

@@ -8,8 +8,8 @@
             <div class="col-sm-8 header-right mt-lg-0 mt-2">
                 <!-- header lists -->
                 <ul class="row justify-content-end">
-                    <li class="text-center border-right text-white">
-                        <a href="help.html" class="text-white">
+                    <li class="text-center border-right text-white mt-auto mb-auto">
+                        <a href="<c:url value='/lien-he'/>" class="text-white">
                             <i class="fas fa-phone mr-2"></i> ${information.phone} </a>
                     </li>
                     <c:if test="${empty USERMODEL}">
@@ -66,7 +66,7 @@
             <div class="col-md-3 logo_agile">
                 <h1 class="text-center">
                     <a href="<c:url value='/trang-chu'/>" class="font-weight-bold font-italic">
-                        <img src="images/logo2.png" alt=" " class="img-fluid">
+                        <img src="<c:url value='/images/logo.png'/>" alt=" " class="img-fluid">
                         Eco Store
                     </a>
                 </h1>

@@ -173,6 +173,7 @@
     })
 
     function addMenu(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'POST',
@@ -180,12 +181,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${MenuUrl}?message=insert_success&alert=success";
                 else
                     window.location.href = "${MenuUrl}?message=insert_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${MenuUrl}?message=system_error&alert=danger";
             }
         })
@@ -205,6 +208,7 @@
     })
 
     function deleteMenu(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'DELETE',
@@ -212,12 +216,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result)
                     window.location.href = "${MenuUrl}?message=delete_success&alert=success";
                 else
                     window.location.href = "${MenuUrl}?message=delete_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${MenuUrl}?message=system_error&alert=danger";
             }
         })

@@ -65,7 +65,7 @@
                         <input type="submit" class="form-control" value="Đăng nhập">
                     </div>
                     <p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
-                        <a href="register.html">
+                        <a href="<c:url value='/dang-ky'/>">
                             Đăng ký ngay</a>
                     </p>
                 </form>

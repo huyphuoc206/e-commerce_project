@@ -71,7 +71,7 @@
                     </div>
                     <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
                     <div class="email">
-                        ${information.email}
+                        <a href="mailto:${information.email}" class="text-dark">${information.email}</a>
                     </div>
                 </div>
             </div>
@@ -169,6 +169,7 @@
         }
     })
     function addContact(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'POST',
@@ -176,12 +177,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${ContactURL}?message=contact_sent_success&alert=success";
                 else
                     window.location.href = "${ContactURL}?message=contact_sent_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${ContactURL}?message=system_error&alert=danger";
             }
         })

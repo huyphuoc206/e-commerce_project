@@ -9,8 +9,8 @@
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-            <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+            <a class="navbar-brand" href="<c:url value='/quan-tri/trang-chu'/>"><img src="<c:url value='/images/logo.png'/>"></a>
+            <a class="navbar-brand hidden" href="<c:url value='/quan-tri/trang-chu'/>"><img src="<c:url value='/images/logo.png'/>"></a>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">

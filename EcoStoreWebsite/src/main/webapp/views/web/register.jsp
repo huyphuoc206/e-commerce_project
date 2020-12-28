@@ -124,6 +124,7 @@
         })
 
         function register(data) {
+            $('.load').show();
             $.ajax({
                 url: '${APIurl}',
                 type: 'POST',
@@ -131,12 +132,14 @@
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function (result) {
+                    $('.load').hide();
                     if(result !== null)
                         window.location.href = "${HomeURL}";
                     else
                         window.location.href = "${RegisterURL}?message=username_email_exist&alert=danger";
                 },
                 error: function (error) {
+                    $('.load').hide();
                     window.location.href = "${RegisterURL}?message=system_error&alert=danger";
                 }
             })

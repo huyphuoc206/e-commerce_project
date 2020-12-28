@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>Quản lý điều kiện</title>
+    <title>Quản lý điều khoản và điều kiện sử dụng</title>
 </head>
 <body>
 <!-- Header-->
@@ -24,7 +24,7 @@
                 <div class="card">
                     <div class="card-header">
 
-                        <strong class="card-title">Danh sách điều kiện</strong>
+                        <strong class="card-title">Danh sách điều khoản và điều kiện sử dụng</strong>
                     </div>
                     <div class="card-header">
                         <c:if test="${not empty message}">
@@ -61,7 +61,7 @@
                                                     <label for="checkbox_${item.id}"></label>
                                                 </span>
                                     </td>
-                                    <td>${item.content}</td>
+                                    <td><span class="show-less">${item.content}</span></td>
                                     <c:if test="${item.status == 1}">
                                         <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
                                         </td>
@@ -158,6 +158,7 @@
     })
 
     function addTerms(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'POST',
@@ -165,12 +166,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result !== null)
                     window.location.href = "${TermsUrl}?message=insert_success&alert=success";
                 else
                     window.location.href = "${TermsUrl}?message=insert_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${TermsUrl}?message=system_error&alert=danger";
             }
         })
@@ -190,6 +193,7 @@
     })
 
     function deleteMenu(data) {
+        $('.load').show();
         $.ajax({
             url: '${APIurl}',
             type: 'DELETE',
@@ -197,12 +201,14 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                $('.load').hide();
                 if(result)
                     window.location.href = "${TermsUrl}?message=delete_success&alert=success";
                 else
                     window.location.href = "${TermsUrl}?message=delete_fail&alert=danger";
             },
             error: function (error) {
+                $('.load').hide();
                 window.location.href = "${TermsUrl}?message=system_error&alert=danger";
             }
         })

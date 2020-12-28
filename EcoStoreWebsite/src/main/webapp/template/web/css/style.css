@@ -58,20 +58,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     top: 0;
     left: 0;
     z-index: 100000;
-    display: block;
     overflow: hidden;
     opacity: 0.9;
 }
 
 .load img {
     width: 150px;
-
     position: absolute;
     top: 50%;
     left: 50%;
     margin-top: -80px;
     margin-left: -75px;
-
 }
 
 /* slider product */

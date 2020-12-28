@@ -8,7 +8,7 @@
     <meta charset="UTF-8"/>
     <meta name="keywords"
           content="Tech_Power Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <link rel="shortcut icon" href="images/logo2.png">
+    <link rel="shortcut icon" href="<c:url value='/images/logo.png'/>">
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -46,18 +46,15 @@
 <body>
 <%@ include file="/common/web/header.jsp" %>
 <%@ include file="/common/web/menu.jsp" %>
+<div class="load" style="display: none">
+    <img src="<c:url value='/images/loading.gif'/>">
+</div>
 <dec:body/>
 <%@ include file="/common/web/footer.jsp" %>
 
 <!-- js-files -->
 <!-- loading page -->
 <%--<script src="<c:url value='/template/web/js/jquery-3.2.1.min.js'/>"></script>--%>
-<script>
-    $(window).on('load', function(event){
-        $('body').removeClass('preloading');
-        $('.load').delay(1000).fadeOut('fast');
-    });
-</script>
 <!-- jquery -->
 <%--<script src="<c:url value='/template/web/js/jquery-2.2.3.min.js'/>"></script>--%>
 <!-- //jquery -->
