@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-header">
                         <c:if test="${not empty message}">
-                            <div class="float-left alert alert-${alert}">${message}</div>
+                            <div class="text-center float-left alert alert-${alert}">${message}</div>
                         </c:if>
                         <div class="float-right">
                             <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i

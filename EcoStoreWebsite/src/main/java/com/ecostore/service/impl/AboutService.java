@@ -8,9 +8,10 @@ import javax.inject.Inject;
 
 public class AboutService implements IAboutService {
     @Inject
-    private IAboutDAO iAboutDAO;
+    private IAboutDAO aboutDAO;
+
     @Override
     public AboutModel findOneByStatus(int status) {
-        return iAboutDAO.findOneByStatus(status);
+        return aboutDAO.findOneByStatus(status);
     }
 }

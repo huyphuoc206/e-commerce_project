@@ -7,27 +7,19 @@ import java.sql.SQLException;
 
 public class AboutMapper implements IRowMapper<AboutModel> {
     AboutModel model = new AboutModel();
+
     @Override
     public AboutModel mapRow(ResultSet resultSet) {
         try {
             model.setId(resultSet.getLong("id"));
             model.setContent(resultSet.getString("content"));
-            model.setImageLink(resultSet.getString("imagelink"));
             model.setStatus(resultSet.getInt("status"));
-            if (resultSet.getTimestamp("createddate")!= null){
-                model.setCreatedDate(resultSet.getTimestamp("createddate"));
-            }
-            if (resultSet.getString("createdby")!= null){
-                model.setCreatedBy(resultSet.getString("createdby"));
-            }
-            if (resultSet.getTimestamp("modifieddate")!= null){
-                model.setModifiedDate(resultSet.getTimestamp("modifieddate"));
-            }
-            if (resultSet.getString("modifiedby")!= null){
-                model.setModifiedBy(resultSet.getString("modifiedby"));
-            }
+            model.setCreatedDate(resultSet.getTimestamp("createddate"));
+            model.setCreatedBy(resultSet.getString("createdby"));
+            model.setModifiedDate(resultSet.getTimestamp("modifieddate"));
+            model.setModifiedBy(resultSet.getString("modifiedby"));
             return model;
-        } catch (SQLException throwables){
+        } catch (SQLException throwables) {
             return null;
         }
     }

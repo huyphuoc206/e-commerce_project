@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-header">
                         <c:if test="${not empty message}">
-                            <div class="float-left alert alert-${alert}">${message}</div>
+                            <div class="text-center float-left alert alert-${alert}">${message}</div>
                         </c:if>
                         <div class="float-right">
                             <a href="#addInformationModal" class="btn btn-success" data-toggle="modal"><i
@@ -48,7 +48,7 @@
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Facebook</th>
                                 <th class="text-center">Instagram</th>
-                                <th class="text-center fa-twtter">Twitter</th>
+                                <th class="text-center">Twitter</th>
                                 <th class="text-center">Trạng thái</th>
                                 <th class="text-center">Thao tác</th>
                             </tr>
@@ -82,7 +82,6 @@
                                                 class="fa fa-pencil"
                                                 aria-hidden="true" data-toggle="tooltip"
                                                 title="Chỉnh sửa"></i></a>
-
                                     </td>
                                 </tr>
                             </c:forEach>

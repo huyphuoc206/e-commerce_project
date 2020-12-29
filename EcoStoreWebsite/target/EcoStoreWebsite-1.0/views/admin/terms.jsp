@@ -23,12 +23,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-
                         <strong class="card-title">Danh sách điều khoản và điều kiện sử dụng</strong>
                     </div>
                     <div class="card-header">
                         <c:if test="${not empty message}">
-                            <div class="float-left alert alert-${alert}">${message}</div>
+                            <div class="text-center float-left alert alert-${alert}">${message}</div>
                         </c:if>
                         <div class="float-right">
                             <a href="#addSupplierModal" class="btn btn-success" data-toggle="modal"><i

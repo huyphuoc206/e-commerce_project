@@ -79,15 +79,16 @@
                     <div class="col-10 agileits_search">
                         <form class="form-inline" action="#" method="post">
                             <input class="form-control mr-sm-0" type="search" placeholder="Tìm kiếm"
-                                   aria-label="Search" required>
+                                   aria-label="Search" required oninvalid="this.setCustomValidity('Vui lòng nhập từ khóa bạn muốn tìm kiếm.')"
+                                   oninput="this.setCustomValidity('')">
                             <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                     <!-- //search -->
                     <!-- cart details -->
-                    <div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-                        <button type="button" class="btn btn-dark p-3" data-toggle="modal" data-target="#cartModal">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <div class="col-2 top_nav_right text-center mt-sm-0 mt-2 mb-3">
+                        <button type="button" class="btn btn-outline-info p-3" data-toggle="modal" data-target="#cartModal">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>10</span>
                         </button>
                     </div>
 
@@ -117,14 +118,14 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td class="w-25">
+                                            <td class="w-15">
                                                 <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
                                                      class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
                                             <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2"></td>
+                                                                   value="2" min="1"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -133,14 +134,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-25">
+                                            <td class="w-15">
                                                 <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
                                                      class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
                                             <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2"></td>
+                                                                   value="2" min="1"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -149,14 +150,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-25">
+                                            <td class="w-15">
                                                 <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
                                                      class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
                                             <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2"></td>
+                                                                   value="2" min="1"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">
@@ -165,14 +166,14 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="w-25">
+                                            <td class="w-15">
                                                 <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
                                                      class="img-fluid img-thumbnail" alt="Sheep">
                                             </td>
                                             <td>Vans Sk8-Hi MTE Shoes</td>
                                             <td>89$</td>
                                             <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2"></td>
+                                                                   value="2" min="1"></td>
                                             <td>178$</td>
                                             <td>
                                                 <a href="#" class="btn btn-danger btn-sm">

@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="modal-body col-sm-6">
                 <c:if test="${not empty message}">
-                    <div class="alert alert-${alert}">${message}</div>
+                    <div class="text-center alert alert-${alert}">${message}</div>
                 </c:if>
                 <form action="dang-nhap" method="post">
                     <div class="form-group">

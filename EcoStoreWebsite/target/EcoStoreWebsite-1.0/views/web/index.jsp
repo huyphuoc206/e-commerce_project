@@ -823,17 +823,6 @@
                     </div>
                     <!-- //first section -->
 
-                    <!-- second section -->
-                    <div class="product-sec1 product-sec2 px-sm-5 px-3 mt-4">
-                        <div class="row">
-                            <h3 class="col-md-4 effect-bg ml-5 mr-3">Merry Christmas</h3>
-                            <p class="w3l-nut-middle">Giảm giá 10%</p>
-                            <div class="col-md-4 bg-right-nut">
-                                <img src="images/image1.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- second section -->
                     <!-- third section -->
                     <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
                         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -1566,41 +1555,5 @@
 </div>
 <!-- //top products -->
 
-<!-- middle section -->
-<div class="join-w3l1 py-sm-5 py-4">
-    <div class="container py-xl-4 py-lg-2">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="join-agile text-left p-4">
-                    <div class="row">
-                        <div class="col-sm-7 offer-name">
-                            <h6>Âm thanh sống động</h6>
-                            <h4 class="mt-2 mb-3">Loa chính hãng</h4>
-                            <p>Giảm giá 25% khi mua tại cửa hàng</p>
-                        </div>
-                        <div class="col-sm-5 offerimg-w3l">
-                            <img src="images/off4.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mt-lg-0 mt-5">
-                <div class="join-agile text-left p-4">
-                    <div class="row ">
-                        <div class="col-sm-7 offer-name">
-                            <h6>Tiết kiệm điện năng</h6>
-                            <h4 class="mt-2 mb-3">Máy giặt LG</h4>
-                            <p>Miễn phí vận chuyển cho đơn hàng trên 2.000.000đ</p>
-                        </div>
-                        <div class="col-sm-5 offerimg-w3l">
-                            <img src="images/off3.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- middle section -->
 </body>
 </html>

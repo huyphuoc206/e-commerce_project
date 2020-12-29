@@ -36,7 +36,7 @@
             <div class="modal-body col-sm-6">
                 <form id="formSubmit">
                     <c:if test="${not empty message}">
-                        <div class="alert alert-${alert}">${message}</div>
+                        <div class="text-center alert alert-${alert}">${message}</div>
                     </c:if>
                     <div class="form-group">
                         <label for="fullname" class="col-form-label">Họ tên</label>

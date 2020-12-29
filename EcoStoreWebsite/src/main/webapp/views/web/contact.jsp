@@ -79,7 +79,7 @@
         <!-- form -->
         <form id="formSubmit" action="#" method="post">
             <c:if test="${not empty message}">
-                <div class="alert alert-${alert}">${message}</div>
+                <div class="text-center alert alert-${alert}">${message}</div>
             </c:if>
             <div class="contact-grids1 w3agile-6">
                 <div class="row">
@@ -119,43 +119,6 @@
             tabindex="0"></iframe>
 </div>
 <!-- //map -->
-
-<!-- middle section -->
-<div class="join-w3l1 py-sm-5 py-4">
-    <div class="container py-xl-4 py-lg-2">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="join-agile text-left p-4">
-                    <div class="row">
-                        <div class="col-sm-7 offer-name">
-                            <h6>Âm thanh sống động</h6>
-                            <h4 class="mt-2 mb-3">Loa chính hãng</h4>
-                            <p>Giảm giá 25% khi mua tại cửa hàng</p>
-                        </div>
-                        <div class="col-sm-5 offerimg-w3l">
-                            <img src="images/off4.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mt-lg-0 mt-5">
-                <div class="join-agile text-left p-4">
-                    <div class="row ">
-                        <div class="col-sm-7 offer-name">
-                            <h6>Tiết kiệm điện năng</h6>
-                            <h4 class="mt-2 mb-3">Máy giặt LG</h4>
-                            <p>Miễn phí vận chuyển cho đơn hàng trên 2.000.000đ</p>
-                        </div>
-                        <div class="col-sm-5 offerimg-w3l">
-                            <img src="images/off3.png" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- middle section -->
 <script>
     $('#addContact').click(function (e) {
         if($('#formSubmit')[0].checkValidity()) {
