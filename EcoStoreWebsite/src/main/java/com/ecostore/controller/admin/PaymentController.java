@@ -1,8 +1,7 @@
 package com.ecostore.controller.admin;
 
-import com.ecostore.model.MenuModel;
 import com.ecostore.model.PaymentModel;
-import com.ecostore.service.IMenuService;
+import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IPaymentService;
 import com.ecostore.utils.MessageUtil;
 
@@ -20,13 +19,12 @@ import java.util.List;
 @WebServlet(urlPatterns = "/quan-tri/phuong-thuc-thanh-toan")
 public class PaymentController extends HttpServlet {
     @Inject
-    private IMenuService menuService;
+    private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IPaymentService paymentService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
-        request.setAttribute("menuLeft", menuLeft);
+        layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
         if (id != null) {

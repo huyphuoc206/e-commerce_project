@@ -36,8 +36,8 @@
     <script>
         $(document).ready(function () {
             // Select/Deselect checkboxes
-            var checkbox = $('table tbody input[type="checkbox"]');
             $("#selectAll").click(function () {
+                var checkbox = $('table tbody input[type="checkbox"]');
                 if (this.checked) {
                     checkbox.each(function () {
                         this.checked = true;
@@ -48,6 +48,7 @@
                     });
                 }
             });
+            var checkbox = $('table tbody input[type="checkbox"]');
             checkbox.click(function () {
                 if (!this.checked) {
                     $("#selectAll").prop("checked", false);

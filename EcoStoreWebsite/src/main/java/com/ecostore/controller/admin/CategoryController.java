@@ -1,9 +1,8 @@
 package com.ecostore.controller.admin;
 
 import com.ecostore.model.CategoryModel;
-import com.ecostore.model.MenuModel;
 import com.ecostore.service.ICategoryService;
-import com.ecostore.service.IMenuService;
+import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.utils.MessageUtil;
 
 import javax.inject.Inject;
@@ -19,13 +18,12 @@ import java.util.List;
 @WebServlet(urlPatterns = "/quan-tri/the-loai")
 public class CategoryController extends HttpServlet {
     @Inject
-    private IMenuService menuService;
+    private ILayoutAttributeService layoutAttributeService;
     @Inject
     private ICategoryService categoryService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
-        request.setAttribute("menuLeft", menuLeft);
+        layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
         if (id != null) {

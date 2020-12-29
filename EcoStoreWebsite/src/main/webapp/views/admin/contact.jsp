@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Quản lý trang liên hệ</title>
+    <title>Quản lý liên hệ</title>
 </head>
 <body>
 <div class="content mt-3">
@@ -45,6 +45,7 @@
                                 <th class="text-center">Họ và tên</th>
                                 <th class="text-center">Email</th>
                                 <th class="text-center">Nội dung</th>
+                                <th class="text-center">Ngày gửi</th>
                                 <th class="text-center">Trạng thái</th>
                                 <th class="text-center">Thao tác</th>
                             </tr>
@@ -62,6 +63,7 @@
                                     <td>${item.fullname}</td>
                                     <td>${item.email}</td>
                                     <td>${item.content}</td>
+                                    <td class="text-center">${item.createdDate}</td>
                                     <c:if test="${item.status == 0}">
                                         <td class="text-center"><span class="status text-warning">&bull;</span>Chờ xử lý
                                         </td>

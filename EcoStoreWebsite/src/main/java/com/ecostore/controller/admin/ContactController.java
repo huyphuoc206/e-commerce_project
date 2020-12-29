@@ -5,6 +5,7 @@ import com.ecostore.model.ContactModel;
 import com.ecostore.model.MenuModel;
 
 import com.ecostore.service.IContactService;
+import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IMenuService;
 import com.ecostore.utils.MessageUtil;
 
@@ -21,13 +22,12 @@ import java.util.List;
 @WebServlet(urlPatterns = "/quan-tri/lien-he")
 public class ContactController extends HttpServlet {
     @Inject
-    private IMenuService menuService;
+    private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IContactService contactService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
-        request.setAttribute("menuLeft", menuLeft);
+        layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
         if (id != null) {

@@ -85,20 +85,21 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 contact-form1 form-group">
                         <label class="col-form-label">Họ tên</label>
-                        <input type="text"  class="form-control" name="fullname" placeholder="" required=""
+                        <input type="text"  class="form-control" name="fullname" required
                                oninvalid="this.setCustomValidity('Hãy nhập họ tên!')"
                                oninput="this.setCustomValidity('')">
                     </div>
                     <div class="col-md-6 col-sm-6 contact-form1 form-group">
                         <label class="col-form-label">Email</label>
-                        <input type="email"  class="form-control" name="email" placeholder="" required=""
+                        <input type="email"  class="form-control" name="email" required
                                oninvalid="this.setCustomValidity('Hãy nhập địa chỉ email!')"
                                oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 <div class="contact-me animated wow slideInUp form-group">
                     <label class="col-form-label">Bạn đang cần gì?</label>
-                    <textarea name="content"  class="form-control" placeholder="" required=""> </textarea>
+                    <textarea name="content"  class="form-control" required oninvalid="this.setCustomValidity('Hãy nhập nội dung yêu cầu!')"
+                              oninput="this.setCustomValidity('')"></textarea>
                 </div>
                 <div  class="contact-form right-w3l">
                     <button id="addContact" type="submit" class="form-control">Gửi</button>

@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Quản lý trang thông tin cửa hàng</title>
+    <title>Quản lý thông tin cửa hàng</title>
 </head>
 <body>
 <div class="content mt-3">

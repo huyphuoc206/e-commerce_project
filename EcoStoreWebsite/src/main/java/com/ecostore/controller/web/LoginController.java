@@ -1,11 +1,8 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.constant.SystemConstant;
-import com.ecostore.model.InformationModel;
-import com.ecostore.model.MenuModel;
 import com.ecostore.model.UserModel;
-import com.ecostore.service.IInformationService;
-import com.ecostore.service.IMenuService;
+import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IUserService;
 import com.ecostore.utils.MessageUtil;
 import com.ecostore.utils.SessionUtil;
@@ -18,24 +15,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(urlPatterns = {"/dang-nhap", "/thoat"})
 public class LoginController extends HttpServlet {
     @Inject
-    private IMenuService menuService;
-    @Inject
-    private IInformationService informationService;
+    private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IUserService userService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuTop = menuService.findAllByMenuTypeId(1, 1);
-        List<MenuModel> menuBottom = menuService.findAllByMenuTypeId(2, 1);
-        InformationModel information = informationService.findOneByStatus(1);
-        request.setAttribute("menuTop", menuTop);
-        request.setAttribute("menuBottom", menuBottom);
-        request.setAttribute("information", information);
+        layoutAttributeService.setHeaderWeb(request);
+        layoutAttributeService.setFooterWeb(request);
 
         String action = request.getParameter("action");
         if (action != null && action.equalsIgnoreCase("logout")) {

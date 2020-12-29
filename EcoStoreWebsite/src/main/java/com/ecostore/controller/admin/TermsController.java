@@ -1,9 +1,7 @@
 package com.ecostore.controller.admin;
 
-import com.ecostore.model.MenuModel;
 import com.ecostore.model.TermsModel;
-import com.ecostore.service.IMenuService;
-import com.ecostore.service.IMenuTypeService;
+import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.ITermsService;
 import com.ecostore.utils.MessageUtil;
 
@@ -21,20 +19,20 @@ import java.util.List;
 public class TermsController extends HttpServlet {
 
     @Inject
-    private IMenuService menuService;
+    private ILayoutAttributeService layoutAttributeService;
     @Inject
     private ITermsService termsService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<MenuModel> menuLeft = menuService.findAllByMenuTypeId(3, 1);
-        request.setAttribute("menuLeft", menuLeft);
+        layoutAttributeService.setMenuLeftAdmin(request);
         String id = request.getParameter("id");
         String url = "";
-        if (id!=null){
+        if (id != null) {
             TermsModel termsModel = termsService.findOneById(Long.parseLong(id));
             request.setAttribute("termsModel", termsModel);
             url = "../views/admin/editterms.jsp";
 
-        } else{
+        } else {
             MessageUtil.showMessage(request);
             List<TermsModel> termsModels = termsService.findAll();
             request.setAttribute("termsModels", termsModels);
