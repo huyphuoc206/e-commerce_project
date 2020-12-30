@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AboutMapper implements IRowMapper<AboutModel> {
-    AboutModel model = new AboutModel();
 
     @Override
     public AboutModel mapRow(ResultSet resultSet) {
+        AboutModel model = new AboutModel();
         try {
             model.setId(resultSet.getLong("id"));
             model.setContent(resultSet.getString("content"));

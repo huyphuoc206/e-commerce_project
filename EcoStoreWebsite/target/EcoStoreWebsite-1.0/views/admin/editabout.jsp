@@ -1,11 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:34 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url var="APIurl" value="/api-admin-about"/>
+<c:url var="AboutURL" value="/quan-tri/gioi-thieu"/>
 <html>
 <head>
     <title>Chỉnh sửa giới thiệu</title>
@@ -17,53 +13,78 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Chỉnh sửa trang giới thiệu</strong>
+                        <strong class="card-title">Chỉnh sửa nội dung giới thiệu</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
-
                                 <div class="col col-md-3"><label for="text-input"
                                                                  class=" form-control-label">Nội dung</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="text-input" class="form-control"></div>
+                                                                    name="content" class="form-control" value="${aboutModel.content}"></div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input"
-                                                                 class=" form-control-label">Hình đại diện</label></div>
-                                <div class="col-12 col-md-9"><div class="custom-input-file">
-                                    <label class="uploadPhoto">
-                                        Chọn
-                                        <input type="file" class="change-avatar" name="avatar" id="avatar">
-                                    </label>
-                                </div></div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng thái
+                                <div class="col col-md-3"><label class=" form-control-label">Trạng thái
                                 </label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="category" id="category" class="form-control">
-                                        <option value="0">Tạm khóa</option>
-                                        <option value="1">Hoạt động</option>
+                                    <select name="status" class="form-control">
+                                        <c:if test="${aboutModel.status == 1}">
+                                            <option value="1" selected>Hoạt động</option>
+                                            <option value="0">Tạm ngưng</option>
+                                        </c:if>
+                                        <c:if test="${aboutModel.status == 0}">
+                                            <option value="1">Hoạt động</option>
+                                            <option value="0" selected>Tạm ngưng</option>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                <button id="updateAbout" type="submit" class="btn btn-primary btn-sm mr-2">
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Làm mới
-                                </button>
                             </div>
+                            <input type="hidden" value="${aboutModel.id}" id="id" name="id" />
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script>
+    $('#updateAbout').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function(i,v) {
+            data[''+v.name] = v.value
+        });
+        updateAbout(data);
+    })
+
+    function updateAbout(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if(result !== null)
+                    window.location.href = "${AboutURL}?message=update_success&alert=success";
+                else
+                    window.location.href = "${AboutURL}?message=update_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${AboutURL}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
 </body>
 </html>
