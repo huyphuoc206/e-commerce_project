@@ -5,51 +5,63 @@
   Time: 1:01 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="/common/taglib.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-web-feedback"/>
+<c:url var="FeedbackURL" value="/danh-gia"/>
+<%@include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Phản hồi</title>
 </head>
 <body>
-    <!-- page -->
-    <div class="services-breadcrumb">
-        <div class="agile_inner_breadcrumb">
-            <div class="container">
-                <ul class="w3_short">
-                    <li>
-                        <a href="<c:url value='/trang-chu'/>">Trang chủ</a>
-                        <i>|</i>
-                    </li>
-                    <li>Phản Hồi</li>
-                </ul>
-            </div>
+<!-- page -->
+<div class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="<c:url value='/trang-chu'/>">Trang chủ</a>
+                    <i>|</i>
+                </li>
+                <li>Phản Hồi</li>
+            </ul>
         </div>
     </div>
-    <!-- //page -->
+</div>
+<!-- //page -->
 
-    <!-- help -->
-    <div class="faqs-w3l py-sm-5 py-4">
-        <div class="container py-xl-4 py-lg-2">
-            <!-- tittle heading -->
-            <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-                <span>T</span>rợ
-                <span>G</span>iúp
-            </h3>
-            <!-- //tittle heading -->
-            <!-- feedback content -->
-            <div class="wthree-help mb-sm-5 mb-4">
-                <div class="agile-left-help">
-                    <h3 class="w3-head">Đánh giá của bạn về chúng tôi</h3>
-                    <form action="#" method="get">
-                        <textarea placeholder="Đánh giá tại đây..." name="Message" required=""></textarea>
-                        <input type="submit" value="Gửi">
-                    </form>
-                </div>
+<!-- help -->
+<div class="faqs-w3l py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>T</span>rợ
+            <span>G</span>iúp
+        </h3>
+        <!-- //tittle heading -->
+        <!-- feedback content -->
+        <div class="wthree-help mb-sm-5 mb-4">
+            <div class="agile-left-help">
+                <c:if test="${not empty message}">
+                    <div class="text-center alert alert-${alert}">${message}</div>
+                </c:if>
+                <h3 class="w3-head">Đánh giá của bạn về chúng tôi</h3>
+                <form id="formSubmit">
+                     <textarea name="content" required
+                               oninvalid="this.setCustomValidity('Hãy nhập đánh giá của bạn!')"
+                               oninput="this.setCustomValidity('')" placeholder="Đánh giá tại đây..."></textarea>
+                    <button id="addFeedback" type="submit" class="right-w3l">Gửi</button>
+                </form>
+
             </div>
-            <!-- //feedback content -->
         </div>
-        <!-- testimonials -->
+
+
+        <!-- //feedback content -->
+    </div>
+    <!-- testimonials -->
+    <c:if test="${feedbacks.size() > 0}">
         <div class="testimonials py-sm-5 py-4">
             <div class="container py-xl-4 py-lg-2">
                 <!-- tittle heading -->
@@ -59,73 +71,81 @@
                     <span>K</span>hách
                     <span>H</span>àng
                 </h3>
+                <!-- Cho nay kiem tra xem list.size = 0 thi ko hien thi, co thi chay for-->
                 <!-- tittle heading -->
-                <div class="row gallery-index">
-                    <div class="col-sm-6 med-testi-grid">
-                        <div class="med-testi test-tooltip rounded p-4">
-                            <p>" Sản phẩm bên Eco Store rất chất lượng. Tư vấn khách hàng chuyên nghiệp, tôi rất hài lòng
-                                khi sử dụng sản phẩm của Eco Store phân phối."</p>
-                        </div>
-                        <div class="row med-testi-left my-5">
-                            <div class="col-lg-2 col-3 w3ls-med-testi-img">
-                                <img src="images/user1.jpg" alt=" " class="img-fluid rounded-circle" />
+
+
+
+                    <div class="row gallery-index">
+                        <c:forEach var="item" items="${feedbacks}" >
+
+                        <div class="col-sm-6 med-testi-grid">
+                            <div class="med-testi test-tooltip rounded p-4">
+                                <p>${item.content}</p>
                             </div>
-                            <div class="col-lg-10 col-9 med-testi-txt">
-                                <h4 class="font-weight-bold mb-lg-1 mb-2">Tuấn Thanh</h4>
-                                <!-- <p>fames ac turpis</p> -->
+                            <div class="row med-testi-left my-5">
+                                <div class="col-lg-1  w3ls-med-testi-img">
+                                    <img src="<c:url value="${item.user.avatar}"/>" alt=" " class="img-fluid rounded-circle"/>
+                                </div>
+                                <div class="col-8  med-testi-txt">
+                                    <h4 class="font-weight-bold mb-lg-2 mb-4">${item.user.fullname}</h4>
+                                    <!-- <p>fames ac turpis</p> -->
+                                </div>
                             </div>
+
                         </div>
+                        </c:forEach>
                     </div>
-                    <div class="col-sm-6 med-testi-grid">
-                        <div class="med-testi test-tooltip rounded p-4">
-                            <p>"Sản phẩm bên Eco Store rất chất lượng. Tư vấn khách hàng chuyên nghiệp, tôi rất hài lòng khi
-                                sử dụng sản phẩm của Eco Store phân phối."</p>
-                        </div>
-                        <div class="row med-testi-left my-5">
-                            <div class="col-lg-2 col-3 w3ls-med-testi-img">
-                                <img src="images/user2.jpg" alt=" " class="img-fluid rounded-circle" />
-                            </div>
-                            <div class="col-lg-10 col-9 med-testi-txt">
-                                <h4 class="font-weight-bold mb-lg-1 mb-2">Thu Hà</h4>
-                                <!-- <p>fames ac turpis</p> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 med-testi-grid">
-                        <div class="med-testi test-tooltip rounded p-4">
-                            <p>"Sản phẩm bên Eco Store rất chất lượng. Tư vấn khách hàng chuyên nghiệp, tôi rất hài lòng khi
-                                sử dụng sản phẩm của Eco Store phân phối."</p>
-                        </div>
-                        <div class="row med-testi-left mt-sm-5 my-5">
-                            <div class="col-lg-2 col-3 w3ls-med-testi-img">
-                                <img src="images/user3.jpg" alt=" " class="img-fluid rounded-circle" />
-                            </div>
-                            <div class="col-lg-10 col-9 med-testi-txt">
-                                <h4 class="font-weight-bold mb-lg-1 mb-2">Minh Phong</h4>
-                                <!-- <p>fames ac turpis</p> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 med-testi-grid">
-                        <div class="med-testi test-tooltip rounded p-4">
-                            <p>"Sản phẩm bên Eco Store rất chất lượng. Tư vấn khách hàng chuyên nghiệp, tôi rất hài lòng khi
-                                sử dụng sản phẩm của Eco Store phân phối."</p>
-                        </div>
-                        <div class="row med-testi-left mt-5">
-                            <div class="col-lg-2 col-3 w3ls-med-testi-img">
-                                <img src="images/user4.jpg" alt=" " class="img-fluid rounded-circle" />
-                            </div>
-                            <div class="col-lg-10 col-9 med-testi-txt">
-                                <h4 class="font-weight-bold mb-lg-1 mb-2">Thanh Yến</h4>
-                                <!-- <p>fames ac turpis</p> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
+
+
             </div>
         </div>
-        <!-- //testimonials -->
-    </div>
-    <!-- //help -->
+    </c:if>
+</div>
+<!-- //testimonials -->
+
+<!-- //help -->
+
+<script>
+    $('#addFeedback').click(function (e) {
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {};
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addFeedBack(data);
+        }
+    })
+
+    function addFeedBack(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result === "")
+                    window.location.href = "/dang-nhap?message=not_login&alert=danger";
+                else if (result !== null)
+                    window.location.href = "${FeedbackURL}?message=feedback_success&alert=success";
+                else
+                    window.location.href = "${FeedbackURL}?message=feedback_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${FeedbackURL}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
 </body>
 </html>

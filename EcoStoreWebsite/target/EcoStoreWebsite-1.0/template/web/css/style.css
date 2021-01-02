@@ -1921,7 +1921,7 @@ li.subitem1 p {
     resize: none;
 }
 
-.wthree-help form input[type="submit"] {
+.wthree-help form input[type="submit"], .wthree-help form button[type="submit"] {
     font-size: 16px;
     color: #fff;
     background: #db6400;
