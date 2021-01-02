@@ -18,13 +18,13 @@
                     <div class="card-body card-block">
                         <form id="formSubmit" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="text-input"
+                                <div class="col col-md-3"><label
                                                                  class=" form-control-label">Nội dung</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
+                                <div class="col-12 col-md-9"><input type="text"
                                                                     name="content" class="form-control" value="${aboutModel.content}"></div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Trạng thái
+                                <div class="col col-md-3"><label class="form-control-label">Trạng thái
                                 </label></div>
                                 <div class="col-12 col-md-9">
                                     <select name="status" class="form-control">

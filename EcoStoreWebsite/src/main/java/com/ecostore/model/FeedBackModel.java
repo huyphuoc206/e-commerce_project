@@ -1,19 +1,28 @@
 package com.ecostore.model;
 
 public class FeedBackModel extends AbstractModel {
-    private UserModel userId;
+    private long userId;
+    private UserModel user;
     private String content;
     private int status;
 
     public FeedBackModel() {
     }
 
-    public UserModel getUserId() {
+    public UserModel getUser() {
+        return user;
+    }
+
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(UserModel userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public void setUser(UserModel userId) {
+        this.user = userId;
     }
 
     public String getContent() {
