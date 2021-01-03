@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:39 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-feedback"/>
 <c:url var="FeedbackURL" value="/quan-tri/phan-hoi"/>
@@ -28,10 +21,10 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
                                         class=" form-control-label">Nội dung</label></div>
-                                <div class="col-12 col-md-9"><input type="text"
-                                                                    name="content" value="${feedbackModel.content}"
-                                                                    class="form-control"></div>
-
+                                <div class="col-12 col-md-9">
+                                    <textarea rows="10" id="content" name="content"
+                                              class="form-control">${feedbackModel.content}</textarea>
+                                </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label class=" form-control-label">Trạng thái</label></div>
@@ -56,7 +49,6 @@
                             <input type="hidden" value="${feedbackModel.id}" id="id" name="id"/>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>

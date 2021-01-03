@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:38 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-feedback"/>
 <c:url var="FeedbackURL" value="/quan-tri/phan-hoi"/>
@@ -26,10 +19,7 @@
                         <c:if test="${not empty message}">
                             <div class="float-left alert alert-${alert}">${message}</div>
                         </c:if>
-
-
                         <div class="float-right">
-
                             <a href="#deleteFeedbackModal" class="btn btn-danger" data-toggle="modal"><i
                                     class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                         </div>
@@ -90,8 +80,6 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
-
-
 
 <div id="deleteFeedbackModal" class="modal fade">
     <div class="modal-dialog">

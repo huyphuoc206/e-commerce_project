@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-dieu-khoan"/>
 <c:url var="TermsUrl" value="/quan-tri/dieu-khoan"/>
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:50 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -70,15 +63,13 @@
                                         </td>
                                     </c:if>
                                     <td class="text-center">
-                                        <a href="<c:url value='/quan-tri/dieu-khoan?id=${item.id}'/>" class="edit"><i class="fa fa-pencil"
-                                                                                 aria-hidden="true" data-toggle="tooltip"
-                                                                                 title="Chỉnh sửa"></i></a>
-
+                                        <a href="<c:url value='/quan-tri/dieu-khoan?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true" data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
-
-
                             </tr>
                             </tbody>
                         </table>
@@ -102,7 +93,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nội dung</label>
-                        <input name="content" type="text" class="form-control" required>
+                        <textarea rows="10" id="content" name="content" class="form-control"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -136,13 +127,18 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <button id="deleteTerms" type="submit" class="btn btn-danger" >Xóa</button>
+                    <button id="deleteTerms" type="submit" class="btn btn-danger">Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <script>
+    let editor = '';
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('content');
+    });
+
     $('#addTerms').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value
@@ -150,9 +146,8 @@
         // vong lap
         $.each(formData, function (i, v) {
             data['' + v.name] = v.value
-            console.log(data['' + v.name])
-
         });
+        data['content'] = editor.getData();
         addTerms(data);
     })
 
@@ -166,7 +161,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${TermsUrl}?message=insert_success&alert=success";
                 else
                     window.location.href = "${TermsUrl}?message=insert_fail&alert=danger";
@@ -201,7 +196,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result)
+                if (result)
                     window.location.href = "${TermsUrl}?message=delete_success&alert=success";
                 else
                     window.location.href = "${TermsUrl}?message=delete_fail&alert=danger";

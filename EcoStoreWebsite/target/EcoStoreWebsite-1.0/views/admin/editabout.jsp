@@ -20,8 +20,10 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
                                                                  class=" form-control-label">Nội dung</label></div>
-                                <div class="col-12 col-md-9"><input type="text"
-                                                                    name="content" class="form-control" value="${aboutModel.content}"></div>
+                                <div class="col-12 col-md-9">
+                                    <textarea rows="30" id="content" name="content"
+                                              class="form-control">${aboutModel.content}</textarea>
+                                </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label class="form-control-label">Trạng thái
@@ -53,6 +55,11 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 <script>
+    let editor = '';
+    $(document).ready(function() {
+        editor = CKEDITOR.replace('content');
+    });
+
     $('#updateAbout').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value
@@ -61,6 +68,7 @@
         $.each(formData, function(i,v) {
             data[''+v.name] = v.value
         });
+        data['content'] = editor.getData();
         updateAbout(data);
     })
 

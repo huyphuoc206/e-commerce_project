@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:42 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-information"/>
 <c:url var="InformationURL" value="/quan-tri/thong-tin"/>
@@ -27,39 +20,48 @@
                             <div class="row form-group">
 
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Địa chỉ</label></div>
+                                        class=" form-control-label">Địa chỉ</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="address" value="${informationModel.address}" class="form-control"></div>
+                                                                    name="address" value="${informationModel.address}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Email</label></div>
+                                        class=" form-control-label">Email</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="email" value="${informationModel.email}" class="form-control"></div>
+                                                                    name="email" value="${informationModel.email}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Số điện thoại</label></div>
+                                        class=" form-control-label">Số điện thoại</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="phone" value="${informationModel.phone}" class="form-control"></div>
+                                                                    name="phone" value="${informationModel.phone}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Facebook</label></div>
+                                        class=" form-control-label">Facebook</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="facebookLink" value="${informationModel.facebookLink}" class="form-control"></div>
+                                                                    name="facebookLink"
+                                                                    value="${informationModel.facebookLink}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Instagram</label></div>
+                                        class=" form-control-label">Instagram</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="instagramLink" value="${informationModel.instagramLink}" class="form-control"></div>
+                                                                    name="instagramLink"
+                                                                    value="${informationModel.instagramLink}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
-                                                                 class=" form-control-label">Twitter</label></div>
+                                        class=" form-control-label">Twitter</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="twitterLink" value="${informationModel.twitterLink}" class="form-control"></div>
+                                                                    name="twitterLink"
+                                                                    value="${informationModel.twitterLink}"
+                                                                    class="form-control"></div>
                             </div>
 
                             <div class="row form-group">
@@ -96,8 +98,8 @@
         let data = {}; // mang object name: value
         let formData = $('#formSubmit').serializeArray();
         // vong lap
-        $.each(formData, function(i,v) {
-            data[''+v.name] = v.value
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
         });
         updateInformation(data);
     })
@@ -112,7 +114,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${InformationURL}?message=update_success&alert=success";
                 else
                     window.location.href = "${InformationURL}?message=update_fail&alert=danger";

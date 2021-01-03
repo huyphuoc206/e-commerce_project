@@ -38,7 +38,7 @@
                     <label for="currentpassword" class="col-form-label">Mật khẩu cũ</label>
                     <input type="password" class="form-control" name="currentpassword" id="currentpassword"
                            required oninvalid="this.setCustomValidity('Hãy nhập mật khẩu hiện tại của bạn!')"
-                           oninput="this.setCustomValidity('')">
+                           oninput="this.setCustomValidity('')" autofocus>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-form-label">Mật khẩu mới</label>

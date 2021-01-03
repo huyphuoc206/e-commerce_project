@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 1:35 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="APIurl" value="/api-web-user"/>
@@ -47,12 +40,12 @@
                     <div class="form-group">
                         <label for="password1" class="col-form-label">Mật khẩu mới</label>
                         <input type="password" class="form-control" placeholder=" " name="password" id="password1"
-                               required="">
+                               required autofocus>
                     </div>
                     <div class="form-group">
                         <label for="password2" class="col-form-label">Nhập lại mật khẩu mới</label>
                         <input type="password" class="form-control" placeholder=" "
-                               id="password2" required="" oninvalid="this.setCustomValidity('Mật khẩu không khớp!')"
+                               id="password2" required oninvalid="this.setCustomValidity('Mật khẩu không khớp!')"
                                oninput="this.setCustomValidity('')">
                     </div>
                     <div class="right-w3l">

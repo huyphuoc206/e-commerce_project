@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/17/2020
-  Time: 12:49 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-supplier"/>
 <c:url var="SupplierURL" value="/quan-tri/nha-san-xuat"/>
@@ -55,7 +48,7 @@
                                 <tr>
                                     <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox_${item.id}"value=${item.id}>
+                                                    <input type="checkbox" id="checkbox_${item.id}" value=${item.id}>
                                                     <label for="checkbox_${item.id}"></label>
                                                 </span>
                                     </td>
@@ -78,9 +71,6 @@
                                     </td>
                                 </tr>
                             </c:forEach>
-
-
-
                             </tbody>
                         </table>
                     </div>
@@ -103,15 +93,19 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên hãng sản xuất</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name" required
+                               oninvalid="this.setCustomValidity('Hãy nhập tên hãng sản xuất!')"
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="form-group">
                         <label>Mã hãng sản xuất</label>
-                        <input type="text" class="form-control" name="code" required>
+                        <input type="text" class="form-control" name="code" required
+                               oninvalid="this.setCustomValidity('Hãy nhập mã hãng sản xuất!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
-                        <select id="status" name="status" class="form-control" >
+                        <select id="status" name="status" class="form-control">
                             <option value="1">Hoạt động</option>
                             <option value="0">Tạm ngưng</option>
                         </select>
@@ -120,7 +114,7 @@
 
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <button id="addSupplier" type="submit" class="btn btn-success" >Thêm</button>
+                    <button id="addSupplier" type="submit" class="btn btn-success">Thêm</button>
                 </div>
             </form>
         </div>
@@ -141,7 +135,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <button id="deleteSupplier" type="submit" class="btn btn-danger" >Xoá</button>
+                    <button id="deleteSupplier" type="submit" class="btn btn-danger">Xoá</button>
                 </div>
             </form>
         </div>
@@ -149,14 +143,16 @@
 </div>
 <script>
     $('#addSupplier').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-        });
-        addSupplier(data);
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addSupplier(data);
+        }
     })
 
     $('#deleteSupplier').click(function (e) {
@@ -182,7 +178,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result)
+                if (result)
                     window.location.href = "${SupplierURL}?message=delete_success&alert=success";
                 else
                     window.location.href = "${SupplierURL}?message=delete_fail&alert=danger";
@@ -204,7 +200,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${SupplierURL}?message=insert_success&alert=success";
                 else
                     window.location.href = "${SupplierURL}?message=insert_fail&alert=danger";

@@ -33,6 +33,9 @@
     <script src="<c:url value='/template/admin/vendors/popper.js/dist/umd/popper.min.js'/>"></script>
     <script src="<c:url value='/template/admin/vendors/bootstrap/dist/js/bootstrap.min.js'/>"></script>
 
+<%--    ckeditor--%>
+    <script src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
+
     <script>
         $(document).ready(function () {
             // Select/Deselect checkboxes

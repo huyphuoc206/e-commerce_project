@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:36 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-contact"/>
 <c:url var="ContactURL" value="/quan-tri/lien-he"/>
@@ -94,8 +87,6 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-
-
 <!-- Delete Modal HTML -->
 <div id="deleteContactModal" class="modal fade">
     <div class="modal-dialog">
@@ -119,8 +110,6 @@
 </div>
 
 <script>
-
-
     $('#deleteContact').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value
@@ -155,8 +144,6 @@
             }
         })
     }
-
-
 </script>
 </body>
 </html>

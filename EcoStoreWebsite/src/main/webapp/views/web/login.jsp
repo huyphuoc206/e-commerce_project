@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 1:02 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -39,7 +32,7 @@
                         <label for="username" class="col-form-label">Tên đăng nhập</label>
                         <input type="text" class="form-control" id="username" name="username" required=""
                                oninvalid="this.setCustomValidity('Hãy nhập tên đăng nhập!')"
-                               oninput="this.setCustomValidity('')">
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-form-label">Mật khẩu</label>

@@ -47,7 +47,8 @@
                                 <tr>
                                     <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox_${item.id}" name="options[]" value="${item.id}">
+                                                    <input type="checkbox" id="checkbox_${item.id}" name="options[]"
+                                                           value="${item.id}">
                                                     <label for="checkbox_${item.id}"></label>
                                                 </span>
                                     </td>
@@ -61,9 +62,10 @@
                                         </td>
                                     </c:if>
                                     <td class="text-center">
-                                        <a href="<c:url value='/quan-tri/gioi-thieu?id=${item.id}'/>" class="edit"><i class="fa fa-pencil"
-                                                                                 aria-hidden="true" data-toggle="tooltip"
-                                                                                 title="Chỉnh sửa"></i></a>
+                                        <a href="<c:url value='/quan-tri/gioi-thieu?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true" data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -75,7 +77,6 @@
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
-
 
 <!-- Add Modal HTML -->
 <div id="addSupplierModal" class="modal fade">
@@ -89,7 +90,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Nội dung</label>
-                        <input type="text" class="form-control" name="content" required>
+                        <textarea rows="10" id="content" name="content" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
@@ -122,13 +123,18 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <button id="deleteAbout" type="submit" class="btn btn-danger" >Xóa</button>
+                    <button id="deleteAbout" type="submit" class="btn btn-danger">Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <script>
+    let editor = '';
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('content');
+    });
+
     $('#addAbout').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value
@@ -136,9 +142,8 @@
         // vong lap
         $.each(formData, function (i, v) {
             data['' + v.name] = v.value
-            console.log(data['' + v.name])
-
         });
+        data['content'] = editor.getData();
         addAbout(data);
     })
 
@@ -152,7 +157,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${AboutURL}?message=insert_success&alert=success";
                 else
                     window.location.href = "${AboutURL}?message=insert_fail&alert=danger";
@@ -187,7 +192,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result)
+                if (result)
                     window.location.href = "${AboutURL}?message=delete_success&alert=success";
                 else
                     window.location.href = "${AboutURL}?message=delete_fail&alert=danger";

@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-privacy-policy"/>
 <c:url var="PrivacyPolicyUrl" value="/quan-tri/chinh-sach-bao-mat"/>
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:47 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,13 +16,16 @@
                         <strong class="card-title">Chỉnh sửa trang chính sách và bảo mật</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data"
+                              class="form-horizontal">
                             <div class="row form-group">
 
-                                <div class="col col-md-3"><label for="text-input"
+                                <div class="col col-md-3"><label for="content"
                                                                  class=" form-control-label">Nội dung</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="content" class="form-control" value="${privacyPolicyModel.content}"></div>
+                                <div class="col-12 col-md-9">
+                                    <textarea rows="30" id="content" name="content"
+                                              class="form-control">${privacyPolicyModel.content}</textarea>
+                                </div>
                             </div>
 
                             <div class="row form-group">
@@ -53,7 +49,7 @@
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
                             </div>
-                            <input type="hidden" value="${privacyPolicyModel.id}" id="id" name="id" />
+                            <input type="hidden" value="${privacyPolicyModel.id}" id="id" name="id"/>
                         </form>
                     </div>
 
@@ -64,15 +60,19 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 <script>
+    let editor = '';
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('content');
+    });
+
     $('#updatePrivacyPolicy').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value
         let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function(i,v) {
-            data[''+v.name] = v.value
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
         });
-        console.log(data)
+        data['content'] = editor.getData();
         updatePrivacyPolicy(data);
     })
 
@@ -86,7 +86,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${PrivacyPolicyUrl}?message=update_success&alert=success";
                 else
                     window.location.href = "${PrivacyPolicyUrl}?message=update_fail&alert=danger";

@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-menu"/>
 <c:url var="MenuUrl" value="/quan-tri/menu"/>
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:43 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -103,11 +96,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name" required oninvalid="this.setCustomValidity('Hãy nhập tên danh mục!')"
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="form-group">
                         <label>Đường dẫn danh mục</label>
-                        <input type="text" class="form-control" name="link" required>
+                        <input type="text" class="form-control" name="link" required oninvalid="this.setCustomValidity('Hãy nhập đường dẫn danh mục!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label>Loại danh mục</label>
@@ -156,16 +151,16 @@
 </div>
 <script>
     $('#addMenu').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-            console.log(data['' + v.name])
-
-        });
-        addMenu(data);
+        if($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addMenu(data);
+        }
     })
 
     function addMenu(data) {

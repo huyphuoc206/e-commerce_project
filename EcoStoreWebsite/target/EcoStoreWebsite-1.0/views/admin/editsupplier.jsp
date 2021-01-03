@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/17/2020
-  Time: 12:42 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-supplier"/>
 <c:url var="SupplierURL" value="/quan-tri/nha-san-xuat"/>
@@ -23,18 +16,21 @@
                         <strong class="card-title">Chỉnh sửa nhà sản xuất</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data"
+                              class="form-horizontal">
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
                                         class=" form-control-label">Tên nhà sản xuất</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="name" value="${supplierModel.name}" class="form-control"></div>
+                                                                    name="name" value="${supplierModel.name}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label class=" form-control-label">Mã
                                     nhà sản xuất</label></div>
                                 <div class="col-12 col-md-9"><input type="text"
-                                                                    name="code" value="${supplierModel.code}" class="form-control"></div>
+                                                                    name="code" value="${supplierModel.code}"
+                                                                    class="form-control"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label class=" form-control-label">Trạng thái</label></div>
@@ -56,7 +52,7 @@
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
                             </div>
-                            <input type="hidden" value="${supplierModel.id}" id="id" name="id" />
+                            <input type="hidden" value="${supplierModel.id}" id="id" name="id"/>
                         </form>
                     </div>
                 </div>
@@ -69,9 +65,8 @@
         e.preventDefault();
         let data = {}; // mang object name: value
         let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function(i,v) {
-            data[''+v.name] = v.value
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
         });
         updateSupplier(data);
     })
@@ -86,7 +81,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${SupplierURL}?message=update_success&alert=success";
                 else
                     window.location.href = "${SupplierURL}?message=update_fail&alert=danger";

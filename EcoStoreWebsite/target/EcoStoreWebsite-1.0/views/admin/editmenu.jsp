@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:43 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-menu"/>
 <c:url var="MenuUrl" value="/quan-tri/menu"/>
@@ -76,8 +69,6 @@
                             <input type="hidden" value="${menuModel.id}" id="id" name="id" />
                         </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -88,7 +79,6 @@
         e.preventDefault();
         let data = {}; // mang object name: value
         let formData = $('#formSubmit').serializeArray();
-        // vong lap
         $.each(formData, function(i,v) {
             data[''+v.name] = v.value
         });

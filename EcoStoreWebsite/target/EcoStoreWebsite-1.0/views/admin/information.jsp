@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/18/2020
-  Time: 5:41 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-information"/>
 <c:url var="InformationURL" value="/quan-tri/thong-tin"/>
@@ -107,27 +100,33 @@
                 <div class="modal-body">
                     <div class="row form-group">
                         <label>Địa chỉ</label>
-                        <input type="text" class="form-control" name="address" required>
+                        <input type="text" class="form-control" name="address" required oninvalid="this.setCustomValidity('Hãy nhập địa chỉ!')"
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="row form-group">
                         <label>Email</label>
-                        <input type="text" class="form-control" name="email" required>
+                        <input type="email" class="form-control" name="email" required oninvalid="this.setCustomValidity('Hãy nhập email!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="row form-group">
                         <label>Số điện thoại</label>
-                        <input type="text" class="form-control" name="phone" required>
+                        <input type="text" class="form-control" name="phone" required oninvalid="this.setCustomValidity('Hãy nhập số điện thoại!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="row form-group">
                         <label>Facebook</label>
-                        <input type="text" class="form-control" name="facebookLink" required>
+                        <input type="text" class="form-control" name="facebookLink" required oninvalid="this.setCustomValidity('Hãy nhập link FB!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="row form-group">
                         <label>Instagram</label>
-                        <input type="text" class="form-control" name="instagramLink" required>
+                        <input type="text" class="form-control" name="instagramLink" required oninvalid="this.setCustomValidity('Hãy nhập link Instagram!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="row form-group">
                         <label>Twitter</label>
-                        <input type="text" class="form-control" name="twitterLink" required>
+                        <input type="text" class="form-control" name="twitterLink" required oninvalid="this.setCustomValidity('Hãy nhập link Twitter!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="row form-group">
                         <label>Trạng thái</label>
@@ -168,14 +167,16 @@
 </div>
 <script>
     $('#addInformation').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-        });
-        addInformation(data);
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addInformation(data);
+        }
     })
 
     $('#deleteInformation').click(function (e) {
@@ -201,7 +202,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result)
+                if (result)
                     window.location.href = "${InformationURL}?message=delete_success&alert=success";
                 else
                     window.location.href = "${InformationURL}?message=delete_fail&alert=danger";
@@ -223,7 +224,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result !== null)
                     window.location.href = "${InformationURL}?message=insert_success&alert=success";
                 else
                     window.location.href = "${InformationURL}?message=insert_fail&alert=danger";

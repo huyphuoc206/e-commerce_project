@@ -1,11 +1,3 @@
-
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 12:58 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-web-contact"/>
 <c:url var="ContactURL" value="/lien-he"/>
@@ -87,7 +79,7 @@
                         <label class="col-form-label">Họ tên</label>
                         <input type="text"  class="form-control" name="fullname" required
                                oninvalid="this.setCustomValidity('Hãy nhập họ tên!')"
-                               oninput="this.setCustomValidity('')">
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="col-md-6 col-sm-6 contact-form1 form-group">
                         <label class="col-form-label">Email</label>

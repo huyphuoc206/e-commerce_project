@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/17/2020
-  Time: 12:47 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-payment"/>
 <c:url var="PaymentURL" value="/quan-tri/phuong-thuc-thanh-toan"/>
@@ -76,8 +69,6 @@
                                     </td>
                                 </tr>
                             </c:forEach>
-                          
-                           
                             </tbody>
                         </table>
                     </div>
@@ -100,7 +91,8 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên phương thức</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name" required oninvalid="this.setCustomValidity('Hãy nhập tên phương thức thanh toán!')"
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
@@ -142,14 +134,16 @@
 </div>
 <script>
     $('#addPayment').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-        });
-        addPayment(data);
+        if($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addPayment(data);
+        }
     })
 
     $('#deletePayment').click(function (e) {

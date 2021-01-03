@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 1:00 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -40,9 +33,9 @@
                 <form id="formSubmit" action="" method="get">
                     <div class="form-group">
                         <label for="email" class="col-form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder=" " name="email" required=""
+                        <input type="email" class="form-control" id="email" placeholder=" " name="email" required
                                oninvalid="this.setCustomValidity('Hãy nhập email của bạn!')"
-                               oninput="this.setCustomValidity('')">
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="right-w3l">
                         <button id="forgotPassBtn" type="submit" class="form-control">Gửi</button>

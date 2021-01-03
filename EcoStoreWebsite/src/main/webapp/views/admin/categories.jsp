@@ -1,13 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-category"/>
 <c:url var="CategoryUrl" value="/quan-tri/the-loai"/>
-<%--
-  Created by IntelliJ IDEA.
-  User: LaptopUSAPro
-  Date: 12/17/2020
-  Time: 12:26 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -50,7 +43,6 @@
                             </tr>
                             </thead>
                             <tbody>
-
                             <c:forEach var="item" items="${categories}">
                                 <tr>
                                     <td class="text-center">
@@ -88,7 +80,6 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-
 <!-- Add Modal HTML -->
 <div id="addCategoryModal" class="modal fade">
     <div class="modal-dialog">
@@ -101,11 +92,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên thể loại</label>
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control" name="name" required oninvalid="this.setCustomValidity('Hãy nhập tên thể loại!')"
+                               oninput="this.setCustomValidity('')" autofocus>
                     </div>
                     <div class="form-group">
                         <label>Mã thể loại</label>
-                        <input type="text" class="form-control" name="code" required>
+                        <input type="text" class="form-control" name="code" required oninvalid="this.setCustomValidity('Hãy nhập mã thể loại!')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
@@ -147,14 +140,16 @@
 
 <script>
     $('#addCategory').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        let formData = $('#formSubmit').serializeArray();
-        // vong lap
-        $.each(formData, function (i, v) {
-            data['' + v.name] = v.value
-        });
-        addCategory(data);
+        if($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addCategory(data);
+        }
     })
 
     $('#deleteCategory').click(function (e) {

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 1:10 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="APIurl" value="/api-web-user"/>
@@ -42,7 +35,7 @@
                         <label for="fullname" class="col-form-label">Họ tên</label>
                         <input type="text" class="form-control" id="fullname" name="fullname"
                                required oninvalid="this.setCustomValidity('Hãy nhập họ tên của bạn (ít nhất 2 ký tự)')"
-                               oninput="this.setCustomValidity('')" minlength="2">
+                               oninput="this.setCustomValidity('')" minlength="2" autofocus>
                     </div>
 
                     <div class="form-group">

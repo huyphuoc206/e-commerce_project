@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: MINHNHUT
-  Date: 12/17/2020
-  Time: 1:01 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-web-feedback"/>
 <c:url var="FeedbackURL" value="/danh-gia"/>
@@ -50,7 +43,7 @@
                 <form id="formSubmit">
                      <textarea name="content" required
                                oninvalid="this.setCustomValidity('Hãy nhập đánh giá của bạn!')"
-                               oninput="this.setCustomValidity('')" placeholder="Đánh giá tại đây..."></textarea>
+                               oninput="this.setCustomValidity('')" placeholder="Đánh giá tại đây..." autofocus></textarea>
                     <button id="addFeedback" type="submit" class="right-w3l">Gửi</button>
                 </form>
 
