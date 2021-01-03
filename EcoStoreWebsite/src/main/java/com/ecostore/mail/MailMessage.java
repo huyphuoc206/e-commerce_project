@@ -11,4 +11,10 @@ public class MailMessage {
         sb.append("Trân trọng cảm ơn!");
         return sb.toString();
     }
+    public  static String getUrlChangPass(String email, String keycode){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nhấn vào link bên dưới để thay đổi lại mật khẩu của bạn! \n");
+        sb.append("http://localhost:8080/mat-khau-moi?email=" + email + "&key=" + keycode);
+        return  sb.toString();
+    }
 }

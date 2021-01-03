@@ -45,18 +45,19 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
     public boolean update(String sql, Object... parameters) {
         Connection connection = null;
         PreparedStatement statement = null;
+        int row = 0;
         try {
             connection = ConnectionDB.getConnection();
             connection.setAutoCommit(false);
             statement = connection.prepareStatement(sql);
             setParameters(statement, parameters);
-            statement.executeUpdate();
+            row = statement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
             if (connection != null) {
                 try {
                     connection.rollback();
-                    return false;
+                        return false;
                 } catch (SQLException e1) {
                     e.printStackTrace();
                 }
@@ -71,7 +72,7 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                 e2.printStackTrace();
             }
         }
-        return true;
+        return row > 0 ? true : false;
     }
 
     @Override
@@ -127,6 +128,8 @@ public class AbstractDAO<T> implements IGenericDAO<T> {
                     statement.setInt(index, (Integer) parameter);
                 else if (parameter instanceof Timestamp)
                     statement.setTimestamp(index, (Timestamp) parameter);
+                else if (parameter == null)
+                    statement.setTimestamp(index, null);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -1,6 +1,8 @@
 package com.ecostore.model;
 
 
+import java.sql.Timestamp;
+
 public class UserModel extends AbstractModel {
     private String fullname;
     private String username;
@@ -11,8 +13,8 @@ public class UserModel extends AbstractModel {
     private long roleId;
     private RoleModel role;
     private int status;
-    private String key;
-    private int keytime;
+    private String keycode;
+    private Timestamp keytime;
 
     public UserModel() {
     }
@@ -90,19 +92,19 @@ public class UserModel extends AbstractModel {
         this.status = status;
     }
 
-    public String getKey() {
-        return key;
+    public String getKeycode() {
+        return keycode;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setKeycode(String keycode) {
+        this.keycode = keycode;
     }
 
-    public int getKeytime() {
+    public Timestamp getKeytime() {
         return keytime;
     }
 
-    public void setKeytime(int keytime) {
+    public void setKeytime(Timestamp keytime) {
         this.keytime = keytime;
     }
 }

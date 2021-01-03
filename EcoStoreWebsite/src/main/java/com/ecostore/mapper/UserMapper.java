@@ -21,6 +21,8 @@ public class UserMapper implements IRowMapper<UserModel> {
             user.setAvatar(resultSet.getString("avatar"));
             user.setStatus(resultSet.getInt("status"));
             user.setRoleId(resultSet.getLong("roleid"));
+            user.setKeycode(resultSet.getString("keycode"));
+            user.setKeytime(resultSet.getTimestamp("keytime"));
             RoleModel role = new RoleModel();
             if (MapperUtil.hasColumn(resultSet, "code"))
                 role.setCode(resultSet.getString("code"));
@@ -31,6 +33,7 @@ public class UserMapper implements IRowMapper<UserModel> {
             user.setCreatedBy(resultSet.getString("createdby"));
             user.setModifiedDate(resultSet.getTimestamp("modifieddate"));
             user.setModifiedBy(resultSet.getString("modifiedby"));
+
             return user;
         } catch (SQLException throwables) {
             return null;
