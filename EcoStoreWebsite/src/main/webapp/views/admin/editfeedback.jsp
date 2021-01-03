@@ -5,6 +5,9 @@
   Time: 5:39 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-feedback"/>
+<c:url var="FeedbackURL" value="/quan-tri/phan-hoi"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,41 +23,79 @@
                         <strong class="card-title">Chỉnh sửa trang phản hồi</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" action="" method="post" enctype="multipart/form-data"
+                              class="form-horizontal">
                             <div class="row form-group">
+                                <div class="col col-md-3"><label
+                                        class=" form-control-label">Nội dung</label></div>
+                                <div class="col-12 col-md-9"><input type="text"
+                                                                    name="content" value="${feedbackModel.content}"
+                                                                    class="form-control"></div>
 
-                                <div class="col col-md-3"><label for="text-input"
-                                                                 class=" form-control-label">Mã người dùng</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="text-input"
-                                                                    name="text-input" class="form-control"></div>
                             </div>
-
                             <div class="row form-group">
-                                <div class="col col-md-3"><label for="select" class=" form-control-label">Trạng thái
-                                </label></div>
+                                <div class="col col-md-3"><label class=" form-control-label">Trạng thái</label></div>
                                 <div class="col-12 col-md-9">
-                                    <select name="category" id="category" class="form-control">
-                                        <option value="0">Tạm khóa</option>
-                                        <option value="1">Hoạt động</option>
+                                    <select id="status" name="status" class="form-control">
+                                        <c:if test="${feedbackModel.status == 1}">
+                                            <option value="1" selected>Hoạt động</option>
+                                            <option value="0">Ngưng hoạt động</option>
+                                        </c:if>
+                                        <c:if test="${feedbackModel.status == 0}">
+                                            <option value="1">Hoạt động</option>
+                                            <option value="0" selected>Ngưng hoạt động</option>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                <button id="updateFeedback" type="button" class="btn btn-primary btn-sm mr-2">
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
-                                <button type="reset" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-ban"></i> Làm mới
-                                </button>
                             </div>
+                            <input type="hidden" value="${feedbackModel.id}" id="id" name="id"/>
                         </form>
                     </div>
-
 
                 </div>
             </div>
         </div>
     </div><!-- .animated -->
 </div><!-- .content -->
+<script>
+    $('#updateFeedback').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        let formData = $('#formSubmit').serializeArray();
+        // vong lap
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        updateFeedback(data);
+    })
+
+    function updateFeedback(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null)
+                    window.location.href = "${FeedbackURL}?message=update_success&alert=success";
+                else
+                    window.location.href = "${FeedbackURL}?message=update_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${FeedbackURL}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
+
 </body>
 </html>
