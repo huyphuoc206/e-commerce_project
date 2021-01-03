@@ -31,5 +31,4 @@ public class FeedbackController extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("views/web/feedback.jsp");
         rd.forward(request, response);
     }
-
 }

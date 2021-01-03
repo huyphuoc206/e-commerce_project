@@ -40,7 +40,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="modal-body col-sm-6">
-                <form id="formSubmit" action="#" method="">
+                <form id="formSubmit">
                     <c:if test="${not empty message}">
                         <div class="text-center alert alert-${alert}">${message}</div>
                     </c:if>
@@ -89,7 +89,6 @@
                     data['' + v.name] = v.value
                 });
                 data['id'] = ${user.id};
-                console.log(data);
                 newPass(data);
             }
         })

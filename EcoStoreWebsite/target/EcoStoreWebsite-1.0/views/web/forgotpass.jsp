@@ -59,9 +59,10 @@
     <!--login-->
     <script>
         $('#forgotPassBtn').click(function (e) {
-            e.preventDefault();
-            forgotPass()
-
+            if($('#formSubmit')[0].checkValidity()) {
+                e.preventDefault();
+                forgotPass()
+            }
         })
 
         function forgotPass() {

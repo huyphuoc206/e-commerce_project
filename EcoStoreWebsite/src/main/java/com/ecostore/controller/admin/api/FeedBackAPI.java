@@ -19,7 +19,6 @@ public class FeedBackAPI extends HttpServlet {
     @Inject
     private IFeedBackService feedbackService;
 
-
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();

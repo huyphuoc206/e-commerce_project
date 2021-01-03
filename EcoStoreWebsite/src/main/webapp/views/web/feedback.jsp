@@ -36,8 +36,8 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-            <span>T</span>rợ
-            <span>G</span>iúp
+            <span>Đ</span>ánh
+            <span>G</span>iá
         </h3>
         <!-- //tittle heading -->
         <!-- feedback content -->
@@ -57,7 +57,6 @@
             </div>
         </div>
 
-
         <!-- //feedback content -->
     </div>
     <!-- testimonials -->
@@ -71,11 +70,7 @@
                     <span>K</span>hách
                     <span>H</span>àng
                 </h3>
-                <!-- Cho nay kiem tra xem list.size = 0 thi ko hien thi, co thi chay for-->
                 <!-- tittle heading -->
-
-
-
                     <div class="row gallery-index">
                         <c:forEach var="item" items="${feedbacks}" >
 
@@ -84,31 +79,22 @@
                                 <p>${item.content}</p>
                             </div>
                             <div class="row med-testi-left my-5">
-                                <div class="col-lg-1  w3ls-med-testi-img">
+                                <div class="col-lg-2 col-3 w3ls-med-testi-img">
                                     <img src="<c:url value="${item.user.avatar}"/>" alt=" " class="img-fluid rounded-circle"/>
                                 </div>
-                                <div class="col-8  med-testi-txt">
-                                    <h4 class="font-weight-bold mb-lg-2 mb-4">${item.user.fullname}</h4>
+                                <div class="col-lg-10 col-9 med-testi-txt">
+                                    <h4 class="font-weight-bold mt-3">${item.user.fullname}</h4>
                                     <!-- <p>fames ac turpis</p> -->
                                 </div>
                             </div>
-
                         </div>
                         </c:forEach>
                     </div>
-
-
-
-
-
             </div>
         </div>
     </c:if>
 </div>
 <!-- //testimonials -->
-
-<!-- //help -->
-
 <script>
     $('#addFeedback').click(function (e) {
         if ($('#formSubmit')[0].checkValidity()) {

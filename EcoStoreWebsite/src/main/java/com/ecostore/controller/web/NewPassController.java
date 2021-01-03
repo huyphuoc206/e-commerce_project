@@ -24,15 +24,17 @@ public class NewPassController extends HttpServlet {
     private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IUserService userService;
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         String email = request.getParameter("email");
         String key = request.getParameter("key");
+        if(email == null || key == null) {
+            response.sendRedirect(request.getContextPath()+"/trang-chu");
+            return;
+        }
+
         UserModel user = userService.findOneByEmail(email);
         String url = "";
         if ( key.equals(user.getKeycode()) && Check24Hours.check(user)){
@@ -43,6 +45,5 @@ public class NewPassController extends HttpServlet {
         }
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request,response);
-
       }
 }
