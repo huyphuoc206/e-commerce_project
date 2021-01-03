@@ -56,7 +56,7 @@
                     </div>
                     <div class="sub-w3l">
                         <p class="text-left dont-do mt-3">
-                            <a href="forgotpass.html">
+                            <a href="/quen-mat-khau">
                                 Bạn quên mật khẩu?</a>
                         </p>
 

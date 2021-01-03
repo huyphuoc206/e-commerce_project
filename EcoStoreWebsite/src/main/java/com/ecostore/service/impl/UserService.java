@@ -1,6 +1,7 @@
 package com.ecostore.service.impl;
 
 import com.ecostore.dao.IUserDAO;
+import com.ecostore.dao.impl.UserDAO;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.IUserService;
 import com.ecostore.utils.MD5Hashing;
@@ -20,6 +21,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserModel findOneById(Long id) {
+        return userDAO.findOneById(id);
+    }
+
+    @Override
     public UserModel insert(UserModel user) {
         UserModel temp = userDAO.findOneByUsernameAndEmail(user.getUsername(), user.getEmail());
         if (temp == null) {
@@ -30,5 +36,22 @@ public class UserService implements IUserService {
             return userDAO.findOneById(id);
         }
         return null;
+    }
+
+    @Override
+    public UserModel update(UserModel user) {
+        UserModel oldUserModel = userDAO.findOneById(user.getId());
+        user.setCreatedDate(oldUserModel.getCreatedDate());
+        user.setCreatedBy(oldUserModel.getCreatedBy());
+        user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        if (userDAO.update(user)){
+            return userDAO.findOneById(user.getId());
+        }
+        return null;
+    }
+
+    @Override
+    public UserModel findOneByEmail(String email) {
+        return userDAO.findOneByEmail(email);
     }
 }

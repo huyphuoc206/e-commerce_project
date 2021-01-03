@@ -4,6 +4,8 @@ import com.ecostore.mail.MailMessage;
 import com.ecostore.mail.MailUtils;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.IUserService;
+import com.ecostore.utils.MD5Hashing;
+import com.ecostore.utils.RandomString;
 import com.ecostore.utils.SessionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -14,13 +16,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Timestamp;
 
 @WebServlet(urlPatterns = "/api-web-user")
 public class UserAPI extends HttpServlet {
 
     @Inject
     private IUserService userService;
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        String email = request.getParameter("email");
+        if (email != null) {
+            UserModel userModel = userService.findOneByEmail(email);
+            if (userModel != null) {
+                userModel.setKeytime(new Timestamp(System.currentTimeMillis()));
+                String key = RandomString.getAlphaNumericString(100);
+                userModel.setKeycode(key);
+                userService.update(userModel);
+                MailUtils.sendMail(email, "Lấy lại mật khẩu", MailMessage.getUrlChangPass(email, userModel.getKeycode()));
+            }
+            mapper.writeValue(response.getOutputStream(), userModel);
+        }
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
@@ -39,7 +58,16 @@ public class UserAPI extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        UserModel userNewPass = mapper.readValue(request.getInputStream(), UserModel.class);
+        UserModel userUpdate = userService.findOneById(userNewPass.getId());
+        userUpdate.setPassword(MD5Hashing.hash(userNewPass.getPassword()));
+        userUpdate.setKeycode(null);
+        userUpdate.setKeytime(null);
+        userUpdate = userService.update(userUpdate);
+        mapper.writeValue(response.getOutputStream(), userUpdate);
     }
 }

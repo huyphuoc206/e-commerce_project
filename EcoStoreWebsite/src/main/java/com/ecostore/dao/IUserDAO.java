@@ -8,7 +8,10 @@ public interface IUserDAO {
 
     Long insert(UserModel user);
 
+    boolean update(UserModel user);
+
     UserModel findOneByUsernameAndEmail(String username, String email);
 
     UserModel findOneById(Long id);
+    UserModel findOneByEmail(String email);
 }
