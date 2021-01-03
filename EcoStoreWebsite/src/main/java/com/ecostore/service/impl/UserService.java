@@ -44,7 +44,7 @@ public class UserService implements IUserService {
         user.setCreatedDate(oldUserModel.getCreatedDate());
         user.setCreatedBy(oldUserModel.getCreatedBy());
         user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        if (userDAO.update(user)){
+        if (userDAO.update(user)) {
             return userDAO.findOneById(user.getId());
         }
         return null;
@@ -53,5 +53,17 @@ public class UserService implements IUserService {
     @Override
     public UserModel findOneByEmail(String email) {
         return userDAO.findOneByEmail(email);
+    }
+
+    @Override
+    public UserModel resetPassword(long userId, String currentPassword, String newPassword) {
+        UserModel user = userDAO.findOneById(userId);
+        currentPassword = MD5Hashing.hash(currentPassword);
+        if (user == null || !user.getPassword().equals(currentPassword))
+            return null;
+        newPassword = MD5Hashing.hash(newPassword);
+        if (userDAO.resetPassword(userId, newPassword))
+            return userDAO.findOneById(userId);
+        return null;
     }
 }

@@ -39,7 +39,7 @@
                                                                               aria-hidden="true"></i>
                                         Theo dõi đơn hàng</a>
 
-                                    <a class="nav-link text-dark" href="#"><i class="fa fa-key" aria-hidden="true"></i>
+                                    <a class="nav-link text-dark" href="<c:url value="/doi-mat-khau"/>"><i class="fa fa-key" aria-hidden="true"></i>
                                         Đổi
                                         mật khẩu</a>
 
