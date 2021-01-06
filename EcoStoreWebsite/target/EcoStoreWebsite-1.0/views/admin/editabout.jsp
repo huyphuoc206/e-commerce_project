@@ -56,10 +56,11 @@
 </div><!-- .content -->
 <script>
     let editor = '';
-    $(document).ready(function() {
-        editor = CKEDITOR.replace('content');
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('content', {
+            language: "vi"
+        });
     });
-
     $('#updateAbout').click(function (e) {
         e.preventDefault();
         let data = {}; // mang object name: value

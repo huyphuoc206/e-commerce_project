@@ -62,7 +62,9 @@
 <script>
     let editor = '';
     $(document).ready(function () {
-        editor = CKEDITOR.replace('content');
+        editor = CKEDITOR.replace('content', {
+            language: "vi"
+        });
     });
 
     $('#updatePrivacyPolicy').click(function (e) {

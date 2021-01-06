@@ -60,7 +60,9 @@
 <script>
     let editor = '';
     $(document).ready(function () {
-        editor = CKEDITOR.replace('content');
+        editor = CKEDITOR.replace('content', {
+            language: "vi"
+        });
     });
     $('#updateTerms').click(function (e) {
         e.preventDefault();

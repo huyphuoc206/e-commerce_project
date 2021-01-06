@@ -132,7 +132,10 @@
 <script>
     let editor = '';
     $(document).ready(function () {
-        editor = CKEDITOR.replace('content');
+        editor = CKEDITOR.replace('content', {
+            language: "vi"
+        });
+        CkFinder.setupCKEditor(editor,'<%=request.getContextPath()%>/ckfinder/');
     });
 
     $('#addAbout').click(function (e) {

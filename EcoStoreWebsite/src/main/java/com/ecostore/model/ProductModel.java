@@ -1,14 +1,44 @@
 package com.ecostore.model;
 
+import java.util.List;
+
 public class ProductModel extends AbstractModel {
     private String name;
     private Long price;
     private int discount;
     private String description;
     private int status;
-    private CategoryModel categoryid;
-    private SupplierModel supplierid;
-    private String image;
+    private CategoryModel category;
+    private SupplierModel supplier;
+    private long categoryId;
+
+    public long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public long getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(long supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    private long supplierId;
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    private List<String> images;
 
     public ProductModel() {
     }
@@ -53,20 +83,20 @@ public class ProductModel extends AbstractModel {
         this.status = status;
     }
 
-    public CategoryModel getCategoryid() {
-        return categoryid;
+    public CategoryModel getCategory() {
+        return category;
     }
 
-    public void setCategoryid(CategoryModel categoryid) {
-        this.categoryid = categoryid;
+    public void setCategory(CategoryModel category) {
+        this.category = category;
     }
 
-    public SupplierModel getSupplierid() {
-        return supplierid;
+    public SupplierModel getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierid(SupplierModel supplierid) {
-        this.supplierid = supplierid;
+    public void setSupplier(SupplierModel supplier) {
+        this.supplier = supplier;
     }
 
 }
