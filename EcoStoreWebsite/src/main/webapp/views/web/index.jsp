@@ -117,6 +117,7 @@
                                             </h4>
                                             <div class="info-product-price my-2">
                                                 <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                <br>
                                                 <del class="item_discount">${item.price}</del>
                                             </div>
                                             <div

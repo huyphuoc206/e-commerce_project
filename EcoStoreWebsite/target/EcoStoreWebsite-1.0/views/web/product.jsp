@@ -68,6 +68,7 @@
                                                 </h4>
                                                 <div class="info-product-price my-2">
                                                     <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                    <br>
                                                     <del class="item_discount">${item.price}</del>
                                                 </div>
                                                 <div
@@ -121,7 +122,6 @@
                                     <c:forEach var="item" items="${suppliers}">
                                         <li class="col-6">
                                             <input type="checkbox" class="checked" id="checkbox_${item.id}" value=${item.id}>
-                                           <%-- <span class="span">${item.name}</span>--%>
                                             <label for="checkbox_${item.id}">${item.name}</label>
                                         </li>
                                     </c:forEach>

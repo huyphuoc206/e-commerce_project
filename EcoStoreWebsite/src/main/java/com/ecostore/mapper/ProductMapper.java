@@ -24,7 +24,7 @@ public class ProductMapper implements IRowMapper<ProductModel> {
             model.setStatus(resultSet.getInt("status"));
             model.setCategoryId(resultSet.getLong("categoryid"));
             CategoryModel category = new CategoryModel();
-            if (MapperUtil.hasColumn(resultSet,"cname")){
+            if (MapperUtil.hasColumn(resultSet, "cname")) {
                 category.setName(resultSet.getString("cname"));
             }
             model.setCategory(category);
@@ -34,14 +34,17 @@ public class ProductMapper implements IRowMapper<ProductModel> {
             model.setModifiedDate(resultSet.getTimestamp("modifieddate"));
             model.setModifiedBy(resultSet.getString("modifiedby"));
             images.add(resultSet.getString("imagelink"));
-
-            resultSet.next();
-            while (model.getId() == resultSet.getLong("id")){
-                images.add(resultSet.getString("imagelink"));
-                resultSet.next();
+            boolean checkRs = true;
+            while (checkRs = resultSet.next()) {
+                if (model.getId() == resultSet.getLong("id"))
+                    images.add(resultSet.getString("imagelink"));
+                else {
+                    resultSet.previous();
+                    model.setImages(images);
+                    break;
+                }
             }
-            resultSet.previous();
-            model.setImages(images);
+            if (!checkRs) model.setImages(images);
             return model;
         } catch (SQLException throwables) {
             return null;

@@ -27,7 +27,7 @@ public class ProductController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
-        layoutAttributeService.setFooterWeb(request);
+         layoutAttributeService.setFooterWeb(request);
         String code = request.getParameter("code");
         String url = "";
         if (code != null) {
