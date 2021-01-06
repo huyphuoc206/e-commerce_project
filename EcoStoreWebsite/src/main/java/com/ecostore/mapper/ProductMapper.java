@@ -24,8 +24,8 @@ public class ProductMapper implements IRowMapper<ProductModel> {
             model.setStatus(resultSet.getInt("status"));
             model.setCategoryId(resultSet.getLong("categoryid"));
             CategoryModel category = new CategoryModel();
-            if (MapperUtil.hasColumn(resultSet,"categoryname")){
-                category.setName(resultSet.getString("categoryname"));
+            if (MapperUtil.hasColumn(resultSet,"cname")){
+                category.setName(resultSet.getString("cname"));
             }
             model.setCategory(category);
             model.setSupplierId(resultSet.getLong("supplierid"));

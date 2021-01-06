@@ -54,4 +54,9 @@ public class SupplierService implements ISupplierService {
         }
         return true;
     }
+
+    @Override
+    public List<SupplierModel> findAllByCategoryCode(String code) {
+        return supplierDAO.findAllByCategoryCode(code);
+    }
 }

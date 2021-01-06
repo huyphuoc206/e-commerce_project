@@ -45,4 +45,10 @@ public class SupplierDAO extends AbstractDAO<SupplierModel> implements ISupplier
         String sql = "DELETE FROM supplier WHERE id = ?";
         return update(sql, id);
     }
+
+    @Override
+    public List<SupplierModel> findAllByCategoryCode(String code) {
+        String sql = "SELECT DISTINCT supplier.* FROM product JOIN category on product.categoryid = category.id JOIN supplier on product.supplierid = supplier.id WHERE category.code = ?";
+        return query(sql, new SupplierMapper(),code);
+    }
 }

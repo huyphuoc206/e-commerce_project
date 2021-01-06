@@ -11,9 +11,9 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     @Override
     public List<ProductModel> findAllByCategoryCode(String code) {
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT P.*, I.imagelink, C.name as categoryname FROM");
-        sql.append(" product P join productgallery I on P.id = I.productid join category C on P.categoryid = C.id");
-        sql.append(" WHERE P.status = 1 and C.code like ?");
+        sql.append("SELECT P.*, I.imagelink, category.name AS cname FROM");
+        sql.append(" product P join productgallery I on P.id = I.productid join category on P.categoryid = category.id");
+        sql.append(" WHERE P.status = 1 and category.code = ?");
         return query(sql.toString(), new ProductMapper(), code);
     }
 
