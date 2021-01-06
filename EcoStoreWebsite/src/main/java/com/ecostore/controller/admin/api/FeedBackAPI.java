@@ -26,7 +26,7 @@ public class FeedBackAPI extends HttpServlet {
         response.setContentType("application/json");
         FeedBackModel feedbackModel = mapper.readValue(request.getInputStream(), FeedBackModel.class);
         UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        feedbackModel.setModifiedBy(userModel.getUsername());
+        feedbackModel.setModifiedBy(userModel.getFullname());
         feedbackModel = feedbackService.update(feedbackModel);
         mapper.writeValue(response.getOutputStream(), feedbackModel);
     }

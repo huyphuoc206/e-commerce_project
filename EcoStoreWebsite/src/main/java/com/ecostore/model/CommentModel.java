@@ -1,27 +1,54 @@
 package com.ecostore.model;
 
 public class CommentModel extends AbstractModel {
-    private UserModel userId;
-    private ProductModel productId;
+    private long userId;
+    private UserModel user;
+    private long productId;
+    private ProductModel product;
     private String content;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public CommentModel() {
     }
 
-    public UserModel getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(UserModel userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public ProductModel getProductId() {
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
+
+    public long getProductId() {
         return productId;
     }
 
-    public void setProductId(ProductModel productId) {
+    public void setProductId(long productId) {
         this.productId = productId;
+    }
+
+    public ProductModel getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductModel product) {
+        this.product = product;
     }
 
     public String getContent() {
