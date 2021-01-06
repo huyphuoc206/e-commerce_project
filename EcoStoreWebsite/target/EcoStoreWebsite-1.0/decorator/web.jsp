@@ -59,6 +59,20 @@
 <%--<script src="<c:url value='/template/web/js/jquery-2.2.3.min.js'/>"></script>--%>
 <!-- //jquery -->
 
+<script>
+
+    let arrayprice = document.getElementsByClassName("item_price");
+    for(let i=0;i<arrayprice.length;i++)
+        arrayprice[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format( arrayprice[i].innerHTML );
+
+    let arraydiscount = document.getElementsByClassName("item_discount");
+    for(let i=0;i<arraydiscount.length;i++){
+        arraydiscount[i].innerHTML = Number.parseFloat(arraydiscount[i].innerHTML).toFixed(0);
+        arraydiscount[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format( arraydiscount[i].innerHTML );
+
+    }
+</script>
+
 <!-- nav smooth scroll -->
 <script>
     $(document).ready(function () {

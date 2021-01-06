@@ -25,7 +25,7 @@
                                                 <ul class="multi-column-dropdown">
                                                     <c:forEach var="item2" items="${categories}" begin="0" end="${categories.size()/3}">
                                                         <li>
-                                                            <a href="<c:url value=''/>">${item2.name}</a>
+                                                            <a href="<c:url value='/san-pham?code=${item2.code}'/>">${item2.name}</a>
                                                         </li>
                                                     </c:forEach>
                                                 </ul>

@@ -14,23 +14,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/trang-chu")
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = "/san-pham")
+public class ProductController extends HttpServlet {
     @Inject
     private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IProductService productService;
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
-        List<ProductModel> productNewList = productService.findAllSortByCreateddate();
-        List<ProductModel> productDiscountList = productService.findAllSortByDiscount();
-
-        request.setAttribute("productNewList", productNewList);
-        request.setAttribute("productDiscountList", productDiscountList);
-
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/index.jsp");
+        String code = request.getParameter("code");
+        String url = "";
+        if (code != null){
+            List<ProductModel> products = productService.findAllByCategoryCode(code);
+            request.setAttribute("products", products);
+            request.setAttribute("categoryname", products.get(0).getCategory().getName());
+            url = "views/web/product.jsp";
+        } else{
+           url = "views/web/index.jsp";
+        }
+        RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }
 }
