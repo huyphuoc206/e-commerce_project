@@ -9,7 +9,7 @@ public class MapperUtil {
         ResultSetMetaData rsmd = rs.getMetaData();
         int columns = rsmd.getColumnCount();
         for (int x = 1; x <= columns; x++)
-            if (columnName.equals(rsmd.getColumnName(x)))
+            if (columnName.equals(rsmd.getColumnLabel(x)))
                 return true;
         return false;
     }

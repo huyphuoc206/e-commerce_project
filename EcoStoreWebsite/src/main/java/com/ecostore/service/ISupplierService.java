@@ -14,4 +14,6 @@ public interface ISupplierService {
     SupplierModel update (SupplierModel supplierModel);
 
     boolean delete(long[] ids);
+
+    List<SupplierModel> findAllByCategoryCode(String code);
 }

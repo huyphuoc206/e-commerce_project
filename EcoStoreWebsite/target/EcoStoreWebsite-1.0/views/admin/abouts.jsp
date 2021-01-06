@@ -6,6 +6,7 @@
 <head>
     <title>Quản lý giới thiệu</title>
 </head>
+<script src="<c:url value='/ckfinder/ckfinder.js'/>"></script>
 <body>
 
 <div class="content mt-3">
@@ -135,7 +136,6 @@
         editor = CKEDITOR.replace('content', {
             language: "vi"
         });
-        CkFinder.setupCKEditor(editor,'<%=request.getContextPath()%>/ckfinder/');
     });
 
     $('#addAbout').click(function (e) {

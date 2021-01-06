@@ -16,4 +16,6 @@ public interface ISupplierDAO {
     boolean update(SupplierModel supplierModel);
 
     boolean delete(long id);
+
+    List<SupplierModel> findAllByCategoryCode(String code);
 }

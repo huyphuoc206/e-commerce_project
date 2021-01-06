@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
+<<<<<<< HEAD
 Built-By: LaptopUSAPro
+=======
+Built-By: HuyPhuoc
+>>>>>>> 82fe9654187dfcd302f5d5584012b0fd02982c94
 Build-Jdk: 1.8.0_251
 

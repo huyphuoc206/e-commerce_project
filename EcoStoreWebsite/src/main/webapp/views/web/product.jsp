@@ -26,7 +26,7 @@
         <div class="container py-xl-4 py-lg-2">
             <!-- tittle heading -->
             <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-                <span>${categoryname}</span></h3>
+                <span>${cname}</span></h3>
             <!-- //tittle heading -->
             <div class="row">
                 <!-- product left -->
@@ -68,6 +68,7 @@
                                                 </h4>
                                                 <div class="info-product-price my-2">
                                                     <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                    <br>
                                                     <del class="item_discount">${item.price}</del>
                                                 </div>
                                                 <div
@@ -118,35 +119,12 @@
                             <form action="#" method="POST">
                                 <h3 class="agileits-sear-head mb-3">Hãng</h3>
                                 <ul class="row">
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">Sony</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">LG</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">Samsung</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">Panasonic</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">Asanzo</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">Toshiba</span>
-                                    </li>
-                                    <li class="col-6">
-                                        <input type="checkbox" class="checked">
-                                        <span class="span">TCL</span>
-                                    </li>
-                                    <li>
+                                    <c:forEach var="item" items="${suppliers}">
+                                        <li class="col-6">
+                                            <input type="checkbox" class="checked" id="checkbox_${item.id}" value=${item.id}>
+                                            <label for="checkbox_${item.id}">${item.name}</label>
+                                        </li>
+                                    </c:forEach>
                                 </ul>
                                 <h3 class="agileits-sear-head mb-3">Khoảng giá</h3>
                                 <div class="row">

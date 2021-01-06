@@ -1,8 +1,10 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.model.ProductModel;
+import com.ecostore.model.SupplierModel;
 import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IProductService;
+import com.ecostore.service.ISupplierService;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -20,18 +22,24 @@ public class ProductController extends HttpServlet {
     private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IProductService productService;
+    @Inject
+    private ISupplierService supplierService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
-        layoutAttributeService.setFooterWeb(request);
+         layoutAttributeService.setFooterWeb(request);
         String code = request.getParameter("code");
         String url = "";
-        if (code != null){
+        if (code != null) {
             List<ProductModel> products = productService.findAllByCategoryCode(code);
+            List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
             request.setAttribute("products", products);
-            request.setAttribute("categoryname", products.get(0).getCategory().getName());
+            request.setAttribute("suppliers", suppliers);
+            if (!products.isEmpty())
+                request.setAttribute("cname", products.get(0).getCategory().getName());
             url = "views/web/product.jsp";
-        } else{
-           url = "views/web/index.jsp";
+        } else {
+            url = "views/web/index.jsp";
         }
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);

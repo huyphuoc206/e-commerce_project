@@ -1456,7 +1456,7 @@ span.item_price {
 
 .info-product-price del {
     font-weight: 300;
-    margin-left: 13px;
+    /*margin-left: 13px;*/
     font-size: 15px;
 }
 
