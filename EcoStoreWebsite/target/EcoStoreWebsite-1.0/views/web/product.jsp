@@ -26,7 +26,7 @@
         <div class="container py-xl-4 py-lg-2">
             <!-- tittle heading -->
             <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-                <span>HGGJG</span></h3>
+                <span>${categoryname}</span></h3>
             <!-- //tittle heading -->
             <div class="row">
                 <!-- product left -->

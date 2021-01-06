@@ -28,4 +28,10 @@ public class ProductService implements IProductService {
     public List<ProductModel> findAllSortByDiscount() {
         return productDAO.findAllSortByDiscount();
     }
+
+    @Override
+    public ProductModel findOneById(long id) {
+        return productDAO.findOneById(id);
+    }
+
 }

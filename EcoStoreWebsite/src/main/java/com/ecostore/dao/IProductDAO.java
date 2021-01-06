@@ -11,4 +11,6 @@ public interface IProductDAO {
     List<ProductModel> findAllSortByCreateddate();
 
     List<ProductModel> findAllSortByDiscount();
+
+    ProductModel findOneById(long id);
 }
