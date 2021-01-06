@@ -11,6 +11,11 @@ public class ProductModel extends AbstractModel {
     private CategoryModel category;
     private SupplierModel supplier;
     private long categoryId;
+    private long supplierId;
+    private List<String> images;
+
+    public ProductModel() {
+    }
 
     public long getCategoryId() {
         return categoryId;
@@ -28,19 +33,12 @@ public class ProductModel extends AbstractModel {
         this.supplierId = supplierId;
     }
 
-    private long supplierId;
-
     public List<String> getImages() {
         return images;
     }
 
     public void setImages(List<String> images) {
         this.images = images;
-    }
-
-    private List<String> images;
-
-    public ProductModel() {
     }
 
     public String getName() {

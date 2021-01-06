@@ -20,21 +20,13 @@ public class MenuMapper implements IRowMapper<MenuModel> {
             model.setMenuTypeId(resultSet.getLong("menutypeid"));
             menuTypeModel.setName(resultSet.getString("menutypename"));
             model.setMenuType(menuTypeModel);
-            if (resultSet.getTimestamp("createddate") != null) {
-                model.setCreatedDate((resultSet.getTimestamp("createddate")));
-            }
-            if (resultSet.getString("createdby") != null) {
-                model.setCreatedBy((resultSet.getString("createdby")));
-            }
-            if (resultSet.getTimestamp("modifieddate") != null) {
-                model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
-            }
-            if (resultSet.getString("modifiedby") != null) {
-                model.setModifiedBy((resultSet.getString("modifiedby")));
-            }
+            model.setCreatedDate((resultSet.getTimestamp("createddate")));
+            model.setCreatedBy((resultSet.getString("createdby")));
+            model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
+            model.setModifiedBy((resultSet.getString("modifiedby")));
             return model;
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
         }
         return null;
     }
