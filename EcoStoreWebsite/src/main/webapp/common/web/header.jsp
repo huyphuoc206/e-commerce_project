@@ -33,7 +33,7 @@
                                 <span class="mr-3">Xin chào, ${USERMODEL.fullname}</span>
 
                                 <div class="user-menu dropdown-menu">
-                                    <a class="nav-link text-dark" href="#"><i class="fa fa-user"></i> Thông tin cá nhân</a>
+                                    <a class="nav-link text-dark" href="<c:url value='/chinh-sua-thong-tin'/>"><i class="fa fa-user"></i> Thông tin cá nhân</a>
 
                                     <a class="nav-link text-dark" href="#"><i class="fa fa-table"
                                                                               aria-hidden="true"></i>

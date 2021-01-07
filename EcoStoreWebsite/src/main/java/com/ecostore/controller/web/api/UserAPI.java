@@ -62,11 +62,18 @@ public class UserAPI extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
-        UserModel userNewPass = mapper.readValue(request.getInputStream(), UserModel.class);
-        UserModel userUpdate = userService.findOneById(userNewPass.getId());
-        userUpdate.setPassword(MD5Hashing.hash(userNewPass.getPassword()));
-        userUpdate.setKeycode(null);
-        userUpdate.setKeytime(null);
+        UserModel userNew = mapper.readValue(request.getInputStream(), UserModel.class);
+        UserModel userUpdate = userService.findOneById(userNew.getId());
+        if (userNew.getPassword() != null){
+            userUpdate.setPassword(MD5Hashing.hash(userNew.getPassword()));
+            userUpdate.setKeycode(null);
+            userUpdate.setKeytime(null);
+        } else {
+            userUpdate.setAvatar(userNew.getAvatar());
+            userUpdate.setFullname(userNew.getFullname());
+            userUpdate.setEmail(userNew.getEmail());
+            userUpdate.setPhone(userNew.getPhone());
+        }
         userUpdate = userService.update(userUpdate);
         mapper.writeValue(response.getOutputStream(), userUpdate);
     }
