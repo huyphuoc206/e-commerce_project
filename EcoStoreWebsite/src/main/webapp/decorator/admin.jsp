@@ -35,6 +35,7 @@
 
 <%--    ckeditor--%>
     <script src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
+    <script src="<c:url value='/ckfinder/ckfinder.js'/>"></script>
 
     <script>
         $(document).ready(function () {

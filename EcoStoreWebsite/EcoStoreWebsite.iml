@@ -46,6 +46,114 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.finder:ckfinder:2.6.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/CKFinder-2.6.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.finder:CKFinderPlugin-Watermark:2.6.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-Watermark-2.6.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.finder:CKFinderPlugin-FileEditor:2.6.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-FileEditor-2.6.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.finder:CKFinderPlugin-ImageResize:2.6.3">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-ImageResize-2.6.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.activation:activation:1.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/activation-1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.commons-fileupload:commons-fileupload:1.2.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/commons-fileupload-1.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.commons-io:commons-io:2.0.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/commons-io-2.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.gson:gson:2.5">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/gson-2.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.jboss-log:jboss-log:3.1.4.GA">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jboss-logging-3.1.4.GA.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.jboss-vfs:jboss-vfs:3.2.11.Final">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/jboss-vfs-3.2.11.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.mail:mail:1.4.1">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/mail-1.4.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="Maven: com.thumbnailator:thumbnailator:0.4.8">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/thumbnailator-0.4.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:4.0.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jsp-api:2.0" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.4" level="project" />

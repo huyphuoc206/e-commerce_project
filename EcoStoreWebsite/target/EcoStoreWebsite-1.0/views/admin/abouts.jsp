@@ -131,11 +131,12 @@
     </div>
 </div>
 <script>
-    let editor = '';
-    $(document).ready(function () {
-        editor = CKEDITOR.replace('content', {
+    var editor ="";
+    $(document).ready(function(){
+        editor = CKEDITOR.replace("content", {
             language: "vi"
         });
+        CKFinder.setupCKEditor( editor, "<c:url value='/ckfinder'/>" );
     });
 
     $('#addAbout').click(function (e) {
