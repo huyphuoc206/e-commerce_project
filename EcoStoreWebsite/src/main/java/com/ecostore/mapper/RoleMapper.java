@@ -1,21 +1,18 @@
 package com.ecostore.mapper;
 
-import com.ecostore.model.TermsModel;
+import com.ecostore.model.RoleModel;
 
 import java.sql.ResultSet;
-import java.sql.SQLDataException;
 import java.sql.SQLException;
 
-public class TermsMapper implements  IRowMapper{
-
-
+public class RoleMapper implements IRowMapper<RoleModel> {
     @Override
-    public TermsModel mapRow(ResultSet resultSet) {
-        TermsModel model = new TermsModel();
+    public RoleModel mapRow(ResultSet resultSet) {
+        RoleModel model = new RoleModel();
         try{
             model.setId(resultSet.getLong("id"));
-            model.setContent(resultSet.getString("content"));
-            model.setStatus(resultSet.getInt("status"));
+            model.setName(resultSet.getString("name"));
+            model.setCode(resultSet.getString("code"));
             model.setCreatedDate((resultSet.getTimestamp("createddate")));
             model.setCreatedBy((resultSet.getString("createdby")));
             model.setModifiedDate((resultSet.getTimestamp("modifieddate")));
@@ -23,8 +20,7 @@ public class TermsMapper implements  IRowMapper{
             return model;
 
         }catch (SQLException throwables){
-                return null;
+            return null;
         }
-
     }
 }

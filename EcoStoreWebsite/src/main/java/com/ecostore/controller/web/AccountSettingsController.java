@@ -3,6 +3,7 @@ package com.ecostore.controller.web;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IUserService;
+import com.ecostore.utils.MessageUtil;
 import com.ecostore.utils.SessionUtil;
 
 import javax.inject.Inject;
@@ -25,6 +26,7 @@ public class AccountSettingsController extends HttpServlet {
         layoutAttributeService.setFooterWeb(request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
         String url= "";
+        MessageUtil.showMessage(request);
         if (user != null) {
             request.setAttribute("user", user);
             url = "views/web/accountsettings.jsp";
