@@ -34,7 +34,7 @@
                     <div class="custom-input-file" style="background-image: url('${user.avatar}');">
                         <label class="uploadPhoto">
                             Chọn
-                            <input type="file" class="change-avatar" name="avatar" id="avatar">
+                            <input type="file" class="change-avatar" name="avatar" value="${user.avatar}">
                         </label>
                     </div>
                 </div>
@@ -80,6 +80,7 @@
                 data['' + v.name] = v.value
             });
             data['id'] = ${user.id};
+            console.log(data);
             updateUserBtn(data);
         }
     })

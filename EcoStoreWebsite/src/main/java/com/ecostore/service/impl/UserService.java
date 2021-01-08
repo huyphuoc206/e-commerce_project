@@ -5,14 +5,21 @@ import com.ecostore.dao.impl.UserDAO;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.IUserService;
 import com.ecostore.utils.MD5Hashing;
+import com.ecostore.utils.SessionUtil;
 
 import javax.inject.Inject;
 import java.sql.Timestamp;
+import java.util.List;
 
 public class UserService implements IUserService {
 
     @Inject
     private IUserDAO userDAO;
+
+    @Override
+    public List<UserModel> findAllUsers() {
+        return userDAO.findAllUsers();
+    }
 
     @Override
     public UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status) {
@@ -44,6 +51,10 @@ public class UserService implements IUserService {
     @Override
     public UserModel update(UserModel user) {
         UserModel oldUserModel = userDAO.findOneById(user.getId());
+        if (!user.getPassword().equals(oldUserModel.getPassword())){
+            String passNew = MD5Hashing.hash(user.getPassword());
+            user.setPassword(passNew);
+        }
         user.setCreatedDate(oldUserModel.getCreatedDate());
         user.setCreatedBy(oldUserModel.getCreatedBy());
         user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
@@ -51,6 +62,15 @@ public class UserService implements IUserService {
             return userDAO.findOneById(user.getId());
         }
         return null;
+    }
+
+    @Override
+    public boolean delete(long[] ids, UserModel userSession) {
+        for (long id : ids) {
+            if (id == userSession.getId() || !userDAO.delete(id))
+                return false;
+        }
+        return true;
     }
 
     @Override

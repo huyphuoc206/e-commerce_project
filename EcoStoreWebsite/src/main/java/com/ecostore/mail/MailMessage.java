@@ -11,6 +11,16 @@ public class MailMessage {
         sb.append("Trân trọng cảm ơn!");
         return sb.toString();
     }
+    public static String getWelcomeAdmin(String name) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Thân chào "+name+",\n");
+        sb.append("Chúc mừng bạn đã phân quyền quản trị Eco Store.\n");
+        sb.append("Hy vọng bạn sẽ hợp tác quản lý giúp Eco Store phát triển hơn.\n");
+        sb.append("Chúc một ngày tốt lành.\n");
+        sb.append("Trân trọng cảm ơn!");
+        return sb.toString();
+    }
+
     public  static String getUrlChangPass(String email, String keycode){
         StringBuilder sb = new StringBuilder();
         sb.append("Nhấn vào link bên dưới để thay đổi lại mật khẩu của bạn! \n");

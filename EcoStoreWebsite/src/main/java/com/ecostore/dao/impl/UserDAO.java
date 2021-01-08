@@ -9,6 +9,12 @@ import java.util.List;
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
+    public List<UserModel> findAllUsers() {
+        String sql = "SELECT * FROM user JOIN role ON user.roleid = role.id";
+        return query(sql,new UserMapper());
+    }
+
+    @Override
     public UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status) {
         String sql = "SELECT * FROM user JOIN role ON user.roleid = role.id WHERE username = ? AND password = ? AND status = ?";
         List<UserModel> users = query(sql, new UserMapper(), username, password, status);
@@ -25,6 +31,12 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     public boolean update(UserModel user) {
         String sql = "UPDATE user SET fullname = ?, username = ?, password = ?, email = ?, phone = ?, avatar = ?, roleid = ?, status = ?, keycode = ?, keytime = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
         return update(sql, user.getFullname(),user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAvatar(), user.getRoleId(), user.getStatus(), user.getKeycode(), user.getKeytime(), user.getModifiedDate(), user.getModifiedBy(),  user.getId());
+    }
+
+    @Override
+    public boolean delete(long id) {
+        String sql = "DELETE FROM user WHERE id = ?";
+        return update(sql, id);
     }
 
     @Override

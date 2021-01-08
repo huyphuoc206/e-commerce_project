@@ -73,6 +73,7 @@ public class UserAPI extends HttpServlet {
             userUpdate.setFullname(userNew.getFullname());
             userUpdate.setEmail(userNew.getEmail());
             userUpdate.setPhone(userNew.getPhone());
+            SessionUtil.getInstance().putValue(request, "USERMODEL", userUpdate);
         }
         userUpdate = userService.update(userUpdate);
         mapper.writeValue(response.getOutputStream(), userUpdate);
