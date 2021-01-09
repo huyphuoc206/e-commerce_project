@@ -12,6 +12,8 @@ public interface IUserService {
 
     UserModel findOneById(Long id);
 
+    UserModel findOneByUserName(String username);
+
     UserModel insert(UserModel user);
 
     UserModel update(UserModel user);

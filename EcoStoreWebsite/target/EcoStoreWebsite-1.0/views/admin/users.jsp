@@ -206,7 +206,7 @@
                 if(result !== null)
                     window.location.href = "${UserUrl}?message=insert_success&alert=success";
                 else
-                    window.location.href = "${UserUrl}?message=insert_fail&alert=danger";
+                    window.location.href = "${UserUrl}?message=username_email_exist&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();

@@ -32,7 +32,7 @@ public class UserAPI extends HttpServlet {
             UserModel userModel = userService.findOneByEmail(email);
             if (userModel != null) {
                 userModel.setKeytime(new Timestamp(System.currentTimeMillis()));
-                String key = RandomString.getAlphaNumericString(100);
+                String key = RandomString.getAlphaNumericString(200);
                 userModel.setKeycode(key);
                 userService.update(userModel);
                 MailUtils.sendMail(email, "Lấy lại mật khẩu", MailMessage.getUrlChangPass(email, userModel.getKeycode()));
@@ -71,6 +71,7 @@ public class UserAPI extends HttpServlet {
         } else {
             userUpdate.setAvatar(userNew.getAvatar());
             userUpdate.setFullname(userNew.getFullname());
+            userUpdate.setUsername(userNew.getUsername());
             userUpdate.setEmail(userNew.getEmail());
             userUpdate.setPhone(userNew.getPhone());
             SessionUtil.getInstance().putValue(request, "USERMODEL", userUpdate);

@@ -38,13 +38,12 @@ public class UserController extends HttpServlet {
                     url = "../views/admin/edituser.jsp";
 
         } else {
-            MessageUtil.showMessage(request);
             SessionUtil.getInstance().getValue(request, "USERMODEL");
             List<UserModel> users = userService.findAllUsers();
             request.setAttribute("users", users);
             url = "../views/admin/users.jsp";
         }
-
+        MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

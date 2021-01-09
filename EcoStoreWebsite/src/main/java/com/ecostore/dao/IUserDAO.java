@@ -22,5 +22,7 @@ public interface IUserDAO {
 
     UserModel findOneByEmail(String email);
 
+    UserModel findOneByUserName(String username);
+
     boolean resetPassword(long userId, String newPassword);
 }

@@ -15,6 +15,9 @@
                     <div class="card-header">
                         <strong class="card-title">Chỉnh sửa người dùng</strong>
                     </div>
+                    <c:if test="${not empty message}">
+                        <div class="text-center float-left alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="card-body card-block">
                         <form id="formSubmit" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
@@ -129,9 +132,9 @@
             success: function (result) {
                 $('.load').hide();
                 if(result !== null)
-                    window.location.href = "${UserUrl}?message=update_success&alert=success";
+                    window.location.href = "${UserUrl}?id=${user.id}&message=update_success&alert=success";
                 else
-                    window.location.href = "${UserUrl}?message=update_fail&alert=danger";
+                    window.location.href = "${UserUrl}?id=${user.id}&message=username_email_exist&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();
@@ -140,6 +143,5 @@
         })
     }
 </script>
-
 </body>
 </html>
