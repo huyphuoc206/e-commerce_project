@@ -36,6 +36,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public UserModel findOneByUserName(String username) {
+        return userDAO.findOneByUserName(username);
+    }
+
+    @Override
     public UserModel insert(UserModel user) {
         UserModel temp = userDAO.findOneByUsernameAndEmail(user.getUsername(), user.getEmail());
         if (temp == null) {
@@ -50,16 +55,31 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel update(UserModel user) {
+        boolean temp = true;
         UserModel oldUserModel = userDAO.findOneById(user.getId());
-        if (!user.getPassword().equals(oldUserModel.getPassword())){
-            String passNew = MD5Hashing.hash(user.getPassword());
-            user.setPassword(passNew);
+        if ( !user.getEmail().equals(oldUserModel.getEmail())) {
+            UserModel userbyemail = userDAO.findOneByEmail(user.getEmail());
+            if (userbyemail != null) {
+                temp = false;
+            }
         }
-        user.setCreatedDate(oldUserModel.getCreatedDate());
-        user.setCreatedBy(oldUserModel.getCreatedBy());
-        user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        if (userDAO.update(user)) {
-            return userDAO.findOneById(user.getId());
+        if ( !user.getUsername().equals(oldUserModel.getUsername())) {
+            UserModel userbyusername = userDAO.findOneByUserName(user.getUsername());
+            if (userbyusername != null) {
+                temp = false;
+            }
+        }
+        if (temp){
+            if (!user.getPassword().equals(oldUserModel.getPassword())){
+                String passNew = MD5Hashing.hash(user.getPassword());
+                user.setPassword(passNew);
+            }
+            user.setCreatedDate(oldUserModel.getCreatedDate());
+            user.setCreatedBy(oldUserModel.getCreatedBy());
+            user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+            if (userDAO.update(user)) {
+                return userDAO.findOneById(user.getId());
+            }
         }
         return null;
     }

@@ -45,6 +45,11 @@
                 </div>
             </div>
             <div class="row form-group">
+                <div class="col col-md-3"><label class=" form-control-label">Tên đăng nhập</label></div>
+                <div class="col-12 col-md-9"><input type="text"  name="username" class="form-control" value="${user.username}">
+                </div>
+            </div>
+            <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Email</label></div>
                 <div class="col-12 col-md-9"><input type="email" name="email" class="form-control" value="${user.email}">
                 </div>
@@ -98,7 +103,7 @@
                 if(result !== null)
                     window.location.href = "${AccountSettingsURL}?message=update_information_success&alert=success";
                 else
-                    window.location.href = "${AccountSettingsURL}?message=update_information_fail&alert=danger";
+                    window.location.href = "${AccountSettingsURL}?message=username_email_exist&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();
