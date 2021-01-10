@@ -122,21 +122,13 @@
                                             </div>
                                             <div
                                                     class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                <form action="#" method="post">
-                                                    <fieldset>
-                                                        <input type="hidden" name="cmd" value="_cart"/>
-                                                        <input type="hidden" name="add" value="1"/>
-                                                        <input type="hidden" name="business" value=" "/>
-                                                        <input type="hidden" name="item_name"
-                                                               value="Sony Android TV 4K 43' KD-43X8000G"/>
-                                                        <input type="hidden" name="amount" value="10400000"/>
-                                                        <input type="hidden" name="discount_amount" value="1000000"/>
-                                                        <input type="hidden" name="currency_code" value="VND"/>
-                                                        <input type="hidden" name="return" value=" "/>
-                                                        <input type="hidden" name="cancel_return" value=" "/>
-                                                        <input type="submit" name="submit" value="Thêm vào giỏ hàng"
-                                                               class="button btn"/>
-                                                    </fieldset>
+                                                <form>
+                                                        <input type="hidden" name="productId" value="${item.id}"/>
+                                                        <input type="hidden" name="productImage" value="${item.images.get(0)}"/>
+                                                        <input type="hidden" name="unitPrice" value="${item.price - item.price*(item.discount/100)}"/>
+                                                        <input type="hidden" name="productName"
+                                                               value="${item.name}"/>
+                                                        <button class="btn button addToCart">Thêm vào giỏ hàng</button>
                                                 </form>
                                             </div>
 
@@ -181,24 +173,17 @@
                                                 <del class="item_discount">${item.price}</del>
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                <form action="#" method="post">
+                                                <form>
                                                     <fieldset>
-                                                        <input type="hidden" name="cmd" value="_cart"/>
-                                                        <input type="hidden" name="add" value="1"/>
-                                                        <input type="hidden" name="business" value=" "/>
-                                                        <input type="hidden" name="item_name"
-                                                               value="Sony Android TV 4K 43' KD-43X8000G"/>
-                                                        <input type="hidden" name="amount" value="10400000"/>
-                                                        <input type="hidden" name="discount_amount" value="1000000"/>
-                                                        <input type="hidden" name="currency_code" value="VND"/>
-                                                        <input type="hidden" name="return" value=" "/>
-                                                        <input type="hidden" name="cancel_return" value=" "/>
-                                                        <input type="submit" name="submit" value="Thêm vào giỏ hàng"
-                                                               class="button btn"/>
+                                                        <input type="hidden" name="productId" value="${item.id}"/>
+                                                        <input type="hidden" name="productImage" value="${item.images.get(0)}"/>
+                                                        <input type="hidden" name="unitPrice" value="${item.price - item.price*(item.discount/100)}"/>
+                                                        <input type="hidden" name="productName"
+                                                               value="${item.name}"/>
+                                                        <button class="btn button addToCart">Thêm vào giỏ hàng</button>
                                                     </fieldset>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -212,6 +197,5 @@
     </div>
 </div>
 <!-- //top products -->
-
 </body>
 </html>

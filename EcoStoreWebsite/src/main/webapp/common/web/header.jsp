@@ -33,13 +33,15 @@
                                 <span class="mr-3">Xin chào, ${USERMODEL.fullname}</span>
 
                                 <div class="user-menu dropdown-menu">
-                                    <a class="nav-link text-dark" href="<c:url value='/chinh-sua-thong-tin'/>"><i class="fa fa-user"></i> Thông tin cá nhân</a>
+                                    <a class="nav-link text-dark" href="<c:url value='/chinh-sua-thong-tin'/>"><i
+                                            class="fa fa-user"></i> Thông tin cá nhân</a>
 
                                     <a class="nav-link text-dark" href="#"><i class="fa fa-table"
                                                                               aria-hidden="true"></i>
                                         Theo dõi đơn hàng</a>
 
-                                    <a class="nav-link text-dark" href="<c:url value="/doi-mat-khau"/>"><i class="fa fa-key" aria-hidden="true"></i>
+                                    <a class="nav-link text-dark" href="<c:url value="/doi-mat-khau"/>"><i
+                                            class="fa fa-key" aria-hidden="true"></i>
                                         Đổi
                                         mật khẩu</a>
 
@@ -79,7 +81,8 @@
                     <div class="col-10 agileits_search">
                         <form class="form-inline" action="#" method="post">
                             <input class="form-control mr-sm-0" type="search" placeholder="Tìm kiếm"
-                                   aria-label="Search" required oninvalid="this.setCustomValidity('Vui lòng nhập từ khóa bạn muốn tìm kiếm.')"
+                                   aria-label="Search" required
+                                   oninvalid="this.setCustomValidity('Vui lòng nhập từ khóa bạn muốn tìm kiếm.')"
                                    oninput="this.setCustomValidity('')">
                             <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                         </form>
@@ -87,8 +90,15 @@
                     <!-- //search -->
                     <!-- cart details -->
                     <div class="col-2 top_nav_right text-center mt-sm-0 mt-2 mb-3">
-                        <button type="button" class="btn btn-outline-info p-3" data-toggle="modal" data-target="#cartModal">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>10</span>
+                        <button type="button" class="btn btn-outline-info p-3" data-toggle="modal"
+                                data-target="#cartModal">
+                            <c:if test="${not empty CART}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span
+                                    class="cart-size">${CART.size()}</span>
+                            </c:if>
+                            <c:if test="${empty CART}">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="cart-size"></span>
+                            </c:if>
                         </button>
                     </div>
 
@@ -105,7 +115,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body" id="cart-modal">
-                                    <table class="table table-image">
+                                    <table class="table table-image" id="mycart">
                                         <thead>
                                         <tr>
                                             <th scope="col"></th>
@@ -117,84 +127,53 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td class="w-15">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
-                                                     class="img-fluid img-thumbnail" alt="Sheep">
-                                            </td>
-                                            <td>Vans Sk8-Hi MTE Shoes</td>
-                                            <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2" min="1"></td>
-                                            <td>178$</td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-15">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
-                                                     class="img-fluid img-thumbnail" alt="Sheep">
-                                            </td>
-                                            <td>Vans Sk8-Hi MTE Shoes</td>
-                                            <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2" min="1"></td>
-                                            <td>178$</td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-15">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
-                                                     class="img-fluid img-thumbnail" alt="Sheep">
-                                            </td>
-                                            <td>Vans Sk8-Hi MTE Shoes</td>
-                                            <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2" min="1"></td>
-                                            <td>178$</td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="w-15">
-                                                <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png"
-                                                     class="img-fluid img-thumbnail" alt="Sheep">
-                                            </td>
-                                            <td>Vans Sk8-Hi MTE Shoes</td>
-                                            <td>89$</td>
-                                            <td class="qty"><input type="number" class="form-control" id="input1"
-                                                                   value="2" min="1"></td>
-                                            <td>178$</td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <c:forEach var="item" items="${CART.data()}">
+                                            <tr>
+                                                <td class="w-15">
+                                                    <a href="<c:url value='/chi-tiet-san-pham?id=${item.productId}'/>"><img
+                                                            src="<c:url value='${item.productImage}'/>"
+                                                            class="img-fluid img-thumbnail"></a>
+                                                </td>
+                                                <td><a href="<c:url value='/chi-tiet-san-pham?id=${item.productId}'/>"
+                                                       class="text-secondary">${item.productName}</a></td>
+                                                <td class="item_discount">${item.unitPrice}</td>
+                                                <td class="qty"><form>
+                                                    <input type="hidden" name="productId"
+                                                           value="${item.productId}"/>
+                                                    <input type="number" class="form-control quantity-cart" name="quantity"
+                                                                             value="${item.quantity}" min="1">
+                                                </form></td>
+                                                <td class="item_discount">${item.unitPrice * item.quantity}</td>
+                                                <td>
+                                                    <form>
+                                                            <button class="btn btn-danger btn-sm remove-item mt-2"><i
+                                                                    class="fa fa-times"></i></button>
+                                                            <input type="hidden" name="productId"
+                                                                   value="${item.productId}"/>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
-                                    <div class="d-flex justify-content-end">
-                                        <h5>Tổng: <span class="price text-success">89$</span></h5>
+
+                                    <div class="d-flex justify-content-end total-price">
+                                        <c:if test="${not empty CART}">
+                                            <h5>Tổng: <span
+                                                    class="price text-success item_discount">${CART.total()}</span></h5>
+                                        </c:if>
+                                        <c:if test="${empty CART}">
+                                            <h5>Tổng: <span class="price text-success item_discount">0</span></h5>
+                                        </c:if>
                                     </div>
                                 </div>
                                 <div class="modal-footer border-top-0 d-flex justify-content-between">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-                                    <button type="button" class="btn btn-success">Thanh toán</button>
+                                    <a href="<c:url value="/thanh-toan"/>" class="btn btn-success">Thanh toán</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <!-- //cart details -->
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
+<c:url var="APIurl" value="/api-cart"/>
 <html>
 <head>
     <title><dec:title default="Trang Chủ"/></title>
@@ -60,16 +61,164 @@
 <!-- //jquery -->
 
 <script>
+    function formatVND(element) {
+        return new Intl.NumberFormat('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        }).format(element);
+    }
 
     let arrayprice = document.getElementsByClassName("item_price");
-    for(let i=0;i<arrayprice.length;i++)
-        arrayprice[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format( arrayprice[i].innerHTML );
+    for (let i = 0; i < arrayprice.length; i++)
+        arrayprice[i].innerHTML = formatVND(arrayprice[i].innerHTML)
 
     let arraydiscount = document.getElementsByClassName("item_discount");
-    for(let i=0;i<arraydiscount.length;i++){
+    for (let i = 0; i < arraydiscount.length; i++) {
         arraydiscount[i].innerHTML = Number.parseFloat(arraydiscount[i].innerHTML).toFixed(0);
-        arraydiscount[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format( arraydiscount[i].innerHTML );
+        arraydiscount[i].innerHTML = formatVND(arraydiscount[i].innerHTML)
+    }
 
+    function loadCart(data) {
+        $('#mycart tbody').html('');
+        let totalPrice = 0;
+        let size = 0;
+        for (let i = 0; i < data.length; i++) {
+            var row = [];
+            row.push(
+                '<tr><td class="w-15"><a href="',
+                '/chi-tiet-san-pham?id=',
+                data[i].productId,
+                '"><img src="',
+                '' + data[i].productImage,
+                '" class="img-fluid img-thumbnail"></a>',
+                '</td><td><a href="',
+                '/chi-tiet-san-pham?id=',
+                data[i].productId,
+                '" class="text-secondary">',
+                data[i].productName,
+                '</a></td><td class="item_discount">',
+                data[i].unitPrice,
+                '</td><td class="qty"><form><input type="hidden" name="productId" value="',
+                data[i].productId,
+                '"/><input type="number" class="form-control quantity-cart" name="quantity" value="',
+                data[i].quantity,
+                '" min="1"></form></td><td class="item_discount">',
+                data[i].unitPrice * data[i].quantity,
+                '<td><form><button class="btn btn-danger btn-sm remove-item"><i class="fa fa-times"></i></button> <input type="hidden" name="productId" value="',
+                data[i].productId,
+                '"/></form></td></tr>'
+            )
+            $('#mycart tbody').append(row.join(""));
+            totalPrice += data[i].unitPrice * data[i].quantity;
+            size += data[i].quantity;
+        }
+        $('#cartModal .total-price .price').text(totalPrice)
+        $('.cart-size').text(size);
+        let arraydiscount = document.getElementsByClassName("item_discount");
+        for (let i = 0; i < arraydiscount.length; i++) {
+            if (arraydiscount[i].innerHTML.includes("₫")) continue;
+            arraydiscount[i].innerHTML = Number.parseFloat(arraydiscount[i].innerHTML).toFixed(0);
+            arraydiscount[i].innerHTML = formatVND(arraydiscount[i].innerHTML)
+        }
+    }
+
+    $(".addToCart").click(function (e) {
+        e.preventDefault();
+        let data = {}
+        let formElement = this.form;
+        let formData = $(formElement).serializeArray();
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        data['unitPrice'] = Number.parseFloat(data['unitPrice']).toFixed(0);
+        addToCart(data);
+    })
+
+    function addToCart(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result === "")
+                    window.location.href = "/dang-nhap?message=not_login&alert=danger";
+                else if (result !== null) {
+                    loadCart(result);
+                    $('#cartModal').modal('show');
+                }
+            },
+            error: function (error) {
+                $('.load').hide();
+            }
+        })
+    }
+
+    $('#mycart').on('click', '.remove-item', function (e) {
+        e.preventDefault();
+        let data = {}
+        let formElement = this.form;
+        let formData = $(formElement).serializeArray();
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        removeFromCart(data);
+    })
+
+    function removeFromCart(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null) {
+                    loadCart(result);
+                    $('#cartModal').modal('show');
+                }
+            },
+            error: function (error) {
+                $('.load').hide();
+            }
+        })
+    }
+
+    $('#mycart').on('change','.quantity-cart', function (e) {
+        e.preventDefault();
+        let data = {}
+        let formElement = this.form;
+        let formData = $(formElement).serializeArray();
+        $.each(formData, function (i, v) {
+            data['' + v.name] = v.value
+        });
+        updateQuantityCart(data);
+    })
+
+    function updateQuantityCart(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null) {
+                    loadCart(result);
+                    $('#cartModal').modal('show');
+                }
+            },
+            error: function (error) {
+                $('.load').hide();
+            }
+        })
     }
 </script>
 

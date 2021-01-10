@@ -933,6 +933,13 @@ h3.tittle-w3l span {
 /*-- //heading style --*/
 
 /*-- cart --*/
+#mycart input[type="number"] {
+    position: relative;
+    margin-top: 1rem;
+    border: 1px solid #BBB;
+    border-color: #BBB #ECECEC #ECECEC #BBB;
+    padding: .2rem;
+}
 
 .snipcart-details {
     width: 77%;
@@ -948,7 +955,7 @@ h3.tittle-w3l span {
 }
 
 
-.snipcart-details input.button {
+.snipcart-details input.button, .snipcart-details button.button {
     font-size: 13px;
     color: #fff;
     background: #ffa62b;

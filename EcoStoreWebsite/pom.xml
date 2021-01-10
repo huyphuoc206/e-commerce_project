@@ -24,37 +24,37 @@
 
 
     <dependencies>
-
+<!--        ckfinder-->
         <dependency>
             <groupId>com.finder</groupId>
             <artifactId>ckfinder</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.2.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/CKFinder-2.6.3.jar</systemPath>
+            <systemPath>${basedir}/lib/CKFinder-2.6.2.1.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>com.finder</groupId>
             <artifactId>CKFinderPlugin-Watermark</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.2.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/CKFinderPlugin-Watermark-2.6.3.jar</systemPath>
+            <systemPath>${basedir}/lib/CKFinderPlugin-Watermark-2.6.2.1.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>com.finder</groupId>
             <artifactId>CKFinderPlugin-FileEditor</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.2.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/CKFinderPlugin-FileEditor-2.6.3.jar</systemPath>
+            <systemPath>${basedir}/lib/CKFinderPlugin-FileEditor-2.6.2.1.jar</systemPath>
         </dependency>
 
         <dependency>
             <groupId>com.finder</groupId>
             <artifactId>CKFinderPlugin-ImageResize</artifactId>
-            <version>2.6.3</version>
+            <version>2.6.2.1</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/CKFinderPlugin-ImageResize-2.6.3.jar</systemPath>
+            <systemPath>${basedir}/lib/CKFinderPlugin-ImageResize-2.6.2.1.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -121,12 +121,6 @@
             <systemPath>${basedir}/lib/thumbnailator-0.4.8.jar</systemPath>
         </dependency>
 
-
-
-
-
-
-        <!--        //////////////////////-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
