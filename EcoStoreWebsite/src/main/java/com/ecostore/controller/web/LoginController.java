@@ -30,6 +30,7 @@ public class LoginController extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null && action.equalsIgnoreCase("logout")) {
             SessionUtil.getInstance().removeValue(request, "USERMODEL");
+            SessionUtil.getInstance().removeValue(request, "CART");
             response.sendRedirect(request.getContextPath() + "/trang-chu");
         } else {
             MessageUtil.showMessage(request);

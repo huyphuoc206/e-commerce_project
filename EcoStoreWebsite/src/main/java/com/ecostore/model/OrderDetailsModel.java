@@ -1,8 +1,8 @@
 package com.ecostore.model;
 
 public class OrderDetailsModel {
-    private OrdersModel orderId;
-    private ProductModel productId;
+    private OrdersModel order;
+    private ProductModel product;
     private Long unitPrice;
     private int quantity;
     private Long totalPrice;
@@ -10,20 +10,20 @@ public class OrderDetailsModel {
     public OrderDetailsModel() {
     }
 
-    public OrdersModel getOrderId() {
-        return orderId;
+    public OrdersModel getOrder() {
+        return order;
     }
 
-    public void setOrderId(OrdersModel orderId) {
-        this.orderId = orderId;
+    public void setOrder(OrdersModel order) {
+        this.order = order;
     }
 
-    public ProductModel getProductId() {
-        return productId;
+    public ProductModel getProduct() {
+        return product;
     }
 
-    public void setProductId(ProductModel productId) {
-        this.productId = productId;
+    public void setProduct(ProductModel product) {
+        this.product = product;
     }
 
     public Long getUnitPrice() {

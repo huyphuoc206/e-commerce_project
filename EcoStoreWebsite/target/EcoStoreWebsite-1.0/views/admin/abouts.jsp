@@ -6,7 +6,6 @@
 <head>
     <title>Quản lý giới thiệu</title>
 </head>
-<script src="<c:url value='/ckfinder/ckfinder.js'/>"></script>
 <body>
 
 <div class="content mt-3">

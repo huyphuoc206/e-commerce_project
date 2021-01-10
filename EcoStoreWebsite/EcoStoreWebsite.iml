@@ -33,6 +33,9 @@
         </compilerArguments>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -47,36 +50,36 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="Maven: com.finder:ckfinder:2.6.3">
+      <library name="Maven: com.finder:ckfinder:2.6.2.1">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/CKFinder-2.6.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/CKFinder-2.6.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="Maven: com.finder:CKFinderPlugin-Watermark:2.6.3">
+      <library name="Maven: com.finder:CKFinderPlugin-Watermark:2.6.2.1">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-Watermark-2.6.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-Watermark-2.6.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="Maven: com.finder:CKFinderPlugin-FileEditor:2.6.3">
+      <library name="Maven: com.finder:CKFinderPlugin-FileEditor:2.6.2.1">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-FileEditor-2.6.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-FileEditor-2.6.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="Maven: com.finder:CKFinderPlugin-ImageResize:2.6.3">
+      <library name="Maven: com.finder:CKFinderPlugin-ImageResize:2.6.2.1">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-ImageResize-2.6.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/CKFinderPlugin-ImageResize-2.6.2.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
