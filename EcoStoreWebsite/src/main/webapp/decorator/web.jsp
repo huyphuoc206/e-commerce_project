@@ -144,9 +144,7 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if (result === "")
-                    window.location.href = "/dang-nhap?message=not_login&alert=danger";
-                else if (result !== null) {
+                if (result !== null) {
                     loadCart(result);
                     $('#cartModal').modal('show');
                 }
@@ -189,7 +187,7 @@
         })
     }
 
-    $('#mycart').on('change','.quantity-cart', function (e) {
+    $('#mycart').on('change', '.quantity-cart', function (e) {
         e.preventDefault();
         let data = {}
         let formElement = this.form;

@@ -1,7 +1,8 @@
 package com.ecostore.controller.web;
 
-import com.ecostore.model.AboutModel;
+import com.ecostore.model.UserModel;
 import com.ecostore.service.ILayoutAttributeService;
+import com.ecostore.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +21,12 @@ public class CheckoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
-        RequestDispatcher rd = request.getRequestDispatcher("views/web/checkout.jsp");
-        rd.forward(request, response);
+        UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/dang-nhap?message=not_login&alert=danger");
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("views/web/checkout.jsp");
+            rd.forward(request, response);
+        }
     }
 }
