@@ -20,11 +20,6 @@ public class CartAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         CartItem item = mapper.readValue(request.getInputStream(), CartItem.class);
-        UserModel user = (UserModel) SessionUtil.getInstance().getValue(request,"USERMODEL");
-        if(user == null) {
-            mapper.writeValue(response.getOutputStream(), "");
-            return;
-        }
         Cart cart = (Cart) SessionUtil.getInstance().getValue(request, "CART");
         if (cart == null) {
             cart = new Cart();
