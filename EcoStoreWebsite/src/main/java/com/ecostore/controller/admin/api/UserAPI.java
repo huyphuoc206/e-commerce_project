@@ -5,6 +5,7 @@ import com.ecostore.mail.MailUtils;
 import com.ecostore.model.MenuModel;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.IUserService;
+import com.ecostore.utils.MD5Hashing;
 import com.ecostore.utils.SessionUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -45,8 +46,36 @@ public class UserAPI extends HttpServlet {
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         UserModel userModel = mapper.readValue(request.getInputStream(), UserModel.class);
+        UserModel userOld = userService.findOneById(userModel.getId());
         UserModel userSession = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
         userModel.setModifiedBy(userSession.getUsername());
+        //xử lý với userSession thay đổi thông tin
+        if (userModel.getId() == userSession.getId()){
+            //nếu user đang hoạt động chỉnh trạng thái hoạt động về 0
+            if (userModel.getStatus()==0) {
+                mapper.writeValue(response.getOutputStream(), "");
+                return;
+            }
+            if (!MD5Hashing.hash(userModel.getPassword()).equals(userOld.getPassword()) && !userModel.getPassword().equals(userOld.getPassword())){
+                String passNew = MD5Hashing.hash(userModel.getPassword());
+                userModel.setPassword(passNew);
+                userService.update(userModel);
+                SessionUtil.getInstance().removeValue(request, "USERMODEL");
+                mapper.writeValue(response.getOutputStream(), "updatepass");
+                return;
+            }
+        }
+        //với những user khác nếu thay đổi mật khẩu
+        if (!MD5Hashing.hash(userModel.getPassword()).equals(userOld.getPassword()) && !userModel.getPassword().equals(userOld.getPassword())) {
+            String passNew = MD5Hashing.hash(userModel.getPassword());
+            userModel.setPassword(passNew);
+        }
+        //mật khẩu trùng
+        if (MD5Hashing.hash(userModel.getPassword()).equals(userOld.getPassword())){
+            mapper.writeValue(response.getOutputStream(), "overlappass");
+            return;
+        }
+        //update cho những người dùng khác userSession
         userModel = userService.update(userModel);
         mapper.writeValue(response.getOutputStream(), userModel);
         //chỉnh sửa chính tk của mình

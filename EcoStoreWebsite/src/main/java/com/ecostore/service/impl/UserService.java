@@ -70,10 +70,10 @@ public class UserService implements IUserService {
             }
         }
         if (temp){
-            if (!user.getPassword().equals(oldUserModel.getPassword())){
-                String passNew = MD5Hashing.hash(user.getPassword());
-                user.setPassword(passNew);
-            }
+//            if (!user.getPassword().equals(oldUserModel.getPassword())){
+//                String passNew = MD5Hashing.hash(user.getPassword());
+//                user.setPassword(passNew);
+//            }
             user.setCreatedDate(oldUserModel.getCreatedDate());
             user.setCreatedBy(oldUserModel.getCreatedBy());
             user.setModifiedDate(new Timestamp(System.currentTimeMillis()));

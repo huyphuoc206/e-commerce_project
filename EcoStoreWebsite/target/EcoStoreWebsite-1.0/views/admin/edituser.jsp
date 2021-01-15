@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="APIurl" value="/api-admin-user"/>
 <c:url var="UserUrl" value="/quan-tri/nguoi-dung"/>
+<c:url var="Login" value="/dang-nhap"/>
 <html>
 <head>
     <title>Chỉnh sửa người dùng</title>
@@ -131,7 +132,13 @@
             dataType: 'json',
             success: function (result) {
                 $('.load').hide();
-                if(result !== null)
+                if (result === ""){
+                    window.location.href = "${UserUrl}?id=${user.id}&message=update_status_fail&alert=danger";
+                }else if (result ==="overlappass"){
+                    window.location.href = "${UserUrl}?id=${user.id}&message=update_overlap_pass&alert=danger";
+                } else if (result ==="updatepass"){
+                    window.location.href = "${Login}?message=update_information_password_success&alert=success";
+                } else if(result !== null)
                     window.location.href = "${UserUrl}?id=${user.id}&message=update_success&alert=success";
                 else
                     window.location.href = "${UserUrl}?id=${user.id}&message=username_email_exist&alert=danger";
