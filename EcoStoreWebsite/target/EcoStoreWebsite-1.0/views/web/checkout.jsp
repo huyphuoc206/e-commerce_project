@@ -1,6 +1,8 @@
 <%@include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:url var="APIurl" value="/api-cart"/>
+<c:url var="APIOrderurl" value="/api-web-order"/>
+<c:url var="CheckoutURL" value="/thanh-toan"/>
 <html>
 <head>
     <title>Thanh toán</title>
@@ -23,7 +25,13 @@
     <!-- //page -->
     <!-- checkout page -->
     <c:if test="${empty CART || CART.size() == 0 }">
-        <div class="text-center alert alert-warning mr-auto ml-auto mt-5" style="width: 50%">Không có sản phẩm nào trong giỏ hàng của bạn.</div>
+        <c:if test="${not empty message}">
+            <div class="text-center alert alert-${alert} mr-auto ml-auto mt-5" style="width: 50%">${message}</div>
+        </c:if>
+        <c:if test="${empty message}">
+            <div class="text-center alert alert-warning mr-auto ml-auto mt-5" style="width: 50%">Không có sản phẩm nào trong giỏ hàng của bạn.</div>
+        </c:if>
+
         <div class="row justify-content-center">
             <a class="btn btn-info pt-1 pb-1 pr-4 pl-4" href="<c:url value="/trang-chu"/>">Tiếp tục mua sắm</a>
         </div>
@@ -95,12 +103,12 @@
                 <div class="checkout-left">
                     <div class="address_form_agile mt-sm-5 mt-4">
                         <h4 class="mb-sm-4 mb-3">Thông tin giao hàng</h4>
-                        <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                        <form id="formSubmit" class="creditly-card-form agileinfo_form">
                             <div class="creditly-wrapper wthree, w3_agileits_wrapper">
                                 <div class="information-wrapper">
                                     <div class="first-row">
                                         <div class="controls form-group">
-                                            <input class="billing-address-name form-control" type="text" name="name"
+                                            <input class="billing-address-name form-control" type="text" name="customerName"
                                                    placeholder="Họ tên" required oninvalid="this.setCustomValidity('Hãy nhập họ tên của bạn.')"
                                                    oninput="this.setCustomValidity('')" autofocus>
                                         </div>
@@ -119,32 +127,18 @@
                                         </div>
                                     </div>
                                     <div class="payment container mb-4">
-                                        <!-- Group of default radios - option 1 -->
-                                        <div class="custom-control custom-radio mb-1">
-                                            <input type="radio" class="custom-control-input" id="defaultGroupExample1"
-                                                   name="groupOfDefaultRadios" checked>
-                                            <label class="custom-control-label" for="defaultGroupExample1">Thanh toán khi
-                                                nhận hàng</label>
-                                        </div>
-
-                                        <!-- Group of default radios - option 2 -->
-                                        <div class="custom-control custom-radio mb-1">
-                                            <input type="radio" class="custom-control-input" id="defaultGroupExample2"
-                                                   name="groupOfDefaultRadios">
-                                            <label class="custom-control-label" for="defaultGroupExample2">Thẻ tín dụng/Ghi
-                                                nợ</label>
-                                        </div>
-
-                                        <!-- Group of default radios - option 3 -->
-                                        <div class="custom-control custom-radio mb-1">
-                                            <input type="radio" class="custom-control-input" id="defaultGroupExample3"
-                                                   name="groupOfDefaultRadios">
-                                            <label class="custom-control-label" for="defaultGroupExample3">Ví Aripay</label>
-                                        </div>
+                                        <c:forEach var="item" items="${payments}">
+                                            <div class="custom-control custom-radio mb-1">
+                                                <input type="radio" class="custom-control-input" id="radio_${item.id}"
+                                                       name="paymentId" value="${item.id}" required>
+                                                <label class="custom-control-label" for="radio_${item.id}">${item.name}</label>
+                                            </div>
+                                        </c:forEach>
                                     </div>
-                                    <button class="submit check_out btn">Giao hàng tới địa chỉ này</button>
+                                    <button id="addOrder" class="submit check_out btn">Giao hàng tới địa chỉ này</button>
                                 </div>
                             </div>
+                            <input type="hidden" name="userId" value="${USERMODEL.id}">
                         </form>
                     </div>
                 </div>
@@ -262,6 +256,44 @@
             },
             error: function (error) {
                 $('.load').hide();
+            }
+        })
+    }
+
+    $('#addOrder').click(function (e) {
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {};
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addOrder(data);
+        }
+    })
+
+    function addOrder(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIOrderurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null) {
+                    window.location.href = "${CheckoutURL}?message=order_success&alert=success";
+                }
+                else {
+                    window.location.href = "${CheckoutURL}?message=order_fail&alert=danger";
+                }
+
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${CheckoutURL}?message=system_error&alert=danger";
             }
         })
     }

@@ -1,8 +1,10 @@
 package com.ecostore.model;
 
 public class OrdersModel extends AbstractModel {
-    private UserModel userId;
-    private PaymentModel paymentId;
+    private UserModel user;
+    private long userId;
+    private PaymentModel payment;
+    private long paymentId;
     private String customerName;
     private String phone;
     private String address;
@@ -13,20 +15,36 @@ public class OrdersModel extends AbstractModel {
     public OrdersModel() {
     }
 
-    public UserModel getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(UserModel userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public PaymentModel getPaymentId() {
+    public long getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(PaymentModel paymentId) {
+    public void setPaymentId(long paymentId) {
         this.paymentId = paymentId;
+    }
+
+    public UserModel getUser() {
+        return user;
+    }
+
+    public void setUser(UserModel user) {
+        this.user = user;
+    }
+
+    public PaymentModel getPayment() {
+        return payment;
+    }
+
+    public void setPayment(PaymentModel payment) {
+        this.payment = payment;
     }
 
     public String getCustomerName() {

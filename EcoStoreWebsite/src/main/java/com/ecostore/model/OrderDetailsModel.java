@@ -1,9 +1,28 @@
 package com.ecostore.model;
 
-public class OrderDetailsModel {
+public class OrderDetailsModel extends AbstractModel {
     private OrdersModel order;
+    private long orderId;
     private ProductModel product;
+    private long productId;
     private Long unitPrice;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
+    public long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(long productId) {
+        this.productId = productId;
+    }
+
     private int quantity;
     private Long totalPrice;
 
