@@ -27,9 +27,8 @@ public class ProductController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
-         layoutAttributeService.setFooterWeb(request);
+        layoutAttributeService.setFooterWeb(request);
         String code = request.getParameter("code");
-        String url = "";
         if (code != null) {
             List<ProductModel> products = productService.findAllByCategoryCode(code);
             List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
@@ -37,11 +36,9 @@ public class ProductController extends HttpServlet {
             request.setAttribute("suppliers", suppliers);
             if (!products.isEmpty())
                 request.setAttribute("cname", products.get(0).getCategory().getName());
-            url = "views/web/product.jsp";
-        } else {
-            url = "views/web/index.jsp";
-        }
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("views/web/product.jsp");
+            rd.forward(request, response);
+        } else
+            response.sendRedirect(request.getContextPath() + "/trang-chu");
     }
 }

@@ -11,7 +11,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public List<UserModel> findAllUsers() {
         String sql = "SELECT * FROM user JOIN role ON user.roleid = role.id";
-        return query(sql,new UserMapper());
+        return query(sql, new UserMapper());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public boolean update(UserModel user) {
         String sql = "UPDATE user SET fullname = ?, username = ?, password = ?, email = ?, phone = ?, avatar = ?, roleid = ?, status = ?, keycode = ?, keytime = ?, modifieddate = ?, modifiedby = ? WHERE id = ?";
-        return update(sql, user.getFullname(),user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAvatar(), user.getRoleId(), user.getStatus(), user.getKeycode(), user.getKeytime(), user.getModifiedDate(), user.getModifiedBy(),  user.getId());
+        return update(sql, user.getFullname(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getAvatar(), user.getRoleId(), user.getStatus(), user.getKeycode(), user.getKeytime(), user.getModifiedDate(), user.getModifiedBy(), user.getId());
     }
 
     @Override
@@ -40,10 +40,10 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     }
 
     @Override
-    public UserModel findOneByUsernameAndEmail(String username, String email) {
+    public List<UserModel> findByUsernameAndEmail(String username, String email) {
         String sql = "SELECT * FROM user WHERE username = ? OR email = ?";
         List<UserModel> users = query(sql, new UserMapper(), username, email);
-        return users.isEmpty() ? null : users.get(0);
+        return users;
     }
 
     @Override
@@ -56,20 +56,13 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public UserModel findOneByEmail(String email) {
         String sql = "SELECT * FROM user WHERE email = ?";
-        List<UserModel> userModels = query(sql,new UserMapper(), email);
-        return userModels.isEmpty() ? null : userModels.get(0);
-    }
-
-    @Override
-    public UserModel findOneByUserName(String username) {
-        String sql = "SELECT * FROM user WHERE username = ?";
-        List<UserModel> userModels = query(sql,new UserMapper(), username);
+        List<UserModel> userModels = query(sql, new UserMapper(), email);
         return userModels.isEmpty() ? null : userModels.get(0);
     }
 
     @Override
     public boolean resetPassword(long userId, String newPassword) {
         String sql = "UPDATE user SET password = ? WHERE id = ?";
-        return update(sql,newPassword,userId);
+        return update(sql, newPassword, userId);
     }
 }

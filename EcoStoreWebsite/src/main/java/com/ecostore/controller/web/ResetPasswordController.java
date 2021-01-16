@@ -37,9 +37,9 @@ public class ResetPasswordController extends HttpServlet {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        if (user == null) {
+        if (user == null)
             response.sendRedirect(request.getContextPath() + "/dang-nhap?message=not_login&alert=danger");
-        } else {
+        else {
             MessageUtil.showMessage(request);
             request.setAttribute("userid", user.getId());
             RequestDispatcher rd = request.getRequestDispatcher("views/web/changepass.jsp");

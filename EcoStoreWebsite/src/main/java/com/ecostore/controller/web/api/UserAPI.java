@@ -23,6 +23,7 @@ public class UserAPI extends HttpServlet {
 
     @Inject
     private IUserService userService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
@@ -40,6 +41,7 @@ public class UserAPI extends HttpServlet {
             mapper.writeValue(response.getOutputStream(), userModel);
         }
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
@@ -64,7 +66,7 @@ public class UserAPI extends HttpServlet {
         response.setContentType("application/json");
         UserModel userNew = mapper.readValue(request.getInputStream(), UserModel.class);
         UserModel userUpdate = userService.findOneById(userNew.getId());
-        if (userNew.getPassword() != null){
+        if (userNew.getPassword() != null) {
             userUpdate.setPassword(MD5Hashing.hash(userNew.getPassword()));
             userUpdate.setKeycode(null);
             userUpdate.setKeytime(null);
@@ -74,10 +76,10 @@ public class UserAPI extends HttpServlet {
             userUpdate.setUsername(userNew.getUsername());
             userUpdate.setEmail(userNew.getEmail());
             userUpdate.setPhone(userNew.getPhone());
-            SessionUtil.getInstance().putValue(request, "USERMODEL", userUpdate);
-
         }
         userUpdate = userService.update(userUpdate);
+        if (userUpdate != null)
+            SessionUtil.getInstance().putValue(request, "USERMODEL", userUpdate);
         mapper.writeValue(response.getOutputStream(), userUpdate);
     }
 }

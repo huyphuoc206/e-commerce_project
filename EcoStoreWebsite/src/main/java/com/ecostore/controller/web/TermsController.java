@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(urlPatterns = "/dieu-khoan-su-dung")
 public class TermsController extends HttpServlet {
@@ -19,10 +18,6 @@ public class TermsController extends HttpServlet {
     private ITermsService termsService;
     @Inject
     private ILayoutAttributeService layoutAttributeService;
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);

@@ -2,7 +2,6 @@ package com.ecostore.controller.web;
 
 import com.ecostore.model.UserModel;
 import com.ecostore.service.ILayoutAttributeService;
-import com.ecostore.service.IUserService;
 import com.ecostore.utils.MessageUtil;
 import com.ecostore.utils.SessionUtil;
 
@@ -19,21 +18,18 @@ import java.io.IOException;
 public class AccountSettingsController extends HttpServlet {
     @Inject
     private ILayoutAttributeService layoutAttributeService;
-    @Inject
-    private IUserService userService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        String url= "";
         MessageUtil.showMessage(request);
         if (user != null) {
             request.setAttribute("user", user);
-            url = "views/web/accountsettings.jsp";
-        } else {
-            url = "/dang-nhap?message=not_login&alert=danger";
-        }
-        RequestDispatcher rd = request.getRequestDispatcher(url);
-        rd.forward(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("views/web/accountsettings.jsp");
+            rd.forward(request, response);
+        } else
+            response.sendRedirect(request.getContextPath()
+                    + "/dang-nhap?message=not_login&alert=danger");
     }
 }

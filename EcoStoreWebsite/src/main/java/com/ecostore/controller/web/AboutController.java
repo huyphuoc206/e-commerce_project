@@ -1,9 +1,6 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.model.AboutModel;
-import com.ecostore.model.CategoryModel;
-import com.ecostore.model.InformationModel;
-import com.ecostore.model.MenuModel;
 import com.ecostore.service.*;
 
 import javax.inject.Inject;
