@@ -33,7 +33,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public ProductModel findOneById(long id) {
-        String sql = "SELECT * FROM product WHERE id = ?";
+        String sql = "SELECT P*, I.imagelink FROM product P join productgallery I on P.id = I.productid WHERE P.id = ?";
         List<ProductModel> products = query(sql, new ProductMapper(), id);
         if (products.size() == 0) return null;
         return products.get(0);
