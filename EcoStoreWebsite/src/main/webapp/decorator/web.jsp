@@ -43,6 +43,9 @@
             rel="stylesheet">
     <!-- //web fonts -->
     <script src="<c:url value='/template/admin/vendors/jquery/dist/jquery.min.js'/>"></script>
+
+    <!-- Paging  -->
+    <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
 </head>
 <body>
 <%@ include file="/common/web/header.jsp" %>

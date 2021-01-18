@@ -37,8 +37,8 @@ public class ProductDetailController extends HttpServlet {
             request.setAttribute("product", product);
 //            List<CommentModel> comments = commentService.findAllByProductId(Long.parseLong(id));
 //            request.setAttribute("comments", comments);
-            List<ProductModel> products = productService.findAllByCategoryCode(code);
-            request.setAttribute("products", products);
+//            List<ProductModel> products = productService.findAllByCategoryCode(code);
+//            request.setAttribute("products", products);
 
             url = "views/web/single.jsp";
             RequestDispatcher rd = request.getRequestDispatcher(url);
