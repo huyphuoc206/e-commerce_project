@@ -138,9 +138,7 @@
                             <div class="row justify-content-center mt-3">
                                 <button type="submit" class="btn btn-info pl-4 pr-4">Lọc</button>
                             </div>
-
                         </form>
-
                     </div>
                     <!-- //filter -->
                     <!-- price -->
@@ -184,7 +182,7 @@
                                             </div>
                                             <div class="col-lg-9 col-sm-10 col-9 w3_mvd">
                                                 <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
-                                                <a href="" class="price-mar mt-2 item_price">${item.price - item.price*(item.discount/100)}</a>
+                                                <p class="price-mar mt-2 item_price">${item.price - item.price*(item.discount/100)}</p>
                                             </div>
                                         </div>
                                     </c:forEach>
@@ -197,7 +195,7 @@
                                             </div>
                                             <div class="col-lg-9 col-sm-10 col-9 w3_mvd">
                                                 <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
-                                                <a href="" class="price-mar mt-2 item_price">${item.price - item.price*(item.discount/100)}</a>
+                                                <p class="price-mar mt-2 item_price">${item.price - item.price*(item.discount/100)}</p>
                                             </div>
                                         </div>
                                     </c:forEach>

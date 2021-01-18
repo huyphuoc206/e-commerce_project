@@ -6,6 +6,7 @@ import com.ecostore.paging.IPageble;
 import com.ecostore.service.IProductService;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 
 public class ProductService implements IProductService {
@@ -38,4 +39,10 @@ public class ProductService implements IProductService {
         return productDAO.getTotalItems();
     }
 
+    @Override
+    public List<ProductModel> findAllByCategoryId(long categoryId) {
+        List<ProductModel> products = productDAO.findAllByCategoryId(categoryId);
+        Collections.shuffle(products);
+        return products;
+    }
 }

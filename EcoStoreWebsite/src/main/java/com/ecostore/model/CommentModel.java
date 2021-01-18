@@ -8,15 +8,15 @@ public class CommentModel extends AbstractModel {
     private String content;
     private int status;
 
+    public CommentModel() {
+    }
+
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public CommentModel() {
     }
 
     public long getUserId() {

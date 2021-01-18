@@ -1,5 +1,7 @@
-<%@include file="/common/taglib.jsp"%>
+<%@include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url var="APIurl" value="/api-web-comment"/>
+<c:url var="ProductDetail" value="/chi-tiet-san-pham"/>
 <html>
 <head>
     <title>Chi tiết sản phẩm</title>
@@ -39,7 +41,8 @@
                             <c:forEach var="item" items="${product.images}">
                                 <li data-thumb="<c:url value='${item}'/>">
                                     <div class="thumb-image">
-                                        <img src="<c:url value='${item}'/>" data-imagezoom="true" class="img-fluid-detail" alt="">
+                                        <img src="<c:url value='${item}'/>" data-imagezoom="true"
+                                             class="img-fluid-detail" alt="">
                                     </div>
                                 </li>
                             </c:forEach>
@@ -54,7 +57,7 @@
                 <h3 class="mb-3">${product.name}</h3>
                 <p class="mb-3">
                     <span class="item_price">${product.price - product.price*(product.discount/100)}</span>
-                    <del class="mx-2 font-weight-light">${product.price}</del>
+                    <del class="mx-2 font-weight-light item_discount">${product.price}</del>
                     <label>Miễn phí vận chuyển</label>
                 </p>
                 <div class="single-infoagile">
@@ -78,19 +81,17 @@
                 </div>
                 <div class="occasion-cart">
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                        <form action="#" method="post">
+                        <form>
                             <fieldset>
-                                <input type="hidden" name="cmd" value="_cart" />
-                                <input type="hidden" name="add" value="1" />
-                                <input type="hidden" name="business" value=" " />
-                                <input type="hidden" name="item_name"
-                                       value="Smart Tivi QLED Samsung 8K 98 inch QA98Q900R" />
-                                <input type="hidden" name="amount" value="2090000000" />
-                                <input type="hidden" name="discount_amount" value="" />
-                                <input type="hidden" name="currency_code" value="VND" />
-                                <input type="hidden" name="return" value=" " />
-                                <input type="hidden" name="cancel_return" value=" " />
-                                <input type="submit" name="submit" value="Thêm Vào Giỏ Hàng" class="button" />
+                                <input type="hidden" name="productId" value="${product.id}"/>
+                                <input type="hidden" name="productImage"
+                                       value="${product.images.get(0)}"/>
+                                <input type="hidden" name="unitPrice"
+                                       value="${product.price - product.price*(product.discount/100)}"/>
+                                <input type="hidden" name="productName"
+                                       value="${product.name}"/>
+                                <button class="btn button addToCart">Thêm vào giỏ hàng
+                                </button>
                             </fieldset>
                         </form>
                     </div>
@@ -115,260 +116,158 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
                 </ol>
                 <!-- Wrapper for carousel items -->
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/m1.jpg" class="img-fluid" alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Sony Android TV 4K 43" KD-43X8000G</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">9.400.000đ</span>
-                                                <br>
-                                                <del class="ml-0">10.400.000đ</del>
+                    <c:if test="${product.list.size() > 0}">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <c:forEach var="item" items="${product.list}" begin="0" end="3">
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>"><img
+                                                        src="<c:url value='${item.images.get(0)}'/>" class="img-fluid"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                        <br>
+                                                        <del class="ml-0 item_discount">${item.price}</del>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/m2.jpg" class="img-fluid" alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Samsung Smart TV 4K 55" UA55TU8500</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">12.300.000đ</span>
-                                                <br>
-                                                <del class="ml-0">15.000.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/m3.jpg" class="img-fluid" alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Samsung Smart TV QLED 4K 43" QA43Q60T</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">10.420.000đ</span>
-                                                <br>
-                                                <del class="ml-0">13.420.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk1.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Samsung Smart TV 4K 50" UA50TU7000</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">8.720.000đ</span>
-                                                <br>
-                                                <del class="ml-0">10.720.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk3.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Samsung Smart TV QLED 4K 55" QA55Q60T</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">15.920.000đ</span>
-                                                <br>
-                                                <del class="ml-0">19.920.000đ</del>
+                    </c:if>
+                    <c:if test="${product.list.size() > 4}">
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <c:forEach var="item" items="${product.list}" begin="4" end="7">
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>"><img
+                                                        src="<c:url value='${item.images.get(0)}'/>" class="img-fluid"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                        <br>
+                                                        <del class="ml-0 item_discount">${item.price}</del>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk7.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">LG Smart TV NanoCell 4K 49" 49SM8100PTA</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">20.800.000đ</span>
-                                                <br>
-                                                <del class="ml-0">25.800.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk5.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Samsung Smart TV 4K 50" UA50TU8100</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">12.400.000đ</span>
-                                                <br>
-                                                <del class="ml-0">13.400.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk25.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Smart Tivi LG 4K 49 inch 49UN7400PTA</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">12.290.000đ</span>
-                                                <br>
-                                                <del class="ml-0">12.500.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk26.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Smart Tivi LG 4K 49 inch 49UM7400PTA</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">10.490.000đ</span>
-                                                <br>
-                                                <del class="ml-0">11.000.000đ</del>
+                    </c:if>
+                    <c:if test="${product.list.size() > 8}">
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <c:forEach var="item" items="${product.list}" begin="8" end="11">
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>"><img
+                                                        src="<c:url value='${item.images.get(0)}'/>" class="img-fluid"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                        <br>
+                                                        <del class="ml-0 item_discount">${item.price}</del>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk27.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">>Android Tivi QLED TCL 4K 50 inch 50Q716</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">14.990.000đ</span>
-                                                <br>
-                                                <del class="ml-0">17.990.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk28.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Smart Tivi Samsung 4K 43 inch UA43TU8500</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">10.500.000đ</span>
-                                                <br>
-                                                <del class="ml-0">13.400.000đ</del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="thumb-wrapper">
-                                    <div class="img-box">
-                                        <a href="single.html"><img src="images/mk29.jpg" class="img-fluid"
-                                                                   alt=""></a>
-                                    </div>
-                                    <div class="thumb-content">
-                                        <div class="item-info-product text-center border-top mt-4">
-                                            <h4 class="pt-1">
-                                                <a href="single.html">Smart Tivi Sony 32 inch KDL-32W600D</a>
-                                            </h4>
-                                            <div class="info-product-price my-2">
-                                                <span class="item_price">5.790.000đ</span>
-                                                <br>
-                                                <del class="ml-0"></del>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
-                    </div>
+                    </c:if>
+                    <c:if test="${product.list.size() > 12}">
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <c:forEach var="item" items="${product.list}" begin="12" end="15">
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>"><img
+                                                        src="<c:url value='${item.images.get(0)}'/>" class="img-fluid"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                        <br>
+                                                        <del class="ml-0 item_discount">${item.price}</del>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:if>
+                    <c:if test="${product.list.size() > 16}">
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <c:forEach var="item" items="${product.list}" begin="16" end="19">
+                                    <div class="col-sm-3">
+                                        <div class="thumb-wrapper">
+                                            <div class="img-box">
+                                                <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>"><img
+                                                        src="<c:url value='${item.images.get(0)}'/>" class="img-fluid"
+                                                        alt=""></a>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
+                                                    </h4>
+                                                    <div class="info-product-price my-2">
+                                                        <span class="item_price">${item.price - item.price*(item.discount/100)}</span>
+                                                        <br>
+                                                        <del class="ml-0 item_discount">${item.price}</del>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </c:if>
+                    <!-- Carousel controls -->
                 </div>
-                <!-- Carousel controls -->
                 <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
                     <i class="fa fa-angle-left"></i>
                 </a>
@@ -390,34 +289,46 @@
                 <span>N</span>hận
                 <span>X</span>ét</h3>
             <div class="comment-wrapper mt-5">
-                <div class="panel panel-info">
+                <form id="formSubmit" class="mb-5">
+                            <textarea class="form-control" id="contentComment" name="content" rows="3" required
+                                      oninvalid="this.setCustomValidity('Hãy nhập bình luận của bạn!')"
+                                      oninput="this.setCustomValidity('')"
+                                      placeholder="Bình luận tại đây..."></textarea>
+                    <br>
+                    <c:if test="${empty USERMODEL}">
+                        <i>Vui lòng đăng nhập trước khi để lại bình luận.</i>
+                        <a href="<c:url value='/dang-nhap'/>"
+                           class="btn btn-primary pull-right ml-1 pl-3 pr-3 pt-2 pb-2">
+                            Đăng nhập ngay </a>
+                    </c:if>
+                    <c:if test="${not empty USERMODEL}">
+                        <button type="submit"
+                                class="btn btn-info pull-right ml-1 float-left pl-3 pr-3 pt-2 pb-2"
+                                id="addComment">Gửi
+                        </button>
+                    </c:if>
+                    <input type="hidden" value="${USERMODEL.id}" name="userId">
+                    <input type="hidden" value="${product.id}" name="productId">
+                </form>
+                <br>
+                <hr>
+                <div class="panel panel-info mt-5">
                     <div class="panel-body">
-                        <textarea class="form-control" placeholder="Bình luận..." rows="3"></textarea>
-                        <br>
-                        <button type="button"
-                                class="btn btn-info pull-right mr-1 float-right pl-3 pr-3">Gửi</button>
                         <div class="clearfix"></div>
-                        <hr>
-                        <ul class="media-list">
-                            <%--                                <c:forEach var="item" items="${comments}">--%>
-                            <%--                                    <li class="media">--%>
 
-                            <%--                                        <a href="#" class="pull-left mr-3">--%>
-                            <%--                                            <img src="images/user1.jpg" alt="" class="img-circle">--%>
-                            <%--                                        </a>--%>
-                            <%--                                        <div class="media-body">--%>
-                            <%--                                            <strong class="text-success mr-2">${item.user.fullname}</strong>--%>
-                            <%--                                            <span class="text-muted pull-right">--%>
-                            <%--                                                <small class="text-muted">${item.createddate}</small>--%>
-                            <%--                                            </span>--%>
-                            <%--                                            <p>--%>
-                            <%--                                                ${item.content}--%>
-                            <%--                                            </p>--%>
-                            <%--                                        </div>--%>
-                            <%--                                    </li>--%>
-
-                            <%--                                </c:forEach>--%>
-
+                        <ul class="media-list" id="listComment">
+                            <c:forEach var="item" items="${comments}">
+                                <li class="media">
+                                    <img src="<c:url value='${item.user.avatar}'/>" alt="" class="img-circle">
+                                    <div class="media-body ml-3">
+                                        <strong class="text-success mr-2">${item.user.fullname}</strong>
+                                        <span class="text-muted pull-right">
+											<small class="text-muted date">${item.createdDate}</small>
+										</span>
+                                        <p>${item.content}</p>
+                                    </div>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -426,5 +337,65 @@
     </div>
 </div>
 <!-- End comment -->
+<script>
+    function formatDate(element) {
+        return new Date(element).toLocaleString();
+    }
+
+    let arrayDate = document.getElementsByClassName("date");
+    for (let i = 0; i < arrayDate.length; i++)
+        arrayDate[i].innerHTML = formatDate(arrayDate[i].innerHTML)
+
+    function loadComment(data) {
+        console.log(data.createdDate)
+        var comment = [];
+        comment.push(
+            '<li class="media"><img src="',
+            '' + data.user.avatar,
+            '" class="img-circle"><div class="media-body ml-3"><strong class="text-success mr-2">',
+            data.user.fullname,
+            '</strong><span class="text-muted pull-right"><small class="text-muted">',
+            new Date(data.createdDate).toLocaleString(),
+            '</small></span><p>',
+            data.content,
+            '</p></div></li>'
+        )
+        $('#contentComment').val("");
+        $('#listComment').prepend(comment.join(""));
+    }
+
+    $('#addComment').click(function (e) {
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {};
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            addComment(data);
+        }
+    })
+
+    function addComment(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null)
+                    loadComment(result)
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "/trang-chu";
+            }
+        })
+    }
+</script>
 </body>
 </html>

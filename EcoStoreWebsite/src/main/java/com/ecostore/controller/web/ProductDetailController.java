@@ -24,29 +24,25 @@ public class ProductDetailController extends HttpServlet {
     private IProductService productService;
     @Inject
     private ICommentService commentService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        layoutAttributeService. setHeaderWeb(request);
+        layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
-        String id =  request.getParameter("id");
+        String id = request.getParameter("id");
 
-        String url = "";
-        String code = request.getParameter("code");
-        if(id != null) {
+        if (id != null) {
             ProductModel product = productService.findOneById(Long.parseLong(id));
+            List<ProductModel> products = productService.findAllByCategoryId(product.getCategoryId());
+            product.setList(products);
             request.setAttribute("product", product);
-//            List<CommentModel> comments = commentService.findAllByProductId(Long.parseLong(id));
-//            request.setAttribute("comments", comments);
-//            List<ProductModel> products = productService.findAllByCategoryCode(code);
-//            request.setAttribute("products", products);
 
-            url = "views/web/single.jsp";
-            RequestDispatcher rd = request.getRequestDispatcher(url);
+            List<CommentModel> comments = commentService.findAllByProductId(product.getId());
+            request.setAttribute("comments", comments);
+
+            RequestDispatcher rd = request.getRequestDispatcher("views/web/single.jsp");
             rd.forward(request, response);
-        } else{
-
+        } else
             response.sendRedirect(request.getContextPath() + "/trang-chu");
-
-        }
     }
 }

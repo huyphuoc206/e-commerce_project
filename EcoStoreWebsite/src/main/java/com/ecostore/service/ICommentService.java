@@ -5,7 +5,6 @@ import com.ecostore.model.CommentModel;
 import java.util.List;
 
 public interface ICommentService {
-    List<CommentModel> findOneByStatus(int status);
 
     List<CommentModel> findAll();
 
@@ -16,4 +15,6 @@ public interface ICommentService {
     CommentModel update(CommentModel commentModel);
 
     boolean delete(long [] ids);
+
+    List<CommentModel> findAllByProductId(long productId);
 }

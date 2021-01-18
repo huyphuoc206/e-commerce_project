@@ -1,6 +1,5 @@
 package com.ecostore.controller.admin;
 
-
 import com.ecostore.model.CommentModel;
 import com.ecostore.service.ICommentService;
 import com.ecostore.service.ILayoutAttributeService;
@@ -22,11 +21,12 @@ public class CommentController extends HttpServlet {
     private ILayoutAttributeService layoutAttributeService;
     @Inject
     private ICommentService commentService;
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setMenuLeftAdmin(request);
-        String url ="";
-        String id= request.getParameter("id");
-        if(id !=null){
+        String url = "";
+        String id = request.getParameter("id");
+        if (id != null) {
             CommentModel commentModel = commentService.findOneById(Long.parseLong(id));
             request.setAttribute("commentModel", commentModel);
             url = "../views/admin/editcomment.jsp";

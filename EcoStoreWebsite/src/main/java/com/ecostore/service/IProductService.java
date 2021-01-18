@@ -15,4 +15,6 @@ public interface IProductService {
     ProductModel findOneById(long id);
 
     int getTotalItems();
+
+    List<ProductModel> findAllByCategoryId(long categoryId);
 }
