@@ -58,7 +58,7 @@
                                                                                 name="totalPrice" class="form-control" value="${order.totalPrice}"></div>
                                         </div>
                                         <div class="row form-group">
-                                            <div class="col col-md-3"><label class=" form-control-label"> Phương pháp thanh toán</label></div>
+                                            <div class="col col-md-3"><label class=" form-control-label"> Phương thức thanh toán</label></div>
                                             <div class="col-12 col-md-9">
                                                 <select name="paymentId" class="form-control">
                                                     <c:forEach var="item" items="${payments}">
@@ -120,7 +120,6 @@
                                         </div>
                                         <div class="row justify-content-center">
                                             <button type="submit" id="updateOrder" class="btn btn-primary btn-sm mr-2">
-
                                                 <i class="fa fa-dot-circle-o"></i> Lưu
                                             </button>
                                         </div>

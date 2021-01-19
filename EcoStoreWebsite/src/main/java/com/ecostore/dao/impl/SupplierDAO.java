@@ -1,7 +1,6 @@
 package com.ecostore.dao.impl;
 
 import com.ecostore.dao.ISupplierDAO;
-import com.ecostore.mapper.CategoryMapper;
 import com.ecostore.mapper.SupplierMapper;
 import com.ecostore.model.SupplierModel;
 
@@ -48,7 +47,7 @@ public class SupplierDAO extends AbstractDAO<SupplierModel> implements ISupplier
 
     @Override
     public List<SupplierModel> findAllByCategoryCode(String code) {
-        String sql = "SELECT DISTINCT supplier.* FROM product JOIN category on product.categoryid = category.id JOIN supplier on product.supplierid = supplier.id WHERE category.code = ?";
-        return query(sql, new SupplierMapper(),code);
+        String sql = "SELECT DISTINCT supplier.* FROM product JOIN category on product.categoryid = category.id JOIN supplier on product.supplierid = supplier.id WHERE category.code = ? AND supplier.status = 1";
+        return query(sql, new SupplierMapper(), code);
     }
 }

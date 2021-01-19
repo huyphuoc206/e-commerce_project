@@ -40,8 +40,8 @@ public class ProductController extends HttpServlet {
             List<ProductModel> products = productService.findAllByCategoryCode(code, pageble);
             List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
             model.setList(products);
-            model.setTotalItems(productService.getTotalItems());
-            model.setTotalPage((int) Math.ceil(model.getTotalItems() / pageble.getLimit()));
+            model.setTotalItems(productService.getTotalItems(code));
+            model.setTotalPage((int) Math.ceil(model.getTotalItems() * 1.0 / pageble.getLimit()));
 
             request.setAttribute("model", model);
             request.setAttribute("suppliers", suppliers);

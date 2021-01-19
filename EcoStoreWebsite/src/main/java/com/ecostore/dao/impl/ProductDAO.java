@@ -51,14 +51,14 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
-    public int getTotalItems() {
-        String sql = "SELECT COUNT(*) FROM product";
-        return count(sql);
+    public int getTotalItems(String code) {
+        String sql = "SELECT COUNT(*) FROM product JOIN category ON product.categoryid = category.id WHERE category.code = ?";
+        return count(sql,code);
     }
 
     @Override
     public List<ProductModel> findAllByCategoryId(long categoryId) {
-        String sql = "SELECT P.*, I.imagelink FROM product P join productgallery I on P.id = I.productid WHERE P.categoryid = ?";
+        String sql = "SELECT P.*, I.imagelink FROM product P join productgallery I on P.id = I.productid WHERE P.categoryid = ? AND P.status = 1";
         return query(sql, new ProductMapper(), categoryId);
     }
 }
