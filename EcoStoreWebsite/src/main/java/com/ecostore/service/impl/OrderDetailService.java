@@ -5,6 +5,7 @@ import com.ecostore.model.OrderDetailsModel;
 import com.ecostore.service.IOrderDetailService;
 
 import javax.inject.Inject;
+import java.util.List;
 
 public class OrderDetailService implements IOrderDetailService {
     @Inject
@@ -15,4 +16,11 @@ public class OrderDetailService implements IOrderDetailService {
         Long id = orderDetailDAO.insert(model);
         return orderDetailDAO.findOneById(id);
     }
+
+    @Override
+    public List<OrderDetailsModel> findAllByOrderId(long orderId) {
+        return orderDetailDAO.findAllByOrderId(orderId);
+    }
+
+
 }

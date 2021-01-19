@@ -6,6 +6,8 @@ public class OrderDetailsModel extends AbstractModel {
     private ProductModel product;
     private long productId;
     private Long unitPrice;
+    private int quantity;
+    private Long totalPrice;
 
     public long getOrderId() {
         return orderId;
@@ -23,8 +25,7 @@ public class OrderDetailsModel extends AbstractModel {
         this.productId = productId;
     }
 
-    private int quantity;
-    private Long totalPrice;
+
 
     public OrderDetailsModel() {
     }
