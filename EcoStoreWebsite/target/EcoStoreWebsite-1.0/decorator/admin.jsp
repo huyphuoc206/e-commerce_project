@@ -36,6 +36,7 @@
 <%--    ckeditor--%>
     <script src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
     <script src="<c:url value='/ckfinder/ckfinder.js'/>"></script>
+<%--    chuyen don vi tien--%>
 
     <script>
         $(document).ready(function () {
@@ -70,7 +71,19 @@
         <%@ include file="/common/admin/header.jsp" %>
         <dec:body/>
     </div>
+    <script>
+        function formatVND(element) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(element);
+        }
 
+        let arrayprice = document.getElementsByClassName("item_price");
+        for (let i = 0; i < arrayprice.length; i++)
+            arrayprice[i].innerHTML = formatVND(arrayprice[i].innerHTML)
+
+    </script>
     <!-- Right Panel -->
     <script src="<c:url value='/template/admin/vendors/datatables.net/js/jquery.dataTables.min.js'/>"></script>
     <script src="<c:url value='/template/admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js'/>"></script>

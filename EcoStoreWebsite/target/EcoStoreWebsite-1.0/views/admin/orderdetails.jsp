@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -10,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <strong class="card-title">Mã đơn hàng: 1</strong>
+                        <strong class="card-title">Mã đơn hàng: ${order.id}</strong>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -23,24 +24,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Tivi LG</td>
-                                <td class="text-center">5.000.000đ</td>
-                                <td class="text-center">1</td>
-                                <td class="text-center">5.000.000đ</td>
-                            </tr>
-                            <tr>
-                                <td>Máy giặt Panasonic</td>
-                                <td class="text-center">1.000.000đ</td>
-                                <td class="text-center">2</td>
-                                <td class="text-center">2.000.000đ</td>
-                            </tr>
-                            <tr>
-                                <td>Máy lạnh Panasonic</td>
-                                <td class="text-center">3.000.000đ</td>
-                                <td class="text-center">3</td>
-                                <td class="text-center">9.000.000đ</td>
-                            </tr>
+                            <c:forEach var="item" items="${orderDetails}">
+                                <tr>
+                                    <td>${item.product.name}</td>
+                                    <td class="text-center item_price">${item.unitPrice}</td>
+                                    <td class="text-center">${item.quantity}</td>
+                                    <td class="text-center item_price">${item.totalPrice}</td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="APIurl" value="/api-admin-order"/>
+<c:url var="OrderUrl" value="/quan-tri/don-hang"/>
+
 <html>
 <head>
     <title>Quản lý đơn hàng</title>
@@ -13,6 +17,9 @@
                         <strong class="card-title">Danh sách đơn hàng</strong>
                     </div>
                     <div class="card-header">
+                        <c:if test="${not empty message}">
+                            <div class="text-center float-left alert alert-${alert}">${message}</div>
+                        </c:if>
                         <div class="float-right">
                             <a href="#deleteOrderModal" class="btn btn-danger" data-toggle="modal"><i
                                     class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
@@ -41,114 +48,57 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
+                            <c:forEach var="item" items="${orders}">
+                                <tr>
+                                    <td class="text-center">
+                                                 <span class="custom-checkbox">
+                                                    <input type="checkbox" id="checkbox_${item.id}" value="${item.id}">
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td class="text-center">1</td>
-                                <td class="text-center">23/2/2020</td>
-                                <td>Huy Phước</td>
-                                <td class="text-center">0919990334</td>
-                                <td>Biên Hòa Đồng Nai</td>
-                                <td>Giao lúc 11:00 AM</td>
-                                <td class="text-center">7.000.000đ</td>
-                                <td class="text-center"><span class="status text-warning">&bull;</span>Đang
-                                    chờ</td>
-                                <td>Thanh toán tiền mặt</td>
-                                <td class="text-center">
-                                    <a href="editorder.html" class="edit"><i class="fa fa-pencil"
-                                                                             aria-hidden="true" data-toggle="tooltip"
-                                                                             title="Chỉnh sửa"></i></a>
-                                    <a href="orderdetails.html" class="detail"><i class="fa fa-eye"
-                                                                                  aria-hidden="true" data-toggle="tooltip"
-                                                                                  title="Chi tiết"></i></a>
+                                    </td>
+                                    <td class="text-center">${item.id}</td>
+                                    <td class="text-center">${item.createdDate}</td>
+                                    <td>${item.customerName}</td>
+                                    <td class="text-center">${item.phone}</td>
+                                    <td>${item.address}</td>
+                                    <td>${item.message}</td>
+                                    <td class="text-center item_price">${item.totalPrice}</td>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-primary">&bull;</span>Đã xác nhận
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 2}">
+                                        <td class="text-center"><span class="status text-primary">&bull;</span>Đang giao
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 3}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Thành công
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 4}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Đã hủy
+                                        </td>
+                                    </c:if>
+                                    <td>${item.payment.name}</td>
+                                    <td class="text-center">
+<%--                                        editorder.html--%>
+                                        <a href="<c:url value='/quan-tri/don-hang?idorder=${item.id}'/>" class="edit"><i class="fa fa-pencil"
+                                                                                 aria-hidden="true" data-toggle="tooltip"
+                                                                                 title="Chỉnh sửa"></i></a>
+<%--                                        orderdetails.html--%>
+                                        <a href="<c:url value='/quan-tri/don-hang?idorderdetails=${item.id}'/>" class="detail"><i class="fa fa-eye"
+                                                                                      aria-hidden="true" data-toggle="tooltip"
+                                                                                      title="Chi tiết"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                </td>
-                                <td class="text-center">2</td>
-                                <td class="text-center">23/2/2020</td>
-                                <td>Huy Phước</td>
-                                <td class="text-center">0919990334</td>
-                                <td>Biên Hòa Đồng Nai</td>
-                                <td>Giao lúc 11:00 AM</td>
-                                <td class="text-center">5.000.000đ</td>
-                                <td class="text-center"><span class="status text-primary">&bull;</span>Đang
-                                    giao</td>
-                                <td>Thanh toán tiền mặt</td>
-                                <td class="text-center">
-                                    <a href="editorder.html" class="edit"><i class="fa fa-pencil"
-                                                                             aria-hidden="true" data-toggle="tooltip"
-                                                                             title="Chỉnh sửa"></i></a>
-                                    <a href="orderdetails.html" class="detail"><i class="fa fa-eye"
-                                                                                  aria-hidden="true" data-toggle="tooltip"
-                                                                                  title="Chi tiết"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td class="text-center">3</td>
-                                <td class="text-center">23/2/2020</td>
-                                <td>Huy Phước</td>
-                                <td class="text-center">0919990334</td>
-                                <td>Biên Hòa Đồng Nai</td>
-                                <td>Giao lúc 11:00 AM</td>
-                                <td class="text-center">5.000.000đ</td>
-                                <td class="text-center"><span class="status text-success">&bull;</span>Thành
-                                    công</td>
-                                <td>Thanh toán tiền mặt</td>
-                                <td class="text-center">
-                                    <a href="editorder.html" class="edit"><i class="fa fa-pencil"
-                                                                             aria-hidden="true" data-toggle="tooltip"
-                                                                             title="Chỉnh sửa"></i></a>
-                                    <a href="orderdetails.html" class="detail"><i class="fa fa-eye"
-                                                                                  aria-hidden="true" data-toggle="tooltip"
-                                                                                  title="Chi tiết"></i></a>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                                    <label for="checkbox4"></label>
-                                                </span>
-                                </td>
-                                <td class="text-center">4</td>
-                                <td class="text-center">23/2/2020</td>
-                                <td>Huy Phước</td>
-                                <td class="text-center">0919990334</td>
-                                <td>Biên Hòa Đồng Nai</td>
-                                <td>Giao lúc 11:00 AM</td>
-                                <td class="text-center">5.000.000đ</td>
-                                <td class="text-center"><span class="status text-danger">&bull;</span>Đã
-                                    hủy</td>
-                                <td>Thanh toán tiền mặt</td>
-                                <td class="text-center">
-                                    <a href="editorder.html" class="edit"><i class="fa fa-pencil"
-                                                                             aria-hidden="true" data-toggle="tooltip"
-                                                                             title="Chỉnh sửa"></i></a>
-                                    <a href="orderdetails.html" class="detail"><i class="fa fa-eye"
-                                                                                  aria-hidden="true" data-toggle="tooltip"
-                                                                                  title="Chi tiết"></i></a>
-
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -173,11 +123,47 @@
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
+                    <button id="deleteOrder" type="submit" class="btn btn-danger" >Xóa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script>
+    $('#deleteOrder').click(function (e) {
+        e.preventDefault();
+        let data = {}; // mang object name: value
+        // lay data khi check vao cac checkbox
+        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
+            return $(this).val(); // lay value cua input checked
+        }).get();
+        if (dataArray.length != 0) {
+            data['ids'] = dataArray;
+            deleteOrder(data);
+        }
+    })
+
+    function deleteOrder(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if(result)
+                    window.location.href = "${OrderUrl}?message=delete_success&alert=success";
+                else
+                    window.location.href = "${OrderUrl}?message=delete_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${OrderUrl}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
 </body>
 </html>
