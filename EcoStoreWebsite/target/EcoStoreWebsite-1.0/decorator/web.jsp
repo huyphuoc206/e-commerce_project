@@ -32,6 +32,8 @@
     <!-- pop-up-box -->
     <link href="<c:url value='/template/web/css/menu.css'/>" rel="stylesheet" type="text/css" media="all"/>
     <!-- menu style -->
+    <!-- flexslider -->
+    <link rel="stylesheet" href="<c:url value='/template/web/css/flexslider.css'/>" type="text/css" media="screen" />
     <!-- //Custom-Files -->
 
     <!-- web fonts -->
@@ -43,6 +45,9 @@
             rel="stylesheet">
     <!-- //web fonts -->
     <script src="<c:url value='/template/admin/vendors/jquery/dist/jquery.min.js'/>"></script>
+
+    <!-- Paging  -->
+    <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
 </head>
 <body>
 <%@ include file="/common/web/header.jsp" %>
@@ -257,30 +262,21 @@
 </script>
 <!-- //popup modal (for location)-->
 
-<!-- cart-js -->
-<%--<script src="<c:url value='/template/web/js/minicart.js'/>"></script>--%>
+<!-- imagezoom -->
+<script src="<c:url value='/template/web/js/imagezoom.js'/>"></script>
+<!-- //imagezoom -->
+
+<script src="<c:url value='/template/web/js/jquery.flexslider.js'/>"></script>
 <script>
-    paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
-
-    paypals.minicarts.cart.on('checkout', function (evt) {
-        var items = this.items(),
-            len = items.length,
-            total = 0,
-            i;
-
-        // Count the number of each item in the cart
-        for (i = 0; i < len; i++) {
-            total += items[i].get('quantity');
-        }
-
-        // if (total < 3) {
-        // 	alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-        // 	evt.preventDefault();
-        // }
+    // Can also be used with $(document).ready()
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
     });
 </script>
-<!-- //cart-js -->
-
+<!-- //FlexSlider-->
 
 <!-- scroll seller -->
 <script src="<c:url value='/template/web/js/scroll.js'/>"></script>

@@ -16,13 +16,11 @@ public interface IUserDAO {
 
     boolean delete(long id);
 
-    UserModel findOneByUsernameAndEmail(String username, String email);
+    List<UserModel> findByUsernameAndEmail(String username, String email);
 
     UserModel findOneById(Long id);
 
     UserModel findOneByEmail(String email);
-
-    UserModel findOneByUserName(String username);
 
     boolean resetPassword(long userId, String newPassword);
 }

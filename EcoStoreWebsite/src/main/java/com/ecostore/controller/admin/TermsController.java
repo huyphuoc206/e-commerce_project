@@ -31,17 +31,13 @@ public class TermsController extends HttpServlet {
             TermsModel termsModel = termsService.findOneById(Long.parseLong(id));
             request.setAttribute("termsModel", termsModel);
             url = "../views/admin/editterms.jsp";
-
         } else {
             MessageUtil.showMessage(request);
             List<TermsModel> termsModels = termsService.findAll();
             request.setAttribute("termsModels", termsModels);
             url = "../views/admin/terms.jsp";
         }
-
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-
     }
-
 }

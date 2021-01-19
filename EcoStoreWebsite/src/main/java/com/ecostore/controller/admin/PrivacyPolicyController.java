@@ -39,7 +39,5 @@ public class PrivacyPolicyController extends HttpServlet {
 
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
-
-
     }
 }

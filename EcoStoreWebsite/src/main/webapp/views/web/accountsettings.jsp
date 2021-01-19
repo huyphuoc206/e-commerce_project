@@ -34,7 +34,7 @@
                     <div class="custom-input-file" style="background-image: url('${user.avatar}');">
                         <label class="uploadPhoto">
                             Chọn
-                            <input type="file" class="change-avatar" name="avatar" value="${user.avatar}">
+                            <input type="file" class="change-avatar" name="avatar" id="avatar" value="${user.avatar}">
                         </label>
                     </div>
                 </div>
@@ -67,11 +67,11 @@
                     khẩu</a></div>
             </div>
             <div class="row justify-content-center">
-                <button id="updateUserBtn" type="submit" class="btn btn-primary btn-sm mr-2">
+                <button id="updateUserBtn" type="submit" class="btn btn-primary">
                     <i class="fa fa-dot-circle-o"></i> Lưu
                 </button>
-
             </div>
+            <input type="hidden" name="id" value="${user.id}">
         </form>
     </div>
 
@@ -84,8 +84,6 @@
             $.each(formData, function (i, v) {
                 data['' + v.name] = v.value
             });
-            data['id'] = ${user.id};
-            console.log(data);
             updateUserBtn(data);
         }
     })

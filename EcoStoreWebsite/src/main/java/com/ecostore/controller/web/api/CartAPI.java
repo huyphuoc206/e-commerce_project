@@ -2,7 +2,6 @@ package com.ecostore.controller.web.api;
 
 import com.ecostore.model.Cart;
 import com.ecostore.model.CartItem;
-import com.ecostore.model.UserModel;
 import com.ecostore.utils.SessionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

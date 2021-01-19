@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-                                <button id="updateInformation" type="submit" class="btn btn-primary btn-sm mr-2">
+                                <button id="updateInformation" type="submit" class="btn btn-primary">
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
                             </div>

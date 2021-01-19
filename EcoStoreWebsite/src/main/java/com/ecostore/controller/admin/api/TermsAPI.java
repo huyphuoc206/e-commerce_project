@@ -1,6 +1,5 @@
 package com.ecostore.controller.admin.api;
 
-import com.ecostore.model.MenuModel;
 import com.ecostore.model.TermsModel;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.ITermsService;

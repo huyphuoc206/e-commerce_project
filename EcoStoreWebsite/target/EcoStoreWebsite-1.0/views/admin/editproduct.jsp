@@ -101,7 +101,7 @@
                                             name="file-multiple-input" multiple="" class="form-control-file"></div>
                                 </div> -->
                                 <div class="mt-5 row justify-content-center">
-                                    <button type="submit" class="btn btn-primary btn-sm mr-2">
+                                    <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-dot-circle-o"></i> Lưu
                                     </button>
                                     <button type="reset" class="btn btn-danger btn-sm">

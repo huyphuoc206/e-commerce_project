@@ -463,7 +463,6 @@ ul.row-sm {
 .comment-wrapper .media-list .media img {
     width: 64px;
     height: 64px;
-    border: 2px solid #e5e7e8;
 }
 
 .comment-wrapper .media-list .media {
@@ -632,7 +631,10 @@ p.dont-do a {
     -ms-transition: 0.5s all;
     transition: 0.5s all;
 }
-
+.right-w3l input[type="submit"]:hover, .right-w3l button[type="submit"]:hover {
+    background: #db6400;
+    color: #fff;
+}
 input[type="button"],
 input[type="submit"] {
     transition: 0.5s all;
@@ -978,7 +980,7 @@ h3.tittle-w3l span {
     -ms-transition: 0.5s all;
 }
 
-.snipcart-details input.button:hover {
+.snipcart-details button.button:hover {
     background: #000;
 }
 
@@ -1943,7 +1945,7 @@ li.subitem1 p {
     margin-top: 20px;
 }
 
-.wthree-help form input[type="submit"]:hover {
+.wthree-help form button[type="submit"]:hover {
     background: #ffa62b;
     -webkit-transform: translateY(8px);
     -ms-transform: translateY(8px);
@@ -2670,7 +2672,7 @@ div#testimonials h4.m-title {
     background: #EAEAEA;
 }
 
-.contact-grids1 input[type="submit"] {
+.contact-grids1 button[type="submit"] {
     outline: none;
     padding: 12px 0;
     border: none;
@@ -2682,7 +2684,7 @@ div#testimonials h4.m-title {
     cursor: pointer;
 }
 
-.contact-grids1 input[type="submit"]:hover {
+.contact-grids1 button[type="submit"]:hover {
     background: #000000;
     transition: 0.5s all;
     -webkit-transition: 0.5s all;

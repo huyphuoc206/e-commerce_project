@@ -36,14 +36,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserModel findOneByUserName(String username) {
-        return userDAO.findOneByUserName(username);
-    }
-
-    @Override
     public UserModel insert(UserModel user) {
-        UserModel temp = userDAO.findOneByUsernameAndEmail(user.getUsername(), user.getEmail());
-        if (temp == null) {
+        List<UserModel> temp = userDAO.findByUsernameAndEmail(user.getUsername(), user.getEmail());
+        if (temp.isEmpty()) {
             user.setCreatedDate(new Timestamp(System.currentTimeMillis()));
             // hash password to MD5
             user.setPassword(MD5Hashing.hash(user.getPassword()));
@@ -55,31 +50,20 @@ public class UserService implements IUserService {
 
     @Override
     public UserModel update(UserModel user) {
-        boolean temp = true;
-        UserModel oldUserModel = userDAO.findOneById(user.getId());
-        if ( !user.getEmail().equals(oldUserModel.getEmail())) {
-            UserModel userbyemail = userDAO.findOneByEmail(user.getEmail());
-            if (userbyemail != null) {
-                temp = false;
-            }
-        }
-        if ( !user.getUsername().equals(oldUserModel.getUsername())) {
-            UserModel userbyusername = userDAO.findOneByUserName(user.getUsername());
-            if (userbyusername != null) {
-                temp = false;
-            }
-        }
-        if (temp){
-//            if (!user.getPassword().equals(oldUserModel.getPassword())){
-//                String passNew = MD5Hashing.hash(user.getPassword());
-//                user.setPassword(passNew);
-//            }
-            user.setCreatedDate(oldUserModel.getCreatedDate());
-            user.setCreatedBy(oldUserModel.getCreatedBy());
+        List<UserModel> temp = userDAO.findByUsernameAndEmail(user.getUsername(), user.getEmail());
+        if (temp.size() > 1) {
+            return null;
+        } else if (temp.size() == 1)
+            if (temp.get(0).getId() != user.getId())
+                return null; // neu tim dc 1 user thi check xem neu khong phai la user hien tai dang chinh sua thi return null
+
+        UserModel oldUser = userDAO.findOneById(user.getId());
+        if (oldUser != null) {
+            user.setCreatedDate(oldUser.getCreatedDate());
+            user.setCreatedBy(oldUser.getCreatedBy());
             user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-            if (userDAO.update(user)) {
+            if (userDAO.update(user))
                 return userDAO.findOneById(user.getId());
-            }
         }
         return null;
     }

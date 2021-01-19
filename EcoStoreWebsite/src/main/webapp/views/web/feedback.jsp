@@ -43,8 +43,20 @@
                 <form id="formSubmit">
                      <textarea name="content" required
                                oninvalid="this.setCustomValidity('Hãy nhập đánh giá của bạn!')"
-                               oninput="this.setCustomValidity('')" placeholder="Đánh giá tại đây..." autofocus></textarea>
-                    <button id="addFeedback" type="submit" class="right-w3l">Gửi</button>
+                               oninput="this.setCustomValidity('')" placeholder="Đánh giá tại đây..."
+                               autofocus></textarea>
+                    <c:if test="${empty USERMODEL}">
+                        <br>
+                        <div class="mt-3">
+                            <i>Vui lòng đăng nhập trước khi để lại đánh giá.</i>
+                            <a href="<c:url value='/dang-nhap'/>" class="btn btn-primary  ml-1 pl-3 pr-3">
+                                Đăng nhập ngay </a>
+                        </div>
+                    </c:if>
+                    <c:if test="${not empty USERMODEL}">
+                        <button id="addFeedback" type="submit" class="right-w3l">Gửi</button>
+                    </c:if>
+
                 </form>
 
             </div>
@@ -64,8 +76,8 @@
                     <span>H</span>àng
                 </h3>
                 <!-- tittle heading -->
-                    <div class="row gallery-index">
-                        <c:forEach var="item" items="${feedbacks}" >
+                <div class="row gallery-index">
+                    <c:forEach var="item" items="${feedbacks}">
 
                         <div class="col-sm-6 med-testi-grid">
                             <div class="med-testi test-tooltip rounded p-4">
@@ -73,7 +85,8 @@
                             </div>
                             <div class="row med-testi-left my-5">
                                 <div class="col-lg-2 col-3 w3ls-med-testi-img">
-                                    <img src="<c:url value="${item.user.avatar}"/>" alt=" " class="img-fluid rounded-circle"/>
+                                    <img src="<c:url value="${item.user.avatar}"/>" alt=" "
+                                         class="img-fluid rounded-circle"/>
                                 </div>
                                 <div class="col-lg-10 col-9 med-testi-txt">
                                     <h4 class="font-weight-bold mt-3">${item.user.fullname}</h4>
@@ -81,8 +94,8 @@
                                 </div>
                             </div>
                         </div>
-                        </c:forEach>
-                    </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </c:if>

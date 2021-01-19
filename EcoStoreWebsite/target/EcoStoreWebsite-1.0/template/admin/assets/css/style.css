@@ -1722,7 +1722,6 @@ header .form-inline {
   vertical-align: middle;
   -webkit-transition:all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  border-radius: 0;
   cursor: pointer; }
 
 /* Icons */

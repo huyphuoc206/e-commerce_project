@@ -39,12 +39,13 @@
                     </c:if>
                     <div class="form-group">
                         <label for="password1" class="col-form-label">Mật khẩu mới</label>
-                        <input type="password" class="form-control" placeholder=" " name="password" id="password1"
-                               required autofocus>
+                        <input type="password" class="form-control" name="password" id="password1"
+                               required oninvalid="this.setCustomValidity('Mật khẩu từ 6 ký tự!')"
+                               oninput="this.setCustomValidity('')" autofocus minlength="6">
                     </div>
                     <div class="form-group">
                         <label for="password2" class="col-form-label">Nhập lại mật khẩu mới</label>
-                        <input type="password" class="form-control" placeholder=" "
+                        <input type="password" class="form-control"
                                id="password2" required oninvalid="this.setCustomValidity('Mật khẩu không khớp!')"
                                oninput="this.setCustomValidity('')">
                     </div>

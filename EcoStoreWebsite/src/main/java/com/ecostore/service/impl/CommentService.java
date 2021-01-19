@@ -8,14 +8,9 @@ import javax.inject.Inject;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class CommentService  implements ICommentService {
+public class CommentService implements ICommentService {
     @Inject
     private ICommentDAO commentDAO;
-
-    @Override
-    public List<CommentModel> findOneByStatus(int status) {
-        return commentDAO.findOneByStatus(status);
-    }
 
     @Override
     public List<CommentModel> findAll() {
@@ -30,7 +25,7 @@ public class CommentService  implements ICommentService {
     @Override
     public CommentModel insert(CommentModel model) {
         model.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        Long id  = commentDAO.insert(model);
+        Long id = commentDAO.insert(model);
         return commentDAO.findOneById(id);
     }
 
@@ -40,19 +35,22 @@ public class CommentService  implements ICommentService {
         model.setCreatedDate(oldComment.getCreatedDate());
         model.setCreatedBy(oldComment.getCreatedBy());
         model.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        if (commentDAO.update(model)){
+        if (commentDAO.update(model))
             return commentDAO.findOneById(model.getId());
-        }
-
         return null;
     }
 
     @Override
     public boolean delete(long[] ids) {
-        for (long id:ids) {
+        for (long id : ids) {
             if (!commentDAO.delete(id))
                 return false;
         }
         return true;
+    }
+
+    @Override
+    public List<CommentModel> findAllByProductId(long productId) {
+        return commentDAO.findAllByProductId(productId);
     }
 }

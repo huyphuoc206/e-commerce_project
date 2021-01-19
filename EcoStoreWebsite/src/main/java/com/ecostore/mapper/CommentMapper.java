@@ -20,14 +20,14 @@ public class CommentMapper implements IRowMapper<CommentModel> {
             model.setContent((resultSet.getString("content")));
             model.setStatus(resultSet.getInt("status"));
             UserModel user = new UserModel();
-            if(MapperUtil.hasColumn(resultSet, "fullname")){
+            if (MapperUtil.hasColumn(resultSet, "fullname")) {
                 user.setFullname(resultSet.getString("fullname"));
             }
-            if(MapperUtil.hasColumn(resultSet, "avatar")){
+            if (MapperUtil.hasColumn(resultSet, "avatar")) {
                 user.setAvatar(resultSet.getString("avatar"));
             }
             ProductModel product = new ProductModel();
-            if(MapperUtil.hasColumn(resultSet, "name")){
+            if (MapperUtil.hasColumn(resultSet, "name")) {
                 product.setName(resultSet.getString("name"));
             }
             model.setUser(user);
@@ -37,7 +37,7 @@ public class CommentMapper implements IRowMapper<CommentModel> {
             model.setModifiedDate(resultSet.getTimestamp("modifieddate"));
             model.setModifiedBy(resultSet.getString("createdby"));
             return model;
-        }catch (SQLException throwables ){
+        } catch (SQLException throwables) {
             return null;
         }
     }

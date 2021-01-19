@@ -28,12 +28,12 @@ public class CheckoutController extends HttpServlet {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        if (user == null) {
+        if (user == null)
             response.sendRedirect(request.getContextPath() + "/dang-nhap?message=not_login&alert=danger");
-        } else {
+        else {
             MessageUtil.showMessage(request);
             List<PaymentModel> payments = paymentService.findAllByStatus(1);
-            request.setAttribute("payments",payments);
+            request.setAttribute("payments", payments);
             RequestDispatcher rd = request.getRequestDispatcher("views/web/checkout.jsp");
             rd.forward(request, response);
         }
