@@ -14,7 +14,7 @@ public interface IProductService {
 
     ProductModel findOneById(long id);
 
-    int getTotalItems();
+    int getTotalItems(String code);
 
     List<ProductModel> findAllByCategoryId(long categoryId);
 }

@@ -35,8 +35,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public int getTotalItems() {
-        return productDAO.getTotalItems();
+    public int getTotalItems(String code) {
+        return productDAO.getTotalItems(code);
     }
 
     @Override

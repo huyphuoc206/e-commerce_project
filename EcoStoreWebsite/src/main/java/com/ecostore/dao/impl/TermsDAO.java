@@ -13,7 +13,6 @@ public class TermsDAO extends AbstractDAO<TermsModel> implements ITermsDAO {
         List<TermsModel> list = query(sql , new TermsMapper() , status);
         if (list.isEmpty()) return null;
         return list.get(0);
-
     }
 
     @Override

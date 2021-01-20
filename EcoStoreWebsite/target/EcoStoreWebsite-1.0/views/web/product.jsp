@@ -27,7 +27,10 @@
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-            <span>${cname}</span></h3>
+            <c:forEach var="item" items="${fn:split(cname, ' ')}">
+                <span>${fn:substring(item, 0, 1)}</span>${fn:substring(item, 1, fn:length(item))}
+            </c:forEach>
+        </h3>
         <!-- //tittle heading -->
         <div class="row">
             <!-- product left -->
@@ -40,14 +43,18 @@
                         <div class="row ml-3">
                             <span class="card-title">Ưu tiên xem:</span>
                             <ul class="list-inline ml-3">
-                                <li class="list-inline-item"><a class="text-uppercase priority" href="<c:url value='/san-pham?code=${code}&page=1&sortName=createddate&sortBy=desc'/>">Hàng
+                                <li class="list-inline-item"><a class="text-uppercase priority"
+                                                                href="<c:url value='/san-pham?code=${code}&page=1&sortName=createddate&sortBy=desc'/>">Hàng
                                     mới</a></li>
                                 <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=discount&sortBy=desc'/>">Giảm giá nhiều</a></li>
+                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=discount&sortBy=desc'/>">Giảm
+                                    giá nhiều</a></li>
                                 <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=asc'/>">Giá thấp</a></li>
+                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=asc'/>">Giá
+                                    thấp</a></li>
                                 <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=desc'/>">Giá cao</a></li>
+                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=desc'/>">Giá
+                                    cao</a></li>
                             </ul>
                         </div>
                         <hr>
@@ -101,8 +108,10 @@
                                 <ul class="pagination" id="pagination"></ul>
                             </div>
                             <input type="hidden" value="" id="page" name="page"/>
-                            <input type="hidden" value="${model.sortName}" id="sortName" name="sortName"/>
-                            <input type="hidden" value="${model.sortBy}" id="sortBy" name="sortBy"/>
+                            <c:if test="${not empty model.sortName}">
+                                <input type="hidden" value="${model.sortName}" id="sortName" name="sortName"/>
+                                <input type="hidden" value="${model.sortBy}" id="sortBy" name="sortBy"/>
+                            </c:if>
                             <input type="hidden" value="${code}" id="code" name="code"/>
                         </form>
                     </div>
@@ -178,7 +187,8 @@
                                     <c:forEach var="item" items="${model.list}" end="${model.list.size()}">
                                         <div class="row mt-4">
                                             <div class="col-lg-3 col-sm-2 col-3 left-mar">
-                                                <img src="<c:url value='${item.images.get(0)}'/>" alt="" class="img-fluid">
+                                                <img src="<c:url value='${item.images.get(0)}'/>" alt=""
+                                                     class="img-fluid">
                                             </div>
                                             <div class="col-lg-9 col-sm-10 col-9 w3_mvd">
                                                 <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
@@ -191,7 +201,8 @@
                                     <c:forEach var="item" items="${model.list}" end="4">
                                         <div class="row mt-4">
                                             <div class="col-lg-3 col-sm-2 col-3 left-mar">
-                                                <img src="<c:url value='${item.images.get(0)}'/>" alt="" class="img-fluid">
+                                                <img src="<c:url value='${item.images.get(0)}'/>" alt=""
+                                                     class="img-fluid">
                                             </div>
                                             <div class="col-lg-9 col-sm-10 col-9 w3_mvd">
                                                 <a href="<c:url value='/chi-tiet-san-pham?id=${item.id}'/>">${item.name}</a>
