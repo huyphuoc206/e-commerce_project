@@ -13,5 +13,5 @@ public interface IOrderDAO {
 
     List<OrdersModel> findAll();
 
-    boolean delete(long id);
+    List<OrdersModel> findAllByUserId(long userid);
 }

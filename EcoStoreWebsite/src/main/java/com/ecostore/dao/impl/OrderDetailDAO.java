@@ -28,10 +28,4 @@ public class OrderDetailDAO extends AbstractDAO<OrderDetailsModel> implements IO
         String sql = "SELECT orderdetails.*, product.name AS nameproduct FROM orderdetails JOIN product ON orderdetails.productid = product.id WHERE orderid  = ?";
         return query(sql, new OrderDetailMapper(), orderId);
     }
-
-    @Override
-    public boolean deleteByOrderId(long orderId) {
-        String sql = "DELETE FROM orderdetails WHERE orderid = ?";
-        return update(sql,orderId);
-    }
 }

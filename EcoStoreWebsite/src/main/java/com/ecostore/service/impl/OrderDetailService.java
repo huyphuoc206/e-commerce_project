@@ -18,7 +18,7 @@ public class OrderDetailService implements IOrderDetailService {
     }
 
     @Override
-    public List<OrderDetailsModel> findAllByOrderId(long orderId) {
+    public List<OrderDetailsModel> findAllByOrderId(long orderId) { 
         return orderDetailDAO.findAllByOrderId(orderId);
     }
 

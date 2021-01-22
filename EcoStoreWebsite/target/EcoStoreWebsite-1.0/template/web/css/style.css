@@ -10,7 +10,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     width: 32px; }
 
 /*shopping cart*/
-
+.bold{
+    font-weight: bolder;
+}
 
 #cart-modal td, th {
     border: 0;
@@ -391,7 +393,7 @@ input[type="file"] {
     display: inline-block;
     width: 40px;
     height: 40px;
-    line-height: 40px;
+    line-height: 40px !important;
     position: relative;
     border-radius: 100%;
     background: #ddd

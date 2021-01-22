@@ -1,11 +1,8 @@
 package com.ecostore.dao.impl;
 
 import com.ecostore.dao.IOrderDAO;
-import com.ecostore.mapper.OrderDetailMapper;
 import com.ecostore.mapper.OrdersMapper;
-import com.ecostore.model.OrderDetailsModel;
 import com.ecostore.model.OrdersModel;
-import org.apache.commons.beanutils.converters.SqlDateConverter;
 
 import java.util.List;
 
@@ -40,8 +37,8 @@ public class OrderDAO extends AbstractDAO<OrdersModel> implements IOrderDAO {
     }
 
     @Override
-    public boolean delete(long id) {
-        String sql = "DELETE FROM orders WHERE id = ?";
-        return update(sql,id);
+    public List<OrdersModel> findAllByUserId(long userid) {
+        String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
+        return query(sql, new OrdersMapper(), userid);
     }
 }

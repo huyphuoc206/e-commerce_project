@@ -47,4 +47,5 @@ public class OrderAPI extends HttpServlet {
             SessionUtil.getInstance().removeValue(request, "CART");
         mapper.writeValue(response.getOutputStream(), ordersModel);
     }
+
 }

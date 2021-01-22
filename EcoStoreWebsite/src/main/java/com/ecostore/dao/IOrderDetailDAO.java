@@ -11,5 +11,5 @@ public interface IOrderDetailDAO {
 
     List<OrderDetailsModel> findAllByOrderId(long orderId);
 
-    boolean deleteByOrderId(long id);
+
 }
