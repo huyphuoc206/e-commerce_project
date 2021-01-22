@@ -13,8 +13,6 @@ import java.util.List;
 public class OrderService implements IOrderService {
     @Inject
     private IOrderDAO orderDAO;
-    @Inject
-    private IOrderDetailDAO orderDetailDAO;
 
     @Override
     public OrdersModel insert(OrdersModel model) {
@@ -46,19 +44,9 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public boolean delete(long[] ids) {
-        boolean result = true;
-        for (long id: ids) {
-            OrdersModel order = orderDAO.findOneById(id);
-            if (order.getStatus() == 4){
-                if (!orderDetailDAO.deleteByOrderId(id) || !orderDAO.delete(id)){
-                    return false;
-                }
-            } else {
-                return false;
-            }
-
-        }
-        return true;
+    public List<OrdersModel> findAllByUserId(long userid) {
+        return orderDAO.findAllByUserId(userid);
     }
+
+
 }

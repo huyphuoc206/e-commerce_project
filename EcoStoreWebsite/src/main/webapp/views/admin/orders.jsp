@@ -20,10 +20,10 @@
                         <c:if test="${not empty message}">
                             <div class="text-center float-left alert alert-${alert}">${message}</div>
                         </c:if>
-                        <div class="float-right">
-                            <a href="#deleteOrderModal" class="btn btn-danger" data-toggle="modal"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
-                        </div>
+<%--                        <div class="float-right">--%>
+<%--                            <a href="#deleteOrderModal" class="btn btn-danger" data-toggle="modal"><i--%>
+<%--                                    class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>--%>
+<%--                        </div>--%>
                     </div>
                     <div class="card-body">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -108,62 +108,27 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<!-- Delete Modal HTML -->
-<div id="deleteOrderModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Xóa đơn hàng </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Bạn chắc chắn muốn xóa những đơn hàng này?</p>
-                    <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <button id="deleteOrder" type="submit" class="btn btn-danger" >Xóa</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    $('#deleteOrder').click(function (e) {
-        e.preventDefault();
-        let data = {}; // mang object name: value
-        // lay data khi check vao cac checkbox
-        let dataArray = $('tbody input[type=checkbox]:checked').map(function () {
-            return $(this).val(); // lay value cua input checked
-        }).get();
-        if (dataArray.length != 0) {
-            data['ids'] = dataArray;
-            deleteOrder(data);
-        }
-    })
+<%--<!-- Delete Modal HTML -->--%>
+<%--<div id="deleteOrderModal" class="modal fade">--%>
+<%--    <div class="modal-dialog">--%>
+<%--        <div class="modal-content">--%>
+<%--            <form>--%>
+<%--                <div class="modal-header">--%>
+<%--                    <h4 class="modal-title">Xóa đơn hàng </h4>--%>
+<%--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
+<%--                </div>--%>
+<%--                <div class="modal-body">--%>
+<%--                    <p>Bạn chắc chắn muốn xóa những đơn hàng này?</p>--%>
+<%--                    <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>--%>
+<%--                </div>--%>
+<%--                <div class="modal-footer">--%>
+<%--                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">--%>
+<%--                    <button id="deleteOrder" type="submit" class="btn btn-danger" >Xóa</button>--%>
+<%--                </div>--%>
+<%--            </form>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
-    function deleteOrder(data) {
-        $('.load').show();
-        $.ajax({
-            url: '${APIurl}',
-            type: 'DELETE',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            success: function (result) {
-                $('.load').hide();
-                if(result)
-                    window.location.href = "${OrderUrl}?message=delete_success&alert=success";
-                else
-                    window.location.href = "${OrderUrl}?message=delete_fail&alert=danger";
-            },
-            error: function (error) {
-                $('.load').hide();
-                window.location.href = "${OrderUrl}?message=system_error&alert=danger";
-            }
-        })
-    }
-</script>
 </body>
 </html>

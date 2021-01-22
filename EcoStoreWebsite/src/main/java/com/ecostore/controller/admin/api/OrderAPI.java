@@ -20,9 +20,6 @@ import java.io.IOException;
 public class OrderAPI extends HttpServlet {
     @Inject
     private IOrderService orderService;
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,15 +31,5 @@ public class OrderAPI extends HttpServlet {
         order.setModifiedBy(userModel.getUsername());
         order = orderService.update(order);
         mapper.writeValue(response.getOutputStream(), order);
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        request.setCharacterEncoding("UTF8");
-        response.setContentType("application/json");
-        OrdersModel ordersModel = mapper.readValue(request.getInputStream(), OrdersModel.class);
-        boolean result = orderService.delete(ordersModel.getIds());
-        mapper.writeValue(response.getOutputStream(), result);
     }
 }

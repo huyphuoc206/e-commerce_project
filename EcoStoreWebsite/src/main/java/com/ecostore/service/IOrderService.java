@@ -9,5 +9,5 @@ public interface IOrderService {
     OrdersModel update(OrdersModel model);
     List<OrdersModel> findAll();
     OrdersModel findOneById(long id);
-    boolean delete(long [] ids);
+    List<OrdersModel> findAllByUserId(long userid);
 }

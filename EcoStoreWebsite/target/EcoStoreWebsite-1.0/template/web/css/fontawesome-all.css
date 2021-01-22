@@ -13,7 +13,7 @@
   font-style: normal;
   font-variant: normal;
   text-rendering: auto;
-  line-height: 1; }
+  line-height: 1}
 
 .fa-lg {
   font-size: 1.33333em;
@@ -164,7 +164,7 @@
 .fa-stack {
   display: inline-block;
   height: 2em;
-  line-height: 2em;
+  line-height: 2.4em;
   position: relative;
   vertical-align: middle;
   width: 2em; }
@@ -2414,7 +2414,8 @@ readers do not read off random characters that represent icons */
   content: "\f091"; }
 
 .fa-truck:before {
-  content: "\f0d1"; }
+  content: "\f0d1";
+}
 
 .fa-tty:before {
   content: "\f1e4"; }

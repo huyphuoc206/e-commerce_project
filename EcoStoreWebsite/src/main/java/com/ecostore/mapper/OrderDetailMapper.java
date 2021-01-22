@@ -6,6 +6,8 @@ import com.ecostore.model.ProductModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDetailMapper implements IRowMapper<OrderDetailsModel> {
     @Override
