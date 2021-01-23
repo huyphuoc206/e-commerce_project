@@ -41,4 +41,11 @@ public class OrderDAO extends AbstractDAO<OrdersModel> implements IOrderDAO {
         String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
         return query(sql, new OrdersMapper(), userid);
     }
+    @Override
+    public OrdersModel findOneByUserId(Long userid) {
+        String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
+        List<OrdersModel> ordersModels = query(sql, new OrdersMapper(), userid);
+        return ordersModels.isEmpty() ? null : ordersModels.get(0);
+    }
+
 }

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/api-web-order")
 public class OrderAPI extends HttpServlet {
@@ -48,4 +49,22 @@ public class OrderAPI extends HttpServlet {
         mapper.writeValue(response.getOutputStream(), ordersModel);
     }
 
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        request.setCharacterEncoding("UTF8");
+        response.setContentType("application/json");
+        UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        OrdersModel order = mapper.readValue(request.getInputStream(), OrdersModel.class);
+        order = orderService.findOneById(order.getId());
+        order.setModifiedBy(userModel.getUsername());
+        order.setStatus(4);
+        order = orderService.update(order);
+        List<OrderDetailsModel> orderDetails = orderDetailService.findAllByOrderId(order.getId());
+        for (OrderDetailsModel item : orderDetails) {
+            orderDetailService.delete(item.getId());
+        }
+        mapper.writeValue(response.getOutputStream(), order);
+
+    }
 }

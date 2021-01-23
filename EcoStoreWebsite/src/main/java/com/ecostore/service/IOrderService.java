@@ -10,4 +10,6 @@ public interface IOrderService {
     List<OrdersModel> findAll();
     OrdersModel findOneById(long id);
     List<OrdersModel> findAllByUserId(long userid);
+    OrdersModel findOneByUserId(long userid);
+
 }

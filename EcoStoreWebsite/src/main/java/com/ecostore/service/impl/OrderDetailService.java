@@ -22,5 +22,10 @@ public class OrderDetailService implements IOrderDetailService {
         return orderDetailDAO.findAllByOrderId(orderId);
     }
 
+    @Override
+    public boolean delete(long id) {
+        return orderDetailDAO.delete(id);
+    }
+
 
 }

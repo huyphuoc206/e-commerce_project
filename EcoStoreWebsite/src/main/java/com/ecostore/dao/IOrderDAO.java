@@ -13,5 +13,9 @@ public interface IOrderDAO {
 
     List<OrdersModel> findAll();
 
+    OrdersModel findOneByUserId(Long userid);
+
     List<OrdersModel> findAllByUserId(long userid);
+
+
 }
