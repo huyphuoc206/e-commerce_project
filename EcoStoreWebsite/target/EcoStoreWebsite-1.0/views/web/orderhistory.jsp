@@ -49,14 +49,14 @@
                 <c:forEach var="item" items="${orders}">
                     <tr>
                         <th scope="row" class="text-center">${item.id}</th>
-                        <td class="text-center">${item.createdDate}</td>
-                        <td class="text-center">${item.totalPrice}</td>
+                        <td class="text-center date">${item.createdDate}</td>
+                        <td class="text-center text-muted">${item.totalPrice}</td>
                         <c:if test="${item.status == 0}">
-                            <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ
+                            <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ xác nhận
                             </td>
                         </c:if>
                         <c:if test="${item.status == 1}">
-                            <td class="text-center"><span class="status text-primary">&bull;</span>Đã xác nhận
+                            <td class="text-center"><span class="status text-info">&bull;</span>Đã xác nhận
                             </td>
                         </c:if>
                         <c:if test="${item.status == 2}">
@@ -72,7 +72,7 @@
                             </td>
                         </c:if>
                         <td class="text-center">
-                            <a href="<c:url value='/theo-doi-don-hang'/>" class="detail-icon"><i class="fa fa-eye" aria-hidden="true"
+                            <a href="<c:url value='/theo-doi-don-hang?id=${item.id}'/>" class="detail-icon"><i class="fa fa-eye" aria-hidden="true"
                                                                                                  data-toggle="tooltip" title="Xem chi tiết"></i></a>
                         </td>
                     </tr>
@@ -81,7 +81,15 @@
             </table>
         </div>
     </c:if>
+<script>
+    function formatDate(element) {
+        return new Date(element).toLocaleDateString();
+    }
 
+    let arrayDate = document.getElementsByClassName("date");
+    for (let i = 0; i < arrayDate.length; i++)
+        arrayDate[i].innerHTML = formatDate(arrayDate[i].innerHTML)
+</script>
 
     <!-- end order history -->
 </body>

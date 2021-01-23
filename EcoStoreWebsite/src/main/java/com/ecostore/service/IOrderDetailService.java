@@ -7,4 +7,5 @@ import java.util.List;
 public interface IOrderDetailService {
     OrderDetailsModel insert(OrderDetailsModel orderDetailsModel);
     List<OrderDetailsModel> findAllByOrderId(long orderId);
+    boolean delete(long id);
 }

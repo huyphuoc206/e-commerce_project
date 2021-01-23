@@ -80,35 +80,35 @@
                                             <div class="col-12 col-md-9">
                                                 <select name="status" class="form-control">
                                                     <c:if test="${order.status == 0}">
-                                                        <option value="0" selected>Đang chờ</option>
+                                                        <option value="0" selected>Đang chờ xác nhận</option>
                                                         <option value="1">Đã xác nhận</option>
                                                         <option value="2">Đang giao</option>
                                                         <option value="3">Thành công</option>
                                                         <option value="4">Đã hủy</option>
                                                     </c:if>
                                                     <c:if test="${order.status == 1}">
-                                                        <option value="0">Đang chờ/option>
+                                                        <option value="0">Đang chờ xác nhận</option>
                                                         <option value="1"selected>Đã xác nhận</option>
                                                         <option value="2">Đang giao</option>
                                                         <option value="3">Thành công</option>
                                                         <option value="4">Đã hủy</option>
                                                     </c:if>
                                                     <c:if test="${order.status == 2}">
-                                                        <option value="0">Đang chờ/option>
+                                                        <option value="0">Đang chờ xác nhận</option>
                                                         <option value="1">Đã xác nhận</option>
                                                         <option value="2" selected>Đang giao</option>
                                                         <option value="3">Thành công</option>
                                                         <option value="4">Đã hủy</option>
                                                     </c:if>
                                                     <c:if test="${order.status == 3}">
-                                                        <option value="0">Đang chờ/option>
+                                                        <option value="0">Đang chờ xác nhận</option>
                                                         <option value="1">Đã xác nhận</option>
                                                         <option value="2">Đang giao</option>
                                                         <option value="3" selected>Thành công</option>
                                                         <option value="4">Đã hủy</option>
                                                     </c:if>
                                                     <c:if test="${order.status == 4}">
-                                                        <option value="0">Đang chờ/option>
+                                                        <option value="0">Đang chờ xác nhận</option>
                                                         <option value="1">Đã xác nhận</option>
                                                         <option value="2">Đang giao</option>
                                                         <option value="3">Thành công</option>

@@ -8,6 +8,7 @@ import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IOrderDetailService;
 import com.ecostore.service.IOrderService;
 import com.ecostore.service.IProductService;
+import com.ecostore.utils.MessageUtil;
 import com.ecostore.utils.SessionUtil;
 
 import javax.inject.Inject;
@@ -35,37 +36,32 @@ public class OrderController extends HttpServlet {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-            if (user == null)
+        String url = "";
+        if (user == null)
             response.sendRedirect(request.getContextPath() + "/dang-nhap?message=not_login&alert=danger");
         else {
-            List<OrdersModel> orders = orderService.findAllByUserId(user.getId());
-            for (OrdersModel item: orders) {
-                List<OrderDetailsModel> orderDetails = orderDetailService.findAllByOrderId(item.getId());
+            String id = request.getParameter("id");
+            if (id != null){
+                OrdersModel order = orderService.findOneById(Long.parseLong(id));
+                List<OrderDetailsModel> orderDetails = orderDetailService.findAllByOrderId(order.getId());
                 for (OrderDetailsModel orderDetail: orderDetails) {
                     ProductModel product = productService.findOneById(orderDetail.getProductId());
                     orderDetail.setProduct(product);
                 }
-                item.setList(orderDetails);
+                order.setList(orderDetails);
+                request.setAttribute("order", order);
+                url = "views/web/orderdetails.jsp";
+            } else {
+                List<OrdersModel> orders = orderService.findAllByUserId(user.getId());
+                request.setAttribute("orders", orders);
+                url = "views/web/orderhistory.jsp";
 
             }
-            request.setAttribute("orders", orders);
-            RequestDispatcher rd = request.getRequestDispatcher("views/web/orderdetails.jsp");
+            MessageUtil.showMessage(request);
+            RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         }
 
     }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("id");
-        if (id!=null){
-            OrdersModel order = orderService.findOneById(Long.parseLong(id));
-            UserModel userModel = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-            order.setModifiedBy(userModel.getUsername());
-            order.setStatus(4);
-            orderService.update(order);
-            response.sendRedirect(request.getContextPath() + "/theo-doi-don-hang");
-        }
-
-    }
 }

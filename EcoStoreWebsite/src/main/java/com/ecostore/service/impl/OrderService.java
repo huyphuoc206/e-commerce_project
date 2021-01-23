@@ -44,6 +44,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public OrdersModel findOneByUserId(long userid) {
+        return orderDAO.findOneByUserId(userid);
+    }
+
+    @Override
     public List<OrdersModel> findAllByUserId(long userid) {
         return orderDAO.findAllByUserId(userid);
     }

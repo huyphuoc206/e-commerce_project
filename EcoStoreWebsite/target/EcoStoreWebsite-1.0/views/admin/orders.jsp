@@ -64,11 +64,11 @@
                                     <td>${item.message}</td>
                                     <td class="text-center item_price">${item.totalPrice}</td>
                                     <c:if test="${item.status == 0}">
-                                        <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ
+                                        <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ xác nhận
                                         </td>
                                     </c:if>
                                     <c:if test="${item.status == 1}">
-                                        <td class="text-center"><span class="status text-primary">&bull;</span>Đã xác nhận
+                                        <td class="text-center"><span class="status text-info">&bull;</span>Đã xác nhận
                                         </td>
                                     </c:if>
                                     <c:if test="${item.status == 2}">
