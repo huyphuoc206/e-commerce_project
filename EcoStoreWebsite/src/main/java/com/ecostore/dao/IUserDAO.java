@@ -10,6 +10,8 @@ public interface IUserDAO {
 
     UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status);
 
+    UserModel findOneByEmailAndPasswordAndStatus(String email, String password, int status);
+
     Long insert(UserModel user);
 
     boolean update(UserModel user);

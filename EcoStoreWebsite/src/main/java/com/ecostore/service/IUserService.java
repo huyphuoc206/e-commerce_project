@@ -8,7 +8,7 @@ public interface IUserService {
 
     List<UserModel> findAllUsers();
 
-    UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status);
+    UserModel checkLogin(String usernameOrEmail, String password, int status);
 
     UserModel findOneById(Long id);
 

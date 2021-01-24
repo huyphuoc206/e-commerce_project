@@ -22,11 +22,12 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public UserModel findOneByUsernameAndPasswordAndStatus(String username, String password, int status) {
+    public UserModel checkLogin(String usernameOrEmail, String password, int status) {
         password = MD5Hashing.hash(password);
-        UserModel user = userDAO.findOneByUsernameAndPasswordAndStatus(username, password, status);
+        UserModel user = userDAO.findOneByUsernameAndPasswordAndStatus(usernameOrEmail, password, status);
         if (user != null)
-            if (!user.getUsername().equals(username)) return null;
+            return user;
+        user = userDAO.findOneByEmailAndPasswordAndStatus(usernameOrEmail, password, status);
         return user;
     }
 

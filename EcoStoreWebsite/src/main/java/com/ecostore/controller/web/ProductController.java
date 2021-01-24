@@ -1,5 +1,6 @@
 package com.ecostore.controller.web;
 
+import com.ecostore.constant.SystemConstant;
 import com.ecostore.model.ProductModel;
 import com.ecostore.model.SupplierModel;
 import com.ecostore.paging.IPageble;
@@ -36,7 +37,7 @@ public class ProductController extends HttpServlet {
         ProductModel model = FormUtil.toModel(ProductModel.class, request);
         String code = request.getParameter("code");
         if (code != null) {
-            IPageble pageble = new PageRequest(model.getPage(), 15, new Sorter(model.getSortName(), model.getSortBy()));
+            IPageble pageble = new PageRequest(model.getPage(), SystemConstant.LIMIT_ITEMS, new Sorter(model.getSortName(), model.getSortBy()));
             List<ProductModel> products = productService.findAllByCategoryCode(code, pageble);
             List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
             model.setList(products);

@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UserModel model = userService.findOneByUsernameAndPasswordAndStatus(username, password, 1);
+        UserModel model = userService.checkLogin(username, password, 1);
         if (model != null) {
             SessionUtil.getInstance().putValue(request, "USERMODEL", model);
             if (model.getRole().getCode().equalsIgnoreCase(SystemConstant.ADMIN))

@@ -22,6 +22,13 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     }
 
     @Override
+    public UserModel findOneByEmailAndPasswordAndStatus(String email, String password, int status) {
+        String sql = "SELECT * FROM user JOIN role ON user.roleid = role.id WHERE email = ? AND password = ? AND status = ?";
+        List<UserModel> users = query(sql, new UserMapper(), email, password, status);
+        return users.isEmpty() ? null : users.get(0);
+    }
+
+    @Override
     public Long insert(UserModel user) {
         String sql = "INSERT INTO user (fullname, username, password, email, phone, roleid, status, createddate, createdby) VALUES (?,?,?,?,?,?,?,?,?)";
         return insert(sql, user.getFullname(), user.getUsername(), user.getPassword(), user.getEmail(), user.getPhone(), user.getRoleId(), user.getStatus(), user.getCreatedDate(), user.getCreatedBy());
