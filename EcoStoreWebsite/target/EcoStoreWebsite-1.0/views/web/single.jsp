@@ -339,7 +339,7 @@
 <!-- End comment -->
 <script>
     function formatDate(element) {
-        return new Date(element).toLocaleString();
+        return new Date(element).toLocaleString('vi-VN','UTC+7');;
     }
 
     let arrayDate = document.getElementsByClassName("date");
@@ -355,7 +355,7 @@
             '" class="img-circle"><div class="media-body ml-3"><strong class="text-success mr-2">',
             data.user.fullname,
             '</strong><span class="text-muted pull-right"><small class="text-muted">',
-            new Date(data.createdDate).toLocaleString(),
+            formatDate(data.createdDate),
             '</small></span><p>',
             data.content,
             '</p></div></li>'
