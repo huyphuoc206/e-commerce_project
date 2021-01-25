@@ -127,7 +127,7 @@
                                         <div class="aside"><img src="<c:url value='${itemdetail.product.images.get(0)}'/>" class="td-img"></div>
                                         <figcaption class="info align-self-center">
                                             <a href="<c:url value='/chi-tiet-san-pham?id=${itemdetail.product.id}'/>"><p class="title">${itemdetail.product.name}</p></a>
-                                            <span class="text-muted">${itemdetail.product.price}</span>
+                                            <span class="text-muted item_price">${itemdetail.unitPrice}</span>
                                             <p class="quantity">Số lượng: <span>${itemdetail.quantity}</span></p>
                                         </figcaption>
                                     </figure>

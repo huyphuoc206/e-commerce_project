@@ -73,10 +73,6 @@
         }).format(element);
     }
 
-    let arrayprice1 = document.getElementsByClassName("text-muted");
-    for (let i = 0; i < arrayprice1.length; i++)
-        arrayprice1[i].innerHTML = formatVND(arrayprice1[i].innerHTML)
-
     let arrayprice = document.getElementsByClassName("item_price");
     for (let i = 0; i < arrayprice.length; i++)
         arrayprice[i].innerHTML = formatVND(arrayprice[i].innerHTML)
