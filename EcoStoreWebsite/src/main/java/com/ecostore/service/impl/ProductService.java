@@ -35,8 +35,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public int getTotalItems(String code) {
-        return productDAO.getTotalItems(code);
+    public int getTotalItemsByCategoryCode(String code) {
+        return productDAO.getTotalItemsByCategoryCode(code);
+    }
+
+    @Override
+    public int getTotalItemsByKeyword(String keyword) {
+        return productDAO.getTotalItemsByKeyword(keyword);
     }
 
     @Override
@@ -44,5 +49,20 @@ public class ProductService implements IProductService {
         List<ProductModel> products = productDAO.findAllByCategoryId(categoryId);
         Collections.shuffle(products);
         return products;
+    }
+
+    @Override
+    public List<ProductModel> findAllByKeyWord(String keyword, IPageble pageble) {
+        return productDAO.findAllByKeyWord(keyword, pageble);
+    }
+
+    @Override
+    public List<ProductModel> findAllByCategoryAndSupplierCode(String category, String supplier, IPageble pageble) {
+        return productDAO.findAllByCategoryAndSupplierCode(category, supplier, pageble);
+    }
+
+    @Override
+    public int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode) {
+        return productDAO.getTotalItemsByCategoryAndSupplierCode(categoryCode, supplierCode);
     }
 }

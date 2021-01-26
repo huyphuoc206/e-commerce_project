@@ -37,11 +37,20 @@ public class ProductController extends HttpServlet {
         ProductModel model = FormUtil.toModel(ProductModel.class, request);
         String code = request.getParameter("code");
         if (code != null) {
+            if(request.getParameter("page") == null) model.setPage(1);
             IPageble pageble = new PageRequest(model.getPage(), SystemConstant.LIMIT_ITEMS, new Sorter(model.getSortName(), model.getSortBy()));
-            List<ProductModel> products = productService.findAllByCategoryCode(code, pageble);
+            String supplier = request.getParameter("supplier");
+            List<ProductModel> products;
+            if (supplier != null) {
+                products = productService.findAllByCategoryAndSupplierCode(code, supplier, pageble);
+                model.setTotalItems(productService.getTotalItemsByCategoryAndSupplierCode(code, supplier));
+                request.setAttribute("supplierCode", supplier);
+            } else {
+                products = productService.findAllByCategoryCode(code, pageble);
+                model.setTotalItems(productService.getTotalItemsByCategoryCode(code));
+            }
             List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
             model.setList(products);
-            model.setTotalItems(productService.getTotalItems(code));
             model.setTotalPage((int) Math.ceil(model.getTotalItems() * 1.0 / pageble.getLimit()));
 
             request.setAttribute("model", model);

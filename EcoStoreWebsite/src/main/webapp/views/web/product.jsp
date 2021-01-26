@@ -34,27 +34,43 @@
         <!-- //tittle heading -->
         <div class="row">
             <!-- product left -->
-
             <div class="agileinfo-ads-display col-lg-9">
-
                 <div class="wrapper">
                     <!-- first section -->
                     <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
                         <div class="row ml-3">
                             <span class="card-title">Ưu tiên xem:</span>
                             <ul class="list-inline ml-3">
-                                <li class="list-inline-item"><a class="text-uppercase priority"
-                                                                href="<c:url value='/san-pham?code=${code}&page=1&sortName=createddate&sortBy=desc'/>">Hàng
-                                    mới</a></li>
-                                <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=discount&sortBy=desc'/>">Giảm
-                                    giá nhiều</a></li>
-                                <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=asc'/>">Giá
-                                    thấp</a></li>
-                                <li class="list-inline-item priority"><a class="text-uppercase priority"
-                                                                         href="<c:url value='/san-pham?code=${code}&page=1&sortName=price&sortBy=desc'/>">Giá
-                                    cao</a></li>
+                                <c:if test="${empty supplierCode}">
+                                    <li class="list-inline-item"><a class="text-uppercase priority"
+                                                                    href="<c:url value='/san-pham?code=${code}&sortName=createddate&sortBy=desc'/>">Hàng
+                                        mới</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&sortName=discount&sortBy=desc'/>">Giảm
+                                        giá nhiều</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&sortName=price&sortBy=asc'/>">Giá
+                                        thấp</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&sortName=price&sortBy=desc'/>">Giá
+                                        cao</a></li>
+                                </c:if>
+
+                                <c:if test="${not empty supplierCode}">
+                                    <li class="list-inline-item"><a class="text-uppercase priority"
+                                                                    href="<c:url value='/san-pham?code=${code}&supplier=${supplierCode}&sortName=createddate&sortBy=desc'/>">Hàng
+                                        mới</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&supplier=${supplierCode}&sortName=discount&sortBy=desc'/>">Giảm
+                                        giá nhiều</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&supplier=${supplierCode}&sortName=price&sortBy=asc'/>">Giá
+                                        thấp</a></li>
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                                                             href="<c:url value='/san-pham?code=${code}&supplier=${supplierCode}&sortName=price&sortBy=desc'/>">Giá
+                                        cao</a></li>
+                                </c:if>
+
                             </ul>
                         </div>
                         <hr>
@@ -107,36 +123,46 @@
                             <div class="row justify-content-center">
                                 <ul class="pagination" id="pagination"></ul>
                             </div>
-                            <input type="hidden" value="" id="page" name="page"/>
+                            <input type="hidden" value="${code}" name="code"/>
+                            <c:if test="${not empty supplierCode}">
+                                <input type="hidden" value="${supplierCode}" name="supplier"/>
+                            </c:if>
                             <c:if test="${not empty model.sortName}">
                                 <input type="hidden" value="${model.sortName}" id="sortName" name="sortName"/>
                                 <input type="hidden" value="${model.sortBy}" id="sortBy" name="sortBy"/>
                             </c:if>
-                            <input type="hidden" value="${code}" id="code" name="code"/>
+                            <input type="hidden" id="page" name="page"/>
                         </form>
                     </div>
                     <!-- //fourth section -->
                 </div>
 
             </div>
-
             <!-- //product left -->
+
             <!-- product right -->
             <div class="col-lg-3 mt-lg-0 mt-4 p-lg-0">
                 <div class="side-bar p-sm-4 p-3">
                     <!-- filter -->
                     <div class="left-side border-bottom pb-3 mb-3">
-                        <form action="#" method="POST">
                             <h3 class="agileits-sear-head mb-3">Hãng</h3>
                             <ul class="row">
                                 <c:forEach var="item" items="${suppliers}">
                                     <li class="col-6">
-                                        <input type="checkbox" class="checked" id="checkbox_${item.id}"
-                                               value=${item.id}>
-                                        <label for="checkbox_${item.id}">${item.name}</label>
+                                        <form action="<c:url value='/san-pham'/>">
+                                            <input type="hidden" value="${code}" name="code"/>
+                                            <c:if test="${item.code == supplierCode}">
+                                                <input type="radio" checked id="radio_${item.id}" name="supplier" value="${item.code}">
+                                            </c:if>
+                                            <c:if test="${item.code != supplierCode}">
+                                                <input type="radio" id="radio_${item.id}" name="supplier" value="${item.code}">
+                                            </c:if>
+                                            <label for="radio_${item.id}">${item.name}</label>
+                                        </form>
                                     </li>
                                 </c:forEach>
                             </ul>
+                        <form action="#" method="POST">
                             <h3 class="agileits-sear-head mb-3 mt-3">Khoảng giá</h3>
                             <div class="row">
                                 <input type="number" id="price1" class="form-control mb-2 rounded"
@@ -156,22 +182,22 @@
                         <div class="w3l-range">
                             <ul>
                                 <li>
-                                    <a href="#">Dưới 1.000.000đ</a>
+                                    <a href="#">Dưới 5.000.000đ</a>
                                 </li>
-                                <li class="my-1">
-                                    <a href="#">1.000.000đ - 5.000.000đ</a>
-                                </li>
-                                <li>
+                                <li class="my-3">
                                     <a href="#">5.000.000đ - 10.000.000đ</a>
                                 </li>
-                                <li class="my-1">
-                                    <a href="#">10.000.000đ - 15.000.000đ</a>
+                                <li>
+                                    <a href="#">10.000.000đ - 20.000.000đ</a>
+                                </li>
+                                <li class="my-3">
+                                    <a href="#">20.000.000đ - 40.000.000đ</a>
                                 </li>
                                 <li>
-                                    <a href="#">15.000.000đ - 20.000.000đ</a>
+                                    <a href="#">40.000.000đ - 80.000.000đ</a>
                                 </li>
-                                <li class="mt-1">
-                                    <a href="#">Trên 20.000.000đ</a>
+                                <li class="mt-3">
+                                    <a href="#">Trên 80.000.000đ</a>
                                 </li>
                             </ul>
                         </div>
@@ -237,6 +263,10 @@
                 }
             }
         });
+    });
+
+    $('input[type=radio]').on('change', function() {
+        $(this).closest("form").submit();
     });
 </script>
 </body>

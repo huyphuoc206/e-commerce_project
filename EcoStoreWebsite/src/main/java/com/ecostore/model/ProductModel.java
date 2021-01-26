@@ -9,7 +9,7 @@ public class ProductModel extends AbstractModel {
     private String description;
     private int status;
     private CategoryModel category;
-    private SupplierModel supplier;
+    private SupplierModel supplierModel;
     private long categoryId;
     private long supplierId;
     private List<String> images;
@@ -89,12 +89,12 @@ public class ProductModel extends AbstractModel {
         this.category = category;
     }
 
-    public SupplierModel getSupplier() {
-        return supplier;
+    public SupplierModel getSupplierModel() {
+        return supplierModel;
     }
 
-    public void setSupplier(SupplierModel supplier) {
-        this.supplier = supplier;
+    public void setSupplierModel(SupplierModel supplier) {
+        this.supplierModel = supplier;
     }
 
 }
