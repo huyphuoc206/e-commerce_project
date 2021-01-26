@@ -79,11 +79,11 @@
                 <div class="row">
                     <!-- search -->
                     <div class="col-10 agileits_search">
-                        <form class="form-inline" action="#" method="post">
+                        <form class="form-inline" action="tim-kiem">
                             <input class="form-control mr-sm-0" type="search" placeholder="Tìm kiếm"
                                    aria-label="Search" required
                                    oninvalid="this.setCustomValidity('Vui lòng nhập từ khóa bạn muốn tìm kiếm.')"
-                                   oninput="this.setCustomValidity('')">
+                                   oninput="this.setCustomValidity('')" name="keyword">
                             <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>

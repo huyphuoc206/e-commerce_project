@@ -14,7 +14,15 @@ public interface IProductService {
 
     ProductModel findOneById(long id);
 
-    int getTotalItems(String code);
+    int getTotalItemsByCategoryCode(String code);
+
+    int getTotalItemsByKeyword(String keyword);
 
     List<ProductModel> findAllByCategoryId(long categoryId);
+
+    List<ProductModel> findAllByKeyWord(String keyword, IPageble pageble);
+
+    List<ProductModel> findAllByCategoryAndSupplierCode(String category, String supplier, IPageble pageble);
+
+    int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode);
 }
