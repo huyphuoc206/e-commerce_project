@@ -3,6 +3,7 @@ package com.ecostore.service.impl;
 import com.ecostore.dao.IOrderDAO;
 import com.ecostore.dao.IOrderDetailDAO;
 import com.ecostore.model.OrdersModel;
+import com.ecostore.paging.IPageble;
 import com.ecostore.service.IOrderDetailService;
 import com.ecostore.service.IOrderService;
 
@@ -49,8 +50,13 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<OrdersModel> findAllByUserId(long userid) {
-        return orderDAO.findAllByUserId(userid);
+    public int getTotalItems(Long userid) {
+        return orderDAO.getTotalItems(userid);
+    }
+
+    @Override
+    public List<OrdersModel> findAllByUserId(long userid, IPageble pageble) {
+        return orderDAO.findAllByUserId(userid, pageble);
     }
 
 

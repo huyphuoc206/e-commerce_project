@@ -1,6 +1,7 @@
 package com.ecostore.dao;
 
 import com.ecostore.model.OrdersModel;
+import com.ecostore.paging.IPageble;
 
 import java.util.List;
 
@@ -15,7 +16,8 @@ public interface IOrderDAO {
 
     OrdersModel findOneByUserId(Long userid);
 
-    List<OrdersModel> findAllByUserId(long userid);
+    List<OrdersModel> findAllByUserId(long userid, IPageble pageble);
 
+    int getTotalItems(Long userid);
 
 }

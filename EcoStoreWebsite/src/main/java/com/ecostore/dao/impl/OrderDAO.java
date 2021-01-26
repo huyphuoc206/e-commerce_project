@@ -3,6 +3,7 @@ package com.ecostore.dao.impl;
 import com.ecostore.dao.IOrderDAO;
 import com.ecostore.mapper.OrdersMapper;
 import com.ecostore.model.OrdersModel;
+import com.ecostore.paging.IPageble;
 
 import java.util.List;
 
@@ -37,15 +38,26 @@ public class OrderDAO extends AbstractDAO<OrdersModel> implements IOrderDAO {
     }
 
     @Override
-    public List<OrdersModel> findAllByUserId(long userid) {
-        String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
-        return query(sql, new OrdersMapper(), userid);
+    public List<OrdersModel> findAllByUserId(long userid, IPageble pageble) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ? ORDER BY orders.createddate desc");
+        if (pageble.getOffset() != null && pageble.getLimit() != null) {
+            sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
+        }
+        return query(sql.toString(), new OrdersMapper(), userid);
     }
+    @Override
+    public int getTotalItems(Long userid) {
+        String sql = "SELECT COUNT(*) FROM orders JOIN payment on orders.paymentid = payment.id WHERE orders.userid = ?";
+        return count(sql,userid);
+    }
+
     @Override
     public OrdersModel findOneByUserId(Long userid) {
         String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
         List<OrdersModel> ordersModels = query(sql, new OrdersMapper(), userid);
         return ordersModels.isEmpty() ? null : ordersModels.get(0);
     }
+
 
 }

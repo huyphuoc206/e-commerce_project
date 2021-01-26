@@ -339,7 +339,7 @@
 <!-- End comment -->
 <script>
     function formatDate(element) {
-        return new Date(element).toLocaleString('vi-VN','UTC+7');;
+        return new Date(element).toLocaleString('vi-VN','UTC+7');
     }
 
     let arrayDate = document.getElementsByClassName("date");

@@ -25,21 +25,16 @@
     <div class="container product-sec1 px-sm-4 px-3 py-sm-5 py-3 mb-4 mt-5">
         <article class="card">
             <header class="card-header"> Đơn hàng của tôi / Theo dõi </header>
-            <c:choose>
-                <c:when test="${order.status == 4}">
+
                     <c:if test="${not empty message}">
                         <div class="text-center alert alert-${alert} mr-auto ml-auto mt-5" style="width: 50%">${message}</div>
                     </c:if>
-                    <c:if test="${empty message}">
-                        <div class="text-center alert alert-warning mr-auto ml-auto mt-5" style="width: 50%">Đơn hàng của bạn đã hủy!</div>
-                    </c:if>
 
-                    <div class="row justify-content-center mb-4">
-                        <a class="btn btn-info pt-1 pb-1 pr-4 pl-4" href="<c:url value="/trang-chu"/>">Tiếp tục mua sắm</a>
-                    </div>
-                </c:when>
+<%--                    <div class="row justify-content-center mb-4">--%>
+<%--                        <a class="btn btn-info pt-1 pb-1 pr-4 pl-4" href="<c:url value="/trang-chu"/>">Tiếp tục mua sắm</a>--%>
+<%--                    </div>--%>
 
-                <c:otherwise>
+
                 <div class="card-body">
                 <h6><strong>Mã đơn hàng: </strong><span>${order.id}</span></h6>
                 <article class="card mt-3">
@@ -59,6 +54,9 @@
                             </c:when>
                             <c:when test="${order.status == 3}">
                                 <div class="col"> <strong>Trạng thái:</strong> <br> Thành công </div>
+                            </c:when>
+                            <c:when test="${order.status == 4}">
+                                <div class="col"> <strong>Trạng thái:</strong> <br> Đã hủy </div>
                             </c:when>
                         </c:choose>
                         <div class="col"> <strong>Dự kiến nhận vào:</strong> <br><span class="date">${order.createdDate}</span> </div>
@@ -117,10 +115,19 @@
                         </div>
                         <hr>
                     </c:when>
-                    </c:choose>
+                    <c:when test="${order.status == 4}">
+                            <div class="track">
+                                <div class="step active"> <span class="icon"> <i class="fa fa-clock fa-stack"></i> </span> <span
+                                        class="text">Đơn hàng đã đặt</span> </div>
+                                <div class="step active"></div>
+                                <div class="step active"></div>
+                                <div class="step active"> <span class="icon"> <i class="fa fa-times fa-stack"></i> </span> <span class="text">Đã hủy</span> </div>
+                            </div>
+                            <hr>
+                    </c:when>
+                </c:choose>
 
                 <ul class="row">
-                        <c:if test="${order.status < 4}">
                             <c:forEach var="itemdetail" items="${order.list}">
                                 <li class="col-md-4">
                                     <figure class="itemside mb-3">
@@ -133,7 +140,6 @@
                                     </figure>
                                 </li>
                             </c:forEach>
-                        </c:if>
                     </ul>
                 <hr>
                 <c:if test="${order.status == 4}">
@@ -143,10 +149,8 @@
                         </div>
                         <hr>
                 </c:if>
-                <c:if test="${order.status < 4}">
-                    <div class="col"> <strong>Tổng tiền: </strong><span class="text-muted">${order.totalPrice}</span> </div>
-                    <hr>
-                </c:if>
+                <div class="col"> <strong>Tổng tiền: </strong><span class="text-muted item_price">${order.totalPrice}</span> </div>
+                <hr>
                 <c:if test="${order.status == 0}">
                         <div class="row justify-content-between">
                             <a href="#updateOrder" class="btn btn-danger pr-5 pl-5 m-3" data-toggle="modal"><i
@@ -179,23 +183,17 @@
 
                 <div class="card-body">
                     <div class="row justify-content-between">
-                        <a href="<c:url value='/lich-su-mua-hang'/>" class="btn btn-warning m-3" data-abc="true"> <i
+                        <a href="<c:url value='/theo-doi-don-hang?page=1'/>" class="btn btn-warning m-3" data-abc="true"> <i
                                 class="fa fa-chevron-left"></i> Quay lại lịch sử đơn hàng</a>
                     </div>
                 </div>
-                </c:otherwise>
-            </c:choose>
         </article>
 
     </div>
 <script>
     function formatDate(element) {
-        let d = new Date(element)
-        // cong them 5 ngay
-        // 5*86400000 = 432000000
-        let dayEnd = d.valueOf() + 432000000;
-        var date = new Date(dayEnd);
-        return date.toLocaleDateString();
+        let date = new Date(element);
+        return date.toLocaleDateString('vi-VN','UTC+7');
     }
 
     let arrayDate = document.getElementsByClassName("date");

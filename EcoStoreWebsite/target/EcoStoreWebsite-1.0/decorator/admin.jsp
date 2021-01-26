@@ -84,6 +84,15 @@
             arrayprice[i].innerHTML = formatVND(arrayprice[i].innerHTML)
 
     </script>
+    <script>
+        function formatDate(element) {
+            return new Date(element).toLocaleString('vi-VN','UTC+7');
+        }
+
+        let arrayDate = document.getElementsByClassName("date");
+        for (let i = 0; i < arrayDate.length; i++)
+            arrayDate[i].innerHTML = formatDate(arrayDate[i].innerHTML)
+    </script>
     <!-- Right Panel -->
     <script src="<c:url value='/template/admin/vendors/datatables.net/js/jquery.dataTables.min.js'/>"></script>
     <script src="<c:url value='/template/admin/vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js'/>"></script>

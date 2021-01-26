@@ -20,7 +20,7 @@
         </div>
     </div>
 <!-- Order history -->
-    <c:if test="${empty orders || orders.size() == 0 }">
+    <c:if test="${empty model.list || model.list.size() == 0 }">
         <c:if test="${not empty message}">
             <div class="text-center alert alert-${alert} mr-auto ml-auto mt-5" style="width: 50%">${message}</div>
         </c:if>
@@ -32,7 +32,7 @@
             <a class="btn btn-info pt-1 pb-1 pr-4 pl-4" href="<c:url value="/trang-chu"/>">Tiếp tục mua sắm</a>
         </div>
     </c:if>
-    <c:if test="${orders.size() > 0 }">
+    <c:if test="${model.list.size() > 0 }">
         <div class="container product-sec1 px-sm-4 px-3 py-sm-5 py-3 mb-4 mt-5">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -46,11 +46,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="item" items="${orders}">
+                <c:forEach var="item" items="${model.list}">
                     <tr>
                         <th scope="row" class="text-center">${item.id}</th>
                         <td class="text-center date">${item.createdDate}</td>
-                        <td class="text-center text-muted">${item.totalPrice}</td>
+                        <td class="text-center text-muted item_price">${item.totalPrice}</td>
                         <c:if test="${item.status == 0}">
                             <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ xác nhận
                             </td>
@@ -79,16 +79,45 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <form action="<c:url value='/theo-doi-don-hang'/>" id="formSubmit">
+                <div class="row justify-content-center">
+                    <ul class="pagination" id="pagination"></ul>
+                </div>
+                <input type="hidden" value="" id="page" name="page"/>
+<%--                <input type="hidden" value="${code}" id="code" name="code"/>--%>
+            </form>
         </div>
     </c:if>
 <script>
     function formatDate(element) {
-        return new Date(element).toLocaleDateString();
+        let d = new Date(element)
+        // cong them 5 ngay
+        // 5*86400000 = 432000000
+        let dayEnd = d.valueOf() + 432000000;
+        var date = new Date(dayEnd);
+        return date.toLocaleDateString('vi-VN','UTC+7');
     }
 
     let arrayDate = document.getElementsByClassName("date");
     for (let i = 0; i < arrayDate.length; i++)
         arrayDate[i].innerHTML = formatDate(arrayDate[i].innerHTML)
+
+
+    let totalPages = ${model.totalPage};
+    let currentPage = ${model.page};
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 5,
+            startPage: currentPage,
+            onPageClick: function (event, page) {
+                if (page != currentPage) {
+                    $('#page').val(page);
+                    $('#formSubmit').submit();
+                }
+            }
+        });
+    });
 </script>
 
     <!-- end order history -->

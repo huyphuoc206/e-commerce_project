@@ -36,7 +36,7 @@
                                     <a class="nav-link text-dark" href="<c:url value='/chinh-sua-thong-tin'/>"><i
                                             class="fa fa-user"></i> Thông tin cá nhân</a>
 
-                                    <a class="nav-link text-dark" href="<c:url value="/theo-doi-don-hang"/>"><i class="fa fa-table"
+                                    <a class="nav-link text-dark" href="<c:url value="/theo-doi-don-hang?page=1"/>"><i class="fa fa-table"
                                                                               aria-hidden="true"></i>
                                         Theo dõi đơn hàng</a>
 

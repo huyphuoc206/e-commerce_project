@@ -1,13 +1,18 @@
 package com.ecostore.controller.web;
 
+import com.ecostore.constant.SystemConstant;
 import com.ecostore.model.OrderDetailsModel;
 import com.ecostore.model.OrdersModel;
 import com.ecostore.model.ProductModel;
 import com.ecostore.model.UserModel;
+import com.ecostore.paging.IPageble;
+import com.ecostore.paging.PageRequest;
 import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IOrderDetailService;
 import com.ecostore.service.IOrderService;
 import com.ecostore.service.IProductService;
+import com.ecostore.sort.Sorter;
+import com.ecostore.utils.FormUtil;
 import com.ecostore.utils.MessageUtil;
 import com.ecostore.utils.SessionUtil;
 
@@ -35,6 +40,7 @@ public class OrderController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
+        OrdersModel model = FormUtil.toModel(OrdersModel.class, request);
         UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
         String url = "";
         if (user == null)
@@ -52,8 +58,12 @@ public class OrderController extends HttpServlet {
                 request.setAttribute("order", order);
                 url = "views/web/orderdetails.jsp";
             } else {
-                List<OrdersModel> orders = orderService.findAllByUserId(user.getId());
-                request.setAttribute("orders", orders);
+                IPageble pageble = new PageRequest(model.getPage(), SystemConstant.LIMIT_ORDERS, null);
+                List<OrdersModel> orders = orderService.findAllByUserId(user.getId(), pageble);
+                model.setList(orders);
+                model.setTotalItems(orderService.getTotalItems(user.getId()));
+                model.setTotalPage((int) Math.ceil(model.getTotalItems() * 1.0 / pageble.getLimit()));
+                request.setAttribute("model", model);
                 url = "views/web/orderhistory.jsp";
 
             }
