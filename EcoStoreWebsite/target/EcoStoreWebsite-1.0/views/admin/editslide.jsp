@@ -37,10 +37,9 @@
                                 <div class="col col-md-3"><label
                                         class=" form-control-label">Hình ảnh</label></div>
                                 <div class="col-12 col-md-9"><div class="custom-input-file">
-                                    <label class="uploadPhoto">
-                                        Chọn
-                                        <input type="file" class="change-avatar" name="imageLink" id="">
-                                    </label>
+                                    <input type="file"
+                                           id="imageLink" name="imageLink"
+                                           accept="image/png, image/jpeg" value="${slide.imageLink}">
                                 </div></div>
                             </div>
                             <div class="row form-group">
@@ -90,7 +89,19 @@
         $.each(formData, function (i, v) {
             data['' + v.name] = v.value
         });
-        updateSlide(data);
+
+        data['uploadFile'] = {}
+        var files = $('#imageLink')[0].files[0];
+        if(files != undefined) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                data['uploadFile']['base64'] = e.target.result;
+                data['uploadFile']['name'] = files.name;
+                updateSlide(data);
+            };
+            reader.readAsDataURL(files);
+        } else
+            updateSlide(data);
     })
 
     function updateSlide(data) {

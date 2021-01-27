@@ -6,6 +6,15 @@ public class SlideModel extends AbstractModel {
     private String imageLink;
     private int displayorder;
     private int status;
+    private UploadFileModel uploadFile;
+
+    public UploadFileModel getUploadFile() {
+        return uploadFile;
+    }
+
+    public void setUploadFile(UploadFileModel uploadFile) {
+        this.uploadFile = uploadFile;
+    }
 
     public SlideModel() {
     }

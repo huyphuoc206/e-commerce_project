@@ -106,14 +106,11 @@
                         <input type="text" class="form-control" name="description" required>
                     </div>
                     <div class="row form-group">
-                        <label for="avatar" class="col-sm-3 form-control-label">Hình ảnh</label>
+                        <label for="imageLink" class="col-sm-3 form-control-label">Hình ảnh</label>
                         <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-avatar" name="imageLink" id="avatar">
-                                </label>
-                            </div>
+                            <input type="file"
+                                   id="imageLink" name="imageLink"
+                                   accept="image/png, image/jpeg" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -168,8 +165,18 @@
             $.each(formData, function (i, v) {
                 data['' + v.name] = v.value
             });
-            console.log(data);
-            addSlide(data);
+            data['uploadFile'] = {}
+            var files = $('#imageLink')[0].files[0];
+            if(files != undefined) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    data['uploadFile']['base64'] = e.target.result;
+                    data['uploadFile']['name'] = files.name;
+                    addSlide(data);
+                };
+                reader.readAsDataURL(files);
+            } else
+                addSlide(data);
         }
     })
 

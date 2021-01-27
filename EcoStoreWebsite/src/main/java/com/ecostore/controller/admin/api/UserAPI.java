@@ -32,7 +32,7 @@ public class UserAPI extends HttpServlet {
         response.setContentType("application/json");
         UserModel userModel = mapper.readValue(request.getInputStream(), UserModel.class);
         UserModel userSession = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
-        String avatarPath = "";
+        String avatarPath = SystemConstant.AVATAR_DEFAULT;
         if (userModel.getUploadFile().getBase64() != null) {
             byte[] decodeBase64 = Base64.getDecoder().decode(userModel.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
             String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
@@ -94,12 +94,13 @@ public class UserAPI extends HttpServlet {
             return;
         }
         //update hinh
-        String avatarPath = userOld.getAvatar();
+        String avatarPath = userOld.getAvatar(); //lấy hình cũ nếu không có hình mới
         if (userModel.getUploadFile().getBase64() != null) {
             byte[] decodeBase64 = Base64.getDecoder().decode(userModel.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
             String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
             uploadFile.writeOrUpdate(decodeBase64, path + userModel.getUploadFile().getName());
             avatarPath = SystemConstant.AVATAR_DIR + userModel.getUploadFile().getName();
+            //lấy hình mới
         }
         userModel.setAvatar(avatarPath);
         //update cho những người dùng khác userSession
