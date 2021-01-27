@@ -37,17 +37,45 @@ public class ProductController extends HttpServlet {
         ProductModel model = FormUtil.toModel(ProductModel.class, request);
         String code = request.getParameter("code");
         if (code != null) {
-            if(request.getParameter("page") == null) model.setPage(1);
+            if (request.getParameter("page") == null) model.setPage(1);
             IPageble pageble = new PageRequest(model.getPage(), SystemConstant.LIMIT_ITEMS, new Sorter(model.getSortName(), model.getSortBy()));
             String supplier = request.getParameter("supplier");
+            String price = request.getParameter("price");
+            long[] priceFilter = null;
+            if(price != null) {
+                String[] priceArray = price.split("-");
+                long fromPrice = Long.parseLong(priceArray[0]);
+                long toPrice = Long.MAX_VALUE;
+                if (!priceArray[1].equalsIgnoreCase("max"))
+                    toPrice = Long.parseLong(priceArray[1]);
+                priceFilter = new long[]{fromPrice, toPrice};
+            }
             List<ProductModel> products;
             if (supplier != null) {
-                products = productService.findAllByCategoryAndSupplierCode(code, supplier, pageble);
-                model.setTotalItems(productService.getTotalItemsByCategoryAndSupplierCode(code, supplier));
+                // Loc theo nha cung cap va khong loc theo gia
+                if (price == null) {
+                    products = productService.findAllByCategoryAndSupplierCode(code, supplier, pageble);
+                    model.setTotalItems(productService.getTotalItemsByCategoryAndSupplierCode(code, supplier));
+                }
+                // Loc theo nha cung cap va loc theo gia
+                else {
+                    products = productService.findAllByCategoryAndSupplierCodeAndPrice(code, supplier, priceFilter, pageble);
+                    model.setTotalItems(productService.getTotalItemsByCategoryAndSupplierCodeAndPrice(code, supplier, priceFilter));
+                    request.setAttribute("price", price);
+                    request.setAttribute("priceFilter", priceFilter);
+                }
                 request.setAttribute("supplierCode", supplier);
-            } else {
-                products = productService.findAllByCategoryCode(code, pageble);
-                model.setTotalItems(productService.getTotalItemsByCategoryCode(code));
+            }
+            else {
+                if (price == null) {
+                    products = productService.findAllByCategoryCode(code, pageble);
+                    model.setTotalItems(productService.getTotalItemsByCategoryCode(code));
+                } else {
+                    products = productService.findAllByCategoryCodeAndPrice(code, priceFilter, pageble);
+                    model.setTotalItems(productService.getTotalItemsByCategoryCodeAndPrice(code, priceFilter));
+                    request.setAttribute("price", price);
+                    request.setAttribute("priceFilter", priceFilter);
+                }
             }
             List<SupplierModel> suppliers = supplierService.findAllByCategoryCode(code);
             model.setList(products);

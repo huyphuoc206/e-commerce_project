@@ -25,4 +25,12 @@ public interface IProductService {
     List<ProductModel> findAllByCategoryAndSupplierCode(String category, String supplier, IPageble pageble);
 
     int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode);
+
+    List<ProductModel> findAllByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter, IPageble pageble);
+
+    int getTotalItemsByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter);
+
+    List<ProductModel> findAllByCategoryCodeAndPrice(String code, long[] priceFilter, IPageble pageble);
+
+    int getTotalItemsByCategoryCodeAndPrice(String code, long[] priceFilter);
 }

@@ -27,4 +27,11 @@ public interface IProductDAO {
 
     List<ProductModel> findAllByCategoryAndSupplierCode(String category, String supplier, IPageble pageble);
 
+    List<ProductModel> findAllByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter, IPageble pageble);
+
+    int getTotalItemsByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter);
+
+    List<ProductModel> findAllByCategoryCodeAndPrice(String categoryCode, long[] priceFilter, IPageble pageble);
+
+    int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter);
 }

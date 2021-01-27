@@ -15,11 +15,6 @@ public class ProductService implements IProductService {
     private IProductDAO productDAO;
 
     @Override
-    public List<ProductModel> findAllByCategoryCode(String code, IPageble pageble) {
-        return productDAO.findAllByCategoryCode(code, pageble);
-    }
-
-    @Override
     public List<ProductModel> findAllSortByCreateddate() {
         return productDAO.findAllSortByCreateddate();
     }
@@ -35,8 +30,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public int getTotalItemsByCategoryCode(String code) {
-        return productDAO.getTotalItemsByCategoryCode(code);
+    public List<ProductModel> findAllByCategoryCode(String code, IPageble pageble) {
+        return productDAO.findAllByCategoryCode(code, pageble);
+    }
+
+    @Override
+    public int getTotalItemsByCategoryCode(String categoryCode) {
+        return productDAO.getTotalItemsByCategoryCode(categoryCode);
     }
 
     @Override
@@ -57,12 +57,32 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<ProductModel> findAllByCategoryAndSupplierCode(String category, String supplier, IPageble pageble) {
-        return productDAO.findAllByCategoryAndSupplierCode(category, supplier, pageble);
+    public List<ProductModel> findAllByCategoryAndSupplierCode(String categoryCode, String supplierCode, IPageble pageble) {
+        return productDAO.findAllByCategoryAndSupplierCode(categoryCode, supplierCode, pageble);
     }
 
     @Override
     public int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode) {
         return productDAO.getTotalItemsByCategoryAndSupplierCode(categoryCode, supplierCode);
+    }
+
+    @Override
+    public List<ProductModel> findAllByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter, IPageble pageble) {
+        return productDAO.findAllByCategoryAndSupplierCodeAndPrice(categoryCode, supplierCode, priceFilter, pageble);
+    }
+
+    @Override
+    public int getTotalItemsByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter) {
+        return productDAO.getTotalItemsByCategoryAndSupplierCodeAndPrice(categoryCode, supplierCode, priceFilter);
+    }
+
+    @Override
+    public List<ProductModel> findAllByCategoryCodeAndPrice(String categoryCode, long[] priceFilter, IPageble pageble) {
+        return productDAO.findAllByCategoryCodeAndPrice(categoryCode, priceFilter, pageble);
+    }
+
+    @Override
+    public int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter) {
+        return productDAO.getTotalItemsByCategoryCodeAndPrice(categoryCode, priceFilter);
     }
 }

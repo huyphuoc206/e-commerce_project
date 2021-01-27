@@ -50,7 +50,7 @@
                     <tr>
                         <th scope="row" class="text-center">${item.id}</th>
                         <td class="text-center date">${item.createdDate}</td>
-                        <td class="text-center text-muted item_price">${item.totalPrice}</td>
+                        <td class="text-center item_price">${item.totalPrice}</td>
                         <c:if test="${item.status == 0}">
                             <td class="text-center"><span class="status text-warning">&bull;</span>Đang chờ xác nhận
                             </td>

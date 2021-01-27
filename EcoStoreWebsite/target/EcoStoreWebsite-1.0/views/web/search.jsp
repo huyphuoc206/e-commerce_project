@@ -39,16 +39,16 @@
                             <div class="row ml-3">
                                 <span class="card-title">Ưu tiên xem:</span>
                                 <ul class="list-inline ml-3">
-                                    <li class="list-inline-item"><a class="text-uppercase priority"
+                                    <li class="list-inline-item"><a class="text-uppercase priority sortCreateddate"
                                                                     href="<c:url value='/tim-kiem?keyword=${keyword}&sortName=createddate&sortBy=desc'/>">Hàng
                                         mới</a></li>
-                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority sortDiscount"
                                                                              href="<c:url value='/tim-kiem?keyword=${keyword}&sortName=discount&sortBy=desc'/>">Giảm
                                         giá nhiều</a></li>
-                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority sortPriceA"
                                                                              href="<c:url value='/tim-kiem?keyword=${keyword}&sortName=price&sortBy=asc'/>">Giá
                                         thấp</a></li>
-                                    <li class="list-inline-item priority"><a class="text-uppercase priority"
+                                    <li class="list-inline-item priority"><a class="text-uppercase priority sortPriceD"
                                                                              href="<c:url value='/tim-kiem?keyword=${keyword}&sortName=price&sortBy=desc'/>">Giá
                                         cao</a></li>
                                 </ul>
@@ -119,6 +119,17 @@
 </div>
 <!-- //top products -->
 <script>
+    const sortName = '${model.sortName}';
+    const sortBy = '${model.sortBy}';
+    if(sortName == "createddate") {
+        $(".sortCreateddate").addClass("btn btn-primary")
+    } else if (sortName == "discount")
+        $(".sortDiscount").addClass("btn btn-primary")
+    else if(sortName == "price" && sortBy == "asc")
+        $(".sortPriceA").addClass("btn btn-primary")
+    else if(sortName == "price" && sortBy == "desc")
+        $(".sortPriceD").addClass("btn btn-primary")
+
     let totalPages = ${model.totalPage};
     let currentPage = ${model.page};
     if (!$('#pagination').isEmptyObject()) {

@@ -45,6 +45,40 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
+    public int getTotalItemsByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT COUNT(*) FROM product P JOIN category C ON P.categoryid = C.id JOIN supplier S ON P.supplierid = S.id");
+        sql.append(" WHERE P.status = 1 AND C.code = ? AND S.code = ? AND P.price * (100 - P.discount) / 100 >= ? and P.price * (100 - P.discount) / 100 <= ?");
+        return count(sql.toString(), categoryCode, supplierCode, priceFilter[0], priceFilter[1]);
+    }
+
+    @Override
+    public List<ProductModel> findAllByCategoryCodeAndPrice(String categoryCode, long[] priceFilter, IPageble pageble) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT P.*, I.imagelink, category.name AS cname FROM");
+        sql.append(" product P join productgallery I on P.id = I.productid join category on P.categoryid = category.id");
+        sql.append(" WHERE P.status = 1 and category.code = ? and P.price * (100 - P.discount) / 100 >= ? and P.price * (100 - P.discount) / 100 <= ?");
+
+        if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName()) && StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
+            sql.append(" GROUP BY P.id");
+            sql.append(" ORDER BY " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+            sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
+        } else if (pageble.getOffset() != null && pageble.getLimit() != null) {
+            sql.append(" GROUP BY P.id");
+            sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
+        }
+        return query(sql.toString(), new ProductMapper(), categoryCode, priceFilter[0], priceFilter[1]);
+    }
+
+    @Override
+    public int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT COUNT(*) FROM product P JOIN category C ON P.categoryid = C.id");
+        sql.append(" WHERE P.status = 1 AND C.code = ? AND P.price * (100 - P.discount) / 100 >= ? and P.price * (100 - P.discount) / 100 <= ?");
+        return count(sql.toString(), categoryCode, priceFilter[0], priceFilter[1]);
+    }
+
+    @Override
     public int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode) {
         String sql = "SELECT COUNT(*) FROM product JOIN category ON product.categoryid = category.id JOIN supplier ON product.supplierid = supplier.id WHERE category.code = ? AND supplier.code = ? AND product.status = 1";
         return count(sql, categoryCode, supplierCode);
@@ -90,6 +124,24 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
             sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
         }
         return query(sql.toString(), new ProductMapper(), category, supplier);
+    }
+
+    @Override
+    public List<ProductModel> findAllByCategoryAndSupplierCodeAndPrice(String categoryCode, String supplierCode, long[] priceFilter, IPageble pageble) {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT P.*, I.imagelink, category.name AS cname FROM");
+        sql.append(" product P join productgallery I on P.id = I.productid join category on P.categoryid = category.id join supplier S on P.supplierid = S.id");
+        sql.append(" WHERE P.status = 1 and category.code = ? and S.code = ? and P.price * (100 - P.discount) / 100 >= ? and P.price * (100 - P.discount) / 100 <= ?");
+
+        if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName()) && StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
+            sql.append(" GROUP BY P.id");
+            sql.append(" ORDER BY " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy());
+            sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
+        } else if (pageble.getOffset() != null && pageble.getLimit() != null) {
+            sql.append(" GROUP BY P.id");
+            sql.append(" LIMIT " + pageble.getOffset() + ", " + pageble.getLimit());
+        }
+        return query(sql.toString(), new ProductMapper(), categoryCode, supplierCode, priceFilter[0], priceFilter[1]);
     }
 
     @Override
