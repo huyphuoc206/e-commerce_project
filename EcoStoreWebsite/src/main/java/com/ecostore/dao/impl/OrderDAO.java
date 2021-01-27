@@ -53,6 +53,18 @@ public class OrderDAO extends AbstractDAO<OrdersModel> implements IOrderDAO {
     }
 
     @Override
+    public int getTotalOrders() {
+        String sql = "SELECT COUNT(*) FROM orders";
+        return count(sql);
+    }
+
+    @Override
+    public List<OrdersModel> findAllByStatus(int status) {
+        String sql = "SELECT * FROM orders WHERE status = ?";
+        return query(sql, new OrdersMapper(), status);
+    }
+
+    @Override
     public OrdersModel findOneByUserId(Long userid) {
         String sql = "SELECT orders.*, payment.name AS namepayment FROM orders JOIN payment on orders.paymentid = payment.id WHERE userid = ?";
         List<OrdersModel> ordersModels = query(sql, new OrdersMapper(), userid);

@@ -18,7 +18,8 @@ public class OrdersMapper implements IRowMapper<OrdersModel> {
             model.setUserId(resultSet.getLong("userid"));
             PaymentModel payment = new PaymentModel();
             model.setPaymentId(resultSet.getLong("paymentid"));
-            payment.setName(resultSet.getString("namepayment"));
+            if(MapperUtil.hasColumn(resultSet,"namepayment"))
+                payment.setName(resultSet.getString("namepayment"));
             model.setPayment(payment);
             model.setCustomerName(resultSet.getString("customername"));
             model.setPhone(resultSet.getString("phone"));

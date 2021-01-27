@@ -14,4 +14,7 @@ public interface IOrderService {
     OrdersModel findOneByUserId(long userid);
     int getTotalItems(Long userid);
 
+    int getTotalOrders();
+
+    long getRevenue();
 }

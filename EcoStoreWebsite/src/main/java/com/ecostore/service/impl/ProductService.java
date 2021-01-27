@@ -85,4 +85,9 @@ public class ProductService implements IProductService {
     public int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter) {
         return productDAO.getTotalItemsByCategoryCodeAndPrice(categoryCode, priceFilter);
     }
+
+    @Override
+    public int getTotalItemsByStatus(int status) {
+        return productDAO.getTotalItemsByStatus(status);
+    }
 }

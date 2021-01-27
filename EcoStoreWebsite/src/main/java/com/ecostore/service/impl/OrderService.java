@@ -55,6 +55,20 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public int getTotalOrders() {
+        return orderDAO.getTotalOrders();
+    }
+
+    @Override
+    public long getRevenue() {
+        List<OrdersModel> ordersSuccess = orderDAO.findAllByStatus(3);
+        long revenue = 0;
+        for (OrdersModel o: ordersSuccess)
+            revenue += o.getTotalPrice();
+        return revenue;
+    }
+
+    @Override
     public List<OrdersModel> findAllByUserId(long userid, IPageble pageble) {
         return orderDAO.findAllByUserId(userid, pageble);
     }

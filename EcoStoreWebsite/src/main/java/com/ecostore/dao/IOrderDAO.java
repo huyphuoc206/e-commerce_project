@@ -20,4 +20,7 @@ public interface IOrderDAO {
 
     int getTotalItems(Long userid);
 
+    int getTotalOrders();
+
+    List<OrdersModel> findAllByStatus(int status);
 }

@@ -34,4 +34,6 @@ public interface IProductDAO {
     List<ProductModel> findAllByCategoryCodeAndPrice(String categoryCode, long[] priceFilter, IPageble pageble);
 
     int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter);
+
+    int getTotalItemsByStatus(int status);
 }

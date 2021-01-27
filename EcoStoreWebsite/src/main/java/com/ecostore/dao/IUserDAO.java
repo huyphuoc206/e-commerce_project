@@ -25,4 +25,8 @@ public interface IUserDAO {
     UserModel findOneByEmail(String email);
 
     boolean resetPassword(long userId, String newPassword);
+
+    List<UserModel> findAllUsersByRole(String role);
+
+    int getTotalUserByRole(String role);
 }

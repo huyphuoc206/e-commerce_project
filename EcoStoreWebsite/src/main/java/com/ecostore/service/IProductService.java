@@ -33,4 +33,6 @@ public interface IProductService {
     List<ProductModel> findAllByCategoryCodeAndPrice(String code, long[] priceFilter, IPageble pageble);
 
     int getTotalItemsByCategoryCodeAndPrice(String code, long[] priceFilter);
+
+    int getTotalItemsByStatus(int status);
 }

@@ -79,6 +79,12 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
+    public int getTotalItemsByStatus(int status) {
+        String sql = "SELECT COUNT(*) FROM product WHERE status = ?";
+        return count(sql, status);
+    }
+
+    @Override
     public int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode) {
         String sql = "SELECT COUNT(*) FROM product JOIN category ON product.categoryid = category.id JOIN supplier ON product.supplierid = supplier.id WHERE category.code = ? AND supplier.code = ? AND product.status = 1";
         return count(sql, categoryCode, supplierCode);

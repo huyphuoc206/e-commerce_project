@@ -2010,9 +2010,6 @@ header .form-inline {
 
 .stat-widget-one .stat-icon i {
   font-size: 30px;
-  border-width: 3px;
-  border-style: solid;
-  border-radius: 100px;
   padding: 15px;
   font-weight: 900;
   display: inline-block; }

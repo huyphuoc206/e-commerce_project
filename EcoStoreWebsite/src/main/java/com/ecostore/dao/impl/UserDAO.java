@@ -72,4 +72,16 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
         String sql = "UPDATE user SET password = ? WHERE id = ?";
         return update(sql, newPassword, userId);
     }
+
+    @Override
+    public List<UserModel> findAllUsersByRole(String role) {
+        String sql = "SELECT * FROM user JOIN role ON user.roleid = role.id WHERE role.code = ?";
+        return query(sql, new UserMapper(), role);
+    }
+
+    @Override
+    public int getTotalUserByRole(String role) {
+        String sql = "SELECT COUNT(*) FROM user JOIN role ON user.roleid = role.id WHERE role.code = ?";
+        return count(sql,role);
+    }
 }

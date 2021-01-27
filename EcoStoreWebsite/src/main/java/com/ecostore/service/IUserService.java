@@ -21,4 +21,8 @@ public interface IUserService {
     UserModel findOneByEmail(String email);
 
     UserModel resetPassword(long userId, String currentPassword, String newPassword);
+
+    List<UserModel> findAllUsersByRole(String role);
+
+    int getTotalUserByRole(String role);
 }

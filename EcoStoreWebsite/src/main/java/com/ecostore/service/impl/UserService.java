@@ -94,4 +94,14 @@ public class UserService implements IUserService {
             return userDAO.findOneById(userId);
         return null;
     }
+
+    @Override
+    public List<UserModel> findAllUsersByRole(String role) {
+        return userDAO.findAllUsersByRole(role);
+    }
+
+    @Override
+    public int getTotalUserByRole(String role) {
+        return userDAO.getTotalUserByRole(role);
+    }
 }
