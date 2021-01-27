@@ -1,8 +1,10 @@
 package com.ecostore.controller.web;
 
 import com.ecostore.model.ProductModel;
+import com.ecostore.model.SlideModel;
 import com.ecostore.service.ILayoutAttributeService;
 import com.ecostore.service.IProductService;
+import com.ecostore.service.ISlideService;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -20,13 +22,16 @@ public class HomeController extends HttpServlet {
     private ILayoutAttributeService layoutAttributeService;
     @Inject
     private IProductService productService;
-
+    @Inject
+    private ISlideService slideService;
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         layoutAttributeService.setHeaderWeb(request);
         layoutAttributeService.setFooterWeb(request);
         List<ProductModel> productNewList = productService.findAllSortByCreateddate();
         List<ProductModel> productDiscountList = productService.findAllSortByDiscount();
+        List<SlideModel> slides = slideService.findAllByStatus();
 
+        request.setAttribute("slides", slides);
         request.setAttribute("productNewList", productNewList);
         request.setAttribute("productDiscountList", productDiscountList);
 

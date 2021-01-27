@@ -25,6 +25,11 @@ public class SlideService implements ISlideService {
     }
 
     @Override
+    public List<SlideModel> findAllByStatus() {
+        return slideDAO.findAllByStatus();
+    }
+
+    @Override
     public SlideModel findOneByStatusAndDisplayorder(int displayorder) {
         return slideDAO.findOneByStatusAndDisplayorder(displayorder);
     }

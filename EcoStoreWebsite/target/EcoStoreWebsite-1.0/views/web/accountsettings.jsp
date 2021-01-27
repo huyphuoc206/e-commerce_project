@@ -28,9 +28,13 @@
                 <div class="text-center alert alert-${alert}">${message}</div>
             </c:if>
             <div class="row form-group">
-                <div class="col col-md-3"><label class="form-control-label" for="avatar">Hình đại diện</label>
+                <div class="col-12 col-md-3"><label class="form-control-label" for="avatar">Hình đại diện</label>
                 </div>
-                <div class="col-12 col-md-9">
+                <div class="col-12 col-md-1">
+                    <img src="<c:url value='${user.avatar}'/>" class="rounded-circle mb-1" style="width:50px; height:50px;">
+
+                </div>
+                <div class="col-12 col-md-8">
                     <input type="file"
                            id="avatar" name="avatar"
                            accept="image/png, image/jpeg" value="${user.avatar}">
@@ -43,6 +47,7 @@
 <%--                    </div>--%>
                 </div>
             </div>
+
             <div class="row form-group">
                 <div class="col col-md-3"><label class=" form-control-label">Họ tên</label></div>
                 <div class="col-12 col-md-9"><input type="text"  name="fullname" class="form-control" value="${user.fullname}">

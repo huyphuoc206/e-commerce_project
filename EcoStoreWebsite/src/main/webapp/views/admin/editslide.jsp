@@ -36,7 +36,11 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label
                                         class=" form-control-label">Hình ảnh</label></div>
-                                <div class="col-12 col-md-9"><div class="custom-input-file">
+                                <div class="col-12 col-md-2">
+                                    <img src="<c:url value='${slide.imageLink}'/>" class=" mb-1" style=" max-width: 130px; max-height: 70px;">
+
+                                </div>
+                                <div class="col-12 col-md-5"><div class="custom-input-file">
                                     <input type="file"
                                            id="imageLink" name="imageLink"
                                            accept="image/png, image/jpeg" value="${slide.imageLink}">
