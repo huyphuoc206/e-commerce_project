@@ -26,12 +26,12 @@ public class CategoryController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             CategoryModel categoryModel = categoryService.findOneById(Long.parseLong(id));
             request.setAttribute("categoryModel", categoryModel);
             url = "../views/admin/editcategory.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<CategoryModel> categories = categoryService.findAll();
             request.setAttribute("categories", categories);
             url = "../views/admin/categories.jsp";

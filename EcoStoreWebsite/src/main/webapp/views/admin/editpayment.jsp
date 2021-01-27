@@ -13,6 +13,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <c:if test="${not empty message}">
+                        <div class="text-center float-left alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="card-header">
                         <strong class="card-title">Chỉnh sửa phương thức thanh toán</strong>
                     </div>
@@ -78,9 +81,9 @@
             success: function (result) {
                 $('.load').hide();
                 if (result !== null)
-                    window.location.href = "${PaymentURL}?message=update_success&alert=success";
+                    window.location.href = "${PaymentURL}?id="+result.id+"&message=update_success&alert=success";
                 else
-                    window.location.href = "${PaymentURL}?message=update_fail&alert=danger";
+                    window.location.href = "${PaymentURL}?id="+result.id+"&message=update_fail&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();

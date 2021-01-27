@@ -30,6 +30,7 @@ public class MenuController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             MenuModel menuModel = menuService.findOneById(Long.parseLong(id));
             request.setAttribute("menuModel", menuModel);
@@ -37,7 +38,6 @@ public class MenuController extends HttpServlet {
             request.setAttribute("menuTypeModels", menuTypeModels);
             url = "../views/admin/editmenu.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<MenuModel> menus = menuService.findAll();
             request.setAttribute("menus", menus);
             List<MenuTypeModel> menuTypeModels = menuTypeService.findAll();

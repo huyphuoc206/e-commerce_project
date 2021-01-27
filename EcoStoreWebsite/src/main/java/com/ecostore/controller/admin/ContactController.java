@@ -28,12 +28,12 @@ public class ContactController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             ContactModel contactModel = contactService.findOneById(Long.parseLong(id));
             request.setAttribute("contactModel", contactModel);
             url = "../views/admin/editcontact.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<ContactModel> contacts = contactService.findAll();
             request.setAttribute("contacts", contacts);
             url = "../views/admin/contact.jsp";

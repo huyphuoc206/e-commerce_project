@@ -26,12 +26,12 @@ public class InformationController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             InformationModel informationModel = informationService.findOneById(Long.parseLong(id));
             request.setAttribute("informationModel", informationModel);
             url = "../views/admin/editinformation.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<InformationModel> information = informationService.findAll();
             request.setAttribute("information", information);
             url = "../views/admin/information.jsp";

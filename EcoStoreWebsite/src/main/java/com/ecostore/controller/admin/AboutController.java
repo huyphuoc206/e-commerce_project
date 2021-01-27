@@ -26,12 +26,12 @@ public class AboutController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             AboutModel aboutModel = aboutService.findOneById(Long.parseLong(id));
             request.setAttribute("aboutModel", aboutModel);
             url = "../views/admin/editabout.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<AboutModel> abouts = aboutService.findAll();
             request.setAttribute("abouts", abouts);
             url = "../views/admin/abouts.jsp";

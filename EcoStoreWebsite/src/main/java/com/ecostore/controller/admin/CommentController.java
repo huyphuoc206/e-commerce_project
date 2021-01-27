@@ -26,12 +26,12 @@ public class CommentController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             CommentModel commentModel = commentService.findOneById(Long.parseLong(id));
             request.setAttribute("commentModel", commentModel);
             url = "../views/admin/editcomment.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<CommentModel> comments = commentService.findAll();
             request.setAttribute("comments", comments);
             url = "../views/admin/comment.jsp";

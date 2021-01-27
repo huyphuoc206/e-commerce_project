@@ -27,12 +27,12 @@ public class PaymentController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null) {
             PaymentModel paymentModel = paymentService.findOneById(Long.parseLong(id));
             request.setAttribute("paymentModel", paymentModel);
             url = "../views/admin/editpayment.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<PaymentModel> payments = paymentService.findAll();
             request.setAttribute("payments", payments);
             url = "../views/admin/payments.jsp";

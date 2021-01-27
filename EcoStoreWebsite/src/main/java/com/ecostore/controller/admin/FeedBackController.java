@@ -29,12 +29,12 @@ public class FeedBackController extends HttpServlet {
         layoutAttributeService.setMenuLeftAdmin(request);
         String url = "";
         String id = request.getParameter("id");
+        MessageUtil.showMessage(request);
         if (id != null){
             FeedBackModel feedbackModel = feedbackService.findOneById(Long.parseLong(id));
             request.setAttribute("feedbackModel" , feedbackModel);
             url= "../views/admin/editfeedback.jsp";
         } else{
-            MessageUtil.showMessage(request);
             List<FeedBackModel> feedbacks = feedbackService.findAll();
             request.setAttribute("feedbacks" , feedbacks);
             url= "../views/admin/feedback.jsp";
