@@ -7,7 +7,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 .user-area .user-avatar {
-    width: 32px; }
+    width: 32px;
+    height: 32px;
+}
 
 /*shopping cart*/
 .bold{

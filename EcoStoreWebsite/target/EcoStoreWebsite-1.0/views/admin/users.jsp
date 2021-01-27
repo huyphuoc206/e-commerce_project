@@ -58,8 +58,8 @@
                                     </td>
                                     <td>${item.username}</td>
 <%--                                    <td>${item.password}</td>--%>
-                                    <td class="text-center"><img src="images/avatar/1.jpg" class="td-img"
-                                                                 alt="Not found"></td>
+                                    <td class="text-center"><img src="<c:url value='${item.avatar}'/> " class="rounded-circle td-img"
+                                                                 alt="Not found" style="width:45px; height:45px;"></td>
                                     <td>${item.fullname}</td>
                                     <td>${item.email}</td>
                                     <td class="text-center">${item.phone}</td>
@@ -117,12 +117,15 @@
                         <label for="avatar" class="col-sm-3 form-control-label">Hình
                             đại diện</label>
                         <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-avatar" name="avatar" id="avatar">
-                                </label>
-                            </div>
+                            <input type="file"
+                                   id="avatar" name="avatar"
+                                   accept="image/png, image/jpeg">
+<%--                            <div class="custom-input-file">--%>
+<%--                                <label class="uploadPhoto">--%>
+<%--                                    Chọn--%>
+<%--                                    <input type="file" class="change-avatar" name="avatar" id="avatar">--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
                         </div>
                     </div>
                     <div class="form-group">
@@ -189,7 +192,18 @@
             $.each(formData, function (i, v) {
                 data['' + v.name] = v.value
             });
-            addUser(data);
+            data['uploadFile'] = {}
+            var files = $('#avatar')[0].files[0];
+            if(files != undefined) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    data['uploadFile']['base64'] = e.target.result;
+                    data['uploadFile']['name'] = files.name;
+                    addUser(data);
+                };
+                reader.readAsDataURL(files);
+            } else
+                addUser(data);
         }
     })
 

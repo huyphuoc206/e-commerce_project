@@ -1,11 +1,13 @@
 package com.ecostore.controller.admin.api;
 
+import com.ecostore.constant.SystemConstant;
 import com.ecostore.mail.MailMessage;
 import com.ecostore.mail.MailUtils;
 import com.ecostore.model.UserModel;
 import com.ecostore.service.IUserService;
 import com.ecostore.utils.MD5Hashing;
 import com.ecostore.utils.SessionUtil;
+import com.ecostore.utils.UploadFileUtil;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import javax.inject.Inject;
@@ -14,19 +16,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
+import java.util.Base64;
 
 @WebServlet(urlPatterns = "/api-admin-user")
 public class UserAPI extends HttpServlet {
     @Inject
     private IUserService userService;
-
+    @Inject
+    private UploadFileUtil uploadFile;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
         request.setCharacterEncoding("UTF8");
         response.setContentType("application/json");
         UserModel userModel = mapper.readValue(request.getInputStream(), UserModel.class);
         UserModel userSession = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
+        String avatarPath = "";
+        if (userModel.getUploadFile().getBase64() != null) {
+            byte[] decodeBase64 = Base64.getDecoder().decode(userModel.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
+            String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+            uploadFile.writeOrUpdate(decodeBase64, path + userModel.getUploadFile().getName());
+            avatarPath = SystemConstant.AVATAR_DIR + userModel.getUploadFile().getName();
+        }
+        userModel.setAvatar(avatarPath);
         userModel.setCreatedBy(userSession.getUsername());
         userModel = userService.insert(userModel);
         if (userModel != null) {
@@ -48,6 +61,9 @@ public class UserAPI extends HttpServlet {
         UserModel userOld = userService.findOneById(userModel.getId());
         UserModel userSession = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
         userModel.setModifiedBy(userSession.getUsername());
+
+
+
         //xử lý với userSession thay đổi thông tin
         if (userModel.getId() == userSession.getId()) {
             //nếu user đang hoạt động chỉnh trạng thái hoạt động về 0
@@ -77,12 +93,22 @@ public class UserAPI extends HttpServlet {
             mapper.writeValue(response.getOutputStream(), "overlappass");
             return;
         }
+        //update hinh
+        String avatarPath = userOld.getAvatar();
+        if (userModel.getUploadFile().getBase64() != null) {
+            byte[] decodeBase64 = Base64.getDecoder().decode(userModel.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
+            String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+            uploadFile.writeOrUpdate(decodeBase64, path + userModel.getUploadFile().getName());
+            avatarPath = SystemConstant.AVATAR_DIR + userModel.getUploadFile().getName();
+        }
+        userModel.setAvatar(avatarPath);
         //update cho những người dùng khác userSession
         userModel = userService.update(userModel);
         mapper.writeValue(response.getOutputStream(), userModel);
         //chỉnh sửa chính tk của mình
         if (userModel.getId() == userSession.getId())
             SessionUtil.getInstance().putValue(request, "USERMODEL", userModel);
+
     }
 
     @Override
