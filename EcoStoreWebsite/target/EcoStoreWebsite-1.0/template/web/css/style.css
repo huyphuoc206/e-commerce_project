@@ -1,4 +1,4 @@
-/*--
+${fn:substring(item, 1, fn:length(item))}/*--
 Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -873,7 +873,7 @@ ul.multi-column-dropdown li a:hover {
 }
 
 .carousel-caption h2 span,
-.carousel-caption h3 span {
+.carousel-caption span {
     font-weight: 800;
     color: #db6400;
 }

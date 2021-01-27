@@ -6,102 +6,60 @@
 </head>
 <body>
 <!-- banner -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <!-- Indicators-->
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <c:forEach var="i" begin="1" end="${slides.size()-1}">
-            <li data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>
-        </c:forEach>
+<c:if test="${slides.size() > 0}">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <!-- Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <c:forEach var="i" begin="1" end="${slides.size()-1}">
+                <li data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>
+            </c:forEach>
 
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item item1 active" style="background: url(${slides.get(0).imageLink}) no-repeat center;">
-            <div class="container">
-                <div class="w3l-space-banner">
-                    <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                        <p>${slides.get(0).description}</p>
-                        <h3>${slides.get(0).title}</h3>
-                        <%--                            <p>Giảm giá--%>
-                        <%--                                <span>10%</span></p>--%>
-                        <%--                            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Vui--%>
-                        <%--                                <span>Giáng Sinh</span>--%>
-                        <%--                            </h3>--%>
-                        <a class="button2" href="product.html">Mua ngay </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <c:forEach var="item" items="${slides}" begin="1" end="${slides.size()-1}">
-            <div class="carousel-item item1" style="background: url(${item.imageLink}) no-repeat center;">
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item item1 active" style="background: url(${slides.get(0).imageLink}) no-repeat center;">
                 <div class="container">
                     <div class="w3l-space-banner">
                         <div class="carousel-caption p-lg-5 p-sm-4 p-3">
-                            <p>${item.description}</p>
-                            <h3>${item.title}</h3>
-<%--                            <p>Giảm giá--%>
-<%--                                <span>10%</span></p>--%>
-<%--                            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Vui--%>
-<%--                                <span>Giáng Sinh</span>--%>
-<%--                            </h3>--%>
-                            <a class="button2" href="product.html">Mua ngay </a>
+                            <p>${slides.get(0).description}</p>
+                            <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                <c:forEach var="item" items="${fn:split(slides.get(0).title, ' ')}">
+                                    <span>${fn:substring(item, 0, 1)}</span>${fn:substring(item, 1, fn:length(item))}
+                                </c:forEach>
+                            </h3>
+                            <a class="button2" href="<c:url value="/trang-chu"/>">Mua ngay </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </c:forEach>
-<%--        <div class="carousel-item item2">--%>
-<%--            <div class="container">--%>
-<%--                <div class="w3l-space-banner">--%>
-<%--                    <div class="carousel-caption p-lg-5 p-sm-4 p-3">--%>
-<%--                        <p> Đặt hàng ngay--%>
-<%--                            sẽ được </p>--%>
-<%--                        <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">--%>
-<%--                            <span>Miễn phí</span> vận chuyển--%>
-<%--                        </h3>--%>
-<%--                        <a class="button2" href="product.html">Mua ngay </a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="carousel-item item3">--%>
-<%--            <div class="container">--%>
-<%--                <div class="w3l-space-banner">--%>
-<%--                    <div class="carousel-caption p-lg-5 p-sm-4 p-3">--%>
-<%--                        <p> Tư vấn--%>
-<%--                            <span>miễn phí</span></p>--%>
-<%--                        <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"> Hotline--%>
-<%--                            <span>1900-9090</span>--%>
-<%--                        </h3>--%>
-<%--                        <a class="button2" href="product.html">Mua ngay </a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="carousel-item item4">--%>
-<%--            <div class="container">--%>
-<%--                <div class="w3l-space-banner">--%>
-<%--                    <div class="carousel-caption p-lg-5 p-sm-4 p-3">--%>
-<%--                        <p>Nhận ngay giảm giá--%>
-<%--                            <span>40%</span></p>--%>
-<%--                        <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4"><span>Giảm Giá </span>Hôm Nay--%>
-
-<%--                        </h3>--%>
-<%--                        <a class="button2" href="product.html">Mua ngay </a>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+            <c:forEach var="item" items="${slides}" begin="1">
+                <div class="carousel-item item1" style="background: url(${item.imageLink}) no-repeat center;">
+                    <div class="container">
+                        <div class="w3l-space-banner">
+                            <div class="carousel-caption p-lg-5 p-sm-4 p-3">
+                                <p>${item.description}</p>
+                                <h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">
+                                    <c:forEach var="it" items="${fn:split(item.title, ' ')}">
+                                        <span>${fn:substring(it, 0, 1)}</span>${fn:substring(it, 1, fn:length(it))}
+                                    </c:forEach>
+                                </h3>
+                                <a class="button2" href="<c:url value="/trang-chu"/>">Mua ngay </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
+</c:if>
 <!-- //banner -->
 
 <!-- top Products -->

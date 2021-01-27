@@ -106,12 +106,10 @@
                         <input type="text" class="form-control" name="description" required>
                     </div>
                     <div class="row form-group">
-                        <label for="imageLink" class="col-sm-3 form-control-label">Hình ảnh</label>
-                        <div class="col-sm-3">
-                            <input type="file"
+                        <label for="imageLink">Hình ảnh</label>
+                            <input type="file" class="form-control"
                                    id="imageLink" name="imageLink"
                                    accept="image/png, image/jpeg" required>
-                        </div>
                     </div>
                     <div class="row form-group">
                         <label>Thứ tự</label>
