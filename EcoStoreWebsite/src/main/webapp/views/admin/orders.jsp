@@ -57,7 +57,7 @@
                                                 </span>
                                     </td>
                                     <td class="text-center">${item.id}</td>
-                                    <td class="text-center">${item.createdDate}</td>
+                                    <td class="text-center date">${item.createdDate}</td>
                                     <td>${item.customerName}</td>
                                     <td class="text-center">${item.phone}</td>
                                     <td>${item.address}</td>
@@ -108,27 +108,6 @@
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<%--<!-- Delete Modal HTML -->--%>
-<%--<div id="deleteOrderModal" class="modal fade">--%>
-<%--    <div class="modal-dialog">--%>
-<%--        <div class="modal-content">--%>
-<%--            <form>--%>
-<%--                <div class="modal-header">--%>
-<%--                    <h4 class="modal-title">Xóa đơn hàng </h4>--%>
-<%--                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
-<%--                </div>--%>
-<%--                <div class="modal-body">--%>
-<%--                    <p>Bạn chắc chắn muốn xóa những đơn hàng này?</p>--%>
-<%--                    <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>--%>
-<%--                </div>--%>
-<%--                <div class="modal-footer">--%>
-<%--                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">--%>
-<%--                    <button id="deleteOrder" type="submit" class="btn btn-danger" >Xóa</button>--%>
-<%--                </div>--%>
-<%--            </form>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 </body>
 </html>

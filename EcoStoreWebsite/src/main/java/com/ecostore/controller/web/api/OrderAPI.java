@@ -60,10 +60,10 @@ public class OrderAPI extends HttpServlet {
         order.setModifiedBy(userModel.getUsername());
         order.setStatus(4);
         order = orderService.update(order);
-        List<OrderDetailsModel> orderDetails = orderDetailService.findAllByOrderId(order.getId());
-        for (OrderDetailsModel item : orderDetails) {
-            orderDetailService.delete(item.getId());
-        }
+//        List<OrderDetailsModel> orderDetails = orderDetailService.findAllByOrderId(order.getId());
+//        for (OrderDetailsModel item : orderDetails) {
+//            orderDetailService.delete(item.getId());
+//        }
         mapper.writeValue(response.getOutputStream(), order);
 
     }
