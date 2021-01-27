@@ -90,4 +90,9 @@ public class ProductService implements IProductService {
     public int getTotalItemsByStatus(int status) {
         return productDAO.getTotalItemsByStatus(status);
     }
+
+    @Override
+    public List<ProductModel> findAll() {
+        return productDAO.findAll();
+    }
 }

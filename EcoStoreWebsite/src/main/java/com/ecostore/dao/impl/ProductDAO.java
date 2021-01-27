@@ -26,8 +26,11 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public ProductModel findOneById(long id) {
-        String sql = "SELECT P.*, I.imagelink FROM product P join productgallery I on P.id = I.productid WHERE P.id = ?";
-        List<ProductModel> products = query(sql, new ProductMapper(), id);
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT P.*, I.imagelink, C.name AS cname, S.name as sname");
+        sql.append(" FROM product P join productgallery I on P.id = I.productid join category C on P.categoryid = C.id join supplier S on P.supplierid = S.id");
+        sql.append(" WHERE P.id = ?");
+        List<ProductModel> products = query(sql.toString(), new ProductMapper(), id);
         if (products.size() == 0) return null;
         return products.get(0);
     }
@@ -82,6 +85,14 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     public int getTotalItemsByStatus(int status) {
         String sql = "SELECT COUNT(*) FROM product WHERE status = ?";
         return count(sql, status);
+    }
+
+    @Override
+    public List<ProductModel> findAll() {
+        StringBuilder sql = new StringBuilder();
+        sql.append("SELECT P.*, I.imagelink, C.name AS cname, S.name as sname");
+        sql.append(" FROM product P join productgallery I on P.id = I.productid join category C on P.categoryid = C.id join supplier S on P.supplierid = S.id");
+        return query(sql.toString(), new ProductMapper());
     }
 
     @Override

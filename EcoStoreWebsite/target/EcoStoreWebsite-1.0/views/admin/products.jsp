@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +14,9 @@
                         <strong class="card-title">Danh sách sản phẩm</strong>
                     </div>
                     <div class="card-header">
+                        <c:if test="${not empty message}">
+                            <div class="text-center float-left alert alert-${alert}">${message}</div>
+                        </c:if>
                         <div class="float-right">
                             <a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
@@ -34,266 +38,44 @@
                                 <th class="text-center">Hình ảnh</th>
                                 <th class="text-center">Giá</th>
                                 <th class="text-center">Giảm giá</th>
-                                <th class="text-center">Mô tả</th>
                                 <th class="text-center">Thể loại</th>
                                 <th class="text-center">Hãng</th>
+                                <th class="text-center">Trạng thái</th>
                                 <th class="text-center">Thao tác</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="text-center">
+                            <c:forEach var="item" items="${products}">
+                                <tr>
+                                    <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                                    <label for="checkbox1"></label>
+                                                    <input type="checkbox" id="checkbox_${item.id}" name="options[]" value="${item.id}">
+                                                    <label for="checkbox_${item.id}"></label>
                                                 </span>
-                                </td>
-                                <td>Máy giặt ABC</td>
-                                <td class="text-center"><img src="images/product/m8.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Máy giặt giá rẻ</td>
-                                <td class="text-center">Máy giặt</td>
-                                <td class="text-center">Panasonic</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                                    <label for="checkbox2"></label>
-                                                </span>
-                                </td>
-                                <td>Tivi ABC</td>
-                                <td class="text-center"><img src="images/product/m4.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Tivi giá rẻ</td>
-                                <td class="text-center">Tivi</td>
-                                <td class="text-center">LG</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                                <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                                    <label for="checkbox3"></label>
-                                                </span>
-                                </td>
-                                <td>Loa ABC</td>
-                                <td class="text-center"><img src="images/product/mm2.jpg" class="td-img"
-                                                             alt="Not found">
-                                </td>
-                                <td class="text-center">8000000</td>
-                                <td class="text-center">20%</td>
-                                <td>Loa xịn</td>
-                                <td class="text-center">Loa</td>
-                                <td class="text-center">Bose</td>
-                                <td class="text-center">
-                                    <a href="editproduct.html" class="edit"><i class="fa fa-pencil"
-                                                                               aria-hidden="true" data-toggle="tooltip"
-                                                                               title="Chỉnh sửa"></i></a>
-
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td>${item.name}</td>
+                                    <td class="text-center"><img src="<c:url value='${item.images.get(0)}'/>" class="td-img"
+                                                                 alt="Not found">
+                                    </td>
+                                    <td class="text-center">${item.price}</td>
+                                    <td class="text-center">${item.discount}%</td>
+                                    <td class="text-center">${item.category.name}</td>
+                                    <td class="text-center">${item.supplierModel.name}</td>
+                                    <c:if test="${item.status == 1}">
+                                        <td class="text-center"><span class="status text-success">&bull;</span>Hoạt động
+                                        </td>
+                                    </c:if>
+                                    <c:if test="${item.status == 0}">
+                                        <td class="text-center"><span class="status text-danger">&bull;</span>Tạm ngưng
+                                        </td>
+                                    </c:if>
+                                    <td class="text-center">
+                                        <a href="<c:url value='/quan-tri/san-pham?id=${item.id}'/>" class="edit"><i class="fa fa-pencil"
+                                                                                   aria-hidden="true" data-toggle="tooltip"
+                                                                                   title="Chỉnh sửa"></i></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

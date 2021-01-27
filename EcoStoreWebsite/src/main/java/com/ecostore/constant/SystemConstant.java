@@ -11,4 +11,5 @@ public class SystemConstant {
     public static final String AVATAR_DIR = File.separator + "images" + File.separator + "avatar" + File.separator;
     public static final String PRODUCT_DIR = File.separator + "images" + File.separator + "products" + File.separator;
     public static final String BANNER_DIR = File.separator + "images" + File.separator + "banners" + File.separator;
+    public static final String AVATAR_DEFAULT = File.separator + "images" + File.separator + "avatardefault.png";
 }

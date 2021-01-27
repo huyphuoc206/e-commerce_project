@@ -90,7 +90,6 @@
             });
             data['uploadFile'] = {}
             var files = $('#avatar')[0].files[0];
-            console.log(files)
             if(files != undefined) {
                 var reader = new FileReader();
                 reader.onload = function (e) {

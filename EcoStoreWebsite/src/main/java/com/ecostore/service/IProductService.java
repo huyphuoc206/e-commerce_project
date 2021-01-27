@@ -35,4 +35,6 @@ public interface IProductService {
     int getTotalItemsByCategoryCodeAndPrice(String code, long[] priceFilter);
 
     int getTotalItemsByStatus(int status);
+
+    List<ProductModel> findAll();
 }

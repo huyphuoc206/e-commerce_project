@@ -2,6 +2,7 @@ package com.ecostore.mapper;
 
 import com.ecostore.model.CategoryModel;
 import com.ecostore.model.ProductModel;
+import com.ecostore.model.SupplierModel;
 import com.ecostore.utils.MapperUtil;
 
 import java.sql.ResultSet;
@@ -29,6 +30,11 @@ public class ProductMapper implements IRowMapper<ProductModel> {
             }
             model.setCategory(category);
             model.setSupplierId(resultSet.getLong("supplierid"));
+            SupplierModel supplier = new SupplierModel();
+            if (MapperUtil.hasColumn(resultSet, "sname")) {
+                supplier.setName(resultSet.getString("sname"));
+            }
+            model.setSupplierModel(supplier);
             model.setCreatedDate(resultSet.getTimestamp("createddate"));
             model.setCreatedBy(resultSet.getString("createdby"));
             model.setModifiedDate(resultSet.getTimestamp("modifieddate"));

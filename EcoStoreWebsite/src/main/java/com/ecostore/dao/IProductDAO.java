@@ -36,4 +36,6 @@ public interface IProductDAO {
     int getTotalItemsByCategoryCodeAndPrice(String categoryCode, long[] priceFilter);
 
     int getTotalItemsByStatus(int status);
+
+    List<ProductModel> findAll();
 }
