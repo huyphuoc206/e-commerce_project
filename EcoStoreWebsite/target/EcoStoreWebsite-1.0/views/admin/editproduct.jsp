@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url var="APIurl" value="/api-admin-products"/>
+<c:url var="ProductURL" value="/quan-tri/san-pham"/>
 <html>
 <head>
     <title>Chỉnh sửa sản phẩm</title>
@@ -17,7 +19,7 @@
                         <strong class="card-title">Chỉnh sửa sản phẩm</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form id="formSubmit" class="form-horizontal">
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="name"
                                                                  class=" form-control-label">Tên sản phẩm</label></div>
@@ -29,14 +31,14 @@
                                 <div class="col col-md-3"><label for="price"
                                                                  class=" form-control-label">Giá (VNĐ)</label></div>
                                 <div class="col-12 col-md-9"><input type="number" id="price"
-                                                                    name="text-input" class="form-control"
+                                                                    name="price" class="form-control"
                                                                     value="${product.price}"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="discount"
                                                                  class=" form-control-label">Giảm giá (%)</label></div>
                                 <div class="col-12 col-md-9"><input type="number" id="discount"
-                                                                    name="text-input" class="form-control"
+                                                                    name="discount" class="form-control"
                                                                     value="${product.discount}"></div>
                             </div>
                             <div class="row form-group">
@@ -97,30 +99,23 @@
                                 <div class="col col-md-3"><label class="form-control-label">Hình
                                     ảnh</label></div>
                                 <div class="col-sm-12 col-md-2">
-                                    <input type="file" id="file-multiple-input" name="file-multiple-input" multiple="" class="form-control-file">
+                                    <input type="file" id="images" name="images" multiple=""
+                                           accept="image/png, image/jpeg">
                                 </div>
-
-    <%--                                <div class="col-sm-12 col-md-2">--%>
-<%--                                    <div class="custom-input-file"--%>
-<%--                                         style="background-image: url('images/product/mm2.jpg');">--%>
-<%--                                        <label class="uploadPhoto">--%>
-<%--                                            Chọn--%>
-<%--                                            <input type="file" class="change-image" name="image" id="image">--%>
-<%--                                        </label>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
-                            <%--                                 <div class="row form-group">--%>
-                            <%--                                    <div class="col col-md-3"><label for="file-multiple-input"--%>
-                            <%--                                            class=" form-control-label">Multiple File input</label></div>--%>
-                            <%--                                    <div class="col-12 col-md-9"><input type="file" id="file-multiple-input"--%>
-                            <%--                                            name="file-multiple-input" multiple="" class="form-control-file"></div>--%>
-                            <%--                                </div>--%>
+                            <div class="row form-group">
+                                <c:forEach var="item" items="${product.images}">
+                                    <div class="col-3 mt-2">
+                                        <img src="<c:url value='${item}'/>" class="td-img"/>
+                                    </div>
+                                </c:forEach>
+                            </div>
                             <div class="mt-5 row justify-content-center">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="updateProduct">
                                     <i class="fa fa-dot-circle-o"></i> Lưu
                                 </button>
                             </div>
+                            <input type="hidden" name="id" value="${product.id}">
                         </form>
                     </div>
                 </div>
@@ -135,6 +130,64 @@
             language: "vi"
         });
     });
+
+    function fileBase64(file) {
+        return new Promise((resolve, reject) => {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+                resolve(reader.result);
+            };
+            reader.onerror = function(error) {
+                reject(error);
+            };
+        });
+    }
+
+    $('#updateProduct').click(async function (e) {
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            data['description'] = editor.getData();
+
+            const files = $('#images')[0].files;
+            data['uploadFiles'] = [];
+            if (files.length != 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const base64 = await fileBase64(files[i]);
+                    data['uploadFiles'].push({'base64': base64, 'name': files[i].name})
+                }
+                updateProduct(data);
+            } else updateProduct(data);
+        }
+    })
+
+    function updateProduct(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null)
+                    window.location.href = "${ProductURL}?id=" + result.id + "&message=update_success&alert=success";
+                else
+                    window.location.href = "${ProductURL}?id=" + result.id + "&message=update_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${ProductURL}?message=system_error&alert=danger";
+            }
+        })
+    }
 </script>
 </body>
 </html>

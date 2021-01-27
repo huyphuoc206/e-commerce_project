@@ -31,4 +31,9 @@ public class UploadFileUtil {
             e.printStackTrace();
         }
     }
+
+    public void delete(String path) {
+        File file = new File(path);
+        if(file.exists() && file.isFile()) file.delete();
+    }
 }

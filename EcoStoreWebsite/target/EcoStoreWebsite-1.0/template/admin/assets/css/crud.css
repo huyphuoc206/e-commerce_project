@@ -295,6 +295,13 @@ table.table .avatar {
 
 /*.custom-input-file:hover .uploadPhoto { display: block; }*/
 
+.edit-img {
+	margin: auto;
+	max-width: 150px;
+	max-height: 95px;
+	width: auto;
+	height: auto;
+}
 .td-img {
 	display: block;
 	margin: auto;

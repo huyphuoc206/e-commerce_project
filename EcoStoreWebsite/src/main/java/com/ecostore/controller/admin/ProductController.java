@@ -36,13 +36,13 @@ public class ProductController extends HttpServlet {
         String url = "";
         String id = request.getParameter("id");
         MessageUtil.showMessage(request);
+        List<CategoryModel> categories = categoryService.findAll();
+        List<SupplierModel> supplier = supplierService.findAll();
+        request.setAttribute("categories", categories);
+        request.setAttribute("suppliers", supplier);
         if (id != null) {
             ProductModel product = productService.findOneById(Long.parseLong(id));
-            List<CategoryModel> categories = categoryService.findAll();
-            List<SupplierModel> supplier = supplierService.findAll();
             request.setAttribute("product", product);
-            request.setAttribute("categories", categories);
-            request.setAttribute("suppliers", supplier);
             url = "../views/admin/editproduct.jsp";
         } else {
             List<ProductModel> products = productService.findAll();

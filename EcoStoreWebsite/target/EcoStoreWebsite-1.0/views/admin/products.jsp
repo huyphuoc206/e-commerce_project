@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url var="APIurl" value="/api-admin-products"/>
+<c:url var="ProductURL" value="/quan-tri/san-pham"/>
 <html>
 <head>
     <title>Quản lý sản phẩm</title>
@@ -20,8 +22,6 @@
                         <div class="float-right">
                             <a href="#addProductModal" class="btn btn-success" data-toggle="modal"><i
                                     class="fa fa-plus-circle" aria-hidden="true"></i> <span>Thêm</span></a>
-                            <a href="#deleteProductModal" class="btn btn-danger" data-toggle="modal"><i
-                                    class="fa fa-trash-o" aria-hidden="true"></i> <span>Xóa</span></a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -49,12 +49,14 @@
                                 <tr>
                                     <td class="text-center">
                                                 <span class="custom-checkbox">
-                                                    <input type="checkbox" id="checkbox_${item.id}" name="options[]" value="${item.id}">
+                                                    <input type="checkbox" id="checkbox_${item.id}" name="options[]"
+                                                           value="${item.id}">
                                                     <label for="checkbox_${item.id}"></label>
                                                 </span>
                                     </td>
                                     <td>${item.name}</td>
-                                    <td class="text-center"><img src="<c:url value='${item.images.get(0)}'/>" class="td-img"
+                                    <td class="text-center"><img src="<c:url value='${item.images.get(0)}'/>"
+                                                                 class="td-img"
                                                                  alt="Not found">
                                     </td>
                                     <td class="text-center">${item.price}</td>
@@ -70,9 +72,10 @@
                                         </td>
                                     </c:if>
                                     <td class="text-center">
-                                        <a href="<c:url value='/quan-tri/san-pham?id=${item.id}'/>" class="edit"><i class="fa fa-pencil"
-                                                                                   aria-hidden="true" data-toggle="tooltip"
-                                                                                   title="Chỉnh sửa"></i></a>
+                                        <a href="<c:url value='/quan-tri/san-pham?id=${item.id}'/>" class="edit"><i
+                                                class="fa fa-pencil"
+                                                aria-hidden="true" data-toggle="tooltip"
+                                                title="Chỉnh sửa"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -90,7 +93,7 @@
 <div id="addProductModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form id="formSubmit">
                 <div class="modal-header">
                     <h4 class="modal-title">Thêm sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -98,97 +101,125 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Tên sản phẩm</label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" name="name" required>
                     </div>
                     <div class="form-group">
                         <label>Giá</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" class="form-control" name="price" required min="0">
                     </div>
                     <div class="form-group">
                         <label>Giảm giá (%)</label>
-                        <input type="number" class="form-control" required>
+                        <input type="number" class="form-control" name="discount" required min="0" max="100">
                     </div>
 
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <textarea name="textarea-input" id="textarea-input" rows="9" class="form-control"
-                                  required></textarea>
+                        <textarea rows="30" id="description" name="description"
+                                  class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Thể loại</label>
-                        <select name="category" id="category" class="form-control">
-                            <option value="0">Chọn thể loại</option>
-                            <option value="1">Ti vi</option>
-                            <option value="2">Tủ lạnh</option>
-                            <option value="3">Máy giặt</option>
+                        <select name="categoryId" class="form-control">
+                            <c:forEach var="item" items="${categories}">
+                                <option value="${item.id}">${item.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Hãng</label>
-                        <select name="supplier" id="supplier" class="form-control">
-                            <option value="0">Chọn hãng</option>
-                            <option value="1">LG</option>
-                            <option value="2">Samsung</option>
-                            <option value="3">Panasonic</option>
+                        <select name="supplierId" class="form-control">
+                            <c:forEach var="item" items="${suppliers}">
+                                <option value="${item.id}">${item.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
-                    <div class="row form-group">
-                        <label for="image" class="col-sm-3 form-control-label">Hình
+                    <div class="form-group">
+                        <label for="images" class="col-sm-3 form-control-label">Hình
                             ảnh</label>
-                        <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-image" name="image">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-image" name="image">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="custom-input-file">
-                                <label class="uploadPhoto">
-                                    Chọn
-                                    <input type="file" class="change-image" name="image">
-                                </label>
-                            </div>
-                        </div>
+                        <input type="file" id="images" name="images" multiple="" class="form-control"
+                               accept="image/png, image/jpeg" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <select name="status" class="form-control">
+                            <option value="1">Hoạt động</option>
+                            <option value="0">Tạm dừng</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-success" value="Thêm">
+                    <input type="submit" id="addProduct" class="btn btn-success" value="Thêm">
                 </div>
             </form>
         </div>
     </div>
 </div>
-<!-- Delete Modal HTML -->
-<div id="deleteProductModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Xóa sản phẩm </h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Bạn chắc chắn muốn xóa những sản phẩm này?</p>
-                    <p class="text-warning"><small>Hành động này sẽ không thể khôi phục lại.</small></p>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                    <input type="submit" class="btn btn-danger" value="Xóa">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+<script>
+    let editor = '';
+    $(document).ready(function () {
+        editor = CKEDITOR.replace('description', {
+            language: "vi"
+        });
+    });
+
+    function fileBase64(file) {
+        return new Promise((resolve, reject) => {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+                resolve(reader.result);
+            };
+            reader.onerror = function(error) {
+                reject(error);
+            };
+        });
+    }
+
+    $('#addProduct').click(async function (e) {
+        if ($('#formSubmit')[0].checkValidity()) {
+            e.preventDefault();
+            let data = {}; // mang object name: value
+            let formData = $('#formSubmit').serializeArray();
+            // vong lap
+            $.each(formData, function (i, v) {
+                data['' + v.name] = v.value
+            });
+            data['description'] = editor.getData();
+
+            const files = $('#images')[0].files;
+            data['uploadFiles'] = [];
+            if (files.length != 0) {
+                for (let i = 0; i < files.length; i++) {
+                    const base64 = await fileBase64(files[i]);
+                    data['uploadFiles'].push({'base64': base64, 'name': files[i].name})
+                }
+                addProduct(data);
+            }
+        }
+    })
+
+    function addProduct(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null)
+                    window.location.href = "${ProductURL}?id=" + result.id + "&message=insert_success&alert=success";
+                else
+                    window.location.href = "${ProductURL}?message=insert_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${ProductURL}?message=system_error&alert=danger";
+            }
+        })
+    }
+</script>
 </body>
 </html>

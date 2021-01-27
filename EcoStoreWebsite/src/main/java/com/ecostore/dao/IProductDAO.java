@@ -38,4 +38,8 @@ public interface IProductDAO {
     int getTotalItemsByStatus(int status);
 
     List<ProductModel> findAll();
+
+    Long insert(ProductModel productModel);
+
+    boolean update(ProductModel productModel);
 }

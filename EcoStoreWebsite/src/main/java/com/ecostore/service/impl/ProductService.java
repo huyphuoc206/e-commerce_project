@@ -1,11 +1,14 @@
 package com.ecostore.service.impl;
 
 import com.ecostore.dao.IProductDAO;
+import com.ecostore.dao.IProductGalleryDAO;
+import com.ecostore.model.ProductGalleryModel;
 import com.ecostore.model.ProductModel;
 import com.ecostore.paging.IPageble;
 import com.ecostore.service.IProductService;
 
 import javax.inject.Inject;
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +16,8 @@ public class ProductService implements IProductService {
 
     @Inject
     private IProductDAO productDAO;
+    @Inject
+    private IProductGalleryDAO productGalleryDAO;
 
     @Override
     public List<ProductModel> findAllSortByCreateddate() {
@@ -94,5 +99,39 @@ public class ProductService implements IProductService {
     @Override
     public List<ProductModel> findAll() {
         return productDAO.findAll();
+    }
+
+    @Override
+    public ProductModel insert(ProductModel productModel) {
+        productModel.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        Long id = productDAO.insert(productModel);
+        for (String path : productModel.getImages()) {
+            ProductGalleryModel galleryModel = new ProductGalleryModel();
+            galleryModel.setImageLink(path);
+            galleryModel.setProductId(id);
+            productGalleryDAO.insert(galleryModel);
+        }
+        return productDAO.findOneById(id);
+    }
+
+    @Override
+    public ProductModel update(ProductModel productModel) {
+        ProductModel oldModel = productDAO.findOneById(productModel.getId());
+        productModel.setCreatedDate(oldModel.getCreatedDate());
+        productModel.setCreatedBy(oldModel.getCreatedBy());
+        productModel.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        // co thay doi hinh anh, update product va xoa cac gallery va them moi
+        if (productModel.getUploadFiles().size() != 0) {
+            productGalleryDAO.delete(productModel.getId()); // xoa cac hinh cu
+            // them cac hinh moi
+            for (String path : productModel.getImages()) {
+                ProductGalleryModel galleryModel = new ProductGalleryModel();
+                galleryModel.setImageLink(path);
+                galleryModel.setProductId(productModel.getId());
+                productGalleryDAO.insert(galleryModel);
+            }
+        }
+        if (productDAO.update(productModel)) return productDAO.findOneById(productModel.getId());
+        return null;
     }
 }

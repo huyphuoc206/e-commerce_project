@@ -37,4 +37,8 @@ public interface IProductService {
     int getTotalItemsByStatus(int status);
 
     List<ProductModel> findAll();
+
+    ProductModel insert(ProductModel productModel);
+
+    ProductModel update(ProductModel productModel);
 }

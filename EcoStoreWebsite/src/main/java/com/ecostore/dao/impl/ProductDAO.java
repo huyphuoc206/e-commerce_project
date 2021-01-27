@@ -96,6 +96,18 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
+    public Long insert(ProductModel productModel) {
+        String sql = "INSERT INTO product(name, price, discount, description, status, categoryid, supplierid, createddate ,createdby ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return insert(sql, productModel.getName(), productModel.getPrice(), productModel.getDiscount(), productModel.getDescription(), productModel.getStatus(), productModel.getCategoryId(), productModel.getSupplierId(), productModel.getCreatedDate(), productModel.getCreatedBy());
+    }
+
+    @Override
+    public boolean update(ProductModel productModel) {
+        String sql = "UPDATE product SET name = ?, price = ?, discount = ?, description = ?, status = ?, categoryid = ?, supplierid = ?, modifieddate = ? ,modifiedby = ? WHERE id = ?";
+        return update(sql, productModel.getName(), productModel.getPrice(), productModel.getDiscount(), productModel.getDescription(), productModel.getStatus(), productModel.getCategoryId(), productModel.getSupplierId(), productModel.getModifiedDate(), productModel.getModifiedBy(), productModel.getId());
+    }
+
+    @Override
     public int getTotalItemsByCategoryAndSupplierCode(String categoryCode, String supplierCode) {
         String sql = "SELECT COUNT(*) FROM product JOIN category ON product.categoryid = category.id JOIN supplier ON product.supplierid = supplier.id WHERE category.code = ? AND supplier.code = ? AND product.status = 1";
         return count(sql, categoryCode, supplierCode);
