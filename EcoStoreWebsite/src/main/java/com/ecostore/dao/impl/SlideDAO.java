@@ -20,6 +20,12 @@ public class SlideDAO extends AbstractDAO<SlideModel> implements ISlideDAO {
     }
 
     @Override
+    public List<SlideModel> findAllByStatus() {
+        String sql = "SELECT * FROM slide WHERE status = 1 ORDER BY displayorder asc";
+        return query(sql, new SlideMapper());
+    }
+
+    @Override
     public SlideModel findOneByStatusAndDisplayorder(int displayorder) {
         String sql = "SELECT * FROM slide WHERE status = 1 and displayorder = ?";
         List<SlideModel> slides = query(sql, new SlideMapper(), displayorder);

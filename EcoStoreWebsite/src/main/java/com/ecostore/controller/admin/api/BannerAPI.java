@@ -39,9 +39,9 @@ public class BannerAPI extends HttpServlet {
             String image = null;
             if (slide.getUploadFile().getBase64() != null) {
                 byte[] decodeBase64 = Base64.getDecoder().decode(slide.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
-                String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+                String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.BANNER_DIR;
                 uploadFile.writeOrUpdate(decodeBase64, path + slide.getUploadFile().getName());
-                image = SystemConstant.AVATAR_DIR + slide.getUploadFile().getName();
+                image = SystemConstant.BANNER_DIR + slide.getUploadFile().getName();
             }
             slide.setImageLink(image);
             slide.setCreatedBy(userModel.getUsername());
@@ -66,9 +66,9 @@ public class BannerAPI extends HttpServlet {
             String image = slideOld.getImageLink();
             if (slide.getUploadFile().getBase64() != null) {
                 byte[] decodeBase64 = Base64.getDecoder().decode(slide.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
-                String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+                String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.BANNER_DIR;
                 uploadFile.writeOrUpdate(decodeBase64, path + slide.getUploadFile().getName());
-                image = SystemConstant.AVATAR_DIR + slide.getUploadFile().getName();
+                image = SystemConstant.BANNER_DIR + slide.getUploadFile().getName();
             }
             slide.setImageLink(image);
             slide.setModifiedBy(userModel.getUsername());
