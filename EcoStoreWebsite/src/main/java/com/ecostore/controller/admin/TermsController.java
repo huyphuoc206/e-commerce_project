@@ -32,11 +32,11 @@ public class TermsController extends HttpServlet {
             request.setAttribute("termsModel", termsModel);
             url = "../views/admin/editterms.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<TermsModel> termsModels = termsService.findAll();
             request.setAttribute("termsModels", termsModels);
             url = "../views/admin/terms.jsp";
         }
+        MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

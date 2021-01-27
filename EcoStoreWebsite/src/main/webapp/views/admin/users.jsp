@@ -202,9 +202,12 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+
                 $('.load').hide();
-                if(result !== null)
-                    window.location.href = "${UserUrl}?message=insert_success&alert=success";
+                if(result !== null){
+                    const id = result.id;
+                    window.location.href = "${UserUrl}?id="+id+"&message=insert_success&alert=success";
+                }
                 else
                     window.location.href = "${UserUrl}?message=username_email_exist&alert=danger";
             },

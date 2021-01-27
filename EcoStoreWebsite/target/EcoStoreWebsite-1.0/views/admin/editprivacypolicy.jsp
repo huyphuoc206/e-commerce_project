@@ -15,6 +15,9 @@
                     <div class="card-header">
                         <strong class="card-title">Chỉnh sửa trang chính sách và bảo mật</strong>
                     </div>
+                    <c:if test="${not empty message}">
+                        <div class="text-center float-left alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="card-body card-block">
                         <form id="formSubmit" action="" method="post" enctype="multipart/form-data"
                               class="form-horizontal">
@@ -89,13 +92,13 @@
             success: function (result) {
                 $('.load').hide();
                 if (result !== null)
-                    window.location.href = "${PrivacyPolicyUrl}?message=update_success&alert=success";
+                    window.location.href = "${PrivacyPolicyUrl}?id=${privacyPolicyModel.id}&message=update_success&alert=success";
                 else
-                    window.location.href = "${PrivacyPolicyUrl}?message=update_fail&alert=danger";
+                    window.location.href = "${PrivacyPolicyUrl}?id=${privacyPolicyModel.id}&message=update_fail&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();
-                window.location.href = "${PrivacyPolicyUrl}?message=system_error&alert=danger";
+                window.location.href = "${PrivacyPolicyUrl}?id=${privacyPolicyModel.id}&message=system_error&alert=danger";
             }
         })
     }

@@ -32,11 +32,11 @@ public class SupplierController extends HttpServlet {
             request.setAttribute("supplierModel", supplierModel);
             url = "../views/admin/editsupplier.jsp";
         } else {
-            MessageUtil.showMessage(request);
             List<SupplierModel> suppliers = supplierService.findAll();
             request.setAttribute("suppliers", suppliers);
             url = "../views/admin/supplier.jsp";
         }
+        MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }

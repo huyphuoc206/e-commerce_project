@@ -15,6 +15,9 @@
                     <div class="card-header">
                         <strong class="card-title">Chỉnh sửa nhà sản xuất</strong>
                     </div>
+                    <c:if test="${not empty message}">
+                        <div class="text-center float-left alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="card-body card-block">
                         <form id="formSubmit" action="" method="post" enctype="multipart/form-data"
                               class="form-horizontal">
@@ -82,13 +85,13 @@
             success: function (result) {
                 $('.load').hide();
                 if (result !== null)
-                    window.location.href = "${SupplierURL}?message=update_success&alert=success";
+                    window.location.href = "${SupplierURL}?id=${supplierModel.id}&message=update_success&alert=success";
                 else
-                    window.location.href = "${SupplierURL}?message=update_fail&alert=danger";
+                    window.location.href = "${SupplierURL}?id=${supplierModel.id}&message=update_fail&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();
-                window.location.href = "${SupplierURL}?message=system_error&alert=danger";
+                window.location.href = "${SupplierURL}?id=${supplierModel.id}&message=system_error&alert=danger";
             }
         })
     }

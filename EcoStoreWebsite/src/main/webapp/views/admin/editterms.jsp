@@ -12,6 +12,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <c:if test="${not empty message}">
+                        <div class="text-center float-left alert alert-${alert}">${message}</div>
+                    </c:if>
                     <div class="card-header">
                         <strong class="card-title">Chỉnh sửa trang điều kiện</strong>
                     </div>
@@ -86,13 +89,13 @@
             success: function (result) {
                 $('.load').hide();
                 if (result !== null)
-                    window.location.href = "${TermsUrl}?message=update_success&alert=success";
+                    window.location.href = "${TermsUrl}?id=${termsModel.id}&message=update_success&alert=success";
                 else
-                    window.location.href = "${TermsUrl}?message=update_fail&alert=danger";
+                    window.location.href = "${TermsUrl}?id=${termsModel.id}&message=update_fail&alert=danger";
             },
             error: function (error) {
                 $('.load').hide();
-                window.location.href = "${TermsUrl}?message=system_error&alert=danger";
+                window.location.href = "${TermsUrl}?id=${termsModel.id}&message=system_error&alert=danger";
             }
         })
     }

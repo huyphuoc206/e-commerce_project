@@ -184,7 +184,7 @@
             success: function (result) {
                 $('.load').hide();
                 if(result !== null)
-                    window.location.href = "${BannerURL}?message=insert_success&alert=success";
+                    window.location.href = "${BannerURL}?id="+result.id + "&message=insert_success&alert=success";
                 else
                     window.location.href = "${BannerURL}?message=insert_slide_fail&alert=danger";
             },

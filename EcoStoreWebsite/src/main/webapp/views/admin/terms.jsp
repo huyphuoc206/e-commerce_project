@@ -164,7 +164,7 @@
             success: function (result) {
                 $('.load').hide();
                 if (result !== null)
-                    window.location.href = "${TermsUrl}?message=insert_success&alert=success";
+                    window.location.href = "${TermsUrl}?id="+result.id+"&message=insert_success&alert=success";
                 else
                     window.location.href = "${TermsUrl}?message=insert_fail&alert=danger";
             },

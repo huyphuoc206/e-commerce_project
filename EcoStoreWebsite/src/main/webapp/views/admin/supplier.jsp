@@ -154,6 +154,27 @@
             addSupplier(data);
         }
     })
+    function addSupplier(data) {
+        $('.load').show();
+        $.ajax({
+            url: '${APIurl}',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            success: function (result) {
+                $('.load').hide();
+                if (result !== null)
+                    window.location.href = "${SupplierURL}?id="+result.id+"&message=insert_success&alert=success";
+                else
+                    window.location.href = "${SupplierURL}?message=insert_fail&alert=danger";
+            },
+            error: function (error) {
+                $('.load').hide();
+                window.location.href = "${SupplierURL}?message=system_error&alert=danger";
+            }
+        })
+    }
 
     $('#deleteSupplier').click(function (e) {
         e.preventDefault();
@@ -190,27 +211,7 @@
         })
     }
 
-    function addSupplier(data) {
-        $('.load').show();
-        $.ajax({
-            url: '${APIurl}',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            success: function (result) {
-                $('.load').hide();
-                if (result !== null)
-                    window.location.href = "${SupplierURL}?message=insert_success&alert=success";
-                else
-                    window.location.href = "${SupplierURL}?message=insert_fail&alert=danger";
-            },
-            error: function (error) {
-                $('.load').hide();
-                window.location.href = "${SupplierURL}?message=system_error&alert=danger";
-            }
-        })
-    }
+
 </script>
 </body>
 </html>

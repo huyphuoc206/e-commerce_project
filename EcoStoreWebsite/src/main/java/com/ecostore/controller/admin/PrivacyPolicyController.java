@@ -31,12 +31,12 @@ public class PrivacyPolicyController extends HttpServlet {
             request.setAttribute("privacyPolicyModel", privacyPolicyModel);
             url = "../views/admin/editprivacypolicy.jsp";
         } else {
-            MessageUtil.showMessage(request);
+
             List<PrivacyPolicyModel> privacyPolicyModels = privacyPolicyService.findAll();
             request.setAttribute("privacyPolicyModels", privacyPolicyModels);
             url = "../views/admin/privacypolicy.jsp";
         }
-
+        MessageUtil.showMessage(request);
         RequestDispatcher rd = request.getRequestDispatcher(url);
         rd.forward(request, response);
     }
