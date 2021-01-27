@@ -1,5 +1,6 @@
 package com.ecostore.controller.web.api;
 
+import com.ecostore.constant.SystemConstant;
 import com.ecostore.mail.MailMessage;
 import com.ecostore.mail.MailUtils;
 import com.ecostore.model.UserModel;
@@ -7,6 +8,7 @@ import com.ecostore.service.IUserService;
 import com.ecostore.utils.MD5Hashing;
 import com.ecostore.utils.RandomString;
 import com.ecostore.utils.SessionUtil;
+import com.ecostore.utils.UploadFileUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.inject.Inject;
@@ -15,14 +17,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Base64;
 
 @WebServlet(urlPatterns = "/api-web-user")
 public class UserAPI extends HttpServlet {
 
     @Inject
     private IUserService userService;
+    @Inject
+    private UploadFileUtil uploadFile;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -71,7 +77,14 @@ public class UserAPI extends HttpServlet {
             userUpdate.setKeycode(null);
             userUpdate.setKeytime(null);
         } else {
-            userUpdate.setAvatar(userNew.getAvatar());
+            String avatarPath = userUpdate.getAvatar();
+            if (userNew.getUploadFile().getBase64() != null) {
+                byte[] decodeBase64 = Base64.getDecoder().decode(userNew.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
+                String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+                uploadFile.writeOrUpdate(decodeBase64, path + userNew.getUploadFile().getName());
+                avatarPath = SystemConstant.AVATAR_DIR + userNew.getUploadFile().getName();
+            }
+            userUpdate.setAvatar(avatarPath);
             userUpdate.setFullname(userNew.getFullname());
             userUpdate.setUsername(userNew.getUsername());
             userUpdate.setEmail(userNew.getEmail());

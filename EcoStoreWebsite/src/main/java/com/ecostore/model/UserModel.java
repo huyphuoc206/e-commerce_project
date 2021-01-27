@@ -15,10 +15,18 @@ public class UserModel extends AbstractModel {
     private int status;
     private String keycode;
     private Timestamp keytime;
+    private UploadFileModel uploadFile;
 
     public UserModel() {
     }
 
+    public UploadFileModel getUploadFile() {
+        return uploadFile;
+    }
+
+    public void setUploadFile(UploadFileModel uploadFile) {
+        this.uploadFile = uploadFile;
+    }
 
     public long getRoleId() {
         return roleId;

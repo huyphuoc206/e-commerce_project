@@ -52,7 +52,9 @@
 
         $(document).ready(function () {
             $('input.change-image:file').change(function (event) {
+                
                 var tmppath = URL.createObjectURL(event.target.files[0]);
+                console.log(tmppath)
                 $(this).closest('.custom-input-file').css({ backgroundImage: `url("${tmppath}")` });
             });
         })
@@ -502,8 +504,8 @@
                                 </select>
                             </div>
                             <div class="row form-group">
-                                <label for="image" class="col-sm-3 form-control-label">Hình
-                                    ảnh</label>
+                                <!-- <label for="image" class="col-sm-3 form-control-label">Hình
+                                    ảnh</label> -->
                                 <div class="col-sm-3">
                                     <div class="custom-input-file">
                                         <label class="uploadPhoto">

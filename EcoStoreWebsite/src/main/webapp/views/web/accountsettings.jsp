@@ -28,15 +28,19 @@
                 <div class="text-center alert alert-${alert}">${message}</div>
             </c:if>
             <div class="row form-group">
-                <div class="col col-md-3"><label class=" form-control-label">Hình đại diện</label>
+                <div class="col col-md-3"><label class="form-control-label" for="avatar">Hình đại diện</label>
                 </div>
                 <div class="col-12 col-md-9">
-                    <div class="custom-input-file" style="background-image: url('${user.avatar}');">
-                        <label class="uploadPhoto">
-                            Chọn
-                            <input type="file" class="change-avatar" name="avatar" id="avatar" value="${user.avatar}">
-                        </label>
-                    </div>
+                    <input type="file"
+                           id="avatar" name="avatar"
+                           accept="image/png, image/jpeg" value="${user.avatar}">
+<%--                    <input type="file" class="change-avatar" name="avatar" id="avatar" value="${user.avatar}">--%>
+<%--                    <div class="custom-input-file" style="background-image: url('${user.avatar}');">--%>
+<%--                            <label class="uploadPhoto">--%>
+<%--                                Chọn--%>
+<%--                                <input type="file" class="change-avatar" name="avatar" id="avatar" value="${user.avatar}">--%>
+<%--                            </label>--%>
+<%--                    </div>--%>
                 </div>
             </div>
             <div class="row form-group">
@@ -84,7 +88,18 @@
             $.each(formData, function (i, v) {
                 data['' + v.name] = v.value
             });
-            updateUserBtn(data);
+            data['uploadFile'] = {}
+            var files = $('#avatar')[0].files[0];
+            if(files != undefined) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    data['uploadFile']['base64'] = e.target.result;
+                    data['uploadFile']['name'] = files.name;
+                    updateUserBtn(data);
+                };
+                reader.readAsDataURL(files);
+            } else
+                updateUserBtn(data);
         }
     })
 
