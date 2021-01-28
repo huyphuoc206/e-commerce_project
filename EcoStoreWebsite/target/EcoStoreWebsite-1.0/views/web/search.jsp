@@ -132,7 +132,7 @@
 
     let totalPages = ${model.totalPage};
     let currentPage = ${model.page};
-    if (!$('#pagination').isEmptyObject()) {
+    if (totalPages != 0) {
         $(function () {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
