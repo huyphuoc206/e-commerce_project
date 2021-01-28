@@ -66,13 +66,22 @@ public class UserAPI extends HttpServlet {
 
         //xử lý với userSession thay đổi thông tin
         if (userModel.getId() == userSession.getId()) {
-            //nếu user đang hoạt động chỉnh trạng thái hoạt động về 0
-            if (userModel.getStatus() == 0) {
+            //nếu user đang hoạt động chỉnh trạng thái hoạt động về 0 hoặc quyền mình về 2(thành vien)
+            if (userModel.getStatus() == 0 || userModel.getRoleId() == 2) {
                 mapper.writeValue(response.getOutputStream(), "");
                 return;
             }
             if (!MD5Hashing.hash(userModel.getPassword()).equals(userOld.getPassword()) && !userModel.getPassword().equals(userOld.getPassword())) {
                 String passNew = MD5Hashing.hash(userModel.getPassword());
+                String avatarPath = userOld.getAvatar(); //lấy hình cũ nếu không có hình mới
+                if (userModel.getUploadFile().getBase64() != null) {
+                    byte[] decodeBase64 = Base64.getDecoder().decode(userModel.getUploadFile().getBase64().getBytes()); // convert base64 ve mang byte[]
+                    String path = request.getServletContext().getRealPath(File.separator) + SystemConstant.AVATAR_DIR;
+                    uploadFile.writeOrUpdate(decodeBase64, path + userModel.getUploadFile().getName());
+                    avatarPath = SystemConstant.AVATAR_DIR + userModel.getUploadFile().getName();
+                    //lấy hình mới
+                }
+                userModel.setAvatar(avatarPath);
                 userModel.setPassword(passNew);
                 userModel = userService.update(userModel);
                 if (userModel != null) {

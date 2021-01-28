@@ -41,6 +41,8 @@ public class UserController extends HttpServlet {
             SessionUtil.getInstance().getValue(request, "USERMODEL");
             List<UserModel> users = userService.findAllUsers();
             request.setAttribute("users", users);
+            List<RoleModel> roles = roleService.findAll();
+            request.setAttribute("roles", roles);
             url = "../views/admin/users.jsp";
         }
         MessageUtil.showMessage(request);

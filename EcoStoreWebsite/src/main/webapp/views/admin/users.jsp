@@ -141,8 +141,9 @@
                     <div class="form-group">
                         <label>Vai trò</label>
                         <select name="roleId" class="form-control">
-                            <option value="1">Quản trị</option>
-                            <option value="2">Khách hàng</option>
+                            <c:forEach var="item1" items="${roles}">
+                                <option value="${item1.id}">${item1.name}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
