@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2021 at 11:38 AM
+-- Generation Time: Jan 28, 2021 at 03:19 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -42,7 +42,7 @@ CREATE TABLE `about` (
 --
 
 INSERT INTO `about` (`id`, `content`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(15, '<h3>Về ch&uacute;ng t&ocirc;i</h3>\n\n<h4>Eco Store l&agrave; trong những đơn vị cung cấp c&aacute;c thiết bị điện gia dụng chất lượng hiện nay tại thị trường Việt Nam.</h4>\n\n<p>Ch&uacute;ng t&ocirc;i l&agrave;m việc với phương ch&acirc;m lấy uy t&iacute;n của doanh nghiệp v&agrave; lợi &iacute;ch của kh&aacute;ch h&agrave;ng l&ecirc;n h&agrave;ng đầu. Những sản phẩm m&agrave; Eco Store mang đến cho kh&aacute;ch h&agrave;ng lu&ocirc;n được đảm bảo về chất lượng.</p>\n', 1, '2021-01-03 13:55:20', 'php', '2021-01-03 14:01:33', 'php');
+(15, '<h3>Về ch&uacute;ng t&ocirc;i</h3>\n\n<p>&nbsp;</p>\n\n<p>Eco Store l&agrave; trong những đơn vị cung cấp c&aacute;c thiết bị điện gia dụng chất lượng hiện nay tại thị trường Việt Nam. Với đa dạng về mẫu m&atilde;, m&agrave;u sắc, đến từ nhiều thương hiệu kh&aacute;c nhau gi&uacute;p bạn dễ d&agrave;ng lựa chọn được sản phẩm ưng &yacute;.</p>\n\n<p>Sau 21&nbsp;năm ph&aacute;t triển kh&ocirc;ng ngừng, Eco Store hướng đến mục ti&ecirc;u kh&ocirc;ng chỉ l&agrave; nơi kinh doanh thiết bị điện gia dụng&nbsp;m&agrave; c&ograve;n l&agrave; nơi kh&aacute;ch h&agrave;ng c&oacute; thể t&igrave;m thấy mọi tiện &iacute;ch c&ocirc;ng nghệ hiện đại v&agrave; dịch vụ chất lượng cao.</p>\n\n<p>Ch&uacute;ng t&ocirc;i l&agrave;m việc với phương ch&acirc;m lấy uy t&iacute;n của doanh nghiệp v&agrave; lợi &iacute;ch của kh&aacute;ch h&agrave;ng l&ecirc;n h&agrave;ng đầu. Những sản phẩm m&agrave; Eco Store mang đến cho kh&aacute;ch h&agrave;ng lu&ocirc;n được đảm bảo về chất lượng.</p>\n\n<p>Đến với Eco Store bạn sẽ nhận được những g&igrave;?</p>\n\n<p>- Tư vấn miễn ph&iacute; về c&aacute;c d&ograve;ng sản phẩm.</p>\n\n<p>- Giao h&agrave;ng tận nơi.</p>\n\n<p>- Bạn sẽ sở hữu được những d&ograve;ng sản phẩm với chất lượng cao.</p>\n\n<p>- Ngo&agrave;i ra, ch&uacute;ng t&ocirc;i c&ograve;n c&oacute; nhiều ch&iacute;nh s&aacute;ch ưu đ&atilde;i cho kh&aacute;ch h&agrave;ng.</p>\n\n<p>H&atilde;y đến ngay Eco Store để mang về cho gia đ&igrave;nh m&igrave;nh những sản phẩm tiện &iacute;ch v&agrave; chất lượng. Gi&uacute;p cho sinh hoạt h&agrave;ng ng&agrave;y của bạn trở n&ecirc;n dễ d&agrave;ng v&agrave; thoải m&aacute;i hơn.</p>\n\n<p>Bạn c&oacute; thể li&ecirc;n hệ với ch&uacute;ng t&ocirc;i qua hotline 0981 733 331 để được tư vấn chi tiết.</p>\n', 1, '2021-01-03 13:55:20', 'php', '2021-01-28 01:49:25', 'php');
 
 -- --------------------------------------------------------
 
@@ -96,39 +96,10 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `userid`, `productid`, `content`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(1, 3, 8, 'Chán', 1, '2021-01-14 14:07:54', NULL, '2021-01-18 13:51:39', 'Huy Phước'),
-(2, 47, 8, 'Hellodsf vccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', 1, NULL, NULL, NULL, NULL),
-(3, 4, 69, 'Hello', 1, '2021-01-18 14:24:08', 'abc', NULL, NULL),
-(4, 4, 69, 'alo\r\n', 1, '2021-01-18 14:25:44', 'abc', NULL, NULL),
-(5, 4, 69, 'owfm', 1, '2021-01-18 14:40:34', 'abc', NULL, NULL),
-(6, 4, 69, 'owfm', 1, '2021-01-18 14:41:10', 'abc', NULL, NULL),
-(7, 4, 69, 'yeah yeah', 1, '2021-01-18 14:42:28', 'abc', NULL, NULL),
-(8, 4, 69, 'fdf', 1, '2021-01-18 14:43:44', 'abc', NULL, NULL),
-(9, 4, 69, 'fdfcxxxxxxxxxxxxxxx', 1, '2021-01-18 14:45:04', 'abc', NULL, NULL),
-(10, 4, 69, 'nhe nhw', 1, '2021-01-18 14:45:43', 'abc', NULL, NULL),
-(11, 4, 69, 'dsadcv', 1, '2021-01-18 14:46:46', 'abc', NULL, NULL),
-(12, 4, 69, 'cxcs', 1, '2021-01-18 14:47:59', 'abc', NULL, NULL),
-(13, 4, 69, 'scasc 12 2', 1, '2021-01-18 14:48:15', 'abc', NULL, NULL),
-(14, 4, 69, '1', 1, '2021-01-18 14:48:18', 'abc', NULL, NULL),
-(15, 4, 69, '2', 1, '2021-01-18 14:48:19', 'abc', NULL, NULL),
-(16, 4, 69, '3', 1, '2021-01-18 14:48:20', 'abc', NULL, NULL),
-(17, 4, 69, '4', 1, '2021-01-18 14:48:21', 'abc', NULL, NULL),
-(18, 4, 69, '5', 1, '2021-01-18 14:48:21', 'abc', NULL, NULL),
-(19, 4, 69, '6', 1, '2021-01-18 14:48:22', 'abc', NULL, NULL),
-(20, 4, 69, '7', 1, '2021-01-18 14:48:23', 'abc', NULL, NULL),
-(21, 4, 69, '8', 1, '2021-01-18 14:50:46', 'abc', NULL, NULL),
-(22, 4, 69, '9', 1, '2021-01-18 14:52:37', 'abc', NULL, NULL),
-(23, 4, 69, '10', 1, '2021-01-18 14:52:43', 'abc', NULL, NULL),
-(24, 4, 69, '11', 1, '2021-01-18 14:52:49', 'abc', NULL, NULL),
-(25, 4, 65, 'hello', 1, '2021-01-18 14:57:11', 'abc', NULL, NULL),
-(26, 4, 65, 'hahas', 1, '2021-01-18 14:57:15', 'abc', NULL, NULL),
-(27, 4, 69, 'yteah', 1, '2021-01-18 14:57:36', 'abc', NULL, NULL),
-(28, 47, 69, 'casio gì', 1, '2021-01-18 14:59:12', 'nhat', NULL, NULL),
-(29, 47, 69, 'à há', 1, '2021-01-18 15:01:41', 'nhat', NULL, NULL),
-(30, 47, 69, 'yeah yeah', 1, '2021-01-18 15:04:00', 'nhat', NULL, NULL),
-(31, 47, 69, 'anh yêu em', 1, '2021-01-18 15:07:42', 'nhat', NULL, NULL),
-(32, 47, 21, 'gì', 1, '2021-01-18 15:08:27', 'nhat', NULL, NULL),
-(33, 47, 21, 'cá', 1, '2021-01-18 15:08:30', 'nhat', '2021-01-18 15:09:28', 'Huy Phước');
+(51, 4, 44, 'Giá quá đắt, tôi sẽ cân nhắc', 1, '2021-01-28 01:51:14', 'abc', NULL, NULL),
+(52, 50, 44, 'Sản phẩm rất đẹp, tôi sẽ mua ngay, giá cả không thành vấn đề', 1, '2021-01-28 01:53:05', 'nhattt', NULL, NULL),
+(53, 50, 44, 'Dịch vụ quá tốt, mới đặt hàng đã nhận được ngay. Rất đáng khen', 1, '2021-01-28 01:53:39', 'nhattt', NULL, NULL),
+(54, 50, 44, 'Tôi nghĩ giá không đắt, giá ở đây nói lên chất lượng sản phẩm. Anh em nên tham khảo và chọn mua', 1, '2021-01-28 01:54:17', 'nhattt', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,7 +123,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `fullname`, `email`, `content`, `status`, `createddate`, `modifieddate`, `modifiedby`) VALUES
-(20, 'Test', 'djsdkjsd@gmail.com', 'sdscsc', 1, '2021-01-03 09:56:04', '2021-01-03 09:56:04', 'php');
+(20, 'Anh Nam', 'nguyenxuanhainam@gmail.com', 'Cần hỗ trợ gấp!!', 1, '2021-01-28 01:28:09', '2021-01-28 01:28:09', 'php'),
+(21, 'Nguyễn Văn Hoàng', 'hoangcai@gmail.com', 'Tôi cần chọn một tivi tốt ', 0, '2021-01-28 02:03:11', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -176,11 +148,12 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `userid`, `content`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(1, 4, 'good job', 1, '2021-01-03 00:30:27', 'Nguyễn Văn A', '2021-01-03 00:31:00', 'php'),
-(2, 4, 'xin chào mọi người', 1, '2021-01-03 00:30:37', 'Nguyễn Văn A', '2021-01-03 00:31:13', 'php'),
-(3, 4, 'hello every body', 1, '2021-01-03 00:30:42', 'Nguyễn Văn A', '2021-01-03 00:31:23', 'php'),
-(4, 4, 'cácc2w1c23', 1, '2021-01-03 00:30:46', 'Nguyễn Văn A', '2021-01-03 00:40:06', 'php'),
-(5, 3, 'sdsd', 0, '2021-01-03 00:39:52', 'Huy Phước', NULL, NULL);
+(4, 4, 'Hình ảnh đẹp, dịch vụ đa dạng', 1, '2021-01-03 00:30:46', 'Nguyễn Văn A', '2021-01-03 00:40:06', 'php'),
+(5, 3, 'Dịch vụ chất lượng, đáng mua.', 0, '2021-01-03 00:39:52', 'Huy Phước', '2021-01-28 01:23:44', 'Huy Phước'),
+(6, 50, 'Mỗi khi nghĩ về đồ điện, tôi nghĩ ngay tới Eco Store <3', 1, '2021-01-28 01:55:16', 'Long', '2021-01-28 01:55:42', 'Huy Phước'),
+(7, 3, 'Chất lượng cực tốt, không có gì bàn cãi.', 0, '2021-01-28 01:56:29', 'Huy Phước', '2021-01-28 01:57:02', 'Huy Phước'),
+(8, 40, 'Chất lượng dịch vụ cực tốt, không có gì phải bàn cãi.', 1, '2021-01-28 01:57:38', 'Thanh Tôn', '2021-01-28 01:57:46', 'Thanh Tôn'),
+(9, 47, 'Giá cả phải chăng, tôi sẽ trung thành với các bạn!', 1, '2021-01-28 01:58:44', 'Minh Nhật', '2021-01-28 01:59:10', 'Minh Nhật');
 
 -- --------------------------------------------------------
 
@@ -242,7 +215,7 @@ INSERT INTO `menu` (`id`, `name`, `link`, `status`, `menutypeid`, `createddate`,
 (8, 'Liên hệ', '/lien-he', 1, 2, NULL, NULL, NULL, NULL),
 (9, 'Điều khoản sử dụng', '/dieu-khoan-su-dung', 1, 2, NULL, NULL, NULL, NULL),
 (10, 'Chính sách bảo mật', '/chinh-sach-bao-mat', 1, 2, NULL, NULL, NULL, NULL),
-(11, 'Thông tin', '/quan-tri/trang-chu', 1, 3, NULL, NULL, NULL, NULL),
+(11, 'Thống kê', '/quan-tri/trang-chu', 1, 3, NULL, NULL, NULL, NULL),
 (12, 'Sản phẩm', '/quan-tri/san-pham', 1, 3, NULL, NULL, NULL, NULL),
 (13, 'Thể loại', '/quan-tri/the-loai', 1, 3, NULL, NULL, NULL, NULL),
 (14, 'Nhà sản xuất', '/quan-tri/nha-san-xuat', 1, 3, NULL, NULL, NULL, NULL),
@@ -299,7 +272,6 @@ CREATE TABLE `orderdetails` (
 --
 
 INSERT INTO `orderdetails` (`id`, `orderid`, `productid`, `unitprice`, `quantity`, `totalprice`) VALUES
-(1, 1, 77, 12250000, 1, 12250000),
 (2, 1, 78, 10800000, 1, 10800000),
 (3, 2, 72, 9955000, 3, 29865000),
 (4, 2, 74, 14670000, 2, 29340000),
@@ -307,7 +279,13 @@ INSERT INTO `orderdetails` (`id`, `orderid`, `productid`, `unitprice`, `quantity
 (6, 3, 65, 13237500, 100, 1323750000),
 (7, 3, 66, 26790000, 1, 26790000),
 (8, 3, 69, 6450000, 1, 6450000),
-(9, 4, 21, 55740000, 2, 111480000);
+(9, 4, 21, 55740000, 2, 111480000),
+(10, 5, 597, 1189500, 2, 2379000),
+(11, 5, 600, 1287000, 1, 1287000),
+(12, 6, 44, 980000000, 6, 5880000000),
+(13, 6, 141, 127500000, 1, 127500000),
+(14, 7, 634, 1250000, 1, 1250000),
+(15, 7, 635, 712500, 2, 1425000);
 
 -- --------------------------------------------------------
 
@@ -336,10 +314,13 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `userid`, `paymentid`, `customername`, `phone`, `address`, `message`, `totalprice`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(1, 4, 7, 'Phupcws', '0912345678', 'BH city', 'Ko mua nua', 23050000, 0, '2021-01-15 05:14:54', 'abc', NULL, NULL),
-(2, 4, 8, 'Phuoc pro', '0912345678', 'TP HCM', 'Ko mua nua', 59205000, 0, '2021-01-15 05:25:50', 'abc', NULL, NULL),
-(3, 4, 9, 'Ton', '0912345678', 'HCm', 'bom hang', 1368210000, 0, '2021-01-15 05:28:05', 'abc', NULL, NULL),
-(4, 3, 8, 'He', '0912345678', 'HCm', 'fsf', 111480000, 0, '2021-01-18 15:10:21', 'php', NULL, NULL);
+(1, 4, 7, 'Hoàng Minh', '0912345678', 'Thành phố Biên Hòa', 'Ship trước 12h', 23050000, 4, '2021-01-15 05:14:54', 'abc', '2021-01-28 01:16:06', 'php'),
+(2, 4, 8, 'Anh Minh', '0912345678', 'Quận 1, TP.HCM', '', 59205000, 3, '2021-01-15 05:25:50', 'abc', '2021-01-28 01:16:53', 'php'),
+(3, 4, 9, 'Thanh Tôn', '0912345678', 'Quận 5, TP.HCM', 'Vui lòng giao hàng vào giờ hành chính. Cám ơn!', 1368210000, 0, '2021-01-15 05:28:05', 'abc', '2021-01-28 01:17:54', 'php'),
+(4, 3, 8, 'Gia Long', '0912345678', 'Đống Đa, Hà Nội', '', 111480000, 0, '2021-01-18 15:10:21', 'php', '2021-01-28 01:18:45', 'php'),
+(5, 4, 9, 'Bảo Bảo', '0912345678', 'HCm', 'Dịch vụ tốt, mua thêm', 3666000, 4, '2021-01-20 15:18:55', 'abc', '2021-01-28 01:20:30', 'php'),
+(6, 4, 9, 'Văn Nguyễn', '0912345678', 'Hai Bà Trưng, Hà Nội', 'Đóng gói cẩn thận hộ mình. Cám ơn rất nhiều!', 6007500000, 3, '2021-01-28 02:13:25', 'abc', '2021-01-28 02:18:33', 'php'),
+(7, 4, 9, 'Nguyễn Văn', '0919661447', 'Thành phố Thủ Đức', '', 2675000, 0, '2021-01-28 02:17:55', 'abc', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -362,7 +343,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `name`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(7, 'Thanh toán khi nhận hàng', 1, '2021-01-15 03:36:02', 'php', NULL, NULL),
+(7, 'Thanh toán khi nhận hàng (COD)', 1, '2021-01-15 03:36:02', 'php', '2021-01-28 01:21:27', 'php'),
 (8, 'Ví Momo', 1, '2021-01-15 03:36:07', 'php', NULL, NULL),
 (9, 'Internet Banking', 1, '2021-01-15 03:38:01', 'php', NULL, NULL),
 (10, 'Paypal', 1, '2021-01-15 03:38:06', 'php', NULL, NULL);
@@ -416,7 +397,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `discount`, `description`, `status`, `categoryid`, `supplierid`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(5, 'Smart Tivi QLED Samsung 4K 65 inch QA65Q65R', 19100000, 40, '<ul>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Màn hình&nbsp;<i class=\"cate-img\"></i>4K&nbsp;sắc nét cùng màn hình QLED rực rỡ, màu sắc nổi bật hơn.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Chiếu màn hình điện thoại lên tivi tiện lợi bằng Screen Mirroring, Airplay 2 và điều khiển tivi bằng điện thoại thông qua ứng dụng&nbsp;SmartThings.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Thiết kế sang trọng, tinh tế.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Âm thanh vòm bùng nổ, mạnh mẽ chuẩn điện ảnh với công nghệ Dolby Digital Plus.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Tối ưu và nâng cấp độ nét hình ảnh, tự động điều chỉnh ánh sáng và âm thanh nhờ bộ xử Lý Quantum 4K.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Công nghệ Quantum&nbsp;<i class=\"cate-img\"></i>HDR&nbsp;nâng cao độ sáng, chi tiết, sắc màu hiệu quả.</span></li>\n <li><span style=\"font-family: tahoma, arial, helvetica, sans-serif;\">Hệ điều hành&nbsp;<i class=\"cate-yt\"></i>Tizen OS&nbsp;hiện đại cùng&nbsp;<i class=\"cate-yt\"></i>One Remote&nbsp;hỗ trợ điều khiển, thao tác truy cập nhanh chóng.</span></li>\n</ul>', 1, 1, 1, '2021-01-05 09:13:53', NULL, NULL, NULL),
+(5, 'Smart Tivi QLED Samsung 4K 65 inch QA65Q65R', 29100000, 20, '<ul>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">M&agrave;n h&igrave;nh&nbsp;4K&nbsp;sắc n&eacute;t c&ugrave;ng m&agrave;n h&igrave;nh QLED rực rỡ, m&agrave;u sắc nổi bật hơn.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">Chiếu m&agrave;n h&igrave;nh điện thoại l&ecirc;n tivi tiện lợi bằng Screen Mirroring, Airplay 2 v&agrave; điều khiển tivi bằng điện thoại th&ocirc;ng qua ứng dụng&nbsp;SmartThings.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">Thiết kế sang trọng, tinh tế.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">&Acirc;m thanh v&ograve;m b&ugrave;ng nổ, mạnh mẽ chuẩn điện ảnh với c&ocirc;ng nghệ Dolby Digital Plus.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">Tối ưu v&agrave; n&acirc;ng cấp độ n&eacute;t h&igrave;nh ảnh, tự động điều chỉnh &aacute;nh s&aacute;ng v&agrave; &acirc;m thanh nhờ bộ xử L&yacute; Quantum 4K.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">C&ocirc;ng nghệ Quantum&nbsp;HDR&nbsp;n&acirc;ng cao độ s&aacute;ng, chi tiết, sắc m&agrave;u hiệu quả.</span></li>\n	<li><span style=\"font-family:tahoma,arial,helvetica,sans-serif\">Hệ điều h&agrave;nh&nbsp;Tizen OS&nbsp;hiện đại c&ugrave;ng&nbsp;One Remote&nbsp;hỗ trợ điều khiển, thao t&aacute;c truy cập nhanh ch&oacute;ng.</span></li>\n</ul>\n', 1, 1, 1, '2021-01-05 09:13:53', NULL, '2021-01-27 17:04:25', 'php'),
 (6, 'Smart Tivi QLED Samsung 4K 65 inch QA65Q8CN', 45000000, 15, '<ul>\n <li>Thiết kế màn hình tràn viền cong sang trọng,&nbsp;quyến rũ.</li>\n <li>Độ phân giải&nbsp;<i class=\"cate-img\"></i>4K&nbsp;sắc nét gấp 4 lần tivi Full HD thông thường.</li>\n <li>Công nghệ màn hình chấm lượng tử&nbsp;<i class=\"cate-yt\"></i>Quantum Dot&nbsp;cho màu sắc sống động rực rỡ hơn bao giờ hết.</li>\n <li>Công nghệ Q Color giúp tivi hiển thị dải màu rộng hơn chân thực đến 100%.</li>\n <li>Công nghệ âm thanh Dolby Digital Plus, DTS cùng loa trầm tích hợp cho âm thanh mạnh mẽ.</li>\n <li>Hệ điều hành&nbsp;<i class=\"cate-yt\"></i>Tizen OS&nbsp;dễ sử dụng đi kèm với kho ứng dụng phong phú.</li>\n <li>Hỗ trợ&nbsp;<i class=\"cate-yt\"></i>chiếu màn hình điện thoại lên tivi&nbsp;và điều khiển tivi bằng điện thoại qua ứng dụng&nbsp;SmartThings.</li>\n</ul>', 1, 1, 1, '2021-01-05 09:13:54', NULL, NULL, NULL),
 (7, 'Smart Tivi QLED Samsung 4K 49 inch QA49Q80T', 17400000, 20, '', 1, 1, 1, '2021-01-05 09:13:55', NULL, NULL, NULL),
 (8, 'Smart Tivi QLED 4K 50 inch Samsung QA50Q65T', 14350000, 10, '<ul>\n <li>Chất lượng hình ảnh chuẩn 4K</li>\n <li>Công nghệ Quantum Dot tái tạo tỷ sắc màu</li>\n <li>Công nghệ đèn nền Dual LED tối ưu màu sắc hiển thị</li>\n <li>Tính năng Multi View chia đôi màn hình tiện lợi</li>\n</ul>', 1, 1, 1, '2021-01-05 09:13:56', NULL, NULL, NULL),
@@ -1081,12 +1062,6 @@ CREATE TABLE `productgallery` (
 --
 
 INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
-(1, '/images/products/tv/tivi-samsung-qa65q65r-1.jpg', 5),
-(2, '/images/products/tv/tivi-samsung-qa65q65r-2.jpg', 5),
-(3, '/images/products/tv/tivi-samsung-qa65q65r-3.jpg', 5),
-(4, '/images/products/tv/tivi-samsung-qa65q65r-4.jpg', 5),
-(5, '/images/products/tv/tivi-samsung-qa65q65r-5.jpg', 5),
-(6, '/images/products/tv/tivi-samsung-qa65q65r-6.jpg', 5),
 (7, '/images/products/tv/tivi-qled-samsung-qa65q8cn-6.jpg', 6),
 (8, '/images/products/tv/tivi-qled-samsung-qa65q8cn-1.jpg', 6),
 (9, '/images/products/tv/tivi-qled-samsung-qa65q8cn-2.jpg', 6),
@@ -1441,12 +1416,6 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (358, '/images/products/tv/tivi-samsung-ua75ru7100-1.jpg', 76),
 (359, '/images/products/tv/tivi-samsung-ua75ru7100-10.jpg', 76),
 (360, '/images/products/tv/tivi-samsung-ua75ru7100-2.jpg', 76),
-(361, '/images/products/tv/tivi-samsung-ua65nu7090-6.jpg', 77),
-(362, '/images/products/tv/tivi-samsung-ua65nu7090-7.jpg', 77),
-(363, '/images/products/tv/tivi-samsung-ua65nu7090-9.jpg', 77),
-(364, '/images/products/tv/tivi-samsung-ua65nu7090-8.jpg', 77),
-(365, '/images/products/tv/tivi-samsung-ua65nu7090-1.jpg', 77),
-(366, '/images/products/tv/tivi-samsung-ua65nu7090-2.jpg', 77),
 (367, '/images/products/tv/tivi-samsung-ua65ru7100-4.jpg', 78),
 (368, '/images/products/tv/tivi-samsung-ua65ru7100-1.jpg', 78),
 (369, '/images/products/tv/tivi-samsung-ua65ru7100-2.jpg', 78),
@@ -1931,8 +1900,7 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (848, '/images/products/tv/sony-49x9500h-1-1.jpg', 180),
 (849, '/images/products/tv/sony-49x9500h-2.jpg', 180),
 (850, '/images/products/tv/sony-49x9500h-3.jpg', 180),
-(851, '/images/products/tv/sony-49x9500h-4.jpg', 180);
-INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
+(851, '/images/products/tv/sony-49x9500h-4.jpg', 180),
 (852, '/images/products/tv/sony-49x9500h-5.jpg', 180),
 (853, '/images/products/tv/sony-kd-55x7500h.jpg', 181),
 (854, '/images/products/tv/sony-55a8h-1.jpg', 182),
@@ -1944,7 +1912,8 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (860, '/images/products/tv/sony-kd-49x7500h.jpg', 183),
 (861, '/images/products/tv/tivi-led-sony-kd-49x8500f-1-2-min.jpg', 184),
 (862, '/images/products/tv/tivi-led-sony-kd-49x8500f-2-2-min.jpg', 184),
-(863, '/images/products/tv/tivi-led-sony-kd-49x8500f-3-2-min.jpg', 184),
+(863, '/images/products/tv/tivi-led-sony-kd-49x8500f-3-2-min.jpg', 184);
+INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (864, '/images/products/tv/tivi-led-sony-kd-49x8500f-4-1-min.jpg', 184),
 (865, '/images/products/tv/tivi-led-sony-kd-49x8500f-5-2-min.jpg', 184),
 (866, '/images/products/tv/tivi-led-sony-kd-49x8500f-6-2-min.jpg', 184),
@@ -2649,8 +2618,7 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (1565, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-0-org-min.jpg', 346),
 (1566, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-1-2-org-min.jpg', 346),
 (1567, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-2-2-org-min.jpg', 346),
-(1568, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-3-2-org-min.jpg', 346);
-INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
+(1568, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-3-2-org-min.jpg', 346),
 (1569, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-4-2-org-min.jpg', 346),
 (1570, '/images/products/tulanh/tu-lanh-hitachi-wb800pgv5-gbk-5-2-org-min.jpg', 346),
 (1571, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-1-org-min.jpg', 347),
@@ -2658,7 +2626,8 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (1573, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-3-org-min.jpg', 347),
 (1574, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-4-org-min.jpg', 347),
 (1575, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-5-org-min.jpg', 347),
-(1576, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-6-org-min.jpg', 347),
+(1576, '/images/products/tulanh/tu-lanh-hitachi-r-fm800pgv2-gbk-6-org-min.jpg', 347);
+INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (1577, '/images/products/tulanh/tu-lanh-hitachi-r-fw650pgv8-gbk-1-org-min.jpg', 348),
 (1578, '/images/products/tulanh/tu-lanh-hitachi-r-fw650pgv8-gbk-2-org-min.jpg', 348),
 (1579, '/images/products/tulanh/tu-lanh-hitachi-r-fw650pgv8-gbk-3-org-min.jpg', 348),
@@ -3345,8 +3314,7 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2260, '/images/products/tulanh/tu-lanh-toshiba-gr-b22vu-ukg-4.jpg', 467),
 (2261, '/images/products/tulanh/tu-lanh-toshiba-gr-b22vu-ukg-5.jpg', 467),
 (2262, '/images/products/tulanh/tu-lanh-toshiba-gr-b22vu-ukg-6.jpg', 467),
-(2263, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-1.jpg', 468);
-INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
+(2263, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-1.jpg', 468),
 (2264, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-2.jpg', 468),
 (2265, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-3.jpg', 468),
 (2266, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-4.jpg', 468),
@@ -3354,7 +3322,8 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2268, '/images/products/tulanh/tu-lanh-toshiba-305-lit-gr-ag36vubz-xb-1-6.jpg', 468),
 (2269, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-9.jpg', 469),
 (2270, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-1.jpg', 469),
-(2271, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-2.jpg', 469),
+(2271, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-2.jpg', 469);
+INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2272, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-3.jpg', 469),
 (2273, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-4.jpg', 469),
 (2274, '/images/products/tulanh/tu-lanh-toshiba-gr-a28vs-ds-5-2-5.jpg', 469),
@@ -4026,8 +3995,7 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2940, '/images/products/binhnonglanh/may-nuoc-nong-ariston-an2-rs-30-1-4.jpg', 591),
 (2941, '/images/products/binhnonglanh/may-nuoc-nong-ariston-an2-rs-30-1-5.jpg', 591),
 (2942, '/images/products/binhnonglanh/may-nuoc-nong-ariston-an2-rs-30-1-6.jpg', 591),
-(2943, '/images/products/binhnonglanh/may-nuoc-nong-ariston-sb35e-vn-1-2.jpg', 592);
-INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
+(2943, '/images/products/binhnonglanh/may-nuoc-nong-ariston-sb35e-vn-1-2.jpg', 592),
 (2944, '/images/products/binhnonglanh/may-nuoc-nong-ariston-sb35e-vn-2-2.jpg', 592),
 (2945, '/images/products/binhnonglanh/may-nuoc-nong-ariston-sb35e-vn-3-2.jpg', 592),
 (2946, '/images/products/binhnonglanh/may-nuoc-nong-ariston-sb35e-vn-4-2.jpg', 592),
@@ -4036,7 +4004,8 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2949, '/images/products/binhnonglanh/ariston-sm45e-vn-2.jpg', 593),
 (2950, '/images/products/binhnonglanh/ariston-sm45e-vn-3.jpg', 593),
 (2951, '/images/products/binhnonglanh/ariston-sm45e-vn-4.jpg', 593),
-(2952, '/images/products/binhnonglanh/ariston-sm45e-vn-5.jpg', 593),
+(2952, '/images/products/binhnonglanh/ariston-sm45e-vn-5.jpg', 593);
+INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (2953, '/images/products/binhnonglanh/ariston-sm45e-vn-6.jpg', 593),
 (2954, '/images/products/binhnonglanh/ariston-sm45e-vn-7.jpg', 593),
 (2955, '/images/products/binhnonglanh/ariston-rmc45e-vn-6.jpg', 594),
@@ -4296,7 +4265,13 @@ INSERT INTO `productgallery` (`id`, `imagelink`, `productid`) VALUES
 (3209, '/images/products/quatdieuhoa/sunhouse-shd7721-2-org-1.jpg', 639),
 (3210, '/images/products/quatdieuhoa/sunhouse-shd7721-3-org-1.jpg', 639),
 (3211, '/images/products/quatdieuhoa/sunhouse-shd7721-4-org-1.jpg', 639),
-(3212, '/images/products/quatdieuhoa/sunhouse-shd7721-5-org-1.jpg', 639);
+(3212, '/images/products/quatdieuhoa/sunhouse-shd7721-5-org-1.jpg', 639),
+(3275, '\\images\\products\\tivi-samsung-qa65q65r-1.jpg', 5),
+(3276, '\\images\\products\\tivi-samsung-qa65q65r-2.jpg', 5),
+(3277, '\\images\\products\\tivi-samsung-qa65q65r-3.jpg', 5),
+(3278, '\\images\\products\\tivi-samsung-qa65q65r-4.jpg', 5),
+(3279, '\\images\\products\\tivi-samsung-qa65q65r-5.jpg', 5),
+(3280, '\\images\\products\\tivi-samsung-qa65q65r-6.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -4319,7 +4294,7 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `name`, `code`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(1, 'Quản trị', 'ADMIN', NULL, NULL, NULL, NULL),
+(1, 'Quản trị viên', 'ADMIN', NULL, NULL, NULL, NULL),
 (2, 'Người dùng', 'USER', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -4340,6 +4315,16 @@ CREATE TABLE `slide` (
   `modifieddate` timestamp NULL DEFAULT NULL,
   `modifiedby` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `slide`
+--
+
+INSERT INTO `slide` (`id`, `title`, `description`, `imagelink`, `displayorder`, `status`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
+(1, 'MỪNG XUÂN TÂN SỬU', 'Ăn chơi thả ga', '/images/banners/b1.jpg', 1, 1, '2021-01-27 17:19:55', 'php', '2021-01-28 01:10:22', 'php'),
+(2, 'MIỄN PHÍ VẬN CHUYỂN', 'Đặt hàng ngay sẽ được', '/images/banners/b2.jpg', 2, 1, '2021-01-27 17:20:42', 'php', '2021-01-28 01:07:08', 'php'),
+(3, 'HOTLINE 1900-9090', 'Tư vấn miễn phí', '/images/banners/b3.jpg', 3, 1, '2021-01-27 18:08:42', 'php', '2021-01-28 01:07:16', 'php'),
+(4, 'GIẢM GIÁ HÔM NAY', 'Nhận ngay giảm giá lên tới 50%', '/images/banners/b4.jpg', 4, 1, '2021-01-27 18:09:21', 'php', '2021-01-28 01:07:22', 'php');
 
 -- --------------------------------------------------------
 
@@ -4422,7 +4407,7 @@ CREATE TABLE `user` (
   `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(11) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT '/images/avatardefault.png',
+  `avatar` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
   `roleid` bigint(20) NOT NULL,
   `status` int(11) NOT NULL,
   `keycode` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -4438,14 +4423,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fullname`, `username`, `password`, `email`, `phone`, `avatar`, `roleid`, `status`, `keycode`, `keytime`, `createddate`, `createdby`, `modifieddate`, `modifiedby`) VALUES
-(3, 'Huy Phước', 'php', 'e10adc3949ba59abbe56e057f20f883e', 'huyphuoc26@gmail.com', '0919444888', '/images/avatardefault.png', 1, 1, NULL, NULL, NULL, NULL, '2021-01-16 09:41:01', 'php'),
-(4, 'Nguyễn Văn ', 'abc', 'e10adc3949ba59abbe56e057f20f883e', 'huyphuoccscs26@gmail.com', '0919661774', '/images/avatardefault.png', 2, 1, 's', NULL, NULL, NULL, '2021-01-17 04:55:55', NULL),
-(40, 'Thanh Tôn', 'thanhton', 'e10adc3949ba59abbe56e057f20f883e', 'tonlogan11@gmail.com', '0919554994', '/images/avatardefault.png', 2, 1, 's', NULL, '2020-12-27 03:59:03', 'thanhton', NULL, NULL),
-(47, 'Minh Nhật', 'nhat', 'e10adc3949ba59abbe56e057f20f883e', 'nhatt4393@gmail.com', '0919553333', '/images/avatardefault.png', 2, 1, 's', NULL, '2020-12-28 04:00:24', 'nhat', NULL, NULL),
-(50, 'Minh Nhậ', 'nhattt', 'e10adc3949ba59abbe56e057f20f883e', '18130166@st.hcmuaf.edu.vn', '0919554994', '/images/avatardefault.png', 2, 1, NULL, NULL, '2020-12-28 04:03:33', 'nhattt', '2021-01-16 09:43:30', 'php'),
-(53, 'Phước Huy', 'phpphp', 'e10adc3949ba59abbe56e057f20f883e', 'huyphuoc206@gmail.com', '0912345678', '/images/avatardefault.png', 2, 1, NULL, NULL, '2020-12-28 09:28:43', 'phpphp', '2021-01-16 09:21:36', NULL),
-(54, 'Phước Huy', 'asdsdsds', 'e10adc3949ba59abbe56e057f20f883e', 'djsdkjsd@gmail.com', '0912345678', '/images/avatardefault.png', 2, 1, 's', NULL, '2020-12-28 10:00:32', 'asdsdsds', NULL, NULL),
-(55, 'KSKDKSDK', 'dmksndknsdk', '51b43c112ee4995e78c3e49d19fae66c', 'dkskdlaskldk@gmail.com', '0912345678', '/images/avatardefault.png', 2, 1, 's', NULL, '2020-12-29 02:56:39', 'dmksndknsdk', NULL, NULL);
+(3, 'Huy Phước', 'php', '202cb962ac59075b964b07152d234b70', 'huyphuoc26@gmail.com', '0919444888', '\\images\\avatar\\phuoc.jpg', 1, 1, NULL, NULL, NULL, NULL, '2021-01-28 01:39:11', 'php'),
+(4, 'Nguyễn Văn ', 'abc', 'e10adc3949ba59abbe56e057f20f883e', 'huyphuoccscs26@gmail.com', '0919661774', '\\images\\avatar\\vietnam.png', 2, 1, 's', NULL, NULL, NULL, '2021-01-27 08:38:11', NULL),
+(40, 'Thanh Tôn', 'thanhton', '202cb962ac59075b964b07152d234b70', 'tonlogan11@gmail.com', '0919554994', '\\images\\avatar\\ton.jpg', 1, 1, NULL, NULL, '2020-12-27 03:59:03', 'thanhton', '2021-01-28 01:39:24', 'php'),
+(47, 'Minh Nhật', 'nhat', 'e10adc3949ba59abbe56e057f20f883e', 'nhatt4393@gmail.com', '0919553333', '\\images\\avatar\\nhat.jpg', 1, 1, NULL, NULL, '2020-12-28 04:00:24', 'nhat', '2021-01-28 01:39:00', 'php'),
+(50, 'Long', 'nhattt', 'e10adc3949ba59abbe56e057f20f883e', '18130166@st.hcmuaf.edu.vn', '0919554994', '/images/avatardefault.png', 2, 1, NULL, NULL, '2020-12-28 04:03:33', 'nhattt', '2021-01-28 01:12:23', 'php');
 
 --
 -- Indexes for dumped tables
@@ -4585,43 +4567,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `about`
 --
 ALTER TABLE `about`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `information`
 --
 ALTER TABLE `information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `menutype`
@@ -4633,19 +4615,19 @@ ALTER TABLE `menutype`
 -- AUTO_INCREMENT for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `privacypolicy`
@@ -4657,13 +4639,13 @@ ALTER TABLE `privacypolicy`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=640;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=666;
 
 --
 -- AUTO_INCREMENT for table `productgallery`
 --
 ALTER TABLE `productgallery`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3213;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3281;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -4675,7 +4657,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `slide`
 --
 ALTER TABLE `slide`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `supplier`
@@ -4693,7 +4675,7 @@ ALTER TABLE `terms`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Constraints for dumped tables
